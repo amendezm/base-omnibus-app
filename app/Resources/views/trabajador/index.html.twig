@@ -1,0 +1,195 @@
+{% extends 'index.html.twig' %}
+
+{% block contenido %}
+    <!-- Default box -->
+    <div class="box box-danger">
+        <div class="box-header with-border">
+            <div class="user-block">
+                <h3 class="text-center ">Lista de Trabajadores</h3>
+            </div><!-- /.user-block -->
+            <div class="box-tools">
+
+            </div><!-- /.box-tools -->
+        </div><!-- /.box-header -->
+        <div class="box-body">
+
+            <table class="table table-hover">
+                <thead>
+                <th>ID/Código</th>
+                <th>Nombre</th>
+                <th>CI</th>
+                <th>Dirección</th>
+                <th>Cargo</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for trabajador in trabajadors %}
+                <tr>
+                <td>{{ trabajador.codigo }}</td>
+                <td>{{ trabajador.nombre }}</td>
+                <td>{{ trabajador.ci }}</td>
+                <td>{{ trabajador.direccion }}</td>
+                <td>{{ trabajador.cargo }}</td>
+                <td>
+                        <td>
+                            <ul>
+                                <a href="{{ path('trabajador_edit',{ 'id': trabajador.id }) }}"
+                                   class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="right"
+                                   title="Editar elemento"><i class="glyphicon glyphicon-pencil"></i>
+                                </a>
+                                <a href="{{ path('trabajador_delete',{'id': trabajador.id}) }}"
+                                   class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="right"
+                                   title="Eliminar elemento"
+                                   onclick="return confirm('Esta seguro que desea eliminar el elemento')">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                </a>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div><!-- /.box-body -->
+
+        <div class="row">
+
+            <div class="col-sm-4">
+                {% if not is_granted('ROLE_USUARIO' ) %}
+                    <a class="btn btn-sm btn-default  pull-left" href="{{ path('trabajador_new') }}">
+                        <img src="{{ asset('assets/dist/img/add_database_26px.png') }}" alt="User Image"> Nuevo
+                    </a>
+                {% endif %}
+            </div>
+            <div class="col-sm-4">
+                {#{{ knp_pagination_render(pagination) }}#}
+            </div>
+            <div class="col-sm-4">
+
+
+            </div>
+        </div>
+
+
+    </div><!-- /.box -->
+    <div id="mymodal" class="modal  inmodal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button aria-label="Close" data-dismiss="modal" class="close" type="button">
+                        <span aria-hidden="true">×</span></button>
+                    <i class="fa-3x fa fa-warning modal-icon text-red"></i>
+                    <h4 class="modal-title">Acción Peligrosa</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Está acción puede ocacionar, comprometer la integridad de los datos!</p>
+                    <small>Si no es un usuario avanzado, recomendamos que cancele esta acción.</small>
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-primary" type="button">Cerrar</button>
+                    <a class="btn btn-primary btn-danger btn-delete" href="#">Eliminar</a>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+{% endblock %}
+{#<h1>EscogidaTurno list</h1>#}
+
+{#<table>#}
+    {#<thead>#}
+    {#<tr>#}
+        {#<th>Id</th>#}
+        {#<th>Cantidadviajes</th>#}
+        {#<th>Turno</th>#}
+        {#<th>Horaempieza</th>#}
+        {#<th>Horatermina</th>#}
+        {#<th>Horasalida</th>#}
+        {#<th>Trabaja</th>#}
+        {#<th>Descanso</th>#}
+        {#<th>Fechas</th>#}
+        {#<th>Combustibleasignado</th>#}
+        {#<th>Actions</th>#}
+    {#</tr>#}
+    {#</thead>#}
+    {#<tbody>#}
+    {#{% for escogidaTurno in escogidaTurnos %}#}
+        {#<tr>#}
+            {#<td><a href="{{ path('escogidaturno_show', { 'id': escogidaTurno.id }) }}">{{ escogidaTurno.id }}</a></td>#}
+            {#<td>{{ escogidaTurno.cantidadViajes }}</td>#}
+            {#<td>{{ escogidaTurno.turno }}</td>#}
+            {#<td>{% if escogidaTurno.horaEmpieza %}{{ escogidaTurno.horaEmpieza|date('Y-m-d') }}{% endif %}</td>#}
+            {#<td>{% if escogidaTurno.horaTermina %}{{ escogidaTurno.horaTermina|date('Y-m-d') }}{% endif %}</td>#}
+            {#<td>{% if escogidaTurno.horaSalida %}{{ escogidaTurno.horaSalida|date('Y-m-d') }}{% endif %}</td>#}
+            {#<td>{{ escogidaTurno.trabaja }}</td>#}
+            {#<td>{{ escogidaTurno.descanso }}</td>#}
+            {#<td>{{ escogidaTurno.fechas }}</td>#}
+            {#<td>{{ escogidaTurno.combustibleAsignado }}</td>#}
+            {#<td>#}
+                {#<ul>#}
+                    {#<li>#}
+                        {#<a href="{{ path('escogidaturno_show', { 'id': escogidaTurno.id }) }}">show</a>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<a href="{{ path('escogidaturno_edit', { 'id': escogidaTurno.id }) }}">edit</a>#}
+                    {#</li>#}
+                {#</ul>#}
+            {#</td>#}
+        {#</tr>#}
+    {#{% endfor %}#}
+    {#</tbody>#}
+{#</table>#}
+
+{#<ul>#}
+    {#<li>#}
+        {#<a href="{{ path('escogidaturno_new') }}">Create a new entry</a>#}
+    {#</li>#}
+{#</ul>#}
+{#{% extends 'index.html.twig' %}#}
+
+{#{% block contenido %}#}
+    {#<h1>Trabajador list</h1>#}
+
+    {#<table>#}
+        {#<thead>#}
+            {#<tr>#}
+                {#<th>Id</th>#}
+                {#<th>Nombre</th>#}
+                {#<th>Ci</th>#}
+                {#<th>Direccion</th>#}
+                {#<th>Cargo</th>#}
+                {#<th>Actions</th>#}
+            {#</tr>#}
+        {#</thead>#}
+        {#<tbody>#}
+        {#{% for trabajador in trabajadors %}#}
+            {#<tr>#}
+                {#<td><a href="{{ path('trabajador_show', { 'id': trabajador.id }) }}">{{ trabajador.id }}</a></td>#}
+                {#<td>{{ trabajador.nombre }}</td>#}
+                {#<td>{{ trabajador.ci }}</td>#}
+                {#<td>{{ trabajador.direccion }}</td>#}
+                {#<td>{{ trabajador.cargo }}</td>#}
+                {#<td>#}
+                    {#<ul>#}
+                        {#<li>#}
+                            {#<a href="{{ path('trabajador_show', { 'id': trabajador.id }) }}">show</a>#}
+                        {#</li>#}
+                        {#<li>#}
+                            {#<a href="{{ path('trabajador_edit', { 'id': trabajador.id }) }}">edit</a>#}
+                        {#</li>#}
+                    {#</ul>#}
+                {#</td>#}
+            {#</tr>#}
+        {#{% endfor %}#}
+        {#</tbody>#}
+    {#</table>#}
+
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('trabajador_new') }}">Create a new entry</a>#}
+        {#</li>#}
+    {#</ul>#}
+{#{% endblock %}#}

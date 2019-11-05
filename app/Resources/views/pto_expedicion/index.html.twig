@@ -1,0 +1,140 @@
+{% extends 'index.html.twig' %}
+
+{% block contenido %}
+    <!-- Default box -->
+    <div class="box box-danger">
+        <div class="box-header with-border">
+            <div class="user-block">
+                <h3 class="text-center ">Lista de Puntos de Expedición</h3>
+            </div><!-- /.user-block -->
+            <div class="box-tools">
+
+            </div><!-- /.box-tools -->
+        </div><!-- /.box-header -->
+        <div class="box-body">
+            {#<h5>Total de registros: {{ pagination.getTotalItemCount }}</h5>#}
+
+            <table class="table table-hover">
+                <thead>
+
+                {#<th>Id</th>#}
+                <th>Nombre</th>
+                <th>Ubicación</th>
+                <th>Descripción</th>
+               {% if not is_granted('ROLE_USUARIO' ) %}<th><img src="{{ asset('assets/dist/img/data_configuration_26px.png') }}" alt="User Image"> Acciones</th>{% endif %}
+                </thead>
+                <tbody>
+                {% for pto_expedicion in pto_expedicion %}
+                    <tr>
+                        {#<td>{{ pto_expedicion.id }}</td>#}
+                        <td>{{ pto_expedicion.nombre }}</td>
+                       <td>{{ pto_expedicion.ubicacion }}</td>
+                        <td>{{ pto_expedicion.descripcion }}</td>
+                        <td>
+                            <ul>
+                                <a href="{{ path('pto_expedicion_edit',{ 'id': pto_expedicion.id }) }}"
+                                   class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="right"
+                                   title="Editar elemento"><i class="glyphicon glyphicon-pencil"></i>
+                                </a>
+                                <a href="{{ path('pto_expedicion_delete',{'id': pto_expedicion.id}) }}"
+                                   class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="right"
+                                   title="Eliminar elemento"
+                                   onclick="return confirm('Esta seguro que desea eliminar el elemento')">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                </a>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div><!-- /.box-body -->
+
+        <div class="row">
+
+            <div class="col-sm-4">
+                {% if not is_granted('ROLE_USUARIO' ) %}
+                    <a class="btn btn-sm btn-default  pull-left" href="{{ path('pto_expedicion_new') }}">
+                        <img src="{{ asset('assets/dist/img/add_database_26px.png') }}" alt="User Image"> Nuevo
+                    </a>
+                {% endif %}
+            </div>
+
+            <div class="col-sm-4">
+                {#{{ knp_pagination_render(pagination) }}#}
+            </div>
+            <div class="col-sm-4">
+
+
+            </div>
+        </div>
+
+
+    </div><!-- /.box -->
+    <div id="mymodal" class="modal  inmodal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button aria-label="Close" data-dismiss="modal" class="close" type="button">
+                        <span aria-hidden="true">×</span></button>
+                    <i class="fa-3x fa fa-warning modal-icon text-red"></i>
+                    <h4 class="modal-title">Acción Peligrosa</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Está acción puede ocacionar, comprometer la integridad de los datos!</p>
+                    <small>Si no es un usuario avanzado, recomendamos que cancele esta acción.</small>
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-primary" type="button">Cerrar</button>
+                    <a class="btn btn-primary btn-danger btn-delete" href="#">Eliminar</a>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+{% endblock %}
+{#<h1>Tarjeta_combustible list</h1>#}
+
+{#<table>#}
+    {#<thead>#}
+    {#<tr>#}
+        {#<th>Asignacion</th>#}
+        {#<th>Gastoreal</th>#}
+        {#<th>Fechavencimiento</th>#}
+        {#<th>Tipocombustible</th>#}
+        {#<th>Notarjeta</th>#}
+        {#<th>Ping</th>#}
+        {#<th>Actions</th>#}
+    {#</tr>#}
+    {#</thead>#}
+    {#<tbody>#}
+    {#{% for pto_expedicion in pto_expedicions %}#}
+        {#<tr>#}
+            {#<td><a href="{{ path('pto_expedicion_show', { 'id': pto_expedicion.asignacion }) }}">{{ pto_expedicion.asignacion }}</a></td>#}
+            {#<td>{{ pto_expedicion.gastoReal }}</td>#}
+            {#<td>{% if pto_expedicion.fechaVencimiento %}{{ pto_expedicion.fechaVencimiento|date('Y-m-d') }}{% endif %}</td>#}
+            {#<td>{{ pto_expedicion.tipoCombustible }}</td>#}
+            {#<td>{{ pto_expedicion.noTarjeta }}</td>#}
+            {#<td>{{ pto_expedicion.ping }}</td>#}
+            {#<td>#}
+                {#<ul>#}
+                    {#<li>#}
+                        {#<a href="{{ path('pto_expedicion_show', { 'id': pto_expedicion.asignacion }) }}">show</a>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<a href="{{ path('pto_expedicion_edit', { 'id': pto_expedicion.asignacion }) }}">edit</a>#}
+                    {#</li>#}
+                {#</ul>#}
+            {#</td>#}
+        {#</tr>#}
+    {#{% endfor %}#}
+    {#</tbody>#}
+{#</table>#}
+
+{#<ul>#}
+    {#<li>#}
+        {#<a href="{{ path('pto_expedicion_new') }}">Create a new entry</a>#}
+    {#</li>#}
+{#</ul>#}

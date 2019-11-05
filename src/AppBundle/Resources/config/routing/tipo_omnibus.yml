@@ -1,0 +1,24 @@
+tipo_omnibus_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Tipo_omnibus:index" }
+    methods:  GET
+
+tipo_omnibus_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Tipo_omnibus:show" }
+    methods:  GET
+
+tipo_omnibus_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Tipo_omnibus:new" }
+    methods:  [GET, POST]
+
+tipo_omnibus_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Tipo_omnibus:edit" }
+    methods:  [GET, POST]
+
+tipo_omnibus_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Tipo_omnibus:delete" }
+    methods:  DELETE

@@ -1,0 +1,76 @@
+{% extends 'index.html.twig' %}
+
+{% block contenido%}
+    {{ form_start(edit_form, {'method' :'POST'}) }}
+<div class="box box-danger">
+    <div class="box-header with-border">
+        <div class="user-block">
+            <h3 class="text-center ">Editar Incidencia</h3>
+        </div><!-- /.user-block -->
+        <div class="box-tools">
+            <ul class="list-inline">
+                <li>
+                    <a class="text-info" href="{{ path('incidencia_index') }}">
+                        <i class="glyphicon glyphicon glyphicon-hand-left"></i> Atràs</a>
+                </li>
+            </ul>
+        </div><!-- /.box-tools -->
+    </div><!-- /.box-header -->
+    <div class="box-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Incidencia</label>
+                    {{ form_widget(edit_form.detalles, {'attr' : {'class' : 'form-control','pattern':'([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$' }})}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Tipo</label>
+                    {{ form_widget(edit_form.Tipoincidencia, {'attr' : {'class' : '' }})}}
+                </div>
+            </div>
+        </div>
+        {#<div class="row">#}
+            {#<div class="col-sm-6">#}
+                {#<div class="form-group">#}
+                    {#<label class="col-sm-4 control-label">No. Hoja de Ruta</label>#}
+                    {#{{ form_widget(edit_form.hojaRuta, {'attr' : {'class' : '' }})}}#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+        {#<div class="row">#}
+            {#<div class="col-sm-6">#}
+                {#<div class="form-group">#}
+                    {#<label class="col-sm-4 control-label">Chofer</label>#}
+                    {#{{ form_widget(edit_form.fecha, {'attr' : {'class' : '' }})}}#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+        {#<div class="row">#}
+            {#<div class="col-sm-6">#}
+                {#<div class="form-group">#}
+                    {#<label class="col-sm-4 control-label">Fecha</label>#}
+                    {#{{ form_widget(edit_form.fecha, {'attr' : {'class' : '' }})}}#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+        {#<div class="row">#}
+        {#<div class="col-sm-6">#}
+        {#<label class="col-sm-4 control-label"></label>#}
+        {#{{ form_widget(edit_form.Submit) }}#}
+        {#</div>#}
+        {#</div>#}
+        {#</div><!-- /.box-body -->#}
+        <table align="center">
+            <tr>
+                <td><input type="submit" class="btn btn-danger btn " style="background-color: #6290ff" value="Editar" /></td>
+            </tr>
+        </table>
+    </div>
+    {#<!-- /.box widget-->#}
+    {{ form_end(edit_form) }}
+
+    {% endblock %}

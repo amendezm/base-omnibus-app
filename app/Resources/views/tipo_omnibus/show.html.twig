@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tipo_omnibus</h1>
+    <td>{{ tipo_omnibus.capacidad_sentados }}</td>
+    <td>{{ tipo_omnibus.capacidad_parados }}</td>
+    <td>{{ tipo_omnibus.capacidad_total }}</td>
+    <td>{{ tipo_omnibus.indiceConsumoNormado }}</td>
+    <td>{{ tipo_omnibus.desviacion }}</td>
+    <td>{{ tipo_omnibus.cantidadCombustiblelitros }}</td>
+    <table>
+        <tbody>
+            <tr>
+                <th>Tipo ómnibus</th>
+                <td>{{ tipo_omnibus.tipo }}</td>
+            </tr>
+            <tr>
+                <th>Capacidad sentad</th>
+                <td>{{ tipo_omnibus.capacidad_sentados }}</td>
+            </tr>
+            <tr>
+                <th>Indiceconsumo</th>
+                <td>{{ tipo_omnibus.indiceConsumo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tipo_omnibus_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('tipo_omnibus_edit', { 'id': tipo_omnibus.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

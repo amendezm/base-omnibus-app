@@ -1,0 +1,1174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="PostgreSQL - BaseOmnibus@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.0">
+    <root id="1"/>
+    <database id="2" parent="1" name="BaseOmnibus">
+      <Visible>1</Visible>
+    </database>
+    <schema id="3" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <Comment>standard public schema</Comment>
+      <IntrospectionTimestamp>2017-03-27.13:46:05.101</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1638</IntrospectionStateNumber>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="4" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+      <Comment>system catalog schema</Comment>
+      <Visible>1</Visible>
+    </schema>
+    <sequence id="5" parent="3" name="base_id_seq">
+      <ObjectId>18087</ObjectId>
+      <StateNumber>1591</StateNumber>
+    </sequence>
+    <sequence id="6" parent="3" name="chofer_id_seq">
+      <ObjectId>18089</ObjectId>
+      <StateNumber>1592</StateNumber>
+    </sequence>
+    <sequence id="7" parent="3" name="escogida_turno_id_seq">
+      <ObjectId>18091</ObjectId>
+      <StateNumber>1593</StateNumber>
+    </sequence>
+    <sequence id="8" parent="3" name="g_p_s_id_seq">
+      <ObjectId>18093</ObjectId>
+      <StateNumber>1594</StateNumber>
+    </sequence>
+    <sequence id="9" parent="3" name="hoja_ruta_id_seq">
+      <ObjectId>18095</ObjectId>
+      <StateNumber>1595</StateNumber>
+    </sequence>
+    <sequence id="10" parent="3" name="omnibus_id_seq">
+      <ObjectId>18097</ObjectId>
+      <StateNumber>1596</StateNumber>
+    </sequence>
+    <sequence id="11" parent="3" name="pto_expedicion_id_seq">
+      <ObjectId>18099</ObjectId>
+      <StateNumber>1597</StateNumber>
+    </sequence>
+    <sequence id="12" parent="3" name="recaudacion_id_seq">
+      <ObjectId>18101</ObjectId>
+      <StateNumber>1598</StateNumber>
+    </sequence>
+    <sequence id="13" parent="3" name="ruta_id_seq">
+      <ObjectId>18103</ObjectId>
+      <StateNumber>1599</StateNumber>
+    </sequence>
+    <sequence id="14" parent="3" name="tarjeta_combustible_id_seq">
+      <ObjectId>18105</ObjectId>
+      <StateNumber>1600</StateNumber>
+    </sequence>
+    <sequence id="15" parent="3" name="tipo_combustible_id_seq">
+      <ObjectId>18107</ObjectId>
+      <StateNumber>1601</StateNumber>
+    </sequence>
+    <sequence id="16" parent="3" name="tipo_horas_trabajo_id_seq">
+      <ObjectId>18111</ObjectId>
+      <StateNumber>1603</StateNumber>
+    </sequence>
+    <sequence id="17" parent="3" name="tipo_incidencia_id_seq">
+      <ObjectId>18109</ObjectId>
+      <StateNumber>1602</StateNumber>
+    </sequence>
+    <sequence id="18" parent="3" name="tipo_omnibus_id_seq">
+      <ObjectId>18113</ObjectId>
+      <StateNumber>1604</StateNumber>
+    </sequence>
+    <table id="19" parent="3" name="base">
+      <ObjectId>18115</ObjectId>
+      <StateNumber>1605</StateNumber>
+    </table>
+    <table id="20" parent="3" name="chofer">
+      <ObjectId>18123</ObjectId>
+      <StateNumber>1621</StateNumber>
+    </table>
+    <table id="21" parent="3" name="escogida_turno">
+      <ObjectId>18131</ObjectId>
+      <StateNumber>1607</StateNumber>
+    </table>
+    <table id="22" parent="3" name="g_p_s">
+      <ObjectId>18136</ObjectId>
+      <StateNumber>1608</StateNumber>
+    </table>
+    <table id="23" parent="3" name="hoja_ruta">
+      <ObjectId>18141</ObjectId>
+      <StateNumber>1635</StateNumber>
+    </table>
+    <table id="24" parent="3" name="omnibus">
+      <ObjectId>18149</ObjectId>
+      <StateNumber>1627</StateNumber>
+    </table>
+    <table id="25" parent="3" name="pto_expedicion">
+      <ObjectId>18157</ObjectId>
+      <StateNumber>1611</StateNumber>
+    </table>
+    <table id="26" parent="3" name="recaudacion">
+      <ObjectId>18165</ObjectId>
+      <StateNumber>1612</StateNumber>
+    </table>
+    <table id="27" parent="3" name="ruta">
+      <ObjectId>18170</ObjectId>
+      <StateNumber>1629</StateNumber>
+    </table>
+    <table id="28" parent="3" name="tarjeta_combustible">
+      <ObjectId>18178</ObjectId>
+      <StateNumber>1632</StateNumber>
+    </table>
+    <table id="29" parent="3" name="tipo_combustible">
+      <ObjectId>18183</ObjectId>
+      <StateNumber>1632</StateNumber>
+    </table>
+    <table id="30" parent="3" name="tipo_horas_trabajo">
+      <ObjectId>18193</ObjectId>
+      <StateNumber>1635</StateNumber>
+    </table>
+    <table id="31" parent="3" name="tipo_incidencia">
+      <ObjectId>18188</ObjectId>
+      <StateNumber>1616</StateNumber>
+    </table>
+    <table id="32" parent="3" name="tipo_omnibus">
+      <ObjectId>18198</ObjectId>
+      <StateNumber>1618</StateNumber>
+    </table>
+    <table id="33" parent="4" name="pg_aggregate">
+      <ObjectId>2600</ObjectId>
+      <StateNumber>2</StateNumber>
+    </table>
+    <table id="34" parent="4" name="pg_am">
+      <ObjectId>2601</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="35" parent="4" name="pg_amop">
+      <ObjectId>2602</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="36" parent="4" name="pg_amproc">
+      <ObjectId>2603</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="37" parent="4" name="pg_attrdef">
+      <ObjectId>2604</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="38" parent="4" name="pg_attribute">
+      <ObjectId>1249</ObjectId>
+      <StateNumber>2</StateNumber>
+    </table>
+    <table id="39" parent="4" name="pg_auth_members">
+      <ObjectId>1261</ObjectId>
+      <StateNumber>2</StateNumber>
+    </table>
+    <table id="40" parent="4" name="pg_authid">
+      <ObjectId>1260</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="41" parent="4" name="pg_cast">
+      <ObjectId>2605</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="42" parent="4" name="pg_class">
+      <ObjectId>1259</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="43" parent="4" name="pg_collation">
+      <ObjectId>3456</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="44" parent="4" name="pg_constraint">
+      <ObjectId>2606</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="45" parent="4" name="pg_conversion">
+      <ObjectId>2607</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="46" parent="4" name="pg_database">
+      <ObjectId>1262</ObjectId>
+      <StateNumber>674</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="47" parent="4" name="pg_db_role_setting">
+      <ObjectId>2964</ObjectId>
+      <StateNumber>2</StateNumber>
+    </table>
+    <table id="48" parent="4" name="pg_default_acl">
+      <ObjectId>826</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="49" parent="4" name="pg_depend">
+      <ObjectId>2608</ObjectId>
+      <StateNumber>2</StateNumber>
+    </table>
+    <table id="50" parent="4" name="pg_description">
+      <ObjectId>2609</ObjectId>
+      <StateNumber>2</StateNumber>
+    </table>
+    <table id="51" parent="4" name="pg_enum">
+      <ObjectId>3501</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="52" parent="4" name="pg_event_trigger">
+      <ObjectId>3466</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="53" parent="4" name="pg_extension">
+      <ObjectId>3079</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="54" parent="4" name="pg_foreign_data_wrapper">
+      <ObjectId>2328</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="55" parent="4" name="pg_foreign_server">
+      <ObjectId>1417</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="56" parent="4" name="pg_foreign_table">
+      <ObjectId>3118</ObjectId>
+      <StateNumber>2</StateNumber>
+    </table>
+    <table id="57" parent="4" name="pg_index">
+      <ObjectId>2610</ObjectId>
+      <StateNumber>2</StateNumber>
+    </table>
+    <table id="58" parent="4" name="pg_inherits">
+      <ObjectId>2611</ObjectId>
+      <StateNumber>2</StateNumber>
+    </table>
+    <table id="59" parent="4" name="pg_language">
+      <ObjectId>2612</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="60" parent="4" name="pg_largeobject">
+      <ObjectId>2613</ObjectId>
+      <StateNumber>2</StateNumber>
+    </table>
+    <table id="61" parent="4" name="pg_largeobject_metadata">
+      <ObjectId>2995</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="62" parent="4" name="pg_namespace">
+      <ObjectId>2615</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="63" parent="4" name="pg_opclass">
+      <ObjectId>2616</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="64" parent="4" name="pg_operator">
+      <ObjectId>2617</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="65" parent="4" name="pg_opfamily">
+      <ObjectId>2753</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="66" parent="4" name="pg_pltemplate">
+      <ObjectId>1136</ObjectId>
+      <StateNumber>2</StateNumber>
+    </table>
+    <table id="67" parent="4" name="pg_proc">
+      <ObjectId>1255</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="68" parent="4" name="pg_range">
+      <ObjectId>3541</ObjectId>
+      <StateNumber>2</StateNumber>
+    </table>
+    <table id="69" parent="4" name="pg_rewrite">
+      <ObjectId>2618</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="70" parent="4" name="pg_seclabel">
+      <ObjectId>3596</ObjectId>
+      <StateNumber>2</StateNumber>
+    </table>
+    <table id="71" parent="4" name="pg_shdepend">
+      <ObjectId>1214</ObjectId>
+      <StateNumber>2</StateNumber>
+    </table>
+    <table id="72" parent="4" name="pg_shdescription">
+      <ObjectId>2396</ObjectId>
+      <StateNumber>2</StateNumber>
+    </table>
+    <table id="73" parent="4" name="pg_shseclabel">
+      <ObjectId>3592</ObjectId>
+      <StateNumber>2</StateNumber>
+    </table>
+    <table id="74" parent="4" name="pg_statistic">
+      <ObjectId>2619</ObjectId>
+      <StateNumber>2</StateNumber>
+    </table>
+    <table id="75" parent="4" name="pg_tablespace">
+      <ObjectId>1213</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="76" parent="4" name="pg_trigger">
+      <ObjectId>2620</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="77" parent="4" name="pg_ts_config">
+      <ObjectId>3602</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="78" parent="4" name="pg_ts_config_map">
+      <ObjectId>3603</ObjectId>
+      <StateNumber>2</StateNumber>
+    </table>
+    <table id="79" parent="4" name="pg_ts_dict">
+      <ObjectId>3600</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="80" parent="4" name="pg_ts_parser">
+      <ObjectId>3601</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="81" parent="4" name="pg_ts_template">
+      <ObjectId>3764</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="82" parent="4" name="pg_type">
+      <ObjectId>1247</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <table id="83" parent="4" name="pg_user_mapping">
+      <ObjectId>1418</ObjectId>
+      <StateNumber>2</StateNumber>
+      <WithOids>1</WithOids>
+    </table>
+    <view id="84" parent="4" name="pg_available_extension_versions">
+      <ObjectId>11099</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="85" parent="4" name="pg_available_extensions">
+      <ObjectId>11096</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="86" parent="4" name="pg_cursors">
+      <ObjectId>11093</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="87" parent="4" name="pg_group">
+      <ObjectId>11060</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="88" parent="4" name="pg_indexes">
+      <ObjectId>11082</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="89" parent="4" name="pg_locks">
+      <ObjectId>11090</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="90" parent="4" name="pg_matviews">
+      <ObjectId>11078</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="91" parent="4" name="pg_prepared_statements">
+      <ObjectId>11106</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="92" parent="4" name="pg_prepared_xacts">
+      <ObjectId>11102</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="93" parent="4" name="pg_roles">
+      <ObjectId>11054</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="94" parent="4" name="pg_rules">
+      <ObjectId>11066</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="95" parent="4" name="pg_seclabels">
+      <ObjectId>11109</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="96" parent="4" name="pg_settings">
+      <ObjectId>11113</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="97" parent="4" name="pg_shadow">
+      <ObjectId>11057</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="98" parent="4" name="pg_stat_activity">
+      <ObjectId>11186</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="99" parent="4" name="pg_stat_all_indexes">
+      <ObjectId>11156</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="100" parent="4" name="pg_stat_all_tables">
+      <ObjectId>11124</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="101" parent="4" name="pg_stat_bgwriter">
+      <ObjectId>11206</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="102" parent="4" name="pg_stat_database">
+      <ObjectId>11192</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="103" parent="4" name="pg_stat_database_conflicts">
+      <ObjectId>11195</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="104" parent="4" name="pg_stat_replication">
+      <ObjectId>11189</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="105" parent="4" name="pg_stat_sys_indexes">
+      <ObjectId>11160</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="106" parent="4" name="pg_stat_sys_tables">
+      <ObjectId>11132</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="107" parent="4" name="pg_stat_user_functions">
+      <ObjectId>11198</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="108" parent="4" name="pg_stat_user_indexes">
+      <ObjectId>11163</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="109" parent="4" name="pg_stat_user_tables">
+      <ObjectId>11139</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="110" parent="4" name="pg_stat_xact_all_tables">
+      <ObjectId>11128</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="111" parent="4" name="pg_stat_xact_sys_tables">
+      <ObjectId>11136</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="112" parent="4" name="pg_stat_xact_user_functions">
+      <ObjectId>11202</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="113" parent="4" name="pg_stat_xact_user_tables">
+      <ObjectId>11143</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="114" parent="4" name="pg_statio_all_indexes">
+      <ObjectId>11166</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="115" parent="4" name="pg_statio_all_sequences">
+      <ObjectId>11176</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="116" parent="4" name="pg_statio_all_tables">
+      <ObjectId>11146</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="117" parent="4" name="pg_statio_sys_indexes">
+      <ObjectId>11170</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="118" parent="4" name="pg_statio_sys_sequences">
+      <ObjectId>11180</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="119" parent="4" name="pg_statio_sys_tables">
+      <ObjectId>11150</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="120" parent="4" name="pg_statio_user_indexes">
+      <ObjectId>11173</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="121" parent="4" name="pg_statio_user_sequences">
+      <ObjectId>11183</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="122" parent="4" name="pg_statio_user_tables">
+      <ObjectId>11153</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="123" parent="4" name="pg_stats">
+      <ObjectId>11086</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="124" parent="4" name="pg_tables">
+      <ObjectId>11074</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="125" parent="4" name="pg_timezone_abbrevs">
+      <ObjectId>11118</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="126" parent="4" name="pg_timezone_names">
+      <ObjectId>11121</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="127" parent="4" name="pg_user">
+      <ObjectId>11063</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="128" parent="4" name="pg_user_mappings">
+      <ObjectId>11209</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <view id="129" parent="4" name="pg_views">
+      <ObjectId>11070</ObjectId>
+      <StateNumber>2</StateNumber>
+    </view>
+    <column id="130" parent="19" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1605</StateNumber>
+    </column>
+    <column id="131" parent="19" name="nombre">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1605</StateNumber>
+    </column>
+    <column id="132" parent="19" name="descripción">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1605</StateNumber>
+    </column>
+    <column id="133" parent="19" name="dirección">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1605</StateNumber>
+    </column>
+    <index id="134" parent="19" name="base_pkey">
+      <ObjectId>18121</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="135" parent="19" name="base_pkey">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>base_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="136" parent="20" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1606</StateNumber>
+    </column>
+    <column id="137" parent="20" name="nombre">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1606</StateNumber>
+    </column>
+    <column id="138" parent="20" name="ci">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1606</StateNumber>
+    </column>
+    <column id="139" parent="20" name="direccion">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1606</StateNumber>
+    </column>
+    <column id="140" parent="20" name="no_licencia_operativa">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1606</StateNumber>
+    </column>
+    <column id="141" parent="20" name="tiempo_servicio">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1606</StateNumber>
+    </column>
+    <column id="142" parent="20" name="recalificacion">
+      <DataType>boolean|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1606</StateNumber>
+    </column>
+    <column id="143" parent="20" name="examen_medico">
+      <DataType>boolean|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1606</StateNumber>
+    </column>
+    <column id="144" parent="20" name="examen_psicofisiologico">
+      <DataType>boolean|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1606</StateNumber>
+    </column>
+    <column id="145" parent="20" name="id_omnibus">
+      <DataType>integer|0</DataType>
+      <StateNumber>1620</StateNumber>
+    </column>
+    <index id="146" parent="20" name="chofer_pkey">
+      <ObjectId>18129</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="147" parent="20" name="idx_1f7e3fee3a5e9558">
+      <ObjectId>18209</ObjectId>
+      <ColNames>id_omnibus</ColNames>
+    </index>
+    <key id="148" parent="20" name="chofer_pkey">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>chofer_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="149" parent="21" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1607</StateNumber>
+    </column>
+    <column id="150" parent="21" name="cantidadviajes">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1607</StateNumber>
+    </column>
+    <column id="151" parent="21" name="turno">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1607</StateNumber>
+    </column>
+    <column id="152" parent="21" name="horaempieza">
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1607</StateNumber>
+    </column>
+    <column id="153" parent="21" name="horatermina">
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1607</StateNumber>
+    </column>
+    <column id="154" parent="21" name="horasalida">
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1607</StateNumber>
+    </column>
+    <column id="155" parent="21" name="trabaja">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1607</StateNumber>
+    </column>
+    <column id="156" parent="21" name="descanso">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1607</StateNumber>
+    </column>
+    <column id="157" parent="21" name="fechas">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1607</StateNumber>
+    </column>
+    <column id="158" parent="21" name="combustibleasignado">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1607</StateNumber>
+    </column>
+    <index id="159" parent="21" name="escogida_turno_pkey">
+      <ObjectId>18134</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="160" parent="21" name="escogida_turno_pkey">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>escogida_turno_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="161" parent="22" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1608</StateNumber>
+    </column>
+    <column id="162" parent="22" name="combustible">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1608</StateNumber>
+    </column>
+    <column id="163" parent="22" name="kmrecorridos">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1608</StateNumber>
+    </column>
+    <column id="164" parent="22" name="fecha">
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1608</StateNumber>
+    </column>
+    <index id="165" parent="22" name="g_p_s_pkey">
+      <ObjectId>18139</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="166" parent="22" name="g_p_s_pkey">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>g_p_s_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="167" parent="23" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1609</StateNumber>
+    </column>
+    <column id="168" parent="23" name="cantidadtipohoras">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1609</StateNumber>
+    </column>
+    <column id="169" parent="23" name="totalhoras">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1609</StateNumber>
+    </column>
+    <column id="170" parent="23" name="incidencias">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1609</StateNumber>
+    </column>
+    <column id="171" parent="23" name="observaciones">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1609</StateNumber>
+    </column>
+    <column id="172" parent="23" name="cantidadviajes">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1609</StateNumber>
+    </column>
+    <column id="173" parent="23" name="cantidadsalidas">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1609</StateNumber>
+    </column>
+    <column id="174" parent="23" name="id_omnibus">
+      <DataType>integer|0</DataType>
+      <StateNumber>1625</StateNumber>
+    </column>
+    <index id="175" parent="23" name="hoja_ruta_pkey">
+      <ObjectId>18147</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="176" parent="23" name="idx_bcbe3ddb3a5e9558">
+      <ObjectId>18210</ObjectId>
+      <ColNames>id_omnibus</ColNames>
+    </index>
+    <key id="177" parent="23" name="hoja_ruta_pkey">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>hoja_ruta_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="178" parent="24" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1610</StateNumber>
+    </column>
+    <column id="179" parent="24" name="chapa">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1610</StateNumber>
+    </column>
+    <column id="180" parent="24" name="noomnibus">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1610</StateNumber>
+    </column>
+    <column id="181" parent="24" name="indiceconsumonormado">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1610</StateNumber>
+    </column>
+    <column id="182" parent="24" name="indiceconsumoreal">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1610</StateNumber>
+    </column>
+    <column id="183" parent="24" name="kmrecorridosacumulados">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1610</StateNumber>
+    </column>
+    <column id="184" parent="24" name="capacidad">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1610</StateNumber>
+    </column>
+    <column id="185" parent="24" name="descripcion">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1610</StateNumber>
+    </column>
+    <column id="186" parent="24" name="revision">
+      <DataType>boolean|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1610</StateNumber>
+    </column>
+    <column id="187" parent="24" name="roto">
+      <DataType>boolean|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1610</StateNumber>
+    </column>
+    <column id="188" parent="24" name="emisionficav">
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1610</StateNumber>
+    </column>
+    <column id="189" parent="24" name="vencimientoficav">
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1610</StateNumber>
+    </column>
+    <column id="190" parent="24" name="circulacionemision">
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1610</StateNumber>
+    </column>
+    <column id="191" parent="24" name="circulacionvencimiento">
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1610</StateNumber>
+    </column>
+    <column id="192" parent="24" name="tipo">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1623</StateNumber>
+    </column>
+    <column id="193" parent="24" name="id_omnibus">
+      <DataType>integer|0</DataType>
+      <StateNumber>1627</StateNumber>
+    </column>
+    <index id="194" parent="24" name="omnibus_pkey">
+      <ObjectId>18155</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="195" parent="24" name="idx_e4c33c283a5e9558">
+      <ObjectId>18211</ObjectId>
+      <ColNames>id_omnibus</ColNames>
+    </index>
+    <key id="196" parent="24" name="omnibus_pkey">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>omnibus_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="197" parent="25" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1611</StateNumber>
+    </column>
+    <column id="198" parent="25" name="nombre">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1611</StateNumber>
+    </column>
+    <column id="199" parent="25" name="ubicación">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1611</StateNumber>
+    </column>
+    <column id="200" parent="25" name="descripción">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1611</StateNumber>
+    </column>
+    <index id="201" parent="25" name="pto_expedicion_pkey">
+      <ObjectId>18163</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="202" parent="25" name="pto_expedicion_pkey">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>pto_expedicion_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="203" parent="26" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1612</StateNumber>
+    </column>
+    <column id="204" parent="26" name="no_sello">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1612</StateNumber>
+    </column>
+    <column id="205" parent="26" name="no_vale">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1612</StateNumber>
+    </column>
+    <column id="206" parent="26" name="recaudacion">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1612</StateNumber>
+    </column>
+    <index id="207" parent="26" name="recaudacion_pkey">
+      <ObjectId>18168</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="208" parent="26" name="recaudacion_pkey">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>recaudacion_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="209" parent="27" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1613</StateNumber>
+    </column>
+    <column id="210" parent="27" name="distancia_km">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1613</StateNumber>
+    </column>
+    <column id="211" parent="27" name="cant_pasajeros_promedio">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1613</StateNumber>
+    </column>
+    <column id="212" parent="27" name="salida">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1613</StateNumber>
+    </column>
+    <column id="213" parent="27" name="destino">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1613</StateNumber>
+    </column>
+    <column id="214" parent="27" name="frecuencia">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1613</StateNumber>
+    </column>
+    <column id="215" parent="27" name="recaudación">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1613</StateNumber>
+    </column>
+    <column id="216" parent="27" name="plan_recaudación">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1613</StateNumber>
+    </column>
+    <column id="217" parent="27" name="id_omnibus">
+      <DataType>integer|0</DataType>
+      <StateNumber>1629</StateNumber>
+    </column>
+    <index id="218" parent="27" name="ruta_pkey">
+      <ObjectId>18176</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="219" parent="27" name="idx_c3aef08c3a5e9558">
+      <ObjectId>18212</ObjectId>
+      <ColNames>id_omnibus</ColNames>
+    </index>
+    <key id="220" parent="27" name="ruta_pkey">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>ruta_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="221" parent="28" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1614</StateNumber>
+    </column>
+    <column id="222" parent="28" name="gasto_real">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1614</StateNumber>
+    </column>
+    <column id="223" parent="28" name="fecha_vencimiento">
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1614</StateNumber>
+    </column>
+    <column id="224" parent="28" name="tipo_combustible">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1614</StateNumber>
+    </column>
+    <column id="225" parent="28" name="no_tarjeta">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1614</StateNumber>
+    </column>
+    <column id="226" parent="28" name="ping">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1614</StateNumber>
+    </column>
+    <column id="227" parent="28" name="id_omnibus">
+      <DataType>integer|0</DataType>
+      <StateNumber>1631</StateNumber>
+    </column>
+    <index id="228" parent="28" name="tarjeta_combustible_pkey">
+      <ObjectId>18181</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="229" parent="28" name="idx_31dccd233a5e9558">
+      <ObjectId>18218</ObjectId>
+      <ColNames>#8</ColNames>
+    </index>
+    <key id="230" parent="28" name="tarjeta_combustible_pkey">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>tarjeta_combustible_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="231" parent="28" name="fk_31dccd233a5e9558">
+      <ColNames>#8</ColNames>
+      <RefTableName>tipo_combustible</RefTableName>
+      <RefKeyName>tipo_combustible_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="232" parent="29" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1615</StateNumber>
+    </column>
+    <column id="233" parent="29" name="tipo">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1615</StateNumber>
+    </column>
+    <index id="234" parent="29" name="tipo_combustible_pkey">
+      <ObjectId>18186</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="235" parent="29" name="tipo_combustible_pkey">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>tipo_combustible_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="236" parent="30" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1617</StateNumber>
+    </column>
+    <column id="237" parent="30" name="básico">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1617</StateNumber>
+    </column>
+    <column id="238" parent="30" name="con_incremento">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1617</StateNumber>
+    </column>
+    <column id="239" parent="30" name="turno_partido">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1617</StateNumber>
+    </column>
+    <column id="240" parent="30" name="confronta">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1617</StateNumber>
+    </column>
+    <column id="241" parent="30" name="voluntario">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1617</StateNumber>
+    </column>
+    <column id="242" parent="30" name="id_omnibus">
+      <DataType>integer|0</DataType>
+      <StateNumber>1634</StateNumber>
+    </column>
+    <index id="243" parent="30" name="tipo_horas_trabajo_pkey">
+      <ObjectId>18196</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="244" parent="30" name="idx_bc0812e43a5e9558">
+      <ObjectId>18224</ObjectId>
+      <ColNames>id_omnibus</ColNames>
+    </index>
+    <key id="245" parent="30" name="tipo_horas_trabajo_pkey">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>tipo_horas_trabajo_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="246" parent="30" name="fk_bc0812e43a5e9558">
+      <ColNames>id_omnibus</ColNames>
+      <RefTableName>hoja_ruta</RefTableName>
+      <RefKeyName>hoja_ruta_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="247" parent="31" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1616</StateNumber>
+    </column>
+    <column id="248" parent="31" name="tipo">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1616</StateNumber>
+    </column>
+    <index id="249" parent="31" name="tipo_incidencia_pkey">
+      <ObjectId>18191</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="250" parent="31" name="tipo_incidencia_pkey">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>tipo_incidencia_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="251" parent="32" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1618</StateNumber>
+    </column>
+    <column id="252" parent="32" name="tipo">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1618</StateNumber>
+    </column>
+    <column id="253" parent="32" name="indice_consumo">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1618</StateNumber>
+    </column>
+    <index id="254" parent="32" name="tipo_omnibus_pkey">
+      <ObjectId>18201</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="255" parent="32" name="tipo_omnibus_pkey">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>tipo_omnibus_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

@@ -1,0 +1,32 @@
+
+
+<h1>Reporte de Usuario</h1>
+<table >
+        <thead>
+            <tr>
+                <th>Nombre del Usuario</th>           
+                <th>Cargo</th>                      
+            <th style="width: 130px; text-align: center">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entitys %}
+         
+            <tr>
+                <td class="bigger-130">{{ entity.nombre }}</td>
+                <td class="bigger-130">{{ entity.cargo }}</td>                
+                <td style="text-align: center">
+                              
+                </td>
+            </tr>
+      
+        {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                        
+
+
+            </tr>
+        </tfoot>             
+    </table>

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ruta</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ rutum.id }}</td>
+            </tr>
+            <tr>
+                <th>Servicio</th>
+                <td>{{ rutum.servicio }}</td>
+            </tr>
+            <tr>
+                <th>Distancia en km</th>
+                <td>{{ rutum.distanciaKm }}</td>
+            </tr>
+            <tr>
+                <th>Cantidad de pasajeros promedio</th>
+                <td>{{ rutum.cantPasajerosPromedio }}</td>
+            </tr>
+            <tr>
+                <th>Precio del Pasaje</th>
+                <td>{{ rutum.precioPasaje }}</td>
+            </tr>
+            <tr>
+                <th>Salida</th>
+                <td>{{ rutum.salida }}</td>
+            </tr>
+            <tr>
+                <th>Destino</th>
+                <td>{{ rutum.destino }}</td>
+            </tr>
+            <tr>
+                <th>Frecuencia</th>
+                <td>{{ rutum.frecuencia }}</td>
+            </tr>
+            <tr>
+                <th>Recaudación x plan</th>
+                <td>{{ rutum.recaudacion }}</td>
+            </tr>
+            <tr>
+                <th>Cantidad de Medios</th>
+                <td>{{ rutum.cantidadMedios }}</td>
+            </tr>
+            <tr>
+                <th>Punto de expedición</th>
+                <td>{{ rutum.pto_expedicion }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ruta_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('ruta_edit', { 'id': rutum.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

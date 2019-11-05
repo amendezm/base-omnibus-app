@@ -1,0 +1,82 @@
+.MainDatagrids
+{
+	padding-left: 10px;
+	font-weight: bold;
+	font-size: 12px;
+	background-image: url(/PresupuestoVentas/images/DataGrids/main_datagrid_header.jpg);
+	color: #ffffff;
+	font-family: Tahoma;
+	height: 22px;
+}
+.dgHeader
+{
+	padding-left: 10px;
+    font-weight: bold;
+	font-size: 11px;
+	background-image: url(/PresupuestoVentas/images/DataGrids/dg_fondo.jpg);
+	color: #000000;
+	background-repeat: repeat-x;
+	font-family: Tahoma;
+	height: 21px;
+	background-color: #EFF1F4;
+	padding-left: 10px;
+}
+.datagrids
+{
+	border-right: #CCD6E0 1px solid;
+	border-top: #CCD6E0 1px solid;
+	font-size: 11px;
+	border-left: #CCD6E0 1px solid;
+	border-bottom: #CCD6E0 1px solid;
+	font-family: Tahoma;
+	/*background-color: #e9e7e3;*/
+}
+.dgItems
+{
+	border-right: black 1px solid;
+	border-top: black 1px solid;
+	font-size: 11px;
+	padding-left: 10px;
+	border-left: black 1px solid;
+	
+	/*color: #4D6680;*/
+	border-bottom: black 1px solid;
+	font-family: Tahoma;
+	height: 20px;
+	background-color: white;
+}
+
+.dgPager
+{
+	height: 20px;
+	background-color: #EEF2F5;
+	font-weight:bold;
+	padding-left: 10px;
+	color:#cc6600;
+}
+.dgSelectedItem
+{
+	font-size: 11px;
+	font-family: Tahoma;
+	height: 20px;
+	padding-left: 10px;
+	background-color: #A9B7C9;
+}
+.dgAlternatingItem
+{
+	font-size: 11px;
+	/*color: #4D6680;*/
+	font-family: Tahoma;
+	height: 20px;
+	background-color: #F7F8F9;
+	padding-left: 10px;
+}
+.dgEditItem
+{
+	font-size: 11px;
+	/*color: #4D6680;*/
+	font-family: Tahoma;
+	height: 20px;
+	background-color: #899db5;
+	padding-left: 10px;
+} 

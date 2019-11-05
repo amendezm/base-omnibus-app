@@ -1,0 +1,69 @@
+.bordeSuperior
+{
+	filter: progid:dximagetransform.microsoft.gradient(startcolorstr= '#FFFFFF' , endcolorstr= '#EEEEEE' ,gradientType = '0' );
+	height: 7px;
+}
+
+.bordeInferior
+{
+	filter: progid:dximagetransform.microsoft.gradient(startcolorstr= '#EEEEEE' , endcolorstr= '#FFFFFF' ,gradientType = '0' );
+	height: 7px;
+}
+
+.lineaSuperior
+{
+	width: 350px;
+	height: 2px;
+	background-color: #db944c;
+	border-top: #ffffff 1px solid;
+}
+
+.lineaInferior
+{
+	width: 350px;
+	height: 2px;
+	background-color: #F5E0CC;
+	border-bottom: #ffffff 1px solid;
+	}
+.encabezado
+{
+	font-weight: bold;
+	font-size: 18px;
+	color: #cc6600;
+	font-family: Tahoma;
+}
+.textoNormal
+{
+	font-size: 11px;
+	font-family: Tahoma;
+}
+	/*Formulario de Mensajes*/
+#tCentralMensaje
+{
+	text-align:center;
+	vertical-align:top;
+	background-image:url(/SGMina1/images/mensajes/fondo_ventana.jpg);
+	height:470px;
+	width:430px;
+	}
+#divMensaje
+{
+	height:180px;
+	width:310px;
+	background-image:url(/SGMina1/images/mensajes/fondo_mensaje.jpg);	
+}
+.lblMensaje
+{
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #ffffff;
+	font-family: Tahoma;
+	font-size:11px;
+}
+.lblTituloMensaje
+{
+	font-weight: bold;
+	color: #ffffff;
+	font-family: Tahoma;
+	font-size:21px;
+}

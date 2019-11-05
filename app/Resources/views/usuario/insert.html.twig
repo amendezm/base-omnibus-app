@@ -1,0 +1,43 @@
+{% extends 'FrontendBundle:Usuario:index.html.twig' %}
+{%block sub%}
+Nuevo Usuario
+{%endblock%}
+{% block contenido -%}
+<div class="span1"></div>
+      <div class="span10">
+          <h1>Nuevo Usuario</h1>
+    <form action="{{ path('usuario_insert') }}" method="post" {{ form_enctype(form) }}>
+       {{ form_widget(form.nombre, {'attr' : {'style': 'height : 28px; width: 50%'}}) }}      
+                <b><h3>Pais de origen</h3></b>
+                  
+                    <div class="row-fluid">
+                        <div class="span3">
+                            <span>{{ form_widget(form.cargo, {'attr' : {'style': 'height : 30px; width: 125%;'}}) }}</span>
+                        </div>
+                        <div class="span9">
+                            
+                            {% if form_errors(form.cargo) is not empty  %}
+                            
+                            <div class="alert alert-error span10" style="border-radius: 0 25 25 25; box-shadow: 0 5px 40px #C6C6C6;">
+                                <button class="close" data-dismiss="alert">×</button>
+                                <strong style="padding-left: 10px">Error ! </strong> {{form_errors(form.cargo)}}
+                            </div>
+                            
+                            {% endif %}
+                            
+                        </div>
+                    </div>          
+        {{ form_rest(form) }}       
+        <p>
+            <button type="submit" class="btn btn-small btn-success">
+                <i class="icon-ok"></i>
+                Crear</button>
+            <a href="{{ path('usuario') }}" class="btn btn-small btn-danger">
+                <i class="icon-remove"></i>
+            Cancelar
+            </a>
+        </p>
+    </form>
+       </div>
+{% endblock %}
+{%block script%}{% endblock %}

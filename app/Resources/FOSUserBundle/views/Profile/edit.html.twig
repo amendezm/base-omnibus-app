@@ -1,0 +1,76 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block id 'sidebar-mini skin-blue' %}
+
+
+    {% block body %}
+        <div class="wrapper">
+
+            <!-- Main Header -->
+            <header class="main-header">
+                {% block header %}
+                    {% include ':default:header.html.twig' %}
+                {% endblock %}
+            </header>
+
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+                {% block sidebar %}
+                    {% include ':default:sidebar.html.twig' %}
+                {% endblock %}
+            </aside>
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                {% block content_header %}
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                            <br>
+                            {% for type, flashMessage in app.session.flashbag.all() %}
+                                <div class="alert alert-{{ type }} fade in ">
+                                    <button aria-hidden="true" class="close" data-dismiss="alert" type="button">×
+                                    </button>
+                                    {% if flashMessage.title is defined %}
+                                        <h4>{% if flashMessage.icon is defined %}<i
+                                                class="icon {{ flashMessage.icon }}"></i>{% endif %}
+                                            <strong>{{ flashMessage.title }}</strong></h4>
+                                        {{ flashMessage.message }}
+                                    {% else %}
+                                        {{ type }}
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    {# include ':default:content-header.html.twig' #}
+
+                {% endblock %}
+                <section class="content">
+                    <!-- Your Page Content Here -->
+                    <!-- Main content -->
+                    {% block fos_user_content %}
+                        {% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+                    {% endblock fos_user_content %}
+                    <!-- /.content -->
+                </section>
+            </div>
+            <!-- /.content-wrapper -->
+
+            <!-- Main Footer -->
+            <footer class="main-footer">
+                <!-- To the right -->
+                <div class="pull-right hidden-xs">
+
+                </div>
+                <!-- Default to the left -->
+
+            </footer>
+        </div>
+        <!-- ./wrapper -->
+
+    {% endblock %}

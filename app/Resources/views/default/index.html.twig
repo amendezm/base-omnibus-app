@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+
+    <title id="elemento6">
+        {% block title %} |Bienvenido!{% endblock %}
+    </title>
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    {% block stylesheets %}
+        <!-- Bootstrap 3.3.5 -->
+        <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{{ asset('assets/dist/font-awesome/css/font-awesome.min.css') }}">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="{{ asset('assets/dist/css/AdminLTE.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/dist/css/fonts.googleapis.SourceSansPro.css') }}">
+        <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+              page. However, you can choose any other skin. Make sure you
+              apply the skin class to the body tag so the changes take effect.
+        -->
+        <link rel="stylesheet" href="{{ asset('assets/dist/css/skins/_all-skins.css') }}">
+
+    {% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body class="{% block id '' %}">
+
+{% block body %}
+{% endblock body %}
+
+{% block javascripts %}
+    <!-- REQUIRED JS SCRIPTS -->
+
+    <!-- jQuery 2.2.0 -->
+    <script src="{{ asset('assets/plugins/jQuery/jQuery-2.2.0.min.js') }}"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('assets/dist/js/app.min.js') }}"></script>
+
+    <!-- Optionally, you can add Slimscroll and FastClick plugins.
+         Both of these plugins are recommended to enhance the
+         user experience. Slimscroll is required when using the
+         fixed layout.
+    -->
+    <!-- page script -->
+
+{% endblock javascripts %}
+</body>
+</html>

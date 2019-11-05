@@ -1,0 +1,177 @@
+{% extends 'index.html.twig' %}
+
+{% block contenido %}
+    <!-- Default box -->
+    <div class="box box-danger">
+        <div class="box-header with-border">
+            <div class="user-block">
+                <h3 class="text-center ">Lista de Choferes</h3>
+            </div><!-- /.user-block -->
+            <div class="box-tools">
+
+            </div><!-- /.box-tools -->
+        </div><!-- /.box-header -->
+        <div class="box-body">
+            {#<h5>Total de registros: {{ pagination.getTotalItemCount }}</h5>#}
+
+            <table class="table table-hover">
+                <thead>
+                {#<th>Id</th>#}
+                <th>Nombre y Apellidos</th>
+                <th>CI</th>
+                <th>Código Trabajador</th>
+                <th>No. Licencia Operativa</th>
+                {#<th>LC Emitida</th>#}
+                {#<th>LC Vence</th>#}
+                {#<th>Recalificación Emitida</th>#}
+                {#<th>Recalificación Vence</th>#}
+                {#<th>Exámen Médico Emitido</th>#}
+                {#<th>Exámen Médico Vence</th>#}
+                {#<th>Exámen Psicofisiológico Emitido</th>#}
+                {#<th>Exámen Psicofisiológico Vence</th>#}
+
+                {% if not is_granted('ROLE_USUARIO' ) %}<th><img src="{{ asset('assets/dist/img/data_configuration_26px.png') }}" alt="User Image"> Acciones</th>{% endif %}
+                </thead>
+                <tbody>
+                {% for reporte in reportes %}
+                    <tr>
+                        {#<td>{{ chofer.id }}</td>#}
+                        <td>{{ reporte.nombre }}</td>
+                        <td>{{ reporte.ci }}</td>
+                        <td>{{ reporte.codigo }}</td>
+                        <td>{{ reporte.nolicenciaoperativa }}</td>
+                        {#<td>{% if chofer.recalificacionEmision %}{{ chofer.recalificacionEmision|date('Y-m-d') }}{% endif %}</td>#}
+                        {#<td>{% if chofer.recalificacionVencimiento %}{{ chofer.recalificacionVencimiento|date('Y-m-d') }}{% endif %}</td>#}
+
+                        {#<td>{% if chofer.examenMedicoEmision %}{{ chofer.examenMedicoEmision|date('Y-m-d') }}{% endif %}</td>#}
+
+                        {#<td>{% if chofer.examenMedicoVencimiento %}{{ chofer.examenMedicoVencimiento|date('Y-m-d') }}{% endif %}</td>#}
+
+                        {#<td>{% if chofer.examenPsicofisiologicoEmision %}{{ chofer.examenPsicofisiologicoEmision|date('Y-m-d') }}{% endif %}</td>#}
+
+                        {#<td>{% if chofer.examenPsicofisiologicoVencimiento %}{{ chofer.examenPsicofisiologicoVencimiento|date('Y-m-d') }}{% endif %}</td>#}
+
+                        {#<td>{% if chofer.licenciaEmision %}{{ chofer.licenciaEmision|date('Y-m-d') }}{% endif %}</td>#}
+
+                        {#<td>{% if chofer.licenciaVencimiento %}{{ chofer.licenciaVencimiento|date('Y-m-d') }}{% endif %}</td>#}
+
+
+                        <td>
+                            <ul>
+                                <a href="{{ path('chofer_edit',{ 'id': reporte.trabajador_id }) }}"
+                                   class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="left"
+                                   title="Editar elemento"><i class="glyphicon glyphicon-pencil"></i>
+                                </a>
+                                <a href="{{ path('chofer_show',{ 'id': reporte.trabajador_id }) }}"
+                                   class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="left"
+                                   title="Visualizar elemento"><i class="glyphicon glyphicon-eye-open"></i>
+                                </a>
+                                {#<a href="{{ path('chofer_delete',{'id': reporte.trabajador_id}) }}"#}
+                                   {#class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="left"#}
+                                   {#title="Eliminar elemento"#}
+                                   {#onclick="return confirm('Esta seguro que desea eliminar el elemento')">#}
+                                    {#<i class="glyphicon glyphicon-remove"></i>#}
+                                {#</a>#}
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+
+        </div><!-- /.box-body -->
+
+        {#<div class="row">#}
+
+            {#<div class="col-sm-4">#}
+                {#{% if not is_granted('ROLE_USUARIO' ) %}#}
+                    {#<a class="btn btn-sm btn-default  pull-left" href="{{ path('chofer_new') }}">#}
+                        {#<img src="{{ asset('assets/dist/img/add_database_26px.png') }}" alt="User Image"> Nuevo#}
+                    {#</a>#}
+                {#{% endif %}#}
+            {#</div>#}
+            {#<div class="col-sm-4">#}
+                {#&#123;&#35;{{ knp_pagination_render(pagination) }}&#35;&#125;#}
+            {#</div>#}
+            {#<div class="col-sm-4">#}
+
+
+            {#</div>#}
+        {#</div>#}
+
+
+    </div><!-- /.box -->
+    <div id="mymodal" class="modal  inmodal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button aria-label="Close" data-dismiss="modal" class="close" type="button">
+                        <span aria-hidden="true">×</span></button>
+                    <i class="fa-3x fa fa-warning modal-icon text-red"></i>
+                    <h4 class="modal-title">Acción Peligrosa</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Está acción puede ocacionar, comprometer la integridad de los datos!</p>
+                    <small>Si no es un usuario avanzado, recomendamos que cancele esta acción.</small>
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-primary" type="button">Cerrar</button>
+                    <a class="btn btn-primary btn-danger btn-delete" href="#">Eliminar</a>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+{% endblock %}
+{#<h1>Chofer list</h1>#}
+
+{#<table>#}
+    {#<thead>#}
+    {#<tr>#}
+        {#<th>Id</th>#}
+        {#<th>Nombre</th>#}
+        {#<th>Ci</th>#}
+        {#<th>Direccion</th>#}
+        {#<th>Nolicenciaoperativa</th>#}
+        {#<th>Tiemposervicio</th>#}
+        {#<th>Recalificacion</th>#}
+        {#<th>Examenmedico</th>#}
+        {#<th>Examenpsicofisiologico</th>#}
+        {#<th>Actions</th>#}
+    {#</tr>#}
+    {#</thead>#}
+    {#<tbody>#}
+    {#{% for chofer in chofers %}#}
+        {#<tr>#}
+            {#<td><a href="{{ path('chofer_show', { 'id': chofer.id }) }}">{{ chofer.id }}</a></td>#}
+            {#<td>{{ chofer.nombre }}</td>#}
+            {#<td>{{ chofer.cI }}</td>#}
+            {#<td>{{ chofer.direccion }}</td>#}
+            {#<td>{{ chofer.noLicenciaOperativa }}</td>#}
+            {#<td>{{ chofer.tiempoServicio }}</td>#}
+            {#<td>{% if entity.recalificacion %}Yes{% else %}No{% endif %}</td>#}
+            {#<td>{% if entity.examenMedico %}Yes{% else %}No{% endif %}</td>#}
+            {#<td>{% if entity.examenPsicofisiologico %}Yes{% else %}No{% endif %}</td>#}
+            {#<td>#}
+                {#<ul>#}
+                    {#<li>#}
+                        {#<a href="{{ path('chofer_show', { 'id': chofer.id }) }}">show</a>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<a href="{{ path('chofer_edit', { 'id': chofer.id }) }}">edit</a>#}
+                    {#</li>#}
+                {#</ul>#}
+            {#</td>#}
+        {#</tr>#}
+    {#{% endfor %}#}
+    {#</tbody>#}
+{#</table>#}
+
+{#<ul>#}
+    {#<li>#}
+        {#<a href="{{ path('chofer_new') }}">Create a new entry</a>#}
+    {#</li>#}
+{#</ul>#}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>GPS</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ gP.id }}</td>
+            </tr>
+            <tr>
+                <th>Combustible</th>
+                <td>{{ gP.combustible }}</td>
+            </tr>
+            <tr>
+                <th>Kmrecorridos</th>
+                <td>{{ gP.kmRecorridos }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{% if gP.fecha %}{{ gP.fecha|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('gps_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('gps_edit', { 'id': gP.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

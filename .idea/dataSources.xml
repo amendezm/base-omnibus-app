@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2647869713">
+    <data-source source="LOCAL" name="PostgreSQL - BaseOmnibus@localhost" uuid="ec16908f-88f1-4416-8e07-c2a9cdccd091">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/BaseOmnibus</jdbc-url>
+      <libraries>
+        <library>
+          <url>file://$PROJECT_DIR$/../postgresql-9.2-1002.jdbc4.jar</url>
+        </library>
+        <library>
+          <url>file://$PROJECT_DIR$/../postgresql-8.4-701.jdbc4.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+  </component>
+</project>

@@ -1,0 +1,24 @@
+incidencia_index:
+    path:     /incidencia/index
+    defaults: { _controller: "AppBundle:Incidencia:index" }
+    methods:  GET
+
+incidencia_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Incidencia:show" }
+    methods:  GET
+
+incidencia_new:
+    path:     /{id_hojaruta}/new
+    defaults: { _controller: "AppBundle:Incidencia:new" }
+    methods:  [GET, POST]
+	
+incidencia_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Incidencia:edit" }
+    methods:  [GET, POST]
+
+incidencia_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Incidencia:delete" }
+    methods:  DELETE

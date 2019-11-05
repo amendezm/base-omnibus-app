@@ -1,0 +1,24 @@
+trabajador_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Trabajador:index" }
+    methods:  GET
+
+trabajador_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Trabajador:show" }
+    methods:  GET
+
+trabajador_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Trabajador:new" }
+    methods:  [GET, POST]
+
+trabajador_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Trabajador:edit" }
+    methods:  [GET, POST]
+
+trabajador_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Trabajador:delete" }
+    methods:  DELETE

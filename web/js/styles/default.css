@@ -1,0 +1,413 @@
+body
+{
+	font-size: 11px;
+	margin: 0px;
+	font-family: Tahoma;
+}
+a:link
+{
+	color: #006699;
+	font-family:Tahoma;
+	font-size:11px;
+	text-decoration: none;
+}
+a:visited
+{
+	color: #006699;
+	font-family:Tahoma;
+	font-size:11px;
+	text-decoration: none;
+}
+a:hover
+{
+	color: #CC6600;
+	font-family:Tahoma;
+	font-size:11px;
+	text-decoration: none;
+}
+.tituloNoticia
+{
+	font-weight: bold;
+	font-size: 12px;
+}
+/****************************
+Cuerpo de la Pagina
+*/
+#divCuerpoPagina
+{
+	border-right: #090909 1px solid;
+	font-size: 11px;
+	left: 7px;
+	width:100%;
+	height:100%;
+	right:0px;
+	border-bottom: #090909 1px solid;
+	font-family: Tahoma;
+	position: absolute;
+	top: 0px;
+	background-color: white;
+}
+#tBarraTitulo
+{
+	display:block;
+	height:20px;
+	width:100%;
+	position:absolute;
+	}
+#cNombreSubModulo
+{	
+	font-size: 15px;
+	font-weight:bold;
+	font-family: Tahoma;
+	color: #ffffff;
+	background-color:#4F6881;
+	padding-bottom:3px;
+	display:block;
+	padding-left:10px;
+	padding-top:3px;
+	height: 24px;
+	/*border-bottom: #bac4ce 1px solid;*/
+	}
+.lblNombreSubModulo
+{
+	font-size: 15px;
+	font-weight:bold;
+	font-family: Tahoma;
+	color: #ffffff;
+	}
+	
+#cSubTitulo
+{
+	/*font-size: 12px;
+	font-weight:bold;*/
+	font-size: 11px;
+	font-family: Tahoma;
+	color:#4F6881;
+	height:20px;
+	vertical-align:middle;
+	padding-left:10px;
+	/*background-color:#F5F5f5;*/
+}
+
+.lblRolUsuario
+{
+	font-size: 11px;
+	font-weight:bold;
+	font-family: Tahoma;
+	color:#FFCC33;
+	}
+
+#cTurno
+{
+	font-size: 11px;
+	font-family: Tahoma;
+	font-weight:bold;
+	color:#CC6600;
+	height:20px;
+	vertical-align:middle;
+	padding-left:5px;
+	background-color:#F5F5f5;
+	border-left: 1px solid #D3D3D3;
+	padding-left:10px;
+	cursor:hand;
+}
+
+
+
+
+/********************************
+Objetos Generales**/
+
+.btn
+{
+	border: #333333 1px solid;
+	font-size: 11px;
+	background-image:url(/PresupuestoProduccion/images/fondoBTN.jpg);
+	font-family: Tahoma;
+	height: 22px;
+	color: black;
+	cursor:hand;
+	}
+.btnGuardar
+{
+	border-right: #ff9900 1px solid;
+	border-top: #ff9900 1px solid;
+	font-size: 11px;
+	background-image: url(/SGMina1/images/fondobtnGuardar.jpg);
+	border-left: #ff9900 1px solid;
+	cursor: hand;
+	color: black;
+	border-bottom: #ff9900 1px solid;
+	font-family: Tahoma;
+	height: 24px;
+}
+	
+.radio
+{
+	
+	font-size: 11px;
+	font-family: Tahoma;
+	height: 12px;
+	color: black;
+	cursor:hand;
+	}
+.drop
+{
+	font-size: 11px;
+	color: #2E4C69;
+	font-family: tahoma,arial;
+	}
+
+.lblEncabezado
+{
+	font-size: 11px;
+	color: #2E4C69;
+	font-family: tahoma,arial;
+	}
+.txb
+{
+	font-size: 11px;
+	color: #000000;
+	font-family: tahoma,arial;
+	border:solid 1px #2E4C69;
+	padding:2px;
+	height:20px;
+	}
+.txbReadOnly
+{
+	font-size: 11px;
+	color: #777;
+	background-color:#FEFEFE
+	font-family: tahoma,arial;
+	border:solid 1px #C1CAD2;
+	background-color:#FFEFD5;
+	padding:2px;
+	height:20px;
+	cursor:hand;
+	width:75px;
+	}
+.txbModificacion
+{
+	font-size: 11px;
+	color: #000000;
+	font-family: tahoma,arial;
+	border:solid 1px #CC6600;
+	padding:2px;	
+	height:20px;	
+	}
+.textoNormal
+{
+	font-family: tahoma,arial;
+	font-size: 11px;
+	}
+.ddl
+{
+	font-family: tahoma,arial;
+	font-size: 11px;
+	text-align:justify;
+	cursor:hand;
+	}
+.panel
+{
+	border-right: #CCD6E0 1px solid;
+	padding-right: 10px;
+	border-top: #CCD6E0 3px solid;
+	padding-left: 10px;
+	padding-bottom: 10px;
+	vertical-align: top;
+	border-left: #CCD6E0 1px solid;
+	padding-top: 5px;
+	border-bottom: #CCD6E0 3px solid;
+	background-color: #F9FAFC;
+}
+.panelInterior 
+{
+	padding-right: 5px;
+	padding-left: 5px;
+	padding-bottom: 5px;
+	vertical-align: top;
+	padding-top: 5px;
+	background-color:#E3E9EE; 
+	
+}
+.ventana
+{
+	background-color:#F6F6F6;
+	border-right: lightgrey solid 1px;
+	border-bottom: lightgrey solid 1px;
+	}
+.btVentana
+{
+	background-color: lightgrey solid 10px;
+	font-family: tahoma,arial;
+	font-size: 12px;
+	padding-left:5px;
+	}
+
+/****
+Para las paginas por default de cada modulo
+*****/
+
+.lblDescripcionModulo
+{
+	font-weight: bold;
+	font-size: 12px;
+	/*color: #FFB423;*/
+	color: #CC6600;
+	font-family: tahoma,arial;
+}
+
+.lblModuloPadre
+{
+	font-weight: bold;
+	font-size: 15px;
+	color: lightblue;
+	font-family: tahoma,arial;
+}
+
+.panelTextoNormal
+{
+	font-family: tahoma,arial;
+	font-size: 11px;
+	text-align:justify;
+	padding:15px;
+	}
+	
+	
+/*PARA LAS PAGINAS POR DEFAULT EN LOS MODULOS*/	
+
+.tdDescripcion
+{
+	/*border-right: #03264a 1px dashed;*/
+	padding-right: 15px;
+	/*border-top: #03264a 1px dashed;*/
+	padding-left: 15px;
+	font-size: 11px;
+	padding-bottom: 15px;
+	/*border-left: #03264a 1px dashed;*/
+	color: #03264a;
+	padding-top: 15px;
+	/*border-bottom: #03264a 1px dashed;*/
+	font-family: Tahoma;
+}
+
+#cVinculos
+{
+	padding-right: 10px;
+	padding-left: 10px;
+	font-size: 12px;
+	font-weight:bold;
+	background-attachment: fixed;
+	padding-bottom: 10px;
+	color: #93A8B9;
+	width: 100%;
+	vertical-align:top;
+	padding-top: 10px;
+	font-family: Tahoma;
+	background-color: #03264a;
+}
+#cVinculos a:link
+{
+	font-size: 11px;
+	font-weight:bold;
+	color: #FFFFFF;
+	text-decoration: none;
+	padding-right: 5px;
+	padding-left: 6px;
+	padding-bottom: 0px;
+	padding-top: 2px;
+}
+#cVinculos a:visited
+{
+	font-size: 11px;
+	font-weight:bold;
+	color: #FFFFFF;
+	text-decoration: none;
+	padding-right: 5px;
+	padding-left: 6px;
+	padding-bottom: 0px;
+	padding-top: 2px;
+}
+
+#cVinculos a:hover
+{
+	font-size: 11px;
+	color: #000000;
+	font-weight:bold;
+	/*background-color:#FFB423;*/
+	padding-right: 5px;
+	padding-left: 6px;
+	text-decoration:underline;
+	padding-bottom: 0px;
+	padding-top: 2px;
+}
+.panelED
+{
+	border:1px solid #DBE1E5;
+	
+}
+.panelEDEncabezado
+{
+	padding-left:10px;
+	padding-top:10px;
+	padding-bottom:5px;
+	padding-right:10px;
+	font-family:Tahoma;
+	font-size:13px;
+	background-image:url(../images/fondo_encabezado.jpg);
+	background-repeat:repeat-x;
+	height: 36px;
+
+}
+.panelEDCuerpo
+{
+	padding-left:10px;
+	padding-top:10px;
+	padding-bottom:5px;
+	padding-right:10px;
+
+}
+.panelEDPie
+{
+	padding-left:10px;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-right:10px;
+	font-size: 11px;
+	background-image: url(../images/fondo_footer.jpg);
+	color: dimgray;
+	font-family: Tahoma;
+	height: 36px;
+	/*border-top: #DBE1E5 1px solid;*/
+}
+.panelEDBordesDataList
+{
+	padding: 10px;
+	background:#EEEEEE;
+	border-top: #cdd4db 3px solid;
+	border-bottom: #153557 1px solid;
+}
+.panelEDBordes
+{
+	border-right: silver 1px solid;
+	padding-right: 10px;
+	border-top: #cdd4db 3px solid;
+	padding-left: 10px;
+	background: #eeeeee;
+	padding-bottom: 10px;
+	border-left: whitesmoke 1px solid;
+	padding-top: 10px;
+	border-bottom: #153557 1px solid;
+}
+.panelEDBarra
+{
+	padding-right: 10px;
+	padding-left: 10px;
+	font-size: 11px;
+	padding-bottom: 5px;
+	color: dimgray;
+	padding-top: 5px;
+	background-color: #DBE1E5;
+	font-family: Tahoma;
+	height: 20px;
+}

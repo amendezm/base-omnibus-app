@@ -1,0 +1,7 @@
+app_base:
+    resource: "@AppBundle/Resources/config/routing/base.yml"
+    prefix:   /base
+app_chofer:
+    resource: "@AppBundle/Resources/config/routing/chofer.yml"
+    prefix:   /chofer
+

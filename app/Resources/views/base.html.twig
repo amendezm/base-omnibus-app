@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+
+    <title id="elemento6">
+        {% block title %} |Bienvenido!{% endblock %}
+    </title>
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    {% block stylesheets %}
+        <!-- Bootstrap 3.3.5 -->
+        <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{{ asset('assets/dist/font-awesome/css/font-awesome.min.css') }}">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="{{ asset('assets/dist/css/AdminLTE.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/dist/css/fonts.googleapis.SourceSansPro.css') }}">
+
+        <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+              page. However, you can choose any other skin. Make sure you
+              apply the skin class to the body tag so the changes take effect.
+        -->
+        <link rel="stylesheet" href="{{ asset('assets/dist/css/skins/_all-skins.css') }}">
+
+    {% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('apple-touch-icon.png') }}" />
+</head>
+{#<header class="main-header">#}
+    {#{% block header %}#}
+        {#{% include 'header.html.twig' %}#}
+    {#{% endblock %}#}
+{#</header>#}
+{#<aside class="main-sidebar">#}
+    {#{% block sidebar %}#}
+        {#{% include 'sidebar.html.twig' %}#}
+    {#{% endblock %}#}
+{#</aside>#}
+<body>
+
+{% block body %}
+    {#<div class="wrapper">#}
+
+        <!-- Main Header -->
+
+
+        <!-- Left side column. contains the logo and sidebar -->
+
+
+        <!-- Content Wrapper. Contains page content -->
+        {#<div class="content-wrapper">#}
+            <!-- Content Header (Page header) -->
+            {#{% block content_header %}#}
+                {#<div class="row">#}
+                    {#<div class="col-md-1"></div>#}
+                    {#<div class="col-md-10">#}
+                        {#<br>#}
+
+                    {#</div>#}
+                    {#<div class="col-md-1"></div>#}
+                {#</div>#}
+                {#{%include ':default:content-header.html.twig'%}#}
+
+            {#{% endblock %}#}
+            <section class="content">
+                <!-- Your Page Content Here -->
+                <!-- Main content -->
+                {% block contenido %}
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_1" data-toggle="tab">Misión</a></li>
+                            <li><a href="#tab_2" data-toggle="tab">Visión</a></li>
+                            <li><a href="#tab_3" data-toggle="tab">Organigrama</a></li>
+                            <li class="pull-right"><a href="#" class="text-muted"><i class=""></i></a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div align="justify" class="tab-pane active" id="tab_1">
+                                <b></b>
+                                <h3>Satisfacemos las expectativas de los clientes con servicios de transportación de pasajeros,
+                                    conexos  y cargas en general con trabajadores de un  alto sentido de pertenencia  y
+                                    un parque de equipos  en constante revitalización.
+                                </h3>
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div align="justify" class="tab-pane" id="tab_2">
+                                <h3>Somos líderes en la prestación de servicios a nuestros clientes, con calidad,
+                                    oportunidad y seguridad.</h3>
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_3">
+                                <img height="400" width="735" src="{{ asset('assets/dist/img/Organigrama Empresa.png') }}">
+                            </div>
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+
+                {% endblock %}
+
+                <!-- /.content -->
+            </section>
+        {#</div>#}
+        <!-- /.content-wrapper -->
+        <!-- Main Footer -->
+
+    </div>
+    <!-- ./wrapper -->
+
+{% endblock %}
+<footer id="elemento4" style="text-align: center" class="main-footer">
+    <!-- To the right -->
+    <!-- Default to the left -->
+    <a><strong>Sistema de gestión de información en la UEB Transporte</strong></a>
+    {{'now' | date('d-m-Y')}}  &copy; Ómnibus Holguín
+
+</footer>
+</body>
+{% block javascripts %}
+    <!-- REQUIRED JS SCRIPTS -->
+
+    <!-- jQuery 2.2.0 -->
+    <script src="{{ asset('assets/plugins/jQuery/jQuery-2.2.0.min.js') }}"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('assets/dist/js/app.min.js') }}"></script>
+
+    {#<script src="{{ asset('Script/jquery-ui-1.10.3.custom.min.js') }}"></script>#}
+    {#<script src="{{ asset('Script/jquery.ui.touch-punch.js') }}"></script>#}
+    {#<script src="{{ asset('Script/jquery.cleditor.min.js') }}"></script>#}
+    {#<script src="{{ asset('Script/jquery.noty.js') }}"></script>#}
+    {#<script src="{{ asset('Script/jquery.elfinder.min.js') }}"></script>#}
+    {#<script src="{{ asset('Script/jquery.raty.min.js') }}"></script>#}
+    {#<script src="{{ asset('Script/jquery.iphone.toggle.js') }}"></script>#}
+    {#<script src="{{ asset('Script/jquery.uploadify-3.1.min.js') }}"></script>#}
+    {#<script src="{{ asset('Script/jquery.gritter.min.js') }}"></script>#}
+    {#<script src="{{ asset('Script/jquery.imagesloaded.js') }}"></script>#}
+    {#<script src="{{ asset('Script/jquery.masonry.min.js') }}"></script>#}
+    {#<script src="{{ asset('Script/jquery.knob.modified.js') }}"></script>#}
+    {#<script src="{{ asset('Script/jquery.sparkline.min.js') }}"></script>#}
+
+    {#<script src="{{ asset('Script/counter.min.js') }}"></script>#}
+    {#<script src="{{ asset('Script/raphael.2.1.0.min.js') }}"></script>#}
+    {#<script src="{{ asset('Script/justgage.1.0.1.min.js') }}"></script>#}
+    {#<script src="{{ asset('Script/jquery.autosize.min.js') }}"></script>#}
+    {#<script src="{{ asset('Script/retina.js') }}"></script>#}
+    {#<script src="{{ asset('Script/wizard.min.js') }}"></script>#}
+    {#<script src="{{ asset('Script/wizard.min.js') }}"></script>#}
+    {#<script src="{{ asset('Script/core.min.js') }}"></script>#}
+    {#<script src="{{ asset('Script/charts.min.js') }}"></script>#}
+    {#<script src="{{ asset('Script/custom.min.js') }}"></script>#}
+
+
+
+    <!-- Optionally, you can add Slimscroll and FastClick plugins.
+         Both of these plugins are recommended to enhance the
+         user experience. Slimscroll is required when using the
+         fixed layout.
+    -->
+
+    {#<script src="js/jquery.uploadify-3.1.min.js"></script>#}
+    {#<script src="js/jquery.gritter.min.js"></script>#}
+    {#<script src="js/jquery.imagesloaded.js"></script>#}
+    {#<script src="js/jquery.masonry.min.js"></script>#}
+    {#<script src="js/jquery.knob.modified.js"></script>#}
+    {#<script src="js/jquery.sparkline.min.js"></script>#}
+    {#<script src="js/counter.min.js"></script>#}
+    {#<script src="js/raphael.2.1.0.min.js"></script>#}
+    {#<script src="js/justgage.1.0.1.min.js"></script>#}
+    {#<script src="js/jquery.autosize.min.js"></script>#}
+    {#<script src="js/retina.js"></script>#}
+    {#<script src="js/jquery.placeholder.min.js"></script>#}
+    {#<script src="js/wizard.min.js"></script>#}
+    {#<script src="js/core.min.js"></script>#}
+    {#<script src="js/charts.min.js"></script>#}
+    {#<script src="js/custom.min.js"></script>#}
+    <!-- page script -->
+
+{% endblock javascripts %}
+
+</html>

@@ -1,0 +1,158 @@
+{% extends 'index.html.twig' %}
+
+{% block contenido %}
+    {{ form_start(edit_form, {'method' :'POST'}) }}
+<div class="box box-danger">
+    <div class="box-header with-border">
+        <div class="user-block">
+            <h3 class="text-center ">Editar Escogida de Turno</h3>
+        </div><!-- /.user-block -->
+        <div class="box-tools">
+            <ul class="list-inline">
+                <li>
+                    <a class="text-info" href="{{ path('escogidaturno_index') }}">
+                        <i class="glyphicon glyphicon glyphicon-hand-left"></i> Atràs</a>
+                </li>
+            </ul>
+        </div><!-- /.box-tools -->
+    </div><!-- /.box-header -->
+    <div class="box-body">
+        <div class="box-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Ruta</label>
+                        {{ form_widget(edit_form.ruta, {'attr' : {'class' : '' }})}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Ómnibus</label>
+                        {{ form_widget(edit_form.omnibus, {'attr' : {'class' : '' }})}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Turno</label>
+                        {{ form_widget(edit_form.turno, {'attr' : {'class' : 'form-control','pattern':'([0-9:]+)$'  }})}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Empieza</label>
+                        {{ form_widget(edit_form.empieza, {'attr' : {'class' : '' }})}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Sale</label>
+                        {{ form_widget(edit_form.sale, {'attr' : {'class' : '' }})}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Termina</label>
+                        {{ form_widget(edit_form.termina, {'attr' : {'class' : '' }})}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Cantidad de Viajes</label>
+                        {{ form_widget(edit_form.cantidadViajes, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'  }})}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Chofer</label>
+                        {{ form_widget(edit_form.chofer, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }})}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Horas de trabajo</label>
+                        {{ form_widget(edit_form.trabajaHoras, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }})}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Cantidad de días de descanso</label>
+                        {{ form_widget(edit_form.descansoDias, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }})}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Comienzo del descanzo</label>
+                        {{ form_widget(edit_form.descansoComienza, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }})}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Término del descanso</label>
+                        {{ form_widget(edit_form.descansoTermina, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }})}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Período de la escogida</label>
+                        {{ form_widget(edit_form.periodoEscogida, {'attr' : {'class' : 'form-control' }})}}
+                    </div>
+                </div>
+            </div>
+            {#<div class="row">#}
+        {#<div class="col-sm-6">#}
+        {#<label class="col-sm-4 control-label"></label>#}
+        {#{{ form_widget(edit_form.Submit) }}#}
+        {#</div>#}
+        {#</div>#}
+        {#</div><!-- /.box-body -->#}
+        <table align="center">
+            <tr>
+                <td><input type="submit" class="btn btn-danger btn " style="background-color: #6290ff" value="Editar" /></td>
+            </tr>
+        </table>
+    </div>
+    {#<!-- /.box widget-->#}
+    {{ form_end(edit_form) }}
+{% endblock %}
+{#<h1>EscogidaTurno edit</h1>#}
+
+{#{{ form_start(edit_form) }}#}
+        {#{{ form_widget(edit_form) }}#}
+{#<input type="submit" value="Edit" />#}
+{#{{ form_end(edit_form) }}#}
+
+{#<ul>#}
+    {#<li>#}
+        {#<a href="{{ path('escogidaturno_index') }}">Back to the list</a>#}
+    {#</li>#}
+    {#<li>#}
+        {#{{ form_start(delete_form) }}#}
+        {#<input type="submit" value="Delete">#}
+        {#{{ form_end(delete_form) }}#}
+    {#</li>#}
+{#</ul>#}

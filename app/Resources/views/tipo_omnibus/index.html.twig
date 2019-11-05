@@ -1,0 +1,142 @@
+{% extends 'index.html.twig' %}
+
+{% block contenido %}
+    <!-- Default box -->
+    <div class="box box-danger">
+        <div class="box-header with-border">
+            <div class="user-block">
+                <h3 class="text-center ">Lista de Tipos de Ómnibus</h3>
+            </div><!-- /.user-block -->
+            <div class="box-tools">
+
+            </div><!-- /.box-tools -->
+        </div><!-- /.box-header -->
+        <div class="box-body">
+            {#<h5>Total de registros: {{ pagination.getTotalItemCount }}</h5>#}
+
+            <table class="table table-hover">
+                <thead>
+
+                {#<th>Id</th>#}
+                <th>Tipo</th>
+                <th>Capacidad sentados</th>
+                <th>Capacidad parados</th>
+                <th>Capacidad total</th>
+                <th>Índice Consumo Normado por Kms</th>
+                <th>% de Desviación</th>
+                <th>Cant de Kmts X Litro Combust. - norma</th>
+                {% if not is_granted('ROLE_USUARIO' ) %}<th><img src="{{ asset('assets/dist/img/data_configuration_26px.png') }}" alt="User Image"> Acciones</th>{% endif %}
+                </thead>
+                <tbody>
+                {% for tipo_omnibus in tipo_omnibuses %}
+                    <tr>
+                        {#<td>{{ tipo_omnibus.id }}</td>#}
+                        <td>{{ tipo_omnibus.tipo }}</td>
+                        <td>{{ tipo_omnibus.capacidadSentados }}</td>
+                        <td>{{ tipo_omnibus.capacidadParados }}</td>
+                        <td>{{ tipo_omnibus.capacidadTotal }}</td>
+                        <td>{{ tipo_omnibus.indiceConsumoNormado }}</td>
+                        <td>{{ tipo_omnibus.desviacion }}</td>
+                        <td>{{ tipo_omnibus.cantidadKmtsXlitro }}</td>
+                        <td>
+                            <ul>
+                                <a href="{{ path('tipo_omnibus_edit',{ 'id': tipo_omnibus.id }) }}"
+                                   class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="right"
+                                   title="Editar elemento"><i class="glyphicon glyphicon-pencil"></i>
+                                </a>
+                                <a href="{{ path('tipo_omnibus_delete',{'id': tipo_omnibus.id}) }}"
+                                   class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="right"
+                                   title="Eliminar elemento"
+                                   onclick="return confirm('Esta seguro que desea eliminar el elemento')">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                </a>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div><!-- /.box-body -->
+
+        <div class="row">
+
+            <div class="col-sm-4">
+                {% if not is_granted('ROLE_USUARIO' ) %}
+                    <a class="btn btn-sm btn-default  pull-left" href="{{ path('tipo_omnibus_new') }}">
+                        <img src="{{ asset('assets/dist/img/add_database_26px.png') }}" alt="User Image"> Nuevo
+                    </a>
+                {% endif %}
+            </div>
+            <div class="col-sm-4">
+                {#{{ knp_pagination_render(pagination) }}#}
+            </div>
+            <div class="col-sm-4">
+
+
+            </div>
+        </div>
+
+
+    </div><!-- /.box -->
+    <div id="mymodal" class="modal  inmodal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button aria-label="Close" data-dismiss="modal" class="close" type="button">
+                        <span aria-hidden="true">×</span></button>
+                    <i class="fa-3x fa fa-warning modal-icon text-red"></i>
+                    <h4 class="modal-title">Acción Peligrosa</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Está acción puede ocacionar, comprometer la integridad de los datos!</p>
+                    <small>Si no es un usuario avanzado, recomendamos que cancele esta acción.</small>
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-primary" type="button">Cerrar</button>
+                    <a class="btn btn-primary btn-danger btn-delete" href="#">Eliminar</a>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+{% endblock %}
+{#<h1>Tipo_omnibus list</h1>#}
+
+{#<table>#}
+    {#<thead>#}
+    {#<tr>#}
+        {#<th>Id</th>#}
+        {#<th>Tipo</th>#}
+        {#<th>Indiceconsumo</th>#}
+        {#<th>Actions</th>#}
+    {#</tr>#}
+    {#</thead>#}
+    {#<tbody>#}
+    {#{% for tipo_omnibus in tipo_omnibuses %}#}
+        {#<tr>#}
+            {#<td><a href="{{ path('tipo_omnibus_show', { 'id': tipo_omnibus.id }) }}">{{ tipo_omnibus.id }}</a></td>#}
+            {#<td>{{ tipo_omnibus.tipo }}</td>#}
+            {#<td>{{ tipo_omnibus.indiceConsumo }}</td>#}
+            {#<td>#}
+                {#<ul>#}
+                    {#<li>#}
+                        {#<a href="{{ path('tipo_omnibus_show', { 'id': tipo_omnibus.id }) }}">show</a>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<a href="{{ path('tipo_omnibus_edit', { 'id': tipo_omnibus.id }) }}">edit</a>#}
+                    {#</li>#}
+                {#</ul>#}
+            {#</td>#}
+        {#</tr>#}
+    {#{% endfor %}#}
+    {#</tbody>#}
+{#</table>#}
+
+{#<ul>#}
+    {#<li>#}
+        {#<a href="{{ path('tipo_omnibus_new') }}">Create a new entry</a>#}
+    {#</li>#}
+{#</ul>#}

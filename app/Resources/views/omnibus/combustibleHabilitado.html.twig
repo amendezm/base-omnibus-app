@@ -1,0 +1,56 @@
+{% extends 'index.html.twig' %}
+
+{% block contenido %}
+<div class="box box-danger">
+    <div class="box-header with-border">
+        <div class="user-block">
+            <h3 class="text-center ">Datos de Tarjeta de Combustible y Gps por fechas</h3>
+        </div><!-- /.user-block -->
+        <div class="box-tools">
+            <ul class="list-inline">
+                <li>
+                    <a class="text-info" href="{{ path('omnibus_index') }}">
+                        <i class="glyphicon glyphicon glyphicon-hand-left"></i> Atràs</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <table id="sample-table-2" class="table table-striped table-bordered table-hover">
+
+            <thead>
+            <tr>
+                <th class="bg-primary">No. Ómnibus</th>
+                <th class="bg-primary">No. Tarjeta Combustible</th>
+                {#<th class="bg-primary">Tipo Combustible</th>#}
+                <th class="bg-primary">Combustible Asignado</th>
+                <th class="bg-primary">Fecha asignación comb</th>
+                <th class="bg-primary">Km recorridos GPS</th>
+                <th class="bg-primary">Combustible consumido GPS</th>
+                {#<th class="bg-primary">Gasto combustible tarjeta</th>#}
+                <th class="bg-primary">Diferencia Tarjeta/GPS</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for reporte in reportes %}
+                <tr>
+                    <td>{{ reporte.noomnibus }}</td>
+                    <td>{{ reporte.notarjeta }}</td>
+                    {#<td>{{ reporte.tipoCombustible }}</td>#}
+                    <td>{{ reporte.combustible_asignado }}</td>
+                    <td>{{ reporte.fecha_asignacion }}</td>
+                    <td>{{ reporte.kmrecorridos }}</td>
+                    <td>{{ reporte.combustible_consumido_gps }}</td>
+                    {#<td>{{ reporte.gasto_combustibleXtarjeta }}</td>#}
+                    <td>{{ reporte.diferencia_tarjeta_gps }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+
+{% endblock %}

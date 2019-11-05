@@ -1,0 +1,40 @@
+{% extends 'index.html.twig' %}
+
+{% block contenido %}
+    <h1>Base</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ base.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ base.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Descripción</th>
+                <td>{{ base.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Dirección</th>
+                <td>{{ base.direccion }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('base_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('base_edit', { 'id': base.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

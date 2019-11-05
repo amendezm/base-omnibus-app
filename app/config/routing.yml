@@ -1,0 +1,487 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+login:
+    path:     /login
+    defaults: { _controller: "AppBundle:Security:login" }
+login_check:
+    path:     /login_check
+logout:
+    path:     /logout
+
+usuario_index:
+    path:     /usuario
+    defaults: { _controller: "AppBundle:Usuario:index" }
+    methods:  GET
+
+usuario_show:
+    path:     /usuario/{id}/show
+    defaults: { _controller: "AppBundle:Usuario:show" }
+    methods:  GET
+
+usuario_new:
+    path:     /usuario/new
+    defaults: { _controller: "AppBundle:Usuario:new" }
+    methods:  [GET, POST]
+
+usuario_edit:
+    path:     /usuario/{id}/edit
+    defaults: { _controller: "AppBundle:Usuario:edit" }
+    methods:  [GET, POST]
+
+usuario_delete:
+    path:     /usuario/{id}/delete
+    defaults: { _controller: "AppBundle:Usuario:delete" }
+    methods: [GET, POST, DELETE]
+
+
+
+
+ruta_index:
+    path:     /ruta
+    defaults: { _controller: "AppBundle:Ruta:index" }
+    methods:  GET
+ruta_reporte:
+    path:     /ruta/reporte
+    defaults: { _controller: "AppBundle:Ruta:reporte" }
+    methods:  GET
+ruta_reporte_show:
+    path:     /ruta/reporte/visualizar
+    defaults: { _controller: "AppBundle:Ruta:showIncidencias_xRuta_reporte" }
+    methods:  GET
+ruta_show:
+    path:     /ruta/{id}/show
+    defaults: { _controller: "AppBundle:Ruta:show" }
+    methods:  GET
+
+ruta_new:
+    path:     /ruta/new
+    defaults: { _controller: "AppBundle:Ruta:new" }
+    methods:  [GET, POST]
+
+ruta_edit:
+    path:     /ruta/{id}/edit
+    defaults: { _controller: "AppBundle:Ruta:edit" }
+    methods:  [GET, POST]
+
+ruta_delete:
+    path:     /ruta/{id}/delete
+    defaults: { _controller: "AppBundle:Ruta:delete" }
+    methods:  [GET, POST, DELETE]
+
+
+escogidaturno_index:
+    path:     /escogidaturno
+    defaults: { _controller: "AppBundle:EscogidaTurno:index" }
+    methods:  GET
+
+escogidaturno_show:
+    path:     /escogidaturno/{id}/show
+    defaults: { _controller: "AppBundle:EscogidaTurno:show" }
+    methods:  GET
+
+escogidaturno_new:
+    path:     /escogidaturno/new
+    defaults: { _controller: "AppBundle:EscogidaTurno:new" }
+    methods:  [GET, POST]
+
+escogidaturno_edit:
+    path:     /escogidaturno/{id}/edit
+    defaults: { _controller: "AppBundle:EscogidaTurno:edit" }
+    methods:  [GET, POST]
+
+escogidaturno_delete:
+    path:     /escogidaturno/{id}/delete
+    defaults: { _controller: "AppBundle:EscogidaTurno:delete" }
+    methods:  [GET, POST, DELETE]
+
+
+
+
+
+tipo_omnibus_index:
+    path:     /tipo_omnibus
+    defaults: { _controller: "AppBundle:Tipo_omnibus:index" }
+    methods:  GET
+
+
+tipo_omnibus_show:
+    path:     /tipo_omnibus/{id}/show
+    defaults: { _controller: "AppBundle:Tipo_omnibus:show" }
+    methods:  GET
+
+tipo_omnibus_new:
+    path:     /tipo_omnibus/new
+    defaults: { _controller: "AppBundle:Tipo_omnibus:new" }
+    methods:  [GET, POST]
+
+tipo_omnibus_edit:
+    path:     /tipo_omnibus/{id}/edit
+    defaults: { _controller: "AppBundle:Tipo_omnibus:edit" }
+    methods:  [GET, POST]
+
+tipo_omnibus_delete:
+    path:     /tipo_omnibus/{id}/delete
+    defaults: { _controller: "AppBundle:Tipo_omnibus:delete" }
+    methods:  [GET, POST, DELETE]
+
+
+
+
+base_index:
+    path:     /base
+    defaults: { _controller: "AppBundle:base:index" }
+    methods:  GET
+
+base_show:
+    path:     /base/{id}/show
+    defaults: { _controller: "AppBundle:base:show" }
+    methods:  GET
+
+base_new:
+    path:     /base/new
+    defaults: { _controller: "AppBundle:base:new" }
+    methods:  [GET, POST]
+
+base_edit:
+    path:     /base/{id}/edit
+    defaults: { _controller: "AppBundle:base:edit" }
+    methods:  [GET, POST]
+
+base_delete:
+    path:     /base/{id}/delete
+    defaults: { _controller: "AppBundle:base:delete" }
+    methods:  [GET, POST, DELETE]
+
+
+
+index:
+    path:     /
+    defaults: { _controller: "AppBundle:Default:index" }
+
+
+tipoincidencia_index:
+    path:     /tipoincidencia
+    defaults: { _controller: "AppBundle:TipoIncidencia:index" }
+    methods:  GET
+
+tipoincidencia_show:
+    path:     /tipoincidencia/{id}/show
+    defaults: { _controller: "AppBundle:TipoIncidencia:show" }
+    methods:  GET
+
+tipoincidencia_new:
+    path:     /tipoincidencia/new
+    defaults: { _controller: "AppBundle:TipoIncidencia:new" }
+    methods:  [GET, POST]
+
+tipoincidencia_edit:
+    path:     /tipoincidencia/{id}/edit
+    defaults: { _controller: "AppBundle:TipoIncidencia:edit" }
+    methods:  [GET, POST]
+
+tipoincidencia_delete:
+    path:     /tipoincidencia/{id}/delete
+    defaults: { _controller: "AppBundle:TipoIncidencia:delete" }
+    methods:  [GET, POST, DELETE]
+
+
+tarjeta_combustible_index:
+    path:     /tarjeta_combustible
+    defaults: { _controller: "AppBundle:Tarjeta_combustible:index" }
+    methods:  GET
+tarjeta_Reporte_mensual:
+    path:     /tarjeta_combustible/reporte_mensual
+    defaults: { _controller: "AppBundle:Tarjeta_combustible:reporte_tarjeta_mensual" }
+    methods:  GET
+
+tarjeta_combustible_show:
+    path:     /tarjeta_combustible/{id}/show
+    defaults: { _controller: "AppBundle:Tarjeta_combustible:show" }
+    methods:  GET
+
+tarjeta_combustible_new:
+    path:     /tarjeta_combustible/new
+    defaults: { _controller: "AppBundle:Tarjeta_combustible:new" }
+    methods:  [GET, POST]
+
+tarjeta_combustible_edit:
+    path:     /tarjeta_combustible/{id}/edit
+    defaults: { _controller: "AppBundle:Tarjeta_combustible:edit" }
+    methods:  [GET, POST]
+
+tarjeta_combustible_delete:
+    path:     /tarjeta_combustible/{id}/delete
+    defaults: { _controller: "AppBundle:Tarjeta_combustible:delete" }
+    methods:  [GET, POST, DELETE]
+
+
+gps_index:
+    path:     /gps
+    defaults: { _controller: "AppBundle:GPS:index" }
+    methods:  GET
+
+gps_show:
+    path:     /gps/{id}/show
+    defaults: { _controller: "AppBundle:GPS:show" }
+    methods:  GET
+
+gps_new:
+    path:     /gps/new
+    defaults: { _controller: "AppBundle:GPS:new" }
+    methods:  [GET, POST]
+
+gps_edit:
+    path:     /gps/{id}/edit
+    defaults: { _controller: "AppBundle:GPS:edit" }
+    methods:  [GET, POST]
+
+gps_delete:
+    path:     /gps/{id}/delete
+    defaults: { _controller: "AppBundle:GPS:delete" }
+    methods:  [GET, POST, DELETE]
+
+
+pto_expedicion_index:
+    path:     /pto_expedicion
+    defaults: { _controller: "AppBundle:Pto_expedicion:index" }
+    methods:  GET
+
+pto_expedicion_show:
+    path:     /pto_expedicion/{id}/show
+    defaults: { _controller: "AppBundle:Pto_expedicion:show" }
+    methods:  GET
+
+pto_expedicion_new:
+    path:     /pto_expedicion/new
+    defaults: { _controller: "AppBundle:Pto_expedicion:new" }
+    methods:  [GET, POST]
+
+pto_expedicion_edit:
+    path:     /pto_expedicion/{id}/edit
+    defaults: { _controller: "AppBundle:Pto_expedicion:edit" }
+    methods:  [GET, POST]
+
+pto_expedicion_delete:
+    path:     /pto_expedicion/{id}/delete
+    defaults: { _controller: "AppBundle:Pto_expedicion:delete" }
+    methods:  [GET, POST, DELETE]
+
+
+tipocombustible_index:
+    path:     /tipocombustible
+    defaults: { _controller: "AppBundle:TipoCombustible:index" }
+    methods:  GET
+
+tipocombustible_show:
+    path:     /tipocombustible/{id}/show
+    defaults: { _controller: "AppBundle:TipoCombustible:show" }
+    methods:  GET
+
+tipocombustible_new:
+    path:     /tipocombustible/new
+    defaults: { _controller: "AppBundle:TipoCombustible:new" }
+    methods:  [GET, POST]
+
+tipocombustible_edit:
+    path:     /tipocombustible/{id}/edit
+    defaults: { _controller: "AppBundle:TipoCombustible:edit" }
+    methods:  [GET, POST]
+
+tipocombustible_delete:
+    path:     /tipocombustible/{id}/delete
+    defaults: { _controller: "AppBundle:TipoCombustible:delete" }
+    methods:  [GET, POST, DELETE]
+
+
+omnibus_index:
+    path:     /omnibus
+    defaults: { _controller: "AppBundle:Omnibus:index" }
+    methods:  GET
+plan_combustible:
+    path:     /omnibus/plan_combustible
+    defaults: { _controller: "AppBundle:Omnibus:plan_combustible" }
+    methods:  GET
+combustibleHabilitado:
+    path:     /omnibus/combustibleHabilitado
+    defaults: { _controller: "AppBundle:Omnibus:combustibleHabilitado" }
+    methods:  GET
+reporteporOmnibus:
+    path:     /omnibus/reporteporOmnibus
+    defaults: { _controller: "AppBundle:Omnibus:reporteporOmnibus" }
+    methods:  GET
+omnibus_reporteKms:
+    path:     /omnibus/kms
+    defaults: { _controller: "AppBundle:Omnibus:KmsRecorridos" }
+    methods:  GET
+
+omnibus_show:
+    path:     /omnibus/{id}/show
+    defaults: { _controller: "AppBundle:Omnibus:show" }
+    methods:  GET
+
+omnibus_new:
+    path:     /omnibus/new
+    defaults: { _controller: "AppBundle:Omnibus:new" }
+    methods:  [GET, POST]
+
+omnibus_edit:
+    path:     /omnibus/{id}/edit
+    defaults: { _controller: "AppBundle:Omnibus:edit" }
+    methods:  [GET, POST]
+
+omnibus_delete:
+    path:     /omnibus/{id}/delete
+    defaults: { _controller: "AppBundle:Omnibus:delete" }
+    methods:  [GET, POST, DELETE]
+
+
+incidencia_index:
+    path:     /incidencia/index
+    defaults: { _controller: "AppBundle:Incidencia:index" }
+    methods:  GET
+
+incidencia_new:
+    path:     /incidencia/{id_hojaruta}/new
+    defaults: { _controller: "AppBundle:Incidencia:new" }
+    methods:  [GET, POST]
+
+incidencia_edit:
+    path:     /incidencia/{id}/edit
+    defaults: { _controller: "AppBundle:Incidencia:edit" }
+    methods:  [GET, POST]
+
+incidencia_delete:
+    path:     /incidencia/{id}/delete
+    defaults: { _controller: "AppBundle:Incidencia:delete" }
+    methods:  [GET, POST, DELETE]
+
+
+chofer_index:
+    path:     /chofer
+    defaults: { _controller: "AppBundle:Chofer:index" }
+    methods:  GET
+
+chofer_reporte:
+    path:     /chofer/reporte
+    defaults: { _controller: "AppBundle:Chofer:reporteHoras" }
+    methods:  GET
+
+chofer_show:
+    path:     /chofer/{id}/show
+    defaults: { _controller: "AppBundle:Chofer:show" }
+    methods:  GET
+
+chofer_new:
+    path:     /chofer/new
+    defaults: { _controller: "AppBundle:Chofer:new" }
+    methods:  [GET, POST]
+
+chofer_edit:
+    path:     /chofer/{id}/edit
+    defaults: { _controller: "AppBundle:Chofer:edit" }
+    methods:  [GET, POST]
+
+chofer_delete:
+    path:     /chofer/{id}/delete
+    defaults: { _controller: "AppBundle:Chofer:delete" }
+    methods:  [GET, POST, DELETE]
+
+
+
+hojaruta_index:
+  path:     /hojaruta
+  defaults: { _controller: "AppBundle:HojaRuta:index" }
+  methods:  GET
+
+reporte_hoja_ruta_fecha:
+  path:     /hojaruta/fecha
+  defaults: { _controller: "AppBundle:HojaRuta:reporte_hoja_ruta_fecha" }
+  methods:  GET
+
+hojaruta_show:
+  path:     /hojaruta/{id}/show
+  defaults: { _controller: "AppBundle:HojaRuta:show" }
+  methods:  GET
+
+hojaruta_new:
+  path:     /hojaruta/new
+  defaults: { _controller: "AppBundle:HojaRuta:new" }
+  methods:  [GET, POST]
+
+hojaruta_edit:
+  path:     /hojaruta/{id}/edit
+  defaults: { _controller: "AppBundle:HojaRuta:edit" }
+  methods:  [GET, POST]
+
+hojaruta_delete:
+  path:     /hojaruta/{id}/delete
+  defaults: { _controller: "AppBundle:HojaRuta:delete" }
+  methods:  [GET, POST, DELETE]
+
+
+trabajador_index:
+    path:     /trabajador
+    defaults: { _controller: "AppBundle:Trabajador:index" }
+    methods:  GET
+
+trabajador_show:
+    path:     /trabajador/{id}/show
+    defaults: { _controller: "AppBundle:Trabajador:show" }
+    methods:  GET
+trabajador_new:
+    path:     /trabajador/new
+    defaults: { _controller: "AppBundle:Trabajador:new" }
+    methods:  [GET, POST]
+
+trabajador_edit:
+    path:     /trabajador/{id}/edit
+    defaults: { _controller: "AppBundle:Trabajador:edit" }
+    methods:  [GET, POST]
+
+trabajador_delete:
+    path:     /trabajador/{id}/delete
+    defaults: { _controller: "AppBundle:Trabajador:delete" }
+    methods: [GET, POST, DELETE]
+
+
+recaudacion_index:
+    path:     /recaudacion
+    defaults: { _controller: "AppBundle:Recaudacion:index" }
+    methods:  GET
+plan_recaudacion:
+    path:     /recaudacion/plan_recaudacion
+    defaults: { _controller: "AppBundle:Recaudacion:plan_recaudacion" }
+    methods:  GET
+recaudacion_reporte:
+    path:     /recaudacion/reporte
+    defaults: { _controller: "AppBundle:Recaudacion:reporte" }
+    methods:  GET
+recaudacion_recaudacionXfecha:
+    path:     /recaudacion/recaudacionXfecha
+    defaults: { _controller: "AppBundle:Recaudacion:recaudacion" }
+    methods:  GET
+recaudacion_show:
+    path:     /recaudacion/{id}/show
+    defaults: { _controller: "AppBundle:Recaudacion:show" }
+    methods:  GET
+
+recaudacion_new:
+    path:     /recaudacion/new
+    defaults: { _controller: "AppBundle:Recaudacion:new" }
+    methods:  [GET, POST]
+
+recaudacion_edit:
+    path:     /recaudacion/{id}/edit
+    defaults: { _controller: "AppBundle:Recaudacion:edit" }
+    methods:  [GET, POST]
+
+recaudacion_delete:
+    path:     /recaudacion/{id}/delete
+    defaults: { _controller: "AppBundle:Recaudacion:delete" }
+    methods: [GET, POST, DELETE]
+
+#frontend_salvabd:
+#     path:   /salvar
+#    defaults: { _controller: AppBundle:Default:salvabd }
+
