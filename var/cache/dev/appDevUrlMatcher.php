@@ -100,6 +100,19 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        if (0 === strpos($pathinfo, '/pronostico')) {
+            // app_pronostico_combustible
+            if ($pathinfo === '/pronostico/combustible') {
+                return array (  '_controller' => 'AppBundle\\Controller\\PronosticoController::combustibleAction',  '_route' => 'app_pronostico_combustible',);
+            }
+
+            // app_pronostico_recaudacion
+            if ($pathinfo === '/pronostico/recaudacion') {
+                return array (  '_controller' => 'AppBundle\\Controller\\PronosticoController::recaudacionAction',  '_route' => 'app_pronostico_recaudacion',);
+            }
+
+        }
+
         if (0 === strpos($pathinfo, '/log')) {
             if (0 === strpos($pathinfo, '/login')) {
                 // login
@@ -1185,6 +1198,31 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'recaudacion_delete')), array (  '_controller' => 'AppBundle\\Controller\\RecaudacionController::deleteAction',));
             }
             not_recaudacion_delete:
+
+        }
+
+        if (0 === strpos($pathinfo, '/pronostico')) {
+            // pronostico_combustible
+            if ($pathinfo === '/pronostico/combustible') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_pronostico_combustible;
+                }
+
+                return array (  '_controller' => 'AppBundle\\Controller\\PronosticoController::combustibleAction',  '_route' => 'pronostico_combustible',);
+            }
+            not_pronostico_combustible:
+
+            // pronostico_recaudacion
+            if ($pathinfo === '/pronostico/recaudacion') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_pronostico_recaudacion;
+                }
+
+                return array (  '_controller' => 'AppBundle\\Controller\\PronosticoController::recaudacionAction',  '_route' => 'pronostico_recaudacion',);
+            }
+            not_pronostico_recaudacion:
 
         }
 

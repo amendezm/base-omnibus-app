@@ -15,8 +15,8 @@ class __TwigTemplate_1afc526368be262a123b80c066e492fd4ba5146abecf90542b5dd4d6c8d
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_08230531c057db9fcfad43ac210bfb2f14c9f60364f46bcc5c746581587efa5c = $this->env->getExtension("native_profiler");
-        $__internal_08230531c057db9fcfad43ac210bfb2f14c9f60364f46bcc5c746581587efa5c->enter($__internal_08230531c057db9fcfad43ac210bfb2f14c9f60364f46bcc5c746581587efa5c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "sidebar.html.twig"));
+        $__internal_82eb908599b426e14fb4b51c4f6e83978e494a70ce5867b3da79eb4bd5add5cc = $this->env->getExtension("native_profiler");
+        $__internal_82eb908599b426e14fb4b51c4f6e83978e494a70ce5867b3da79eb4bd5add5cc->enter($__internal_82eb908599b426e14fb4b51c4f6e83978e494a70ce5867b3da79eb4bd5add5cc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "sidebar.html.twig"));
 
         // line 1
         echo "<section id=\"elemento2\" class=\"sidebar\">
@@ -270,7 +270,7 @@ class __TwigTemplate_1afc526368be262a123b80c066e492fd4ba5146abecf90542b5dd4d6c8d
         echo "            </ul>
         </li>
 
-<li class=\"treeview\">
+        <li class=\"treeview\">
                 <a href=\"#\"><i class=\"fa fa-fw fa-filter\"></i> <span>Reportes</span> <i class=\"fa fa-angle-left pull-right\"></i></a>
                 <ul class=\"treeview-menu\">
                     <li><a href=\"";
@@ -284,26 +284,34 @@ class __TwigTemplate_1afc526368be262a123b80c066e492fd4ba5146abecf90542b5dd4d6c8d
                     ";
         // line 164
         echo "                    <li><a href=\"";
+        echo $this->env->getExtension('routing')->getPath("pronostico_combustible");
+        echo "\"><i class=\"fa fa-circle-o text-aqua\"></i>Pronóstico de Combustible</a></li>
+                    <li><a href=\"";
+        // line 165
         echo $this->env->getExtension('routing')->getPath("plan_combustible");
         echo "\"><i class=\"fa fa-circle-o text-aqua\"></i>Plan de Combustible</a></li>
                     <li><a href=\"";
-        // line 165
+        // line 166
+        echo $this->env->getExtension('routing')->getPath("pronostico_recaudacion");
+        echo "\"><i class=\"fa fa-circle-o text-aqua\"></i>Pronóstico de Recaudación</a></li>
+                    <li><a href=\"";
+        // line 167
         echo $this->env->getExtension('routing')->getPath("plan_recaudacion");
         echo "\"><i class=\"fa fa-circle-o text-aqua\"></i>Plan de Recaudación</a></li>
                     <li><a href=\"";
-        // line 166
+        // line 168
         echo $this->env->getExtension('routing')->getPath("omnibus_reporteKms");
         echo "\"><i class=\"fa fa-circle-o text-aqua\"></i>Kilómetros Recorridos Ómnibus</a></li>
                     <li><a href=\"";
-        // line 167
+        // line 169
         echo $this->env->getExtension('routing')->getPath("combustibleHabilitado");
         echo "\"><i class=\"fa fa-circle-o text-aqua\"></i>Datos de Tarjeta de Combustible y Gps</a></li>
                     <li><a href=\"";
-        // line 168
+        // line 170
         echo $this->env->getExtension('routing')->getPath("reporteporOmnibus");
         echo "\"><i class=\"fa fa-circle-o text-aqua\"></i>Reporte General por Ómnibus</a></li>
                     ";
-        // line 170
+        // line 172
         echo "                </ul>
             </li>
 
@@ -312,7 +320,7 @@ class __TwigTemplate_1afc526368be262a123b80c066e492fd4ba5146abecf90542b5dd4d6c8d
 </section>
 <!-- /.sidebar -->";
         
-        $__internal_08230531c057db9fcfad43ac210bfb2f14c9f60364f46bcc5c746581587efa5c->leave($__internal_08230531c057db9fcfad43ac210bfb2f14c9f60364f46bcc5c746581587efa5c_prof);
+        $__internal_82eb908599b426e14fb4b51c4f6e83978e494a70ce5867b3da79eb4bd5add5cc->leave($__internal_82eb908599b426e14fb4b51c4f6e83978e494a70ce5867b3da79eb4bd5add5cc_prof);
 
     }
 
@@ -328,7 +336,7 @@ class __TwigTemplate_1afc526368be262a123b80c066e492fd4ba5146abecf90542b5dd4d6c8d
 
     public function getDebugInfo()
     {
-        return array (  307 => 170,  303 => 168,  299 => 167,  295 => 166,  291 => 165,  286 => 164,  282 => 162,  278 => 161,  270 => 155,  268 => 154,  266 => 153,  259 => 148,  251 => 143,  238 => 133,  229 => 126,  227 => 125,  225 => 124,  223 => 123,  221 => 122,  214 => 117,  205 => 110,  203 => 109,  201 => 108,  193 => 102,  182 => 93,  179 => 91,  177 => 90,  175 => 89,  170 => 86,  164 => 83,  158 => 80,  151 => 76,  147 => 74,  143 => 72,  137 => 69,  130 => 65,  125 => 62,  121 => 60,  114 => 56,  106 => 50,  104 => 49,  102 => 48,  100 => 47,  98 => 46,  96 => 45,  94 => 44,  92 => 43,  90 => 42,  88 => 41,  86 => 40,  84 => 39,  82 => 38,  80 => 37,  78 => 36,  76 => 35,  74 => 34,  72 => 33,  70 => 32,  68 => 31,  66 => 30,  58 => 25,  54 => 23,  52 => 22,  50 => 21,  42 => 15,  36 => 11,  34 => 10,  28 => 6,  22 => 1,);
+        return array (  315 => 172,  311 => 170,  307 => 169,  303 => 168,  299 => 167,  295 => 166,  291 => 165,  286 => 164,  282 => 162,  278 => 161,  270 => 155,  268 => 154,  266 => 153,  259 => 148,  251 => 143,  238 => 133,  229 => 126,  227 => 125,  225 => 124,  223 => 123,  221 => 122,  214 => 117,  205 => 110,  203 => 109,  201 => 108,  193 => 102,  182 => 93,  179 => 91,  177 => 90,  175 => 89,  170 => 86,  164 => 83,  158 => 80,  151 => 76,  147 => 74,  143 => 72,  137 => 69,  130 => 65,  125 => 62,  121 => 60,  114 => 56,  106 => 50,  104 => 49,  102 => 48,  100 => 47,  98 => 46,  96 => 45,  94 => 44,  92 => 43,  90 => 42,  88 => 41,  86 => 40,  84 => 39,  82 => 38,  80 => 37,  78 => 36,  76 => 35,  74 => 34,  72 => 33,  70 => 32,  68 => 31,  66 => 30,  58 => 25,  54 => 23,  52 => 22,  50 => 21,  42 => 15,  36 => 11,  34 => 10,  28 => 6,  22 => 1,);
     }
 }
 /* <section id="elemento2" class="sidebar">*/
@@ -488,13 +496,15 @@ class __TwigTemplate_1afc526368be262a123b80c066e492fd4ba5146abecf90542b5dd4d6c8d
 /*             </ul>*/
 /*         </li>*/
 /* */
-/* <li class="treeview">*/
+/*         <li class="treeview">*/
 /*                 <a href="#"><i class="fa fa-fw fa-filter"></i> <span>Reportes</span> <i class="fa fa-angle-left pull-right"></i></a>*/
 /*                 <ul class="treeview-menu">*/
 /*                     <li><a href="{{ path('ruta_reporte') }}"><i class="fa fa-circle-o text-aqua"></i>Incidencias por Ruta y Ómnibus</a></li>*/
 /*                     <li><a href="{{ path('chofer_reporte') }}"><i class="fa fa-circle-o text-aqua"></i>Horas Trabajadas por Chofer</a></li>*/
 /*                     {#<li><a href="{{ path('reporte_hoja_ruta_fecha') }}"><i class="fa fa-circle-o text-aqua"></i>Hojas de Ruta</a></li>#}*/
+/*                     <li><a href="{{ path('pronostico_combustible') }}"><i class="fa fa-circle-o text-aqua"></i>Pronóstico de Combustible</a></li>*/
 /*                     <li><a href="{{ path('plan_combustible') }}"><i class="fa fa-circle-o text-aqua"></i>Plan de Combustible</a></li>*/
+/*                     <li><a href="{{ path('pronostico_recaudacion') }}"><i class="fa fa-circle-o text-aqua"></i>Pronóstico de Recaudación</a></li>*/
 /*                     <li><a href="{{ path('plan_recaudacion') }}"><i class="fa fa-circle-o text-aqua"></i>Plan de Recaudación</a></li>*/
 /*                     <li><a href="{{ path('omnibus_reporteKms') }}"><i class="fa fa-circle-o text-aqua"></i>Kilómetros Recorridos Ómnibus</a></li>*/
 /*                     <li><a href="{{ path('combustibleHabilitado') }}"><i class="fa fa-circle-o text-aqua"></i>Datos de Tarjeta de Combustible y Gps</a></li>*/
