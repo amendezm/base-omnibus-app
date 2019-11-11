@@ -1,3 +1,19 @@
+body {
+  max-height: 100vh;
+}
+
+body > .content {
+  max-height: 94vh;
+}
+
+body > .content > .login-box {
+  margin: 3% auto;
+}
+
+body > .main-footer {
+  max-height: 6vh;
+}
+
 .main-footer {
-    margin-left: 0;
+  margin-left: 0;
 }
