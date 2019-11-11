@@ -3,26 +3,27 @@
 {% block id 'sidebar-mini skin-blue' %}
 
 {% block body %}
-    <div class="wrapper">
+    <div
+        class="wrapper">
+        <!-- Main Header -->
+        <header class="main-header">
+            {% block header %}
+                {% include ':default:header.html.twig' %}
+            {% endblock %}
+        </header>
 
-      <!-- Main Header -->
-      <header class="main-header">
-          {% block header %}
-              {% include ':default:header.html.twig' %}
-          {% endblock %}
-      </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            {% block sidebar %}
+                {% include ':default:sidebar.html.twig' %}
+            {% endblock %}
+        </aside>
 
-      <!-- Left side column. contains the logo and sidebar -->
-      <aside class="main-sidebar">
-          {% block sidebar %}
-              {% include ':default:sidebar.html.twig' %}
-          {% endblock %}
-      </aside>
-
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-          {% block content_header %}
+        <!-- Content Wrapper. Contains page content -->
+        <div
+            class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            {% block content_header %}
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-10">
@@ -31,7 +32,12 @@
                             <div class="alert alert-{{ type }} fade in ">
                                 <button aria-hidden="true" class="close" data-dismiss="alert" type="button">×</button>
                                 {% if flashMessage.title is defined %}
-                                    <h4>{% if flashMessage.icon is defined %}<i class="icon {{ flashMessage.icon }}"></i>{% endif %} <strong>{{ flashMessage.title }}</strong></h4>
+                                    <h4>
+                                        {% if flashMessage.icon is defined %}
+                                            <i class="icon {{ flashMessage.icon }}"></i>
+                                        {% endif %}
+                                        <strong>{{ flashMessage.title }}</strong>
+                                    </h4>
                                     {{ flashMessage.message }}
                                 {% else %}
                                     {{ type }}
@@ -41,33 +47,33 @@
                     </div>
                     <div class="col-md-1"></div>
                 </div>
-              {# include ':default:content-header.html.twig' #}
+                {# include ':default:content-header.html.twig' #}
 
-          {% endblock %}
-          <section class="content">
-              <!-- Your Page Content Here -->
-              <!-- Main content -->
-              {% block content_main %}
+            {% endblock %}
+            <section class="content">
+                <!-- Your Page Content Here -->
+                <!-- Main content -->{% block content_main %}
 
-              {% endblock %}
-              <!-- /.content -->
-          </section>
-      </div>
-      <!-- /.content-wrapper -->
+            {% endblock %}
+                <!-- /.content -->
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
 
         <!-- Main Footer -->
-        <footer id="elemento4" style="text-align: center" class="main-footer">
+        <footer
+            id="elemento4" style="text-align: center" class="main-footer">
             <!-- To the right -->
-            <div class="pull-right hidden-xs">
-
-            </div>
+            <div class="pull-right hidden-xs"></div>
             <!-- Default to the left -->
-            <strong>Sistema para el cálculo y distribución de recursos  </strong>
-            {{'now' | date('d-m-Y')}}  &copy; Empresa Garbo
+            <strong>Sistema para el cálculo y distribución de recursos
+            </strong>
+            {{'now' | date('d-m-Y')}}
+            &copy; Empresa Garbo
             <br>
 
         </footer>
     </div>
-<!-- ./wrapper -->
+    <!-- ./wrapper -->
 
 {% endblock %}
