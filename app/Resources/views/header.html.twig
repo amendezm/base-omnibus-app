@@ -1,26 +1,23 @@
 {% set usuario = app.user %}
 {% set session = app.session %}
 <!-- Logo -->
-    <a href="{{ path('index') }}" class="logo" style="background:#FFFFFF;">
-    <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class="logo-mini"><img src="{{ asset('assets/dist/img/r.jpg') }}" class="img-circle" alt="User Image"></span>
-    <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg "><img height="50" width="130" src="{{ asset('assets/dist/img/logo_thg_horizontal.png') }}"></span>
-  </a>
 
   <!-- Header Navbar -->
-  <nav id="elemento1" class="navbar navbar-static-top" role="navigation">
-    <!-- Sidebar toggle button-->
+  <nav id="elemento1" class="navbar navbar-static-top navbar-fixed-top" role="navigation">
+    <a href="{{ path('index') }}" class="navbar-brand logo" style="background:#FFFFFF;">
+      <span class="logo-mini"><img src="{{ asset('assets/dist/img/r.jpg') }}" class="img-circle" alt="User Image"></span>
+      <span class="logo-lg "><img height="50" width="130" src="{{ asset('assets/dist/img/logo_thg_horizontal.png') }}"></span>
+    </a>
     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
       <span class="sr-only">Toggle navigation</span>
     </a>
-      <div class="">
-          <ul class="">
-      <h3 style="text-align: center">EMPRESA TRANSPORTE HOLGUÍN -- UEB ÓMNIBUS HOLGUÍN</h3>
-      </ul>
-          </div>
+    <ul class="nav navbar-nav justify-content-center" style=" width:75%; text-align:center;">
+      <li class="nav-item" style=" width:100%;">
+        <a class="nav-link" href="" style="cursor:initial; color:black; font-size:x-large;">EMPRESA TRANSPORTE HOLGUÍN -- UEB ÓMNIBUS HOLGUÍN</a>
+      </li>
+    </ul>
     <!-- Navbar Right Menu -->
-     <div class="navbar-custom-menu">
+     <div class="navbar-toggler navbar-custom-menu">
       <ul class="nav navbar-nav">
         <!-- Messages: style can be found in dropdown.less-->
 
