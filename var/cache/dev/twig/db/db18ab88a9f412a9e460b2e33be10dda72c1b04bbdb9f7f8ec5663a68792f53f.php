@@ -23,8 +23,8 @@ class __TwigTemplate_9a0d374b41b2f604a6da3c44da62fe2eda02ad42a61b25ab9a3ba9f77e1
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_5dda786e35015222ca72b82fe01a5f7a7c72da43012f13030ce45b999b83957b = $this->env->getExtension("native_profiler");
-        $__internal_5dda786e35015222ca72b82fe01a5f7a7c72da43012f13030ce45b999b83957b->enter($__internal_5dda786e35015222ca72b82fe01a5f7a7c72da43012f13030ce45b999b83957b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "index.html.twig"));
+        $__internal_a19ab801459ca36eb712411101c5de959a56a58a7f8dcb6f2edb38d130191a24 = $this->env->getExtension("native_profiler");
+        $__internal_a19ab801459ca36eb712411101c5de959a56a58a7f8dcb6f2edb38d130191a24->enter($__internal_a19ab801459ca36eb712411101c5de959a56a58a7f8dcb6f2edb38d130191a24_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "index.html.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
@@ -43,44 +43,44 @@ class __TwigTemplate_9a0d374b41b2f604a6da3c44da62fe2eda02ad42a61b25ab9a3ba9f77e1
         ";
         // line 13
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 44
+        // line 41
         echo "
         <link rel=\"icon\" type=\"image/x-icon\" href=\"";
-        // line 45
+        // line 42
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("apple-touch-icon.png"), "html", null, true);
         echo "\"/>
     </head>
     <header class=\"main-header\">
         ";
-        // line 48
+        // line 45
         $this->displayBlock('header', $context, $blocks);
-        // line 51
+        // line 48
         echo "    </header>
     <aside class=\"main-sidebar\">
         ";
-        // line 53
+        // line 50
         $this->displayBlock('sidebar', $context, $blocks);
-        // line 56
+        // line 53
         echo "    </aside>
     <body>
 
         ";
-        // line 59
+        // line 56
         $this->displayBlock('body', $context, $blocks);
-        // line 121
+        // line 118
         echo "        <footer
             id=\"elemento4\" style=\"text-align: center\" class=\"main-footer\">
             <!-- To the right -->
             <div class=\"pull-right hidden-xs\"></div>
             <!-- Default to the left -->
             <a href=\"";
-        // line 126
+        // line 123
         echo $this->env->getExtension('routing')->getPath("index");
         echo "\">
                 <strong>Sistema de gestión de información de la UEB Ómnibus Holguín</strong>
             </a>
             &copy;";
-        // line 129
+        // line 126
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "d-m-Y"), "html", null, true);
         echo "
             <br>
@@ -88,36 +88,36 @@ class __TwigTemplate_9a0d374b41b2f604a6da3c44da62fe2eda02ad42a61b25ab9a3ba9f77e1
         </footer>
     </body>
     ";
-        // line 134
+        // line 131
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 194
+        // line 191
         echo "
 </html>
 ";
         
-        $__internal_5dda786e35015222ca72b82fe01a5f7a7c72da43012f13030ce45b999b83957b->leave($__internal_5dda786e35015222ca72b82fe01a5f7a7c72da43012f13030ce45b999b83957b_prof);
+        $__internal_a19ab801459ca36eb712411101c5de959a56a58a7f8dcb6f2edb38d130191a24->leave($__internal_a19ab801459ca36eb712411101c5de959a56a58a7f8dcb6f2edb38d130191a24_prof);
 
     }
 
     // line 7
     public function block_title($context, array $blocks = array())
     {
-        $__internal_d1b4b8dc4c2abea32948b2c8c32114ead8364c1b13e1eecf1d495f51d86a4955 = $this->env->getExtension("native_profiler");
-        $__internal_d1b4b8dc4c2abea32948b2c8c32114ead8364c1b13e1eecf1d495f51d86a4955->enter($__internal_d1b4b8dc4c2abea32948b2c8c32114ead8364c1b13e1eecf1d495f51d86a4955_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_b699ea2cfe479b1ed7ad6341672a0539fe5bfa1e31465240ce76a481addbb0c0 = $this->env->getExtension("native_profiler");
+        $__internal_b699ea2cfe479b1ed7ad6341672a0539fe5bfa1e31465240ce76a481addbb0c0->enter($__internal_b699ea2cfe479b1ed7ad6341672a0539fe5bfa1e31465240ce76a481addbb0c0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 8
         echo "                |Bienvenido!
             ";
         
-        $__internal_d1b4b8dc4c2abea32948b2c8c32114ead8364c1b13e1eecf1d495f51d86a4955->leave($__internal_d1b4b8dc4c2abea32948b2c8c32114ead8364c1b13e1eecf1d495f51d86a4955_prof);
+        $__internal_b699ea2cfe479b1ed7ad6341672a0539fe5bfa1e31465240ce76a481addbb0c0->leave($__internal_b699ea2cfe479b1ed7ad6341672a0539fe5bfa1e31465240ce76a481addbb0c0_prof);
 
     }
 
     // line 13
     public function block_stylesheets($context, array $blocks = array())
     {
-        $__internal_e39ef581a512f75c583885cf42e0416601894aba05e849a52992e988a84a1a1d = $this->env->getExtension("native_profiler");
-        $__internal_e39ef581a512f75c583885cf42e0416601894aba05e849a52992e988a84a1a1d->enter($__internal_e39ef581a512f75c583885cf42e0416601894aba05e849a52992e988a84a1a1d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
+        $__internal_b01631475807dbd8f221b4ff060dc3d2cbdd8ab3da3296553b0d71982dd546a1 = $this->env->getExtension("native_profiler");
+        $__internal_b01631475807dbd8f221b4ff060dc3d2cbdd8ab3da3296553b0d71982dd546a1->enter($__internal_b01631475807dbd8f221b4ff060dc3d2cbdd8ab3da3296553b0d71982dd546a1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
 
         // line 14
         echo "            <!-- Bootstrap 3.3.5 -->
@@ -137,91 +137,85 @@ class __TwigTemplate_9a0d374b41b2f604a6da3c44da62fe2eda02ad42a61b25ab9a3ba9f77e1
         // line 21
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("assets/dist/css/AdminLTE.css"), "html", null, true);
         echo "\">
-            <link
-            rel=\"stylesheet\" href=\"";
-        // line 23
+            <link rel=\"stylesheet\" href=\"";
+        // line 22
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("assets/dist/css/fonts.googleapis.SourceSansPro.css"), "html", null, true);
         echo "\">
 
-            <!-- Custom style -->
-            <link rel=\"stylesheet\" href=\"";
-        // line 26
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("css/custom/base.css"), "html", null, true);
-        echo "\">
 
             ";
+        // line 26
+        echo "            ";
+        // line 27
+        echo "            ";
+        // line 28
+        echo "            ";
         // line 29
         echo "            ";
         // line 30
-        echo "            ";
-        // line 31
-        echo "            ";
+        echo "
+            ";
         // line 32
         echo "            ";
         // line 33
-        echo "
-            ";
+        echo "            ";
+        // line 34
+        echo "            ";
         // line 35
         echo "            ";
         // line 36
-        echo "            ";
-        // line 37
-        echo "            ";
-        // line 38
-        echo "            ";
-        // line 39
         echo "            <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-                                      page. However, you can choose any other skin. Make sure you
-                                      apply the skin class to the body tag so the changes take effect.
-                                -->
+                          page. However, you can choose any other skin. Make sure you
+                          apply the skin class to the body tag so the changes take effect.
+                    -->
         <link rel=\"stylesheet\" href=\"";
-        // line 43
+        // line 40
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("assets/dist/css/skins/_all-skins.css"), "html", null, true);
         echo "\"> ";
         
-        $__internal_e39ef581a512f75c583885cf42e0416601894aba05e849a52992e988a84a1a1d->leave($__internal_e39ef581a512f75c583885cf42e0416601894aba05e849a52992e988a84a1a1d_prof);
+        $__internal_b01631475807dbd8f221b4ff060dc3d2cbdd8ab3da3296553b0d71982dd546a1->leave($__internal_b01631475807dbd8f221b4ff060dc3d2cbdd8ab3da3296553b0d71982dd546a1_prof);
 
     }
 
-    // line 48
+    // line 45
     public function block_header($context, array $blocks = array())
     {
-        $__internal_7259dad883eed27357cc50b57da3ea1fe89bb326aa8e977bb94dce086869ac74 = $this->env->getExtension("native_profiler");
-        $__internal_7259dad883eed27357cc50b57da3ea1fe89bb326aa8e977bb94dce086869ac74->enter($__internal_7259dad883eed27357cc50b57da3ea1fe89bb326aa8e977bb94dce086869ac74_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
+        $__internal_405d793e8bce87f531b74aa1fb513221c79b51ca2843e1dba09411e1bb53927a = $this->env->getExtension("native_profiler");
+        $__internal_405d793e8bce87f531b74aa1fb513221c79b51ca2843e1dba09411e1bb53927a->enter($__internal_405d793e8bce87f531b74aa1fb513221c79b51ca2843e1dba09411e1bb53927a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
 
-        // line 49
+        // line 46
         echo "            ";
-        $this->loadTemplate("header.html.twig", "index.html.twig", 49)->display($context);
-        // line 50
+        $this->loadTemplate("header.html.twig", "index.html.twig", 46)->display($context);
+        // line 47
         echo "        ";
         
-        $__internal_7259dad883eed27357cc50b57da3ea1fe89bb326aa8e977bb94dce086869ac74->leave($__internal_7259dad883eed27357cc50b57da3ea1fe89bb326aa8e977bb94dce086869ac74_prof);
+        $__internal_405d793e8bce87f531b74aa1fb513221c79b51ca2843e1dba09411e1bb53927a->leave($__internal_405d793e8bce87f531b74aa1fb513221c79b51ca2843e1dba09411e1bb53927a_prof);
 
     }
 
-    // line 53
+    // line 50
     public function block_sidebar($context, array $blocks = array())
     {
-        $__internal_e4909e59d8a04b89539e8eb3a800812cd86233ad7aeda72652ce2db32f3ab786 = $this->env->getExtension("native_profiler");
-        $__internal_e4909e59d8a04b89539e8eb3a800812cd86233ad7aeda72652ce2db32f3ab786->enter($__internal_e4909e59d8a04b89539e8eb3a800812cd86233ad7aeda72652ce2db32f3ab786_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "sidebar"));
+        $__internal_9eef895c1fdbdf35e7a8d0f04b3c9340cbd05a8280c0c346a26667a1dbc8f85a = $this->env->getExtension("native_profiler");
+        $__internal_9eef895c1fdbdf35e7a8d0f04b3c9340cbd05a8280c0c346a26667a1dbc8f85a->enter($__internal_9eef895c1fdbdf35e7a8d0f04b3c9340cbd05a8280c0c346a26667a1dbc8f85a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "sidebar"));
 
-        // line 54
+        // line 51
         echo "            ";
-        $this->loadTemplate("sidebar.html.twig", "index.html.twig", 54)->display($context);
-        // line 55
+        $this->loadTemplate("sidebar.html.twig", "index.html.twig", 51)->display($context);
+        // line 52
         echo "        ";
         
-        $__internal_e4909e59d8a04b89539e8eb3a800812cd86233ad7aeda72652ce2db32f3ab786->leave($__internal_e4909e59d8a04b89539e8eb3a800812cd86233ad7aeda72652ce2db32f3ab786_prof);
+        $__internal_9eef895c1fdbdf35e7a8d0f04b3c9340cbd05a8280c0c346a26667a1dbc8f85a->leave($__internal_9eef895c1fdbdf35e7a8d0f04b3c9340cbd05a8280c0c346a26667a1dbc8f85a_prof);
 
     }
 
-    // line 59
+    // line 56
     public function block_body($context, array $blocks = array())
     {
-        $__internal_ad6c2eccdf03abe1a594ea01c7f1373c5987f54adfeaa947e5f83f52daf4fe52 = $this->env->getExtension("native_profiler");
-        $__internal_ad6c2eccdf03abe1a594ea01c7f1373c5987f54adfeaa947e5f83f52daf4fe52->enter($__internal_ad6c2eccdf03abe1a594ea01c7f1373c5987f54adfeaa947e5f83f52daf4fe52_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_0351f69c07cab6d61e81a426a93fd6f839f0f51ef30575c761f94f50896b0f01 = $this->env->getExtension("native_profiler");
+        $__internal_0351f69c07cab6d61e81a426a93fd6f839f0f51ef30575c761f94f50896b0f01->enter($__internal_0351f69c07cab6d61e81a426a93fd6f839f0f51ef30575c761f94f50896b0f01_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
-        // line 60
+        // line 57
         echo "            <div class=\"wrapper\">
 
                 <!-- Main Header -->
@@ -234,16 +228,16 @@ class __TwigTemplate_9a0d374b41b2f604a6da3c44da62fe2eda02ad42a61b25ab9a3ba9f77e1
                     <div
                     class=\"content-wrapper\"> <!-- Content Header (Page header) -->
                     ";
-        // line 71
+        // line 68
         $this->displayBlock('content_header', $context, $blocks);
-        // line 83
+        // line 80
         echo "                    <section class=\"content\">
                         <!-- Your Page Content Here -->
                         <!-- Main content -->
                             ";
-        // line 86
+        // line 83
         $this->displayBlock('contenido', $context, $blocks);
-        // line 110
+        // line 107
         echo "                        <!-- /.content -->
                     </section>
                 </div>
@@ -256,17 +250,17 @@ class __TwigTemplate_9a0d374b41b2f604a6da3c44da62fe2eda02ad42a61b25ab9a3ba9f77e1
 
         ";
         
-        $__internal_ad6c2eccdf03abe1a594ea01c7f1373c5987f54adfeaa947e5f83f52daf4fe52->leave($__internal_ad6c2eccdf03abe1a594ea01c7f1373c5987f54adfeaa947e5f83f52daf4fe52_prof);
+        $__internal_0351f69c07cab6d61e81a426a93fd6f839f0f51ef30575c761f94f50896b0f01->leave($__internal_0351f69c07cab6d61e81a426a93fd6f839f0f51ef30575c761f94f50896b0f01_prof);
 
     }
 
-    // line 71
+    // line 68
     public function block_content_header($context, array $blocks = array())
     {
-        $__internal_2aa9bb8e5b1b6b7b056e9ccd5a9b54dc2170aae9800fd82d169a17cdaf92a951 = $this->env->getExtension("native_profiler");
-        $__internal_2aa9bb8e5b1b6b7b056e9ccd5a9b54dc2170aae9800fd82d169a17cdaf92a951->enter($__internal_2aa9bb8e5b1b6b7b056e9ccd5a9b54dc2170aae9800fd82d169a17cdaf92a951_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content_header"));
+        $__internal_84c80b3941f034e5325142a78ea700d017a36da73c4f1b72a7ea7c20c9e4c9e8 = $this->env->getExtension("native_profiler");
+        $__internal_84c80b3941f034e5325142a78ea700d017a36da73c4f1b72a7ea7c20c9e4c9e8->enter($__internal_84c80b3941f034e5325142a78ea700d017a36da73c4f1b72a7ea7c20c9e4c9e8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content_header"));
 
-        // line 72
+        // line 69
         echo "                        <div class=\"row\">
                             <div class=\"col-md-1\"></div>
                             <div class=\"col-md-10\">
@@ -276,40 +270,40 @@ class __TwigTemplate_9a0d374b41b2f604a6da3c44da62fe2eda02ad42a61b25ab9a3ba9f77e1
                             <div class=\"col-md-1\"></div>
                         </div>
                         ";
-        // line 81
+        // line 78
         echo "
                     ";
         
-        $__internal_2aa9bb8e5b1b6b7b056e9ccd5a9b54dc2170aae9800fd82d169a17cdaf92a951->leave($__internal_2aa9bb8e5b1b6b7b056e9ccd5a9b54dc2170aae9800fd82d169a17cdaf92a951_prof);
+        $__internal_84c80b3941f034e5325142a78ea700d017a36da73c4f1b72a7ea7c20c9e4c9e8->leave($__internal_84c80b3941f034e5325142a78ea700d017a36da73c4f1b72a7ea7c20c9e4c9e8_prof);
 
     }
 
-    // line 86
+    // line 83
     public function block_contenido($context, array $blocks = array())
     {
-        $__internal_f7942acf32a0ad3026e7a9584385bc428ac286c6d2577819a3541b329016e9b8 = $this->env->getExtension("native_profiler");
-        $__internal_f7942acf32a0ad3026e7a9584385bc428ac286c6d2577819a3541b329016e9b8->enter($__internal_f7942acf32a0ad3026e7a9584385bc428ac286c6d2577819a3541b329016e9b8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "contenido"));
+        $__internal_2f86bc518b6afcd8755a14d6184686a172a003abae6b17e45ef70fe2d14c757f = $this->env->getExtension("native_profiler");
+        $__internal_2f86bc518b6afcd8755a14d6184686a172a003abae6b17e45ef70fe2d14c757f->enter($__internal_2f86bc518b6afcd8755a14d6184686a172a003abae6b17e45ef70fe2d14c757f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "contenido"));
 
-        // line 87
+        // line 84
         echo "                                <div>
                                     <div align=\"center\" style=\"padding: 40px\"> <div style=\"font-style: italic; text-decoration-style: double\">
                                         <h3>MISIÓN</h3>
                                     </div>
                                     <h4>Satisfacemos las expectativas de los clientes con servicios de transportación de pasajeros,
-                                                                                                                    conexos  y cargas en general con trabajadores de un  alto sentido de pertenencia  y
-                                                                                                                    un parque de equipos  en constante revitalización.
+                                                                            conexos  y cargas en general con trabajadores de un  alto sentido de pertenencia  y
+                                                                            un parque de equipos  en constante revitalización.
                                     </h4>
                                     <div style=\"font-style: italic; text-decoration-style: double\">
                                         <h3>VISIÓN</h3>
                                     </div>
                                     <h4>Somos líderes en la prestación de servicios a nuestros clientes, con calidad,
-                                                                                                                   oportunidad y seguridad.</h4>
+                                                                           oportunidad y seguridad.</h4>
 
                                     <div style=\"font-style: italic; text-decoration-style: double\">
                                         <h3>ORGANIGRAMA</h3>
                                     </div>
                                     <img height=\"609\" width=\"1119\" src=\"";
-        // line 104
+        // line 101
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("assets/dist/img/Organigrama Empresa.png"), "html", null, true);
         echo "\">
                                 </div>
@@ -318,37 +312,43 @@ class __TwigTemplate_9a0d374b41b2f604a6da3c44da62fe2eda02ad42a61b25ab9a3ba9f77e1
                             <!-- /.tab-content -->
                         ";
         
-        $__internal_f7942acf32a0ad3026e7a9584385bc428ac286c6d2577819a3541b329016e9b8->leave($__internal_f7942acf32a0ad3026e7a9584385bc428ac286c6d2577819a3541b329016e9b8_prof);
+        $__internal_2f86bc518b6afcd8755a14d6184686a172a003abae6b17e45ef70fe2d14c757f->leave($__internal_2f86bc518b6afcd8755a14d6184686a172a003abae6b17e45ef70fe2d14c757f_prof);
 
     }
 
-    // line 134
+    // line 131
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_d1e53c4d31895eff531f37180b82b9dd20cf0d903731f1f0d4e373aae60c785c = $this->env->getExtension("native_profiler");
-        $__internal_d1e53c4d31895eff531f37180b82b9dd20cf0d903731f1f0d4e373aae60c785c->enter($__internal_d1e53c4d31895eff531f37180b82b9dd20cf0d903731f1f0d4e373aae60c785c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_5382a042dda75abe7fc068e32a322d322ac363e017518ac713ea2944b2d9344a = $this->env->getExtension("native_profiler");
+        $__internal_5382a042dda75abe7fc068e32a322d322ac363e017518ac713ea2944b2d9344a->enter($__internal_5382a042dda75abe7fc068e32a322d322ac363e017518ac713ea2944b2d9344a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 135
+        // line 132
         echo "        <!-- REQUIRED JS SCRIPTS -->
 
         <!-- jQuery 2.2.0 --><script src=\"";
-        // line 137
+        // line 134
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("assets/plugins/jQuery/jQuery-2.2.0.min.js"), "html", null, true);
         echo "\"> </script>
         <!-- Bootstrap 3.3.5 -->
         <script src=\"";
-        // line 139
+        // line 136
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("assets/bootstrap/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
         <!-- AdminLTE App -->
         <script src=\"";
-        // line 141
+        // line 138
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("assets/dist/js/app.min.js"), "html", null, true);
         echo "\"></script>
 
         ";
-        // line 144
+        // line 141
         echo "    ";
+        // line 142
+        echo "        ";
+        // line 143
+        echo "        ";
+        // line 144
+        echo "        ";
         // line 145
         echo "        ";
         // line 146
@@ -366,14 +366,14 @@ class __TwigTemplate_9a0d374b41b2f604a6da3c44da62fe2eda02ad42a61b25ab9a3ba9f77e1
         // line 152
         echo "        ";
         // line 153
-        echo "        ";
-        // line 154
-        echo "        ";
+        echo "
+        ";
         // line 155
         echo "        ";
         // line 156
-        echo "
-        ";
+        echo "        ";
+        // line 157
+        echo "        ";
         // line 158
         echo "        ";
         // line 159
@@ -387,21 +387,21 @@ class __TwigTemplate_9a0d374b41b2f604a6da3c44da62fe2eda02ad42a61b25ab9a3ba9f77e1
         // line 163
         echo "        ";
         // line 164
-        echo "        ";
-        // line 165
-        echo "        ";
-        // line 166
-        echo "        ";
-        // line 167
         echo "
 
         <!-- Optionally, you can add Slimscroll and FastClick plugins.
-                         Both of these plugins are recommended to enhance the
-                         user experience. Slimscroll is required when using the
-                         fixed layout.
-                    -->
+                 Both of these plugins are recommended to enhance the
+                 user experience. Slimscroll is required when using the
+                 fixed layout.
+            -->
 
         ";
+        // line 173
+        echo "        ";
+        // line 174
+        echo "        ";
+        // line 175
+        echo "        ";
         // line 176
         echo "        ";
         // line 177
@@ -427,17 +427,11 @@ class __TwigTemplate_9a0d374b41b2f604a6da3c44da62fe2eda02ad42a61b25ab9a3ba9f77e1
         // line 187
         echo "        ";
         // line 188
-        echo "        ";
-        // line 189
-        echo "        ";
-        // line 190
-        echo "        ";
-        // line 191
         echo "        <!-- page script -->
 
     ";
         
-        $__internal_d1e53c4d31895eff531f37180b82b9dd20cf0d903731f1f0d4e373aae60c785c->leave($__internal_d1e53c4d31895eff531f37180b82b9dd20cf0d903731f1f0d4e373aae60c785c_prof);
+        $__internal_5382a042dda75abe7fc068e32a322d322ac363e017518ac713ea2944b2d9344a->leave($__internal_5382a042dda75abe7fc068e32a322d322ac363e017518ac713ea2944b2d9344a_prof);
 
     }
 
@@ -453,7 +447,7 @@ class __TwigTemplate_9a0d374b41b2f604a6da3c44da62fe2eda02ad42a61b25ab9a3ba9f77e1
 
     public function getDebugInfo()
     {
-        return array (  436 => 191,  434 => 190,  432 => 189,  430 => 188,  428 => 187,  426 => 186,  424 => 185,  422 => 184,  420 => 183,  418 => 182,  416 => 181,  414 => 180,  412 => 179,  410 => 178,  408 => 177,  406 => 176,  396 => 167,  394 => 166,  392 => 165,  390 => 164,  388 => 163,  386 => 162,  384 => 161,  382 => 160,  380 => 159,  378 => 158,  375 => 156,  373 => 155,  371 => 154,  369 => 153,  367 => 152,  365 => 151,  363 => 150,  361 => 149,  359 => 148,  357 => 147,  355 => 146,  353 => 145,  351 => 144,  346 => 141,  341 => 139,  336 => 137,  332 => 135,  326 => 134,  313 => 104,  294 => 87,  288 => 86,  280 => 81,  270 => 72,  264 => 71,  247 => 110,  245 => 86,  240 => 83,  238 => 71,  225 => 60,  219 => 59,  212 => 55,  209 => 54,  203 => 53,  196 => 50,  193 => 49,  187 => 48,  179 => 43,  173 => 39,  171 => 38,  169 => 37,  167 => 36,  165 => 35,  162 => 33,  160 => 32,  158 => 31,  156 => 30,  154 => 29,  149 => 26,  143 => 23,  138 => 21,  133 => 19,  127 => 16,  123 => 14,  117 => 13,  109 => 8,  103 => 7,  94 => 194,  92 => 134,  84 => 129,  78 => 126,  71 => 121,  69 => 59,  64 => 56,  62 => 53,  58 => 51,  56 => 48,  50 => 45,  47 => 44,  45 => 13,  40 => 10,  38 => 7,  30 => 1,);
+        return array (  430 => 188,  428 => 187,  426 => 186,  424 => 185,  422 => 184,  420 => 183,  418 => 182,  416 => 181,  414 => 180,  412 => 179,  410 => 178,  408 => 177,  406 => 176,  404 => 175,  402 => 174,  400 => 173,  390 => 164,  388 => 163,  386 => 162,  384 => 161,  382 => 160,  380 => 159,  378 => 158,  376 => 157,  374 => 156,  372 => 155,  369 => 153,  367 => 152,  365 => 151,  363 => 150,  361 => 149,  359 => 148,  357 => 147,  355 => 146,  353 => 145,  351 => 144,  349 => 143,  347 => 142,  345 => 141,  340 => 138,  335 => 136,  330 => 134,  326 => 132,  320 => 131,  307 => 101,  288 => 84,  282 => 83,  274 => 78,  264 => 69,  258 => 68,  241 => 107,  239 => 83,  234 => 80,  232 => 68,  219 => 57,  213 => 56,  206 => 52,  203 => 51,  197 => 50,  190 => 47,  187 => 46,  181 => 45,  173 => 40,  167 => 36,  165 => 35,  163 => 34,  161 => 33,  159 => 32,  156 => 30,  154 => 29,  152 => 28,  150 => 27,  148 => 26,  142 => 22,  138 => 21,  133 => 19,  127 => 16,  123 => 14,  117 => 13,  109 => 8,  103 => 7,  94 => 191,  92 => 131,  84 => 126,  78 => 123,  71 => 118,  69 => 56,  64 => 53,  62 => 50,  58 => 48,  56 => 45,  50 => 42,  47 => 41,  45 => 13,  40 => 10,  38 => 7,  30 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
@@ -477,11 +471,8 @@ class __TwigTemplate_9a0d374b41b2f604a6da3c44da62fe2eda02ad42a61b25ab9a3ba9f77e1
 /*             rel="stylesheet" href="{{ asset('assets/dist/font-awesome/css/font-awesome.min.css') }}">*/
 /*             <!-- Theme style -->*/
 /*             <link rel="stylesheet" href="{{ asset('assets/dist/css/AdminLTE.css') }}">*/
-/*             <link*/
-/*             rel="stylesheet" href="{{ asset('assets/dist/css/fonts.googleapis.SourceSansPro.css') }}">*/
+/*             <link rel="stylesheet" href="{{ asset('assets/dist/css/fonts.googleapis.SourceSansPro.css') }}">*/
 /* */
-/*             <!-- Custom style -->*/
-/*             <link rel="stylesheet" href="{{ asset('css/custom/base.css') }}">*/
 /* */
 /*             {#<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">#}*/
 /*             {#<link rel="stylesheet" href="{{ asset('css/bootstrap-responsive.min.css') }}" rel="stylesheet">#}*/
@@ -495,9 +486,9 @@ class __TwigTemplate_9a0d374b41b2f604a6da3c44da62fe2eda02ad42a61b25ab9a3ba9f77e1
 /*             {#<link href="css/style-responsive.min.css" rel="stylesheet" />#}*/
 /*             {#<link href="css/retina.css" rel="stylesheet" />#}*/
 /*             <!-- AdminLTE Skins. We have chosen the skin-blue for this starter*/
-/*                                       page. However, you can choose any other skin. Make sure you*/
-/*                                       apply the skin class to the body tag so the changes take effect.*/
-/*                                 -->*/
+/*                           page. However, you can choose any other skin. Make sure you*/
+/*                           apply the skin class to the body tag so the changes take effect.*/
+/*                     -->*/
 /*         <link rel="stylesheet" href="{{ asset('assets/dist/css/skins/_all-skins.css') }}"> {% endblock %}*/
 /* */
 /*         <link rel="icon" type="image/x-icon" href="{{ asset('apple-touch-icon.png') }}"/>*/
@@ -547,14 +538,14 @@ class __TwigTemplate_9a0d374b41b2f604a6da3c44da62fe2eda02ad42a61b25ab9a3ba9f77e1
 /*                                         <h3>MISIÓN</h3>*/
 /*                                     </div>*/
 /*                                     <h4>Satisfacemos las expectativas de los clientes con servicios de transportación de pasajeros,*/
-/*                                                                                                                     conexos  y cargas en general con trabajadores de un  alto sentido de pertenencia  y*/
-/*                                                                                                                     un parque de equipos  en constante revitalización.*/
+/*                                                                             conexos  y cargas en general con trabajadores de un  alto sentido de pertenencia  y*/
+/*                                                                             un parque de equipos  en constante revitalización.*/
 /*                                     </h4>*/
 /*                                     <div style="font-style: italic; text-decoration-style: double">*/
 /*                                         <h3>VISIÓN</h3>*/
 /*                                     </div>*/
 /*                                     <h4>Somos líderes en la prestación de servicios a nuestros clientes, con calidad,*/
-/*                                                                                                                    oportunidad y seguridad.</h4>*/
+/*                                                                            oportunidad y seguridad.</h4>*/
 /* */
 /*                                     <div style="font-style: italic; text-decoration-style: double">*/
 /*                                         <h3>ORGANIGRAMA</h3>*/
@@ -625,10 +616,10 @@ class __TwigTemplate_9a0d374b41b2f604a6da3c44da62fe2eda02ad42a61b25ab9a3ba9f77e1
 /* */
 /* */
 /*         <!-- Optionally, you can add Slimscroll and FastClick plugins.*/
-/*                          Both of these plugins are recommended to enhance the*/
-/*                          user experience. Slimscroll is required when using the*/
-/*                          fixed layout.*/
-/*                     -->*/
+/*                  Both of these plugins are recommended to enhance the*/
+/*                  user experience. Slimscroll is required when using the*/
+/*                  fixed layout.*/
+/*             -->*/
 /* */
 /*         {#<script src="js/jquery.uploadify-3.1.min.js"></script>#}*/
 /*         {#<script src="js/jquery.gritter.min.js"></script>#}*/

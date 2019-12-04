@@ -15,8 +15,8 @@ class __TwigTemplate_ba46fecf730353e8311656b87a4bb229148131435c7ce8000cd48837e7c
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_3ae89b5e954ffce14c22e2dd23b993a70e002532017c284eb56201ba7d0afe0f = $this->env->getExtension("native_profiler");
-        $__internal_3ae89b5e954ffce14c22e2dd23b993a70e002532017c284eb56201ba7d0afe0f->enter($__internal_3ae89b5e954ffce14c22e2dd23b993a70e002532017c284eb56201ba7d0afe0f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "header.html.twig"));
+        $__internal_d241f139a9f95dd9378e02a1da7ce3f4f19d994b6c4632c0a98478e04b04c0df = $this->env->getExtension("native_profiler");
+        $__internal_d241f139a9f95dd9378e02a1da7ce3f4f19d994b6c4632c0a98478e04b04c0df->enter($__internal_d241f139a9f95dd9378e02a1da7ce3f4f19d994b6c4632c0a98478e04b04c0df_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "header.html.twig"));
 
         // line 1
         $context["usuario"] = $this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array());
@@ -24,70 +24,67 @@ class __TwigTemplate_ba46fecf730353e8311656b87a4bb229148131435c7ce8000cd48837e7c
         $context["session"] = $this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array());
         // line 3
         echo "<!-- Logo -->
-    <a href=\"";
-        // line 4
-        echo $this->env->getExtension('routing')->getPath("index");
-        echo "\" class=\"logo\" style=\"background:#FFFFFF;\">
-    <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class=\"logo-mini\"><img src=\"";
-        // line 6
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("assets/dist/img/r.jpg"), "html", null, true);
-        echo "\" class=\"img-circle\" alt=\"User Image\"></span>
-    <!-- logo for regular state and mobile devices -->
-    <span class=\"logo-lg \"><img height=\"50\" width=\"130\" src=\"";
-        // line 8
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("assets/dist/img/logo_thg_horizontal.png"), "html", null, true);
-        echo "\"></span>
-  </a>
 
   <!-- Header Navbar -->
-  <nav id=\"elemento1\" class=\"navbar navbar-static-top\" role=\"navigation\">
-    <!-- Sidebar toggle button-->
+  <nav id=\"elemento1\" class=\"navbar navbar-static-top navbar-fixed-top\" role=\"navigation\">
+    <a href=\"";
+        // line 7
+        echo $this->env->getExtension('routing')->getPath("index");
+        echo "\" class=\"navbar-brand logo\" style=\"background:#FFFFFF;\">
+      <span class=\"logo-mini\"><img src=\"";
+        // line 8
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("assets/dist/img/r.jpg"), "html", null, true);
+        echo "\" class=\"img-circle\" alt=\"User Image\"></span>
+      <span class=\"logo-lg \"><img height=\"50\" width=\"130\" src=\"";
+        // line 9
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("assets/dist/img/logo_thg_horizontal.png"), "html", null, true);
+        echo "\"></span>
+    </a>
     <a href=\"#\" class=\"sidebar-toggle\" data-toggle=\"offcanvas\" role=\"button\">
       <span class=\"sr-only\">Toggle navigation</span>
     </a>
-      <div class=\"\">
-          <ul class=\"\">
-      <h3 style=\"text-align: center\">EMPRESA TRANSPORTE HOLGUÍN -- UEB ÓMNIBUS HOLGUÍN</h3>
-      </ul>
-          </div>
+    <ul class=\"nav navbar-nav justify-content-center\" style=\" width:72%; text-align:center;\">
+      <li class=\"nav-item\" style=\" width:100%;\">
+        <a class=\"nav-link\" href=\"\" style=\"cursor:initial; color:black; font-size:x-large;\">EMPRESA TRANSPORTE HOLGUÍN -- UEB ÓMNIBUS HOLGUÍN</a>
+      </li>
+    </ul>
     <!-- Navbar Right Menu -->
-     <div class=\"navbar-custom-menu\">
+     <div class=\"navbar-toggler navbar-custom-menu\">
       <ul class=\"nav navbar-nav\">
         <!-- Messages: style can be found in dropdown.less-->
 
         ";
-        // line 28
+        // line 25
         echo "
         ";
-        // line 30
+        // line 27
         echo "
 
                 ";
-        // line 33
+        // line 30
         echo "        <li class=\"dropdown user user-menu\">
           <!-- Menu Toggle Button -->
           <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
             <!-- The user image in the navbar-->
             <img src=\"";
-        // line 37
+        // line 34
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("assets/dist/img/r.jpg"), "html", null, true);
         echo "\" class=\"user-image\" alt=\"User Image\">
             <!-- hidden-xs hides the username on small devices so only the image appears. -->
             ";
-        // line 40
+        // line 37
         echo "          </a>
           <ul class=\"dropdown-menu\">
             <!-- The user image in the menu -->
             <li class=\"user-header\">
               <img src=\"";
-        // line 44
+        // line 41
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("assets/dist/img/r.jpg"), "html", null, true);
         echo "\" class=\"img-circle\" alt=\"User Image\">
 
               <p>
                 ";
-        // line 48
+        // line 45
         echo "              </p>
             </li>
             <!-- Menu Body -->
@@ -98,18 +95,18 @@ class __TwigTemplate_ba46fecf730353e8311656b87a4bb229148131435c7ce8000cd48837e7c
             <li class=\"user-footer\">
               <div class=\"pull-left\">
                 <a href=\"";
-        // line 57
+        // line 54
         echo $this->env->getExtension('routing')->getPath("login");
         echo "\" class=\"btn btn-block btn-primary\">Autenticarse</a>
               </div>
               <div class=\"pull-right\">
 
                 <a href=\"";
-        // line 61
+        // line 58
         echo $this->env->getExtension('routing')->getPath("logout");
         echo "\" class=\"btn btn-block btn-danger\">Salir</a>
                 ";
-        // line 63
+        // line 60
         echo "
               </div>
             </li>
@@ -119,7 +116,7 @@ class __TwigTemplate_ba46fecf730353e8311656b87a4bb229148131435c7ce8000cd48837e7c
     </div>
   </nav>";
         
-        $__internal_3ae89b5e954ffce14c22e2dd23b993a70e002532017c284eb56201ba7d0afe0f->leave($__internal_3ae89b5e954ffce14c22e2dd23b993a70e002532017c284eb56201ba7d0afe0f_prof);
+        $__internal_d241f139a9f95dd9378e02a1da7ce3f4f19d994b6c4632c0a98478e04b04c0df->leave($__internal_d241f139a9f95dd9378e02a1da7ce3f4f19d994b6c4632c0a98478e04b04c0df_prof);
 
     }
 
@@ -135,32 +132,29 @@ class __TwigTemplate_ba46fecf730353e8311656b87a4bb229148131435c7ce8000cd48837e7c
 
     public function getDebugInfo()
     {
-        return array (  113 => 63,  109 => 61,  102 => 57,  91 => 48,  85 => 44,  79 => 40,  74 => 37,  68 => 33,  64 => 30,  61 => 28,  39 => 8,  34 => 6,  29 => 4,  26 => 3,  24 => 2,  22 => 1,);
+        return array (  110 => 60,  106 => 58,  99 => 54,  88 => 45,  82 => 41,  76 => 37,  71 => 34,  65 => 30,  61 => 27,  58 => 25,  40 => 9,  36 => 8,  32 => 7,  26 => 3,  24 => 2,  22 => 1,);
     }
 }
 /* {% set usuario = app.user %}*/
 /* {% set session = app.session %}*/
 /* <!-- Logo -->*/
-/*     <a href="{{ path('index') }}" class="logo" style="background:#FFFFFF;">*/
-/*     <!-- mini logo for sidebar mini 50x50 pixels -->*/
-/*     <span class="logo-mini"><img src="{{ asset('assets/dist/img/r.jpg') }}" class="img-circle" alt="User Image"></span>*/
-/*     <!-- logo for regular state and mobile devices -->*/
-/*     <span class="logo-lg "><img height="50" width="130" src="{{ asset('assets/dist/img/logo_thg_horizontal.png') }}"></span>*/
-/*   </a>*/
 /* */
 /*   <!-- Header Navbar -->*/
-/*   <nav id="elemento1" class="navbar navbar-static-top" role="navigation">*/
-/*     <!-- Sidebar toggle button-->*/
+/*   <nav id="elemento1" class="navbar navbar-static-top navbar-fixed-top" role="navigation">*/
+/*     <a href="{{ path('index') }}" class="navbar-brand logo" style="background:#FFFFFF;">*/
+/*       <span class="logo-mini"><img src="{{ asset('assets/dist/img/r.jpg') }}" class="img-circle" alt="User Image"></span>*/
+/*       <span class="logo-lg "><img height="50" width="130" src="{{ asset('assets/dist/img/logo_thg_horizontal.png') }}"></span>*/
+/*     </a>*/
 /*     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">*/
 /*       <span class="sr-only">Toggle navigation</span>*/
 /*     </a>*/
-/*       <div class="">*/
-/*           <ul class="">*/
-/*       <h3 style="text-align: center">EMPRESA TRANSPORTE HOLGUÍN -- UEB ÓMNIBUS HOLGUÍN</h3>*/
-/*       </ul>*/
-/*           </div>*/
+/*     <ul class="nav navbar-nav justify-content-center" style=" width:72%; text-align:center;">*/
+/*       <li class="nav-item" style=" width:100%;">*/
+/*         <a class="nav-link" href="" style="cursor:initial; color:black; font-size:x-large;">EMPRESA TRANSPORTE HOLGUÍN -- UEB ÓMNIBUS HOLGUÍN</a>*/
+/*       </li>*/
+/*     </ul>*/
 /*     <!-- Navbar Right Menu -->*/
-/*      <div class="navbar-custom-menu">*/
+/*      <div class="navbar-toggler navbar-custom-menu">*/
 /*       <ul class="nav navbar-nav">*/
 /*         <!-- Messages: style can be found in dropdown.less-->*/
 /* */

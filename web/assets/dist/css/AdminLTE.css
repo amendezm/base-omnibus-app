@@ -5183,3 +5183,7 @@ table.text-center th {
   margin-left: 18vw;
   overflow-x: hidden;
 }
+
+.main-footer {
+  height: 8vh;
+}
