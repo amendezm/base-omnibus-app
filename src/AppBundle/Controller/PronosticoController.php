@@ -42,6 +42,6 @@ class PronosticoController extends Controller
             array("x" => 1420050600000, "y" => 1872000),
             array("x" => 1451586600000, "y" => 2140000)
         );
-        return $this->render("pronostico/pronostico_recaudacion.html.twig", array("dataPoints" => $dataPoints));
+        return $this->render("pronostico/pronostico_recaudacion.html.twig", array("dataPoints" => json_encode($dataPoints)));
     }
 }
