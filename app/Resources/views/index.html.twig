@@ -1008,15 +1008,20 @@
     {% block javascripts %}
     <!-- REQUIRED JS SCRIPTS -->
 
-    <!-- jQuery 2.2.0 -->
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{ asset('assets/jquery/jquery.min.js') }}"></script>
     <script src="{{
-        asset('assets/plugins/jQuery/jQuery-2.2.0.min.js')
+        asset('assets/bootstrap/js/bootstrap.bundle.min.js')
       }}"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('assets/dist/js/app.min.js') }}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{
+        asset('assets/jquery-easing/jquery.easing.min.js')
+      }}"></script>
+
+    <!-- Custom scripts for all pages-->
     <script src="{{ asset('js/javascript/sb-admin.min.js') }}"></script>
+
     {% endblock javascripts %}
   </body>
 </html>
