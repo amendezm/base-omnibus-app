@@ -12,11 +12,6 @@
       name="viewport"
     />
     {% block stylesheets %}
-    <!-- Bootstrap 3.3.5 -->
-    <!-- <link
-      rel="stylesheet"
-      href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}"
-    /> -->
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
@@ -49,6 +44,13 @@
       href="{{ asset('css/admin-template/sb-admin.css') }}"
     />
 
+    <!-- datatables -->
+    <link
+      href="{{ asset('assets/datatables/dataTables.bootstrap4.min.css') }}"
+      rel="stylesheet"
+    />
+
+    <!-- custom styles -->
     <link rel="stylesheet" href="{{ asset('css/custom/base.css') }}" />
 
     {% endblock %}
@@ -68,10 +70,9 @@
 
         <!-- Main Content -->
         <div id="content">
-          {% block contenido %}
-
           <!-- Begin Page Content -->
           <div class="container-fluid">
+            {% block contenido %}
             <!-- Page Heading -->
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
@@ -497,9 +498,9 @@
                 </div>
               </div>
             </div>
+            {% endblock %}
           </div>
           <!-- /.container-fluid -->
-          {% endblock %}
         </div>
         <!-- End of Main Content -->
 
@@ -583,10 +584,17 @@
 
     <!-- Page level plugins -->
     <script src="{{ asset('assets/chart.js/Chart.min.js') }}"></script>
+    <script src="{{
+        asset('assets/datatables/jquery.dataTables.min.js')
+      }}"></script>
+    <script src="{{
+        asset('assets/datatables/dataTables.bootstrap4.min.js')
+      }}"></script>
 
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
+    <script src="{{ asset('js/demo/datatables-demo.js')}}"></script>
 
     {% endblock javascripts %}
   </body>
