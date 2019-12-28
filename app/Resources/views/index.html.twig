@@ -25,37 +25,33 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('assets/dist/css/AdminLTE.css') }}" />
     <link
-    rel="stylesheet"
-    href="{{ asset('assets/dist/css/fonts.googleapis.SourceSansPro.css') }}"
+      rel="stylesheet"
+      href="{{ asset('assets/dist/css/fonts.googleapis.SourceSansPro.css') }}"
     />
-    
+
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
       page. However, you can choose any other skin. Make sure you
       apply the skin class to the body tag so the changes take effect.
     -->
     <link
-    rel="stylesheet"
-    href="{{ asset('assets/dist/css/skins/_all-skins.css') }}"
+      rel="stylesheet"
+      href="{{ asset('assets/dist/css/skins/_all-skins.css') }}"
     />
     <link
-    rel="icon"
-    type="image/x-icon"
-    href="{{ asset('apple-touch-icon.png') }}"
+      rel="icon"
+      type="image/x-icon"
+      href="{{ asset('apple-touch-icon.png') }}"
     />
-    
+
     <!-- admin bootstrap template -->
     <link
-    rel="stylesheet"
-    href="{{ asset('css/admin-template/sb-admin.css') }}"
+      rel="stylesheet"
+      href="{{ asset('css/admin-template/sb-admin.css') }}"
     />
 
-    <link
-      rel="stylesheet"
-      href="{{ asset('css/custom/base.css') }}"
-    />
+    <link rel="stylesheet" href="{{ asset('css/custom/base.css') }}" />
 
     {% endblock %}
-
   </head>
   <body id="page-top">
     <!-- Page Wrapper -->
@@ -870,6 +866,13 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('js/javascript/sb-admin.min.js') }}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{{ asset('assets/chart.js/Chart.min.js') }}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
+    <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
 
     {% endblock javascripts %}
   </body>
