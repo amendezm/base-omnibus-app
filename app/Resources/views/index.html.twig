@@ -62,11 +62,15 @@
 
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Topbar -->
+        {% block navbar %} {% include 'header.html.twig' %} {% endblock %}
+        <!-- End of Topbar -->
+        
         <!-- Main Content -->
         <div id="content">
-          <!-- Topbar -->
-          {% block navbar %} {% include 'header.html.twig' %} {% endblock %}
-          <!-- End of Topbar -->
+          {% block contenido %}
+
 
           <!-- Begin Page Content -->
           <div class="container-fluid">
@@ -497,6 +501,7 @@
             </div>
           </div>
           <!-- /.container-fluid -->
+        {% endblock %}
         </div>
         <!-- End of Main Content -->
 
