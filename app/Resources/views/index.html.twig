@@ -62,15 +62,13 @@
 
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
-
         <!-- Topbar -->
         {% block navbar %} {% include 'header.html.twig' %} {% endblock %}
         <!-- End of Topbar -->
-        
+
         <!-- Main Content -->
         <div id="content">
           {% block contenido %}
-
 
           <!-- Begin Page Content -->
           <div class="container-fluid">
@@ -501,7 +499,7 @@
             </div>
           </div>
           <!-- /.container-fluid -->
-        {% endblock %}
+          {% endblock %}
         </div>
         <!-- End of Main Content -->
 
@@ -509,7 +507,10 @@
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright &copy; Your Website 2019</span>
+              <span
+                >Sistema de gestión de información de la UEB Ómnibus Holguín
+                &copy; {{'now' | date('d-m-Y')}}</span
+              >
             </div>
           </div>
         </footer>
