@@ -1,178 +1,351 @@
-<section id="elemento2" class="sidebar">
-
     <!-- Sidebar Menu -->
-    <ul class="sidebar-menu">
-        {#<li class="sidebar-menu"><span><h4>Panel de Navegación</h4></span></li>#}
-        <!-- Optionally, you can add icons to the links -->
-        <br>
-        <br>
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+       
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ path('index') }}"  style="background:white;">
+          <span class="logo-lg"
+            ><img
+              height="50"
+              width="130"
+              src="{{ asset('assets/dist/img/logo_thg_horizontal.png') }}"
+          /></span>
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+          </a>
+        </a>
 
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0" />
         {% if is_granted('ROLE_ADMIN') %}
-        <li class="treeview">
-            <a href="#"><i class="glyphicon glyphicon-tag"></i> <span>Administración</span><i class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu">
-                <li>
-                    <a href="{{ path('usuario_index') }}">
+        <li class="nav-item">
+            <a
+              class="nav-link collapsed"
+              href="#"
+              data-toggle="collapse"
+              data-target="#collapseTwo"
+              aria-expanded="true"
+              aria-controls="collapseTwo"
+              >
+                <i class="glyphicon glyphicon-tag"></i> 
+                <span>Administración</span>
+            </a>
+            <div
+              id="collapseTwo"
+              class="collapse"
+              aria-labelledby="headingTwo"
+              data-parent="#accordionSidebar"
+            >
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ path('usuario_index') }}">
                         <i class="fa fa-users"></i> <span>Usuarios</span></i>
                     </a>
-                </li>
-
-                {#<li >#}
-                    {#<a href=""><i class="glyphicon glyphicon-asterisk"></i> Salvar Base de Datos</a>#}
-                {#</li>#}
-
-                <li >
-                    <a href="{{ path('base_index')}}"><i class="glyphicon glyphicon-star-empty"></i> <span>Base</span> </a>
-                </li>
-            </ul>
+                    <a class="collapse-item" href="{{ path('base_index')}}"><i class="fas fa-warehouse"></i> <span>Base</span> </a>
+                </div>
+            </div>
         </li>
         {% endif %}
-            {#<li class="treeview">#}
-                {#<a href="#"><i class="glyphicon glyphicon-user"></i> <span>Mi Perfil</span> <i class="fa fa-angle-left pull-right"></i></a>#}
-                {#<ul class="treeview-menu">#}
-                    {#<li>#}
-                        {#<a href="">#}
-                            {#<i class="fa fa-circle-o text-orange"></i> Mi  Perfil#}
-                        {#</a>#}
-                    {#</li>#}
-                    {#<li>#}
-                        {#<a href="{{ path('usuario_index') }}">#}
-                            {#<i class="fa fa-circle-o text-orange"></i> Editar#}
-                        {#</a>#}
-                    {#</li>#}
-                    {#<li>#}
-                        {#<a href="">#}
-                            {#<i class="fa fa-circle-o text-orange"></i> Cambiar contraseña#}
-                        {#</a>#}
-                    {#</li>#}
-                {#</ul>#}
-            {#</li>#}
+        <!-- Divider -->
+        <hr class="sidebar-divider" />
 
-
-            <li class="treeview">
-                <a href="#"><i class="glyphicon glyphicon-list"></i> <span>Dpto de Operaciones</span><i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li >
-                        <a href="{{ path('chofer_index') }}"><i class="glyphicon glyphicon-user"></i> <span>Choferes</span> </a>
-                    </li>
-
-                    <li >
-                        <a href="{{ path('omnibus_index') }}"><i class="glyphicon glyphicon-calendar"></i> <span>Ómnibus</span> </a>
-                        {#<i class="glyphicon glyphicon-"></i>#}
-                    </li>
-
-                    <li>
-                        <a href="{{ path('tipo_omnibus_index')}}"><i class="glyphicon glyphicon-calendar"></i> <span>Tipo de Ómnibus</span> </a>
-                    </li>
-
-                    <li>
-                        <a href="{{ path('ruta_index') }}"><i class="fa fa-fw fa-pencil-square-o"></i> <span>Rutas</span> </a>
-                    </li>
-                    <li >
-                        <a href="{{ path('pto_expedicion_index') }}"><i class="glyphicon glyphicon-calendar"></i> <span>Ptos de expedición</span> </a>
-                        {#<i class="glyphicon glyphicon-"></i>#}
-                    </li>
-                    <li>
-                        <a href="{{ path('escogidaturno_index') }}"><i class="fa fa-fw fa-pencil-square-o"></i> <span>Escogida de Turno </span> </a>
-                    </li>
-
-                    <li>
-                        <a href="{{ path('hojaruta_index') }}"><i class="fa fa-fw fa-pencil-square-o"></i> <span>Hoja de Ruta</span> </a>
-                    </li>
-                    <li>
-                        <a href="{{ path('tipoincidencia_index') }}"><i class="fa fa-fw fa-pencil-square-o"></i> <span>Tipo de Incidencias</span> </a>
-                    </li>
-                    <li>
-                        <a href="{{ path('incidencia_index') }}"><i class="fa fa-fw fa-pencil-square-o"></i> <span>Incidencias</span> </a>
-                    </li>
-                    {#<li>#}
-                        {#<a href=""><i class="fa fa-fw fa-pencil-square-o"></i> <span>Plan de Combustible</span> </a>#}
-                    {#</li>#}
-                    <li>
-                        {#<a href="{{ path('tipo_horas_trabajo_index') }}"><i class="fa fa-fw fa-pencil-square-o"></i> <span>Horas de Trabajo</span> </a>#}
-                    </li>
-                </ul>
-            </li>
-
-
-        <li class="treeview">
-            <a href="#"><i class="glyphicon glyphicon-list"></i> <span>Dpto de Energía</span><i class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu">
-                <li>
-                    <a href="{{ path('tarjeta_combustible_index') }}">
-                        <i class="fa fa-credit-card"></i> <span>Tarjeta de Combustible</span></i>
+        <!-- Heading -->
+        <div class="sidebar-heading dpto1">
+          Departamentos
+        </div>
+        <div class="sidebar-heading dpto2">
+          Dptos
+        </div>
+        <li class="nav-item">
+            <a
+              class="nav-link collapsed sidebar-item"
+              href="#"
+              data-toggle="collapse"
+              data-target="#collapseOperaciones"
+              aria-expanded="true"
+              aria-controls="collapseOperaciones"
+            >
+                <i class="fas fa-briefcase"></i>
+                <span>Operaciones</span>
+            </a>
+            <div
+              id="collapseOperaciones"
+              class="collapse"
+              aria-labelledby="headingOperaciones"
+              data-parent="#accordionSidebar"
+            >
+              <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ path('chofer_index') }}">
+                    <i class="fas fa-user"></i> 
+                    <span>Choferes</span> 
+                </a>
+                <a class="collapse-item" href="{{ path('omnibus_index') }}">
+                    <i class="fas fa-bus"></i> 
+                    <span>Ómnibus</span> 
+                </a>
+                <a class="collapse-item" href="{{ path('tipo_omnibus_index')}}">
+                    <i class="fas fa-bus-alt"></i> 
+                    <span>Tipo de Ómnibus</span> 
+                </a>
+                <a class="collapse-item" href="{{ path('ruta_index') }}">
+                    <i class="fas fa-route"></i> 
+                    <span>Rutas</span> 
+                </a>
+                <a class="collapse-item" href="{{ path('pto_expedicion_index') }}">
+                    <i class="fas fa-map-marker-alt"></i> 
+                    <span>Ptos de expedición</span> 
+                </a>
+                <a class="collapse-item" href="{{ path('escogidaturno_index') }}">
+                    <i class="fas fa-ticket-alt"></i> 
+                    <span>Escogida de Turno </span> 
+                </a>
+                <a class="collapse-item" href="{{ path('hojaruta_index') }}">
+                    <i class="fas fa-clipboard"></i> 
+                    <span>Hoja de Ruta</span> 
+                </a>
+                <a class="collapse-item" href="{{ path('incidencia_index') }}">
+                    <i class="fas fa-clipboard-list"></i> 
+                    <span>Incidencias</span> 
+                </a>
+                <a class="collapse-item" href="{{ path('tipoincidencia_index') }}">
+                    <i class="fas fa-clipboard-list"></i> 
+                    <span>Tipo de Incidencias</span> 
+                </a>
+              </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a
+              class="nav-link collapsed sidebar-item"
+              href="#"
+              data-toggle="collapse"
+              data-target="#collapseEnergia"
+              aria-expanded="true"
+              aria-controls="collapseEnergia"
+            >
+                <i class="fas fa-plug"></i>
+                <span>Energía</span>
+            </a>
+            <div
+                id="collapseEnergia"
+                class="collapse"
+                aria-labelledby="headingEnergia"
+                data-parent="#accordionSidebar"
+            >
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ path('tarjeta_combustible_index') }}">
+                      <i class="fa fa-credit-card"></i> 
+                      <span>Tarjeta de Combustible</span>
                     </a>
-                </li>
-
-                {#<li >#}
-                    {#<a href="{{ path('tipocombustible_index') }}"><i class="glyphicon glyphicon-star"></i> Tipo de Combustible</a>#}
-                {#</li>#}
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+          <a 
+              class="nav-link collapsed sidebar-item"
+              href="#"
+              data-toggle="collapse"
+              data-target="#collapseRRHH"
+              aria-expanded="true"
+              aria-controls="collapseRRHH"
+            >
+              <i class="fas fa-users"></i>
+              <span>Recursos Humanos</span>
+            </a>
+            <div
+              id="collapseRRHH"
+              class="collapse"
+              aria-labelledby="headingRRHH"
+              data-parent="#accordionSidebar"
+            >
+              <div class="bg-white py-2 collapse-inner rounded">
+                <a  class="collapse-item" href="{{ path('trabajador_index') }}">
+                  <i class="fas fa-user"></i> <span>Trabajador</span></i>
+                </a>
+              </div>
+            </div>
+            <ul class="treeview-menu">
             </ul>
         </li>
-
-        <li class="treeview">
-            <a href="#"><i class="glyphicon glyphicon-list"></i> <span>Dpto de RRHH</span><i class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu">
-                <li>
-                    <a href="{{ path('trabajador_index') }}">
-                        <i class="glyphicon glyphicon-user"></i> <span>Trabajador</span></i>
-                    </a>
-                </li>
-                {#<li>#}
-                    {#<a href="">#}
-                        {#<i class="fa fa-money"></i> <span>Salarios</span></i>#}
-                    {#</a>#}
-                {#</li>#}
-            </ul>
-                </li>
-        <li class="treeview">
-            <a href="#"><i class="glyphicon glyphicon-list"></i> <span>Dpto de Control de Flotas</span><i class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu">
-                <li>
-                    <a href="">
-                <li><a href="{{ path('gps_index') }}"><i class="fa fa-circle-o text-aqua"></i>Control de Flotas</a></li>
-                    </a>
-                </li>
-            </ul>
+        <li class="nav-item">
+            <a 
+              class="nav-link collapsed sidebar-item"
+              href="#"
+              data-toggle="collapse"
+              data-target="#collapseFlotas"
+              aria-expanded="true"
+              aria-controls="collapseFlotas"
+            >
+              <i class="fas fa-bus-alt"></i>
+              <span>Control de Flotas</span>
+            </a>
+            <div
+              id="collapseFlotas"
+              class="collapse"
+              aria-labelledby="headingFlotas"
+              data-parent="#accordionSidebar"
+            >
+              <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ path('gps_index') }}">
+                  <i class="fas fa-bus"></i>
+                  <span>Control de Flotas</span>
+                </a>
+              </div>
+            </div>
         </li>
 
-        <li class="treeview">
-            <a href="#"><i class="glyphicon glyphicon-list"></i> <span>Dpto de Recaudación</span><i class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu">
-                <li>
-                    <a href="{{ path('recaudacion_index') }}">
-                        <i class="fa fa-money"></i> <span>Recaudaciones</span></i>
-                    </a>
-                </li>
-                <li>
-                <li><a href="{{ path('recaudacion_recaudacionXfecha') }}"><i class="fa fa-circle-o text-aqua"></i> <span>Recaudación Total por Fecha</span></i>
-                    </a>
-                </li>
-
-                {#<li >#}
-                {#<a href="{{ path('tipocombustible_index') }}"><i class="glyphicon glyphicon-star"></i> Tipo de Combustible</a>#}
-                {#</li>#}
-            </ul>
+        <li class="nav-item">
+            <a 
+              class="nav-link collapsed sidebar-item"
+              href="#"
+              data-toggle="collapse"
+              data-target="#collapseRecacudacion"
+              aria-expanded="true"
+              aria-controls="collapseRecacudacion"
+            >
+              <i class="fas fa-money-check-alt"></i>
+              <span>Recaudación</span>
+            </a>
+            <div
+              id="collapseRecacudacion"
+              class="collapse"
+              aria-labelledby="headingRecacudacion"
+              data-parent="#accordionSidebar"
+            >
+              <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ path('recaudacion_index') }}">
+                  <i class="fas fa-money-check"></i>
+                  <span>Recaudaciones</span>
+                </a>
+                <a class="collapse-item" href="{{ path('recaudacion_recaudacionXfecha') }}">
+                  <i class="fas fa-money-check-alt"></i> 
+                  <span>Total por Fecha</span>
+                </a>
+              </div>
+            </div>
         </li>
 
-        <li class="treeview">
-                <a href="#"><i class="fa fa-fw fa-filter"></i> <span>Reportes</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ path('ruta_reporte') }}"><i class="fa fa-circle-o text-aqua"></i>Incidencias por Ruta y Ómnibus</a></li>
-                    <li><a href="{{ path('chofer_reporte') }}"><i class="fa fa-circle-o text-aqua"></i>Horas Trabajadas por Chofer</a></li>
-                    {#<li><a href="{{ path('reporte_hoja_ruta_fecha') }}"><i class="fa fa-circle-o text-aqua"></i>Hojas de Ruta</a></li>#}
-                    <li><a href="{{ path('pronostico_combustible') }}"><i class="fa fa-circle-o text-aqua"></i>Pronóstico de Combustible</a></li>
-                    <li><a href="{{ path('plan_combustible') }}"><i class="fa fa-circle-o text-aqua"></i>Plan de Combustible</a></li>
-                    <li><a href="{{ path('pronostico_recaudacion') }}"><i class="fa fa-circle-o text-aqua"></i>Pronóstico de Recaudación</a></li>
-                    <li><a href="{{ path('plan_recaudacion') }}"><i class="fa fa-circle-o text-aqua"></i>Plan de Recaudación</a></li>
-                    <li><a href="{{ path('omnibus_reporteKms') }}"><i class="fa fa-circle-o text-aqua"></i>Kilómetros Recorridos Ómnibus</a></li>
-                    <li><a href="{{ path('combustibleHabilitado') }}"><i class="fa fa-circle-o text-aqua"></i>Datos de Tarjeta de Combustible y Gps</a></li>
-                    <li><a href="{{ path('reporteporOmnibus') }}"><i class="fa fa-circle-o text-aqua"></i>Reporte General por Ómnibus</a></li>
-                    {# <li><a href=""><i class="fa fa-circle-o text-aqua"></i>Taller 2</a></li> #}
-                </ul>
-            </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider" />
 
+        <!-- Heading -->
+        <div class="sidebar-heading">
+          Reportes
+        </div>
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed sidebar-item"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapsePlanes"
+            aria-expanded="true"
+            aria-controls="collapsePlanes"
+          >
+            <i class="fas fa-project-diagram"></i>
+            <span>Planes</span>
+          </a>
+          <div
+            id="collapsePlanes"
+            class="collapse"
+            aria-labelledby="headingPlanes"
+            data-parent="#accordionSidebar"
+          >
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="{{ path('plan_combustible') }}">
+                <i class="fas fa-gas-pump"></i>
+                <span>
+                  Combustible
+                </span> 
+              </a>
+              <a class="collapse-item" href="{{ path('plan_recaudacion') }}">
+                <i class="fas fa-money-check-alt"></i>
+                <span>
+                  Recaudación
+                </span> 
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed sidebar-item"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapsePronosticos"
+            aria-expanded="true"
+            aria-controls="collapsePronosticos"
+          >
+            <i class="fas fa-chart-line"></i>
+            <span>Pronósticos</span>
+          </a>
+          <div
+            id="collapsePronosticos"
+            class="collapse"
+            aria-labelledby="headingPronosticos"
+            data-parent="#accordionSidebar"
+          >
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="{{ path('pronostico_combustible') }}">
+                <i class="fas fa-gas-pump"></i>
+                <span>
+                  Combustible
+                </span> 
+              </a>
+              <a class="collapse-item" href="{{ path('pronostico_recaudacion') }}">
+                <i class="fas fa-money-check-alt"></i>
+                <span>
+                  Recaudación
+                </span> 
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-item" href="{{ path('ruta_reporte') }}">
+            <i class="fas fa-clipboard-list"></i>
+            <span>
+              Incidencias
+            </span> 
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-item" href="{{ path('chofer_reporte') }}">
+            <i class="fas fa-clock"></i>
+            <span>
+              Horas Trabajadas
+            </span> 
+          </a>
+        </li>
+        <li class="nav-item">
+          <li class="nav-item">
+          <a class="nav-link sidebar-item" href="{{ path('omnibus_reporteKms') }}">
+            <i class="fas fa-route"></i>
+            <span>
+              Kilómetros Recorridos
+            </span> 
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-item" href="{{ path('combustibleHabilitado') }}">
+            <i class="fas fa-credit-card"></i>
+            <span>
+              Tarjeta Combustible y Gps
+            </span> 
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-item" href="{{ path('reporteporOmnibus') }}">
+            <i class="fas fa-file-alt"></i>
+            <span>
+              Reporte General
+            </span> 
+          </a>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block" />
+            
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
     </ul>
     <!-- /.sidebar-menu -->
-</section>
-<!-- /.sidebar -->

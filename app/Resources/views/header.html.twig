@@ -1,67 +1,98 @@
-{% set usuario = app.user %}
-{% set session = app.session %}
+{% set usuario = app.user %} {% set session = app.session %}
 <!-- Logo -->
 
-  <!-- Header Navbar -->
-  <nav id="elemento1" class="navbar navbar-static-top navbar-fixed-top" role="navigation">
-    <a href="{{ path('index') }}" class="navbar-brand logo" style="background:#FFFFFF;">
-      <span class="logo-mini"><img src="{{ asset('assets/dist/img/r.jpg') }}" class="img-circle" alt="User Image"></span>
-      <span class="logo-lg "><img height="50" width="130" src="{{ asset('assets/dist/img/logo_thg_horizontal.png') }}"></span>
-    </a>
-    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-      <span class="sr-only">Toggle navigation</span>
-    </a>
-    <ul class="nav navbar-nav justify-content-center" style=" width:72%; text-align:center;">
-      <li class="nav-item" style=" width:100%;">
-        <a class="nav-link" href="" style="cursor:initial; color:black; font-size:x-large;">EMPRESA TRANSPORTE HOLGUÍN -- UEB ÓMNIBUS HOLGUÍN</a>
+<!-- Header Navbar -->
+<nav
+  id="elemento1"
+  class="navbar navbar-static-top navbar-fixed-top"
+  role="navigation"
+>
+  <a
+    href="{{ path('index') }}"
+    class="navbar-brand logo"
+    style="background:#FFFFFF;"
+  >
+    <span class="logo-mini"
+      ><img
+        src="{{ asset('assets/dist/img/r.jpg') }}"
+        class="img-circle"
+        alt="User Image"
+    /></span>
+    <span class="logo-lg "
+      ><img
+        height="50"
+        width="130"
+        src="{{ asset('assets/dist/img/logo_thg_horizontal.png') }}"
+    /></span>
+  </a>
+  <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+    <span class="sr-only">Toggle navigation</span>
+  </a>
+  <ul
+    class="nav navbar-nav justify-content-center"
+    style=" width:72%; text-align:center;"
+  >
+    <li class="nav-item" style=" width:100%;">
+      <a
+        class="nav-link"
+        href=""
+        style="cursor:initial; color:black; font-size:x-large;"
+        >EMPRESA TRANSPORTE HOLGUÍN -- UEB ÓMNIBUS HOLGUÍN</a
+      >
+    </li>
+  </ul>
+  <!-- Navbar Right Menu -->
+  <div class="navbar-toggler navbar-custom-menu">
+    <ul class="nav navbar-nav">
+      <!-- Messages: style can be found in dropdown.less-->
+
+      {#{% if session.isStarted == true %}#} {#<a href="{{ path('login') }}"
+        >entrar</a
+      >#} {#{% else %}#}
+      <li class="dropdown user user-menu">
+        <!-- Menu Toggle Button -->
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <!-- The user image in the navbar-->
+          <img
+            src="{{ asset('assets/dist/img/r.jpg') }}"
+            class="user-image"
+            alt="User Image"
+          />
+          <!-- hidden-xs hides the username on small devices so only the image appears. -->
+          {#<span class="hidden-xs">{{ app.user.username }}</span
+          >#}
+        </a>
+        <ul class="dropdown-menu">
+          <!-- The user image in the menu -->
+          <li class="user-header">
+            <img
+              src="{{ asset('assets/dist/img/r.jpg') }}"
+              class="img-circle"
+              alt="User Image"
+            />
+
+            <p>{#Usuario: {{ app.user.usuario }}#}</p>
+          </li>
+          <!-- Menu Body -->
+
+          <!-- /.row -->
+
+          <!-- Menu Footer-->
+          <li class="user-footer">
+            <div class="pull-left">
+              <a href="{{ path('login') }}" class="btn btn-block btn-primary"
+                >Autenticarse</a
+              >
+            </div>
+            <div class="pull-right">
+              <a href="{{ path('logout') }}" class="btn btn-block btn-danger"
+                >Salir</a
+              >
+              {#{% endif %}#}
+            </div>
+          </li>
+        </ul>
       </li>
     </ul>
-    <!-- Navbar Right Menu -->
-     <div class="navbar-toggler navbar-custom-menu">
-      <ul class="nav navbar-nav">
-        <!-- Messages: style can be found in dropdown.less-->
-
-        {#{% if session.isStarted == true %}#}
-
-        {#<a href="{{ path('login') }}">entrar</a>#}
-
-
-                {#{% else %}#}
-        <li class="dropdown user user-menu">
-          <!-- Menu Toggle Button -->
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <!-- The user image in the navbar-->
-            <img src="{{ asset('assets/dist/img/r.jpg') }}" class="user-image" alt="User Image">
-            <!-- hidden-xs hides the username on small devices so only the image appears. -->
-            {#<span class="hidden-xs">{{ app.user.username}}</span>#}
-          </a>
-          <ul class="dropdown-menu">
-            <!-- The user image in the menu -->
-            <li class="user-header">
-              <img src="{{ asset('assets/dist/img/r.jpg') }}" class="img-circle" alt="User Image">
-
-              <p>
-                {#Usuario: {{ app.user.usuario }}#}
-              </p>
-            </li>
-            <!-- Menu Body -->
-
-            <!-- /.row -->
-
-            <!-- Menu Footer-->
-            <li class="user-footer">
-              <div class="pull-left">
-                <a href="{{ path('login') }}" class="btn btn-block btn-primary">Autenticarse</a>
-              </div>
-              <div class="pull-right">
-
-                <a href="{{ path('logout') }}" class="btn btn-block btn-danger">Salir</a>
-                {#{% endif %}#}
-
-              </div>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  </div>
+</nav>

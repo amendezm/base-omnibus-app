@@ -18,3 +18,31 @@ body > .main-footer {
   margin-left: 0;
   height: 8vh;
 }
+
+.sidebar.toggled > .sidebar-brand {
+  visibility: hidden;
+}
+
+.sidebar > .sidebar-heading.dpto1 {
+  visibility: visible;
+}
+
+.sidebar > .sidebar-heading.dpto2 {
+  visibility: hidden;
+}
+
+.sidebar.toggled > .sidebar-heading.dpto1 {
+  visibility: hidden;
+}
+
+.sidebar.toggled > .sidebar-heading.dpto2 {
+  visibility: visible;
+}
+
+.sidebar-brand {
+  margin-left: -3rem !important;
+}
+
+.sidebar-item {
+  padding: 0.4rem 0.75rem 0.4rem 1rem !important;
+}
