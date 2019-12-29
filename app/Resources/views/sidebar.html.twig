@@ -17,31 +17,25 @@
         <!-- Divider -->
         <hr class="sidebar-divider my-0" />
         {% if is_granted('ROLE_ADMIN') %}
+        <!-- Heading -->
+        <div class="sidebar-heading dpto1">
+          Administración
+        </div>
         <li class="nav-item">
-            <a
-              class="nav-link collapsed"
-              href="#"
-              data-toggle="collapse"
-              data-target="#collapseTwo"
-              aria-expanded="true"
-              aria-controls="collapseTwo"
-              >
-                <i class="glyphicon glyphicon-tag"></i> 
-                <span>Administración</span>
-            </a>
-            <div
-              id="collapseTwo"
-              class="collapse"
-              aria-labelledby="headingTwo"
-              data-parent="#accordionSidebar"
-            >
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="{{ path('usuario_index') }}">
-                        <i class="fa fa-users"></i> <span>Usuarios</span></i>
-                    </a>
-                    <a class="collapse-item" href="{{ path('base_index')}}"><i class="fas fa-warehouse"></i> <span>Base</span> </a>
-                </div>
-            </div>
+          <a class="nav-link sidebar-item" href="{{ path('usuario_index') }}">
+            <i class="fas fa-users"></i>
+            <span>
+              Usuarios
+            </span> 
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-item" href="{{ path('base_index')}}">
+            <i class="fas fa-warehouse"></i>
+            <span>
+              Base
+            </span> 
+          </a>
         </li>
         {% endif %}
         <!-- Divider -->
