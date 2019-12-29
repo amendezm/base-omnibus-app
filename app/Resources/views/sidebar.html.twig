@@ -2,23 +2,31 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
        
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ path('index') }}"  style="background:white;">
-          <span class="logo-lg"
-            ><img
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ path('index') }}" >
+            <!-- <span class="logo-lg"> -->
+            <!-- <img
               height="50"
               width="130"
               src="{{ asset('assets/dist/img/logo_thg_horizontal.png') }}"
-          /></span>
+            /> -->
+            <div class="sidebar-brand-text mx-3 text-center">UEB Ómnibus</div>
+
+            
+        <!-- </span> -->
           <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
           </a>
         </a>
 
         <!-- Divider -->
-        <hr class="sidebar-divider my-0" />
+        <hr class="sidebar-divider" />
+
         {% if is_granted('ROLE_ADMIN') %}
         <!-- Heading -->
-        <div class="sidebar-heading dpto1">
+        <div class="sidebar-heading">
+          Administración
+        </div>
+        <div class="sidebar-heading" style="visibility: hidden;">
           Administración
         </div>
         <li class="nav-item">
@@ -222,6 +230,9 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
+          Reportes
+        </div>
+        <div class="sidebar-heading" style="visibility: hidden;">
           Reportes
         </div>
 
