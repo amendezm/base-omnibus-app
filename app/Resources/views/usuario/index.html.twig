@@ -1,45 +1,5 @@
 {% extends 'index.html.twig' %} {% block contenido%}
-<div class="modal-dialog text-center">
-  {% for flash_message in app.session.flashbag.get('notice') %}
-  <div class="flash-notice">
-    <div class="alert alert-success">
-      <i class="glyphicon glyphicon-ok"></i> {{ flash_message }}
-    </div>
-  </div>
-  {% endfor %} {% for flash_message in app.session.flashbag.get('error') %}
-  <div class="flash-notice">
-    <div class="alert alert-danger">
-      <i class="glyphicon glyphicon-remove"></i> {{ flash_message }}
-    </div>
-  </div>
-  {% endfor %}
-</div>
-<script type="text/javascript">
-  jQuery(document).ready(function() {
-    var oTable1 = $("#sample-table-2").dataTable({
-      aoColumns: [
-        { bSortable: false },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        { bSortable: false }
-      ]
-    });
-    $("#id-date-range-picker-1")
-      .daterangepicker()
-      .prev()
-      .on(ace.click_event, function() {
-        $(this)
-          .next()
-          .focus();
-      });
-  });
-</script>
+<br />
 <div class="card shadow mb-4">
   <div class="card-header py-3">
     <div class="row">

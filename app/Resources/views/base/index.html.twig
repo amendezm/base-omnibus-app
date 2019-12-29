@@ -3,6 +3,7 @@
 
 <script src="{{ asset('assets/dist/js/deleteBase.js') }}"></script>
 {% endblock javascripts %} {% block contenido%}
+<br />
 <!-- Default box -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
@@ -85,40 +86,4 @@
   <!-- /.box-body -->
 </div>
 <!-- /.box -->
-<div id="mymodal" class="modal  inmodal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <button
-          aria-label="Close"
-          data-dismiss="modal"
-          class="close"
-          type="button"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-        <i class="fa-3x fa fa-warning modal-icon text-red"></i>
-        <h4 class="modal-title">Acción Peligrosa</h4>
-      </div>
-      <div class="modal-body">
-        <p>
-          Está acción puede ocacionar, comprometer la integridad de los datos!
-        </p>
-        <small
-          >Si no es un usuario avanzado, recomendamos que cancele esta
-          acción.</small
-        >
-      </div>
-      <div class="modal-footer">
-        <button data-dismiss="modal" class="btn btn-primary" type="button">
-          Cerrar
-        </button>
-        <a class="btn btn-primary btn-danger btn-delete" href="#">Eliminar</a>
-      </div>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
 {% endblock %}
