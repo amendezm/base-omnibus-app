@@ -29,7 +29,7 @@
         <div class="sidebar-heading" style="visibility: hidden;">
           Administración
         </div>
-        <li class="nav-item">
+        <li class="nav-item {% if 'usuario' in app.request.attributes.get('_route') %}active{% endif %}" >
           <a class="nav-link sidebar-item" href="{{ path('usuario_index') }}">
             <i class="fas fa-users"></i>
             <span>
@@ -37,7 +37,7 @@
             </span> 
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {% if 'base' in app.request.attributes.get('_route') %}active{% endif %}">
           <a class="nav-link sidebar-item" href="{{ path('base_index')}}">
             <i class="fas fa-warehouse"></i>
             <span>
@@ -56,7 +56,19 @@
         <div class="sidebar-heading dpto2">
           Dptos
         </div>
-        <li class="nav-item">
+        <li class="nav-item  {% if ('chofer' in app.request.attributes.get('_route') or
+            'omnibus' in app.request.attributes.get('_route') or
+            'tipo_omnibus' in app.request.attributes.get('_route') or
+            'ruta' in app.request.attributes.get('_route') or
+            'pto_expedicion' in app.request.attributes.get('_route') or
+            'escogidaturno' in app.request.attributes.get('_route') or
+            'hojaruta' in app.request.attributes.get('_route') or
+            'incidencia' in app.request.attributes.get('_route') or
+            'tipoincidencia' in app.request.attributes.get('_route')) and
+            not ('ruta_reporte' in app.request.attributes.get('_route')) and
+            not ('chofer_reporte' in app.request.attributes.get('_route')) and
+            not ('omnibus_reporteKms' in app.request.attributes.get('_route'))
+            %}active{% endif %}">
             <a
               class="nav-link collapsed sidebar-item"
               href="#"
@@ -70,51 +82,73 @@
             </a>
             <div
               id="collapseOperaciones"
-              class="collapse"
+              class="collapse {% if ('chofer' in app.request.attributes.get('_route') or
+              'omnibus' in app.request.attributes.get('_route') or
+              'tipo_omnibus' in app.request.attributes.get('_route') or
+              'ruta' in app.request.attributes.get('_route') or
+              'pto_expedicion' in app.request.attributes.get('_route') or
+              'escogidaturno' in app.request.attributes.get('_route') or
+              'hojaruta' in app.request.attributes.get('_route') or
+              'incidencia' in app.request.attributes.get('_route') or
+              'tipoincidencia' in app.request.attributes.get('_route')) and
+              not ('ruta_reporte' in app.request.attributes.get('_route')) and
+              not ('chofer_reporte' in app.request.attributes.get('_route')) and
+              not ('omnibus_reporteKms' in app.request.attributes.get('_route'))
+              %}show{% endif %}"
               aria-labelledby="headingOperaciones"
               data-parent="#accordionSidebar"
-            >
-              <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ path('chofer_index') }}">
+              >
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <a class="collapse-item {% if 'chofer' in app.request.attributes.get('_route') and
+                  not ('chofer_reporte' in app.request.attributes.get('_route')) 
+                  %}active{% endif %}" href="{{ path('chofer_index') }}">
                     <i class="fas fa-user"></i> 
                     <span>Choferes</span> 
                 </a>
-                <a class="collapse-item" href="{{ path('omnibus_index') }}">
+                <a class="collapse-item {% if 'omnibus' in app.request.attributes.get('_route') and
+                not ('tipo_omnibus' in app.request.attributes.get('_route')) and
+                not ('omnibus_reporteKms' in app.request.attributes.get('_route'))
+                 %}active{% endif %}" href="{{ path('omnibus_index') }}">
                     <i class="fas fa-bus"></i> 
                     <span>Ómnibus</span> 
                 </a>
-                <a class="collapse-item" href="{{ path('tipo_omnibus_index')}}">
+                <a class="collapse-item {% if 'tipo_omnibus' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('tipo_omnibus_index')}}">
                     <i class="fas fa-bus-alt"></i> 
                     <span>Tipo de Ómnibus</span> 
                 </a>
-                <a class="collapse-item" href="{{ path('ruta_index') }}">
+                <a class="collapse-item {% if 'ruta' in app.request.attributes.get('_route') and
+                not ('hojaruta' in app.request.attributes.get('_route')) and
+                not ('ruta_reporte' in app.request.attributes.get('_route')) 
+                %}active{% endif %}" href="{{ path('ruta_index') }}">
                     <i class="fas fa-route"></i> 
                     <span>Rutas</span> 
                 </a>
-                <a class="collapse-item" href="{{ path('pto_expedicion_index') }}">
+                <a class="collapse-item {% if 'pto_expedicion' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('pto_expedicion_index') }}">
                     <i class="fas fa-map-marker-alt"></i> 
                     <span>Ptos de expedición</span> 
                 </a>
-                <a class="collapse-item" href="{{ path('escogidaturno_index') }}">
+                <a class="collapse-item {% if 'escogidaturno' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('escogidaturno_index') }}">
                     <i class="fas fa-ticket-alt"></i> 
                     <span>Escogida de Turno </span> 
                 </a>
-                <a class="collapse-item" href="{{ path('hojaruta_index') }}">
+                <a class="collapse-item {% if 'hojaruta' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('hojaruta_index') }}">
                     <i class="fas fa-clipboard"></i> 
                     <span>Hoja de Ruta</span> 
                 </a>
-                <a class="collapse-item" href="{{ path('incidencia_index') }}">
+                <a class="collapse-item {% if 'incidencia' in app.request.attributes.get('_route') and
+                not ('tipoincidencia' in app.request.attributes.get('_route'))
+                %}active{% endif %}" href="{{ path('incidencia_index') }}">
                     <i class="fas fa-clipboard-list"></i> 
                     <span>Incidencias</span> 
                 </a>
-                <a class="collapse-item" href="{{ path('tipoincidencia_index') }}">
+                <a class="collapse-item {% if 'tipoincidencia' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('tipoincidencia_index') }}">
                     <i class="fas fa-clipboard-list"></i> 
                     <span>Tipo de Incidencias</span> 
                 </a>
               </div>
             </div>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {% if 'tarjeta_combustible' in app.request.attributes.get('_route') %}active{% endif %}">
             <a
               class="nav-link collapsed sidebar-item"
               href="#"
@@ -128,19 +162,19 @@
             </a>
             <div
                 id="collapseEnergia"
-                class="collapse"
+                class="collapse {% if 'tarjeta_combustible' in app.request.attributes.get('_route') %}show{% endif %}"
                 aria-labelledby="headingEnergia"
                 data-parent="#accordionSidebar"
             >
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="{{ path('tarjeta_combustible_index') }}">
+                    <a class="collapse-item {% if 'tarjeta_combustible' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('tarjeta_combustible_index') }}">
                       <i class="fa fa-credit-card"></i> 
-                      <span>Tarjeta de Combustible</span>
+                      <span>Tarjeta Combustible</span>
                     </a>
                 </div>
             </div>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {% if 'trabajador' in app.request.attributes.get('_route') %}active{% endif %}">
           <a 
               class="nav-link collapsed sidebar-item"
               href="#"
@@ -154,12 +188,12 @@
             </a>
             <div
               id="collapseRRHH"
-              class="collapse"
+              class="collapse {% if 'trabajador' in app.request.attributes.get('_route') %}show{% endif %}"
               aria-labelledby="headingRRHH"
               data-parent="#accordionSidebar"
             >
               <div class="bg-white py-2 collapse-inner rounded">
-                <a  class="collapse-item" href="{{ path('trabajador_index') }}">
+                <a  class="collapse-item {% if 'trabajador' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('trabajador_index') }}">
                   <i class="fas fa-user"></i> <span>Trabajador</span></i>
                 </a>
               </div>
@@ -167,7 +201,7 @@
             <ul class="treeview-menu">
             </ul>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {% if 'gps' in app.request.attributes.get('_route') %}active{% endif %}">
             <a 
               class="nav-link collapsed sidebar-item"
               href="#"
@@ -181,12 +215,12 @@
             </a>
             <div
               id="collapseFlotas"
-              class="collapse"
+              class="collapse {% if 'gps' in app.request.attributes.get('_route') %}show{% endif %}"
               aria-labelledby="headingFlotas"
               data-parent="#accordionSidebar"
             >
               <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ path('gps_index') }}">
+                <a class="collapse-item {% if 'gps' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('gps_index') }}">
                   <i class="fas fa-bus"></i>
                   <span>Control de Flotas</span>
                 </a>
@@ -194,7 +228,10 @@
             </div>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item {% if 'recaudacion' in app.request.attributes.get('_route') and
+        not ('plan_recaudacion' in app.request.attributes.get('_route')) and
+        not ('pronostico_recaudacion' in app.request.attributes.get('_route')) 
+        %}active{% endif %}">
             <a 
               class="nav-link collapsed sidebar-item"
               href="#"
@@ -208,16 +245,23 @@
             </a>
             <div
               id="collapseRecacudacion"
-              class="collapse"
+              class="collapse {% if 'recaudacion' in app.request.attributes.get('_route') and
+              not ('plan_recaudacion' in app.request.attributes.get('_route')) and
+              not ('pronostico_recaudacion' in app.request.attributes.get('_route')) 
+              %}show{% endif %}"
               aria-labelledby="headingRecacudacion"
               data-parent="#accordionSidebar"
             >
               <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ path('recaudacion_index') }}">
+                <a class="collapse-item {% if 'recaudacion' in app.request.attributes.get('_route') and
+                not ('recaudacionXfecha' in app.request.attributes.get('_route')) and
+                not ('plan_recaudacion' in app.request.attributes.get('_route')) and
+                not ('pronostico_recaudacion' in app.request.attributes.get('_route'))
+                %}active{% endif %}" href="{{ path('recaudacion_index') }}">
                   <i class="fas fa-money-check"></i>
                   <span>Recaudaciones</span>
                 </a>
-                <a class="collapse-item" href="{{ path('recaudacion_recaudacionXfecha') }}">
+                <a class="collapse-item {% if 'recaudacionXfecha' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('recaudacion_recaudacionXfecha') }}">
                   <i class="fas fa-money-check-alt"></i> 
                   <span>Total por Fecha</span>
                 </a>
@@ -236,7 +280,7 @@
           Reportes
         </div>
 
-        <li class="nav-item">
+        <li class="nav-item {% if 'plan' in app.request.attributes.get('_route') %}active{% endif %}">
           <a
             class="nav-link collapsed sidebar-item"
             href="#"
@@ -250,18 +294,18 @@
           </a>
           <div
             id="collapsePlanes"
-            class="collapse"
+            class="collapse {% if 'plan' in app.request.attributes.get('_route') %}show{% endif %}"
             aria-labelledby="headingPlanes"
             data-parent="#accordionSidebar"
           >
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="{{ path('plan_combustible') }}">
+              <a class="collapse-item {% if 'plan_combustible' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('plan_combustible') }}">
                 <i class="fas fa-gas-pump"></i>
                 <span>
                   Combustible
                 </span> 
               </a>
-              <a class="collapse-item" href="{{ path('plan_recaudacion') }}">
+              <a class="collapse-item {% if 'plan_recaudacion' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('plan_recaudacion') }}">
                 <i class="fas fa-money-check-alt"></i>
                 <span>
                   Recaudación
@@ -270,7 +314,7 @@
             </div>
           </div>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {% if 'pronostico' in app.request.attributes.get('_route') %}active{% endif %}">
           <a
             class="nav-link collapsed sidebar-item"
             href="#"
@@ -284,18 +328,18 @@
           </a>
           <div
             id="collapsePronosticos"
-            class="collapse"
+            class="collapse {% if 'pronostico' in app.request.attributes.get('_route') %}show{% endif %}"
             aria-labelledby="headingPronosticos"
             data-parent="#accordionSidebar"
           >
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="{{ path('pronostico_combustible') }}">
+              <a class="collapse-item {% if 'pronostico_combustible' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('pronostico_combustible') }}">
                 <i class="fas fa-gas-pump"></i>
                 <span>
                   Combustible
                 </span> 
               </a>
-              <a class="collapse-item" href="{{ path('pronostico_recaudacion') }}">
+              <a class="collapse-item {% if 'pronostico_recaudacion' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('pronostico_recaudacion') }}">
                 <i class="fas fa-money-check-alt"></i>
                 <span>
                   Recaudación
@@ -304,7 +348,7 @@
             </div>
           </div>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {% if 'ruta_reporte' in app.request.attributes.get('_route') %}active{% endif %}">
           <a class="nav-link sidebar-item" href="{{ path('ruta_reporte') }}">
             <i class="fas fa-clipboard-list"></i>
             <span>
@@ -312,7 +356,7 @@
             </span> 
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {% if 'chofer_reporte' in app.request.attributes.get('_route') %}active{% endif %}">
           <a class="nav-link sidebar-item" href="{{ path('chofer_reporte') }}">
             <i class="fas fa-clock"></i>
             <span>
@@ -320,8 +364,7 @@
             </span> 
           </a>
         </li>
-        <li class="nav-item">
-          <li class="nav-item">
+        <li class="nav-item {% if 'omnibus_reporteKms' in app.request.attributes.get('_route') %}active{% endif %}">
           <a class="nav-link sidebar-item" href="{{ path('omnibus_reporteKms') }}">
             <i class="fas fa-route"></i>
             <span>
@@ -329,7 +372,7 @@
             </span> 
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {% if 'combustibleHabilitado' in app.request.attributes.get('_route') %}active{% endif %}">
           <a class="nav-link sidebar-item" href="{{ path('combustibleHabilitado') }}">
             <i class="fas fa-credit-card"></i>
             <span>
@@ -337,7 +380,7 @@
             </span> 
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {% if 'reporteporOmnibus' in app.request.attributes.get('_route') %}active{% endif %}">
           <a class="nav-link sidebar-item" href="{{ path('reporteporOmnibus') }}">
             <i class="fas fa-file-alt"></i>
             <span>
