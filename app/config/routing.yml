@@ -462,7 +462,3 @@ pronostico_recaudacion:
   path: /pronostico/recaudacion
   defaults: { _controller: "AppBundle:Pronostico:recaudacion" }
   methods: [GET]
-#frontend_salvabd:
-#     path:   /salvar
-#    defaults: { _controller: AppBundle:Default:salvabd }
-
