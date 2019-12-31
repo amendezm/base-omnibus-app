@@ -32,6 +32,10 @@ class DefaultController extends Controller
         $servicio = $em->getRepository('AppBundle:Servicio')->findAll();
         $combustibleTipo = $em->getRepository('AppBundle:TipoCombustible')->findAll();
         $typeIncidencias = $em->getRepository('AppBundle:TipoIncidencia')->findAll();
+        $trabajadores = $em->getRepository('AppBundle:Trabajador')->findAll();
+        $omnibus = $em->getRepository('AppBundle:Omnibus')->findAll();
+        $bases = $em->getRepository('AppBundle:base')->findAll();
+
         //    $roles= $em->getRepository('AppBundle:Rol')->findAll();
         //    $rol = 0;
         $cant = 0;
@@ -189,7 +193,11 @@ class DefaultController extends Controller
         //        $em->flush();
         //    }
         // replace this example code with whatever you need
-        return $this->render('index.html.twig', array());
+        return $this->render('index.html.twig', array(
+            'numeroTrabajadores' => count($trabajadores),
+            'numeroOmnibus' => count($omnibus),
+            'numeroBases' => count($bases),
+        ));
     }
     public function salvabdAction()
     {

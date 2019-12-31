@@ -74,17 +74,17 @@
           <div class="container-fluid">
             {% block contenido %}
             <!-- Page Heading -->
-            <div
+            <!-- <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+              <h1 class="h3 mb-0 text-gray-800"></h1>
               <a
                 href="#"
                 class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                 ><i class="fas fa-download fa-sm text-white-50"></i> Generate
                 Report</a
               >
-            </div>
+            </div> -->
 
             <!-- Content Row -->
             <div class="row">
@@ -97,14 +97,14 @@
                         <div
                           class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                         >
-                          Earnings (Monthly)
+                          Trabajadores
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                          $40,000
+                          {{ numeroTrabajadores }} en total
                         </div>
                       </div>
                       <div class="col-auto">
-                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        <i class="fas fa-users fa-2x text-gray-300"></i>
                       </div>
                     </div>
                   </div>
@@ -120,14 +120,14 @@
                         <div
                           class="text-xs font-weight-bold text-success text-uppercase mb-1"
                         >
-                          Earnings (Annual)
+                          Ómnibus
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                          $215,000
+                          {{ numeroOmnibus }} en total
                         </div>
                       </div>
                       <div class="col-auto">
-                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        <i class="fas fa-bus-alt fa-2x text-gray-300"></i>
                       </div>
                     </div>
                   </div>
@@ -143,7 +143,7 @@
                         <div
                           class="text-xs font-weight-bold text-info text-uppercase mb-1"
                         >
-                          Tasks
+                          Plan de recaudación
                         </div>
                         <div class="row no-gutters align-items-center">
                           <div class="col-auto">
@@ -169,7 +169,7 @@
                       </div>
                       <div class="col-auto">
                         <i
-                          class="fas fa-clipboard-list fa-2x text-gray-300"
+                          class="fas fa-dollar-sign fa-2x text-gray-300"
                         ></i>
                       </div>
                     </div>
@@ -186,14 +186,14 @@
                         <div
                           class="text-xs font-weight-bold text-warning text-uppercase mb-1"
                         >
-                          Pending Requests
+                          Bases
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                          18
+                          {{numeroBases}} en total
                         </div>
                       </div>
                       <div class="col-auto">
-                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        <i class="fas fa-warehouse fa-2x text-gray-300"></i>
                       </div>
                     </div>
                   </div>
@@ -204,187 +204,85 @@
             <!-- Content Row -->
 
             <div class="row">
-              <!-- Area Chart -->
               <div class="col-xl-8 col-lg-7">
                 <div class="card shadow mb-4">
-                  <!-- Card Header - Dropdown -->
+                  <!-- Card Header -->
                   <div
                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
                   >
                     <h6 class="m-0 font-weight-bold text-primary">
-                      Earnings Overview
+                      Misión
                     </h6>
-                    <div class="dropdown no-arrow">
-                      <a
-                        class="dropdown-toggle"
-                        href="#"
-                        role="button"
-                        id="dropdownMenuLink"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i
-                          class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"
-                        ></i>
-                      </a>
-                      <div
-                        class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                        aria-labelledby="dropdownMenuLink"
-                      >
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"
-                          >Something else here</a
-                        >
-                      </div>
-                    </div>
                   </div>
                   <!-- Card Body -->
                   <div class="card-body">
-                    <div class="chart-area">
-                      <canvas id="myAreaChart"></canvas>
-                    </div>
+                    Satisfacemos las expectativas de los clientes con servicios
+                    de transportación de pasajeros, conexos y cargas en general
+                    con trabajadores de un alto sentido de pertenencia y un
+                    parque de equipos en constante revitalización.
+                  </div>
+                </div>
+
+                <div class="card shadow mb-4">
+                  <!-- Card Header -->
+                  <div
+                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+                  >
+                    <h6 class="m-0 font-weight-bold text-primary">
+                      Visión
+                    </h6>
+                  </div>
+                  <!-- Card Body -->
+                  <div class="card-body">
+                    Somos líderes en la prestación de servicios a nuestros
+                    clientes, con calidad, oportunidad y seguridad.
                   </div>
                 </div>
               </div>
 
               <!-- Pie Chart -->
               <div class="col-xl-4 col-lg-5">
-                <div class="card shadow mb-4">
-                  <!-- Card Header - Dropdown -->
-                  <div
-                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
-                  >
-                    <h6 class="m-0 font-weight-bold text-primary">
-                      Revenue Sources
-                    </h6>
-                    <div class="dropdown no-arrow">
-                      <a
-                        class="dropdown-toggle"
-                        href="#"
-                        role="button"
-                        id="dropdownMenuLink"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i
-                          class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"
-                        ></i>
-                      </a>
-                      <div
-                        class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                        aria-labelledby="dropdownMenuLink"
-                      >
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"
-                          >Something else here</a
-                        >
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Card Body -->
-                  <div class="card-body">
-                    <div class="chart-pie pt-4 pb-2">
-                      <canvas id="myPieChart"></canvas>
-                    </div>
-                    <div class="mt-4 text-center small">
-                      <span class="mr-2">
-                        <i class="fas fa-circle text-primary"></i> Direct
-                      </span>
-                      <span class="mr-2">
-                        <i class="fas fa-circle text-success"></i> Social
-                      </span>
-                      <span class="mr-2">
-                        <i class="fas fa-circle text-info"></i> Referral
-                      </span>
-                    </div>
-                  </div>
-                </div>
+                <img
+                  class="img-fluid px-3 px-sm-4 pt-3 pb-3 mb-4 img-thumbnail"
+                  style="width: 100%; height: 19rem;"
+                  src="{{ asset('assets/dist/img/thg_front.jpg') }}"
+                  alt=""
+                />
               </div>
             </div>
 
             <!-- Content Row -->
             <div class="row">
               <!-- Content Column -->
-              <div class="col-lg-6 mb-4">
+              <div class="col-xl-8 col-lg-7">
                 <!-- Project Card Example -->
                 <div class="card shadow mb-4">
                   <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Ubicación</h6>
                   </div>
                   <div class="card-body">
-                    <h4 class="small font-weight-bold">
-                      Server Migration <span class="float-right">20%</span>
-                    </h4>
-                    <div class="progress mb-4">
-                      <div
-                        class="progress-bar bg-danger"
-                        role="progressbar"
-                        style="width: 20%"
-                        aria-valuenow="20"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                    <h4 class="small font-weight-bold">
-                      Sales Tracking <span class="float-right">40%</span>
-                    </h4>
-                    <div class="progress mb-4">
-                      <div
-                        class="progress-bar bg-warning"
-                        role="progressbar"
-                        style="width: 40%"
-                        aria-valuenow="40"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                    <h4 class="small font-weight-bold">
-                      Customer Database <span class="float-right">60%</span>
-                    </h4>
-                    <div class="progress mb-4">
-                      <div
-                        class="progress-bar"
-                        role="progressbar"
-                        style="width: 60%"
-                        aria-valuenow="60"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                    <h4 class="small font-weight-bold">
-                      Payout Details <span class="float-right">80%</span>
-                    </h4>
-                    <div class="progress mb-4">
-                      <div
-                        class="progress-bar bg-info"
-                        role="progressbar"
-                        style="width: 80%"
-                        aria-valuenow="80"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                    <h4 class="small font-weight-bold">
-                      Account Setup <span class="float-right">Complete!</span>
-                    </h4>
-                    <div class="progress">
-                      <div
-                        class="progress-bar bg-success"
-                        role="progressbar"
-                        style="width: 100%"
-                        aria-valuenow="100"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
+                    <!-- <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d59643.452255686054!2d-76.30438340035937!3d20.883503735622167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x8ecded625e883733%3A0x1d93a78faef0e88b!2sTerminal%20de%20%C3%93mnibus%20Inter%20Provinciales%20Jos%C3%A9%20Mar%C3%ADa%20P%C3%A9rez%2C%20Carretera%20Central%20de%20Cuba%2C%20Holgu%C3%ADn!3m2!1d20.883507299999998!2d-76.2693637!4m5!1s0x8ecded625e883733%3A0x1d93a78faef0e88b!2sTerminal%20Santiago-Habana%2C%20Carr.%20Central%20de%20Cuba%2C%20Holgu%C3%ADn!3m2!1d20.883507299999998!2d-76.2693637!5e0!3m2!1ses-419!2scu!4v1577667479684!5m2!1ses-419!2scu"
+                      width="100%"
+                      height="300"
+                      frameborder="0"
+                      style="border:0;"
+                      allowfullscreen=""
+                    ></iframe> -->
+                    <img
+                      src="{{ asset('assets/dist/img/thg_location.PNG') }}"
+                      alt="location"
+                      width="100%"
+                      height="100%"
+                    />
+                  </div>
+                  <div class="card-footer">
+                    <span class="icon">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <span
+                        >Fomento 173 entre Garayalde y Agramonte, Holguín</span
+                      >
+                    </span>
                   </div>
                 </div>
 
@@ -441,37 +339,26 @@
                 </div>
               </div>
 
-              <div class="col-lg-6 mb-4">
-                <!-- Illustrations -->
+              <div class="col-xl-4 col-lg-5">
                 <div class="card shadow mb-4">
                   <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">
-                      Illustrations
+                      Contacto
                     </h6>
                   </div>
                   <div class="card-body">
-                    <div class="text-center">
-                      <img
-                        class="img-fluid px-3 px-sm-4 mt-3 mb-4"
-                        style="width: 25rem;"
-                        src="img/undraw_posting_photo.svg"
-                        alt=""
-                      />
-                    </div>
                     <p>
-                      Add some quality, svg illustrations to your project
-                      courtesy of
-                      <a
-                        target="_blank"
-                        rel="nofollow"
-                        href="https://undraw.co/"
-                        >unDraw</a
-                      >, a constantly updated collection of beautiful svg images
-                      that you can use completely free and without attribution!
+                      <span class="icon">
+                        <i class="fas fa-phone"></i>
+                        <span>Llamar (024) 463111</span>
+                      </span>
                     </p>
-                    <a target="_blank" rel="nofollow" href="https://undraw.co/"
-                      >Browse Illustrations on unDraw &rarr;</a
-                    >
+                    <p>
+                      <span class="icon">
+                        <i class="fas fa-envelope"></i>
+                        <span>liudmilalt84@gmail.com</span>
+                      </span>
+                    </p>
                   </div>
                 </div>
 
@@ -479,20 +366,43 @@
                 <div class="card shadow mb-4">
                   <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">
-                      Development Approach
+                      Redes Sociales
                     </h6>
                   </div>
                   <div class="card-body">
                     <p>
-                      SB Admin 2 makes extensive use of Bootstrap 4 utility
-                      classes in order to reduce CSS bloat and poor page
-                      performance. Custom CSS classes are used to create custom
-                      components and custom utility classes.
+                      También estamos en las redes sociales
                     </p>
-                    <p class="mb-0">
-                      Before working with this theme, you should become familiar
-                      with the Bootstrap framework, especially the utility
-                      classes.
+                    <p>
+                      <span class="icon">
+                        <i class="fab fa-facebook"></i>
+                        <a href="https://www.facebook.com/EPTHOLGUIN/">
+                          EPTHOLGUIN</a
+                        >
+                      </span>
+                    </p>
+                    <p>
+                      <span class="icon">
+                        <i class="fab fa-facebook-messenger"></i>
+                        <a
+                          href="https://m.me/EPTHOLGUIN?fbclid=IwAR2sAhDFXJr43ud5QJyJ7okBQ2GO4FjM1GrdvJZ7jYs2BaO9KlhAp2uk5PM"
+                          target="_blank"
+                          data-lynx-mode="asynclazy"
+                          id="u_fetchstream_2_4"
+                          data-lynx-uri="https://l.facebook.com/l.php?u=https%3A%2F%2Fm.me%2FEPTHOLGUIN%3Ffbclid%3DIwAR2sAhDFXJr43ud5QJyJ7okBQ2GO4FjM1GrdvJZ7jYs2BaO9KlhAp2uk5PM&amp;h=AT2VrvfucoVaxzQ7wVuXeLEzSmIbrSjQUEqj2ydLusZ4IeIyNewPztitsV67ZOdD5PE3W3LAAIBDgkwliRsEc-2KZsUBdYfmfLDftMw4Zp2xIi_lAbjxGA1LqN0eeYtvvLgVOg"
+                          ><span class="_2iem" style="word-break: break-all"
+                            >m.me/EPTHOLGUIN</span
+                          ></a
+                        >
+                      </span>
+                    </p>
+                    <p>
+                      <span class="icon">
+                        <i class="fab fa-twitter"></i>
+                        <a href="https://twitter.com/empresa_holguin"
+                          >@empresa_holguin</a
+                        >
+                      </span>
                     </p>
                   </div>
                 </div>
@@ -594,7 +504,7 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
-    <script src="{{ asset('js/demo/datatables-demo.js')}}"></script>
+    <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
 
     {% endblock javascripts %}
   </body>
