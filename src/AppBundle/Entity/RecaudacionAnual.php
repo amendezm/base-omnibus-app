@@ -24,6 +24,13 @@ class RecaudacionAnual
     /**
      * @var float
      *
+     * @ORM\Column(name="anno", type="integer", nullable=false)
+     */
+    private $anno;
+
+    /**
+     * @var float
+     *
      * @ORM\Column(name="enero", type="float", nullable=true)
      */
     private $enero;

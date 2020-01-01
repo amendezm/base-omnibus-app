@@ -4,6 +4,9 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Doctrine\ORM\Query;
+
+
 
 
 class PronosticoController extends Controller
@@ -23,25 +26,40 @@ class PronosticoController extends Controller
 
     public function recaudacionAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        $recaudacion = $em->getRepository('AppBundle:RecaudacionAnual')->findAll(Query::HYDRATE_ARRAY)[0];
+
         $dataPoints = array(
-            array("x" => 946665000000, "y" => 3289000),
-            array("x" => 978287400000, "y" => 3830000),
-            array("x" => 1009823400000, "y" => 2009000),
-            array("x" => 1041359400000, "y" => 2840000),
-            array("x" => 1072895400000, "y" => 2396000),
-            array("x" => 1104517800000, "y" => 1613000),
-            array("x" => 1136053800000, "y" => 1821000),
-            array("x" => 1167589800000, "y" => 2000000),
-            array("x" => 1199125800000, "y" => 1397000),
-            array("x" => 1230748200000, "y" => 2506000),
-            array("x" => 1262284200000, "y" => 6704000),
-            array("x" => 1293820200000, "y" => 5704000),
-            array("x" => 1325356200000, "y" => 4009000),
-            array("x" => 1356978600000, "y" => 3026000),
-            array("x" => 1388514600000, "y" => 2394000),
-            array("x" => 1420050600000, "y" => 1872000),
-            array("x" => 1451586600000, "y" => 2140000)
+            $recaudacion->getEnero(),
+            $recaudacion->getFebrero(),
+            $recaudacion->getMarzo(),
+            $recaudacion->getAbril(),
+            $recaudacion->getMayo(),
+            $recaudacion->getJunio(),
+            $recaudacion->getJulio(),
+            $recaudacion->getAgosto(),
+            $recaudacion->getSeptiembre(),
+            $recaudacion->getOctubre(),
+            $recaudacion->getNoviembre(),
+            $recaudacion->getDiciembre()
         );
-        return $this->render("pronostico/pronostico_recaudacion.html.twig", array("dataPoints" => json_encode($dataPoints)));
+
+        $total = array_sum($dataPoints);
+        $primerSemestre = array_sum(array_slice($dataPoints, 0, 6));
+
+        $primerSemestrePorciento = round(($primerSemestre / $total) * 100, 2);
+        $segundoSemestrePorciento = 100 - $primerSemestrePorciento;
+
+        $recaudacionPorcientos = array(
+            "primerSemestre" => $primerSemestrePorciento,
+            "segundoSemestre" => $segundoSemestrePorciento
+        );
+
+        $recaudacionSemestral = array(
+            "primerSemestre" => round($primerSemestre, 2),
+            "segundoSemestre" => round($total - $primerSemestre, 2)
+        );
+
+        return $this->render("pronostico/pronostico_recaudacion.html.twig", array("recaudacion" => json_encode($dataPoints), "recaudacionPorcientos" => json_encode($recaudacionPorcientos), "recaudacionSemestral" => json_encode($recaudacionSemestral)));
     }
 }
