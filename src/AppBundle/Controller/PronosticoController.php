@@ -27,22 +27,25 @@ class PronosticoController extends Controller
     public function recaudacionAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $recaudacion = $em->getRepository('AppBundle:RecaudacionAnual')->findAll(Query::HYDRATE_ARRAY)[0];
+        $recaudacion = $em->getRepository('AppBundle:RecaudacionAnual')->findAll(Query::HYDRATE_ARRAY);
 
-        $dataPoints = array(
-            $recaudacion->getEnero(),
-            $recaudacion->getFebrero(),
-            $recaudacion->getMarzo(),
-            $recaudacion->getAbril(),
-            $recaudacion->getMayo(),
-            $recaudacion->getJunio(),
-            $recaudacion->getJulio(),
-            $recaudacion->getAgosto(),
-            $recaudacion->getSeptiembre(),
-            $recaudacion->getOctubre(),
-            $recaudacion->getNoviembre(),
-            $recaudacion->getDiciembre()
-        );
+        $dataPoints = array();
+
+        foreach ($recaudacion as $array) {
+            array_push($dataPoints, $array->getEnero());
+            array_push($dataPoints, $array->getFebrero());
+            array_push($dataPoints, $array->getMarzo());
+            array_push($dataPoints, $array->getAbril());
+            array_push($dataPoints, $array->getMayo());
+            array_push($dataPoints, $array->getJunio());
+            array_push($dataPoints, $array->getJulio());
+            array_push($dataPoints, $array->getAgosto());
+            array_push($dataPoints, $array->getSeptiembre());
+            array_push($dataPoints, $array->getOctubre());
+            array_push($dataPoints, $array->getNoviembre());
+            array_push($dataPoints, $array->getDiciembre());
+        }
+
 
         $total = array_sum($dataPoints);
         $primerSemestre = array_sum(array_slice($dataPoints, 0, 6));
