@@ -1,5 +1,5 @@
 {% extends 'index.html.twig' %} {% block contenido %}
-
+<br />
 <div class="col-md-8 offset-md-2">
   <div class="card">
     <div class="card-header">
@@ -56,7 +56,9 @@
         {{ form(form) }}
 
         <div class="text-right">
-          <a class="btn btn-small btn-outline-secondary" href="{{ path('usuario_index') }}"
+          <a
+            class="btn btn-small btn-outline-secondary"
+            href="{{ path('usuario_index') }}"
             ><i class="glyphicon glyphicon-remove"></i> Cancelar</a
           >
           <button class="btn btn-small btn-primary pull-right" type="submit">

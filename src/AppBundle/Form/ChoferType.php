@@ -1,7 +1,9 @@
 <?php
 
 namespace AppBundle\Form;
+
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,17 +19,49 @@ class ChoferType extends AbstractType
         $builder
             ->add('nombre')
             ->add('omnibus', EntityType::class, array('class' => 'AppBundle\Entity\Omnibus', 'multiple' => false, 'expanded' => false))
-            ->add('recalificacion_emision')
-            ->add('recalificacionVencimiento')
+            ->add('recalificacion_emision', DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+            ])
+            ->add('recalificacionVencimiento', DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+            ])
             ->add('noLicenciaOperativa')
-            ->add('examenMedicoEmision')
-            ->add('examenMedicoVencimiento')
-            ->add('examenPsicofisiologicoEmision')
-            ->add('licencia_emision')
-            ->add('licencia_vencimiento')
-            ->add('examenPsicofisiologicoVencimiento');
+            ->add('examenMedicoEmision', DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+            ])
+            ->add('examenMedicoVencimiento', DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+            ])
+            ->add('examenPsicofisiologicoEmision',  DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+            ])
+            ->add('licencia_emision', DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+            ])
+            ->add('licencia_vencimiento', DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+            ])
+            ->add('examenPsicofisiologicoVencimiento', DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
+            ]);
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

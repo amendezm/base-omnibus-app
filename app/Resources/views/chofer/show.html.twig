@@ -1,97 +1,100 @@
-{% extends 'index.html.twig' %}
-
-{% block contenido%}
-    <h1>Chofer</h1>
-    <div class="box box-danger">
-        <div class="box-header with-border">
-            <div class="user-block">
-                <h3 class="text-center ">Lista de Choferes</h3>
-            </div><!-- /.user-block -->
-            <div class="box-tools">
-                <ul class="list-inline">
-                    <li>
-                        <a class="text-info" href="{{ path('chofer_index') }}">
-                            <i class="glyphicon glyphicon glyphicon-hand-left"></i> Atràs</a>
-                    </li>
-                </ul>
-            </div><!-- /.box-tools -->
-        </div><!-- /.box-header -->
-        <div class="box-body">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>Nombre y Apellidos</th>
-                    <td>{{ chofer.nombre }}</td>
-                </tr>
-                <tr>
-                    <th>Ómnibus</th>
-                    <td>{{ chofer.omnibus }}</td>
-                </tr>
-                {#<tr>#}
-                    {#<th>CI</th>#}
-                    {#<td>{{ chofer.cI }}</td>#}
-                {#</tr>#}
-                <tr>
-                    <th>LC</th>
-                    <td>{{ chofer.noLicenciaOperativa }}</td>
-                </tr>
-                <tr>
-                    <th>Recalificación Emitida :<td>{% if chofer.recalificacionEmision %}{{ chofer.recalificacionEmision|date('Y-m-d') }}{% endif %}</td></th>
-                </tr>
-                <tr>
-                    <th>Recalificación Vence : <td>{% if chofer.recalificacionVencimiento %}{{ chofer.recalificacionVencimiento|date('Y-m-d') }}{% endif %}</td></th>
-                </tr>
-                <tr>
-                    <th>Examen Médico Emitido:<td>{% if chofer.examenMedicoEmision %}{{ chofer.examenMedicoEmision|date('Y-m-d') }}{% endif %}</td></th>
-                </tr>
-                <tr>
-                    <th>Examen Médico Vence:  <td>{% if chofer.examenMedicoVencimiento %}{{ chofer.examenMedicoVencimiento|date('Y-m-d') }}{% endif %}</td></th>
-                </tr>
-                <tr>
-                    <th>Examen Psicofisiológico Emitido :<td>{% if chofer.examenPsicofisiologicoEmision %}{{ chofer.examenPsicofisiologicoEmision|date('Y-m-d') }}{% endif %}</td></th>
-                </tr>
-                <tr>
-                    <th>Examen Psicofisiológico Vence:<td>{% if chofer.examenPsicofisiologicoVencimiento %}{{ chofer.examenPsicofisiologicoVencimiento|date('Y-m-d') }}{% endif %}</td></th>
-                </tr>
-                <tr>
-                    <th>LC Emitida : <td>{% if chofer.licenciaEmision %}{{ chofer.licenciaEmision|date('Y-m-d') }}{% endif %}</td></th>
-                </tr>
-                <tr>
-                    <th>LC Vence : <td>{% if chofer.licenciaVencimiento %}{{ chofer.licenciaVencimiento|date('Y-m-d') }}{% endif %}</td></th>
-                </tr>
-                <tr>
-                    <th>{% if not is_granted('ROLE_USUARIO' ) %}<img src="{{ asset('assets/dist/img/data_configuration_26px.png') }}" alt="User Image"> Acciones{% endif %}
-                    <td>
-                        {#<ul>#}
-                        <a href="{{ path('omnibus_edit',{ 'id': chofer.id }) }}"
-                           class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="left"
-                           title="Editar elemento"><i class="glyphicon glyphicon-pencil"></i>
-                        </a>
-                        {#<a href="{{ path('omnibus_delete',{'id': chofer.id}) }}"#}
-                           {#class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="rigth"#}
-                           {#title="Eliminar elemento"#}
-                           {#onclick="return confirm('Esta seguro que desea eliminar el elemento')">#}
-                            {#<i class="glyphicon glyphicon-remove"></i>#}
-                        {#</a>#}
-                        {#</ul>#}
-                    </td>
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                {#{% for omnibus in omnibuses %}#}
-                <tr>
-
-
-                </tr>
-                {#{% endfor %}#}
-
-                </tbody>
-            </table>
-            {#<div align="left">#}
-
-
-            {#</div>#}
+{% extends 'index.html.twig' %} {% block contenido%}
+<br />
+<div class="col-md-8 offset-md-2">
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>{{ chofer.nombre }}</h3>
         </div>
+      </div>
     </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12">
+          Chofer del ómnibus {{ chofer.omnibus }} con licencia operativa
+          {{ chofer.noLicenciaOperativa }}
+        </div>
+      </div>
+      <br />
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <strong>Recalificación Emitida:</strong>
+          {% if chofer.recalificacionEmision %}
+          {{ chofer.recalificacionEmision|date('Y-m-d') }}
+          {% endif %}
+        </div>
+        <div class="col-md-6">
+          <strong> Recalificación Vence:</strong>
+          {% if chofer.recalificacionVencimiento %}
+          {{ chofer.recalificacionVencimiento|date('Y-m-d')}}
+          {% endif %}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <strong>Examen Médico Emitido:</strong>
+          {% if chofer.examenMedicoEmision %}
+          {{ chofer.examenMedicoEmision|date('Y-m-d')}}
+          {% endif %}
+        </div>
+        <div class="col-md-6">
+          <strong>Examen Médico Vence:</strong>
+          {% if chofer.examenMedicoVencimiento %}
+          {{ chofer.examenMedicoVencimiento|date('Y-m-d')}}
+          {% endif %}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <strong>Examen Psicofisiológico Emitido:</strong>
+          <td>
+            {% if chofer.examenPsicofisiologicoEmision %}
+            {{ chofer.examenPsicofisiologicoEmision|date('Y-m-d')}}
+            {% endif %}
+          </td>
+        </div>
+
+        <div class="col-md-6">
+          <strong>Examen Psicofisiológico Vence:</strong>
+          <td>
+            {% if chofer.examenPsicofisiologicoVencimiento %}
+            {{ chofer.examenPsicofisiologicoVencimiento|date('Y-m-d')}}
+            {% endif %}
+          </td>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <strong>LC Emitida:</strong>
+          {% if chofer.licenciaEmision %}
+          {{ chofer.licenciaEmision|date('Y-m-d')}}
+          {% endif %}
+        </div>
+        <div class="col-md-6">
+          <strong>LC Vence:</strong>
+          {% if chofer.licenciaVencimiento %}
+          {{ chofer.licenciaVencimiento|date('Y-m-d')}}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="text-right">
+        <a
+          href="{{ path('chofer_edit', { id: chofer.id }) }}"
+          class="btn btn-outline-secondary"
+          data-toggle="tooltip"
+          data-placement="left"
+          title="Editar elemento"
+        >
+          Editar
+        </a>
+        <a class="btn btn-primary" href="{{ path('chofer_index') }}">
+          Atrás
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
