@@ -22,7 +22,7 @@ class UsuarioController extends Controller
     public function indexAction()
     {
         if (false === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
-//            return $this->redirectToRoute('error');
+            //            return $this->redirectToRoute('error');
         }
         $em = $this->getDoctrine()->getManager();
 
@@ -31,8 +31,6 @@ class UsuarioController extends Controller
         return $this->render('usuario/index.html.twig', array(
             'usuarios' => $usuarios,
         ));
-
-
     }
 
 
@@ -40,27 +38,23 @@ class UsuarioController extends Controller
 
     {
         if (false === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
-//            return $this->redirectToRoute('error');
- }
+            //            return $this->redirectToRoute('error');
+        }
 
-    $usuario = new Usuario();
-      $form = $this->createForm(UsuarioType::class, $usuario);
-     $form->handleRequest($request);
-     if ($form->isSubmitted() && $form->isValid()) {
-          $em = $this->getDoctrine()->getManager();
-         $usuarios = $em->getRepository('AppBundle:Usuario')->findBy(array('usuario' => $usuario->getUsuario()));
-        $encoder = $this->container->get('security.password_encoder');
-         $encoded = $encoder->encodePassword($usuario, $usuario->getPassword());
-          $usuario->setPassword($encoded);
-         $em->persist($usuario);
-         $em->flush();
-         $this->addFlash('notice', 'Se ha insertado correctamente el Usuario!');
-          return $this->redirectToRoute('usuario_index', array('id' => $usuario->getId()));
-
-
-
-
-     }
+        $usuario = new Usuario();
+        $form = $this->createForm(UsuarioType::class, $usuario);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $usuario = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $encoder = $this->container->get('security.password_encoder');
+            $encoded = $encoder->encodePassword($usuario, $usuario->getPassword());
+            $usuario->setPassword($encoded);
+            $em->persist($usuario);
+            $em->flush();
+            $this->addFlash('notice', 'Se ha insertado correctamente el Usuario!');
+            return $this->redirectToRoute('usuario_index', array('id' => $usuario->getId()));
+        }
         return $this->render('usuario/new.html.twig', array(
             'usuario' => $usuario,
             'form' => $form->createView(),
@@ -81,13 +75,12 @@ class UsuarioController extends Controller
             'usuario' => $usuario,
             'delete_form' => $deleteForm->createView(),
         ));
-
     }
 
 
     public function editAction(Request $request, Usuario $usuario)
     {
-//        $this->denyAccessUnlessGranted('Administrador', null, 'Usted no es Administrador no puede acceder a este vínculo!');
+        //        $this->denyAccessUnlessGranted('Administrador', null, 'Usted no es Administrador no puede acceder a este vínculo!');
         $deleteForm = $this->createDeleteForm($usuario);
         $editForm = $this->createForm(UsuarioType::class, $usuario);
         $editForm->handleRequest($request);
@@ -108,8 +101,8 @@ class UsuarioController extends Controller
 
             if ($editForm->getData()->getPassword() == null) {
                 $usuario->setPassword($request->getSession()->get('pass'));
-            }else{
-                $encoder = $this->container->get('security.password_encoder' );
+            } else {
+                $encoder = $this->container->get('security.password_encoder');
                 $encoded = $encoder->encodePassword($usuario, $usuario->getPassword());
                 $usuario->setPassword($encoded);
             }
@@ -133,24 +126,22 @@ class UsuarioController extends Controller
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
-
     }
 
 
     public function deleteAction(Request $request, Usuario $usuario)
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Usted no es Administrador no puede acceder a este vínculo!');
-if($usuario-> getUsuario()!=='administrador'){
-    $em = $this->getDoctrine()->getManager();
-    $em->remove($usuario);
-    $em->flush();
-    $this->addFlash('notice', 'Se ha borrado correctamente!');
-}
+        if ($usuario->getUsuario() !== 'administrador') {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($usuario);
+            $em->flush();
+            $this->addFlash('notice', 'Se ha borrado correctamente!');
+        }
 
 
 
         return $this->redirectToRoute('usuario_index');
-
     }
 
     /**
@@ -166,7 +157,6 @@ if($usuario-> getUsuario()!=='administrador'){
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('usuario_delete', array('id' => $usuario->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
