@@ -1,190 +1,154 @@
-{% extends 'index.html.twig' %}
-
-{% block contenido %}
-    <!-- Default box -->
-    <div class="box box-danger">
-        <div class="box-header with-border">
-            <div class="user-block">
-                <h3 class="text-center ">Lista de Ómnibus</h3>
-            </div><!-- /.user-block -->
-            <div class="box-tools">
-
-            </div><!-- /.box-tools -->
-        </div><!-- /.box-header -->
-        <div class="box-body">
-            {#<h5>Total de registros: {{ pagination.getTotalItemCount }}</h5>#}
-
-            <table class="table table-hover">
-                <thead>
-                <th>No.</th>
-                <th>Chapa</th>
-                <th>Tipo</th>
-                <th>Base</th>
-                {#<th>Marca</th>#}
-                <th>Tarjeta de Combustible</th>
-                {#<th>Índice CR</th>#}
-                <th>Total de Kms Recorridos</th>
-                {#<th>Capacidad</th>#}
-                <th>En Revisión</th>
-                <th>Roto</th>
-                <th>Por mantenim.</th>
-                {#<th>Emisión FICAV</th>#}
-                <th>Vence FICAV</th>
-                {#<th>Licencia Operativa Emitida</th>#}
-                <th>Lic. Operativa Vence</th>
-
-                {#<th>CirculaciónV</th>#}
-                {% if not is_granted('ROLE_USUARIO' ) %}<th><img src="{{ asset('assets/dist/img/data_configuration_26px.png') }}" alt="User Image"> Acciones</th>{% endif %}
-                </thead>
-                <tbody>
-                {% for omnibus in omnibuses %}
-                    <tr>
-                        <td>{{ omnibus.noOmnibus }}</td>
-                        <td>{{ omnibus.chapa }}</td>
-                        <td>{{ omnibus.typeOmnibus }}</td>
-                        <td>{{ omnibus.base }}</td>
-                        {#<td>{{ omnibus.marca }}</td>#}
-                        <td>{{ omnibus.tarjetaCombustible }}</td>
-                        {#<td>{{ omnibus.indiceConsumoReal }}</td>#}
-                        <td>{{ omnibus.kmRecorridosAcumulados }}</td>
-                        {#<td>{{ omnibus.capacidad }}</td>#}
-                        <td>{% if omnibus.EnRevision %}Yes{% else %}No{% endif %}</td>
-                        {#<td>{% if entity.uno %}Yes{% else %}No{% endif %}</td>#}
-                        <td>{% if omnibus.IsRoto %}Yes{% else %}No{% endif %}</td>
-                        <td>{% if omnibus.isMantenimiento %}Yes{% else %}No{% endif %}</td>
-                        {#<td>{% if omnibus.FICAVEmision %}{{ omnibus.FICAVEmision|date('Y-m-d') }}{% endif %}</td>#}
-                        <td>{% if omnibus.FICAVVencimiento %}{{ omnibus.FICAVVencimiento|date('Y-m-d') }}{% endif %}</td>
-                        {#<td>{% if omnibus.licenciaOperativaEmision %}{{ omnibus.licenciaOperativaEmision|date('Y-m-d') }}{% endif %}</td>#}
-                        <td>{% if omnibus.licenciaOperativaVencimiento %}{{ omnibus.licenciaOperativaVencimiento|date('Y-m-d') }}{% endif %}</td>
-
-                        <td>
-                            <ul>
-                                <a href="{{ path('omnibus_edit',{ 'id': omnibus.id }) }}"
-                                   class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="left"
-                                   title="Editar elemento"><i class="glyphicon glyphicon-pencil"></i>
-                                </a>
-                                <a href="{{ path('omnibus_show',{ 'id': omnibus.id }) }}"
-                                   class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="left"
-                                   title="Visualizar elemento"><i class="glyphicon glyphicon-eye-open"></i>
-                                </a>
-                                <a href="{{ path('omnibus_delete',{'id': omnibus.id}) }}"
-                                   class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="left"
-                                   title="Eliminar elemento"
-                                   onclick="return confirm('Esta seguro que desea eliminar el elemento')">
-                                    <i class="glyphicon glyphicon-remove"></i>
-                                </a>
-                            </ul>
-                        </td>
-                    </tr>
-                {% endfor %}
-
-                </tbody>
-            </table>
-
-        </div><!-- /.box-body -->
-
-        <div class="row">
-
-            <div class="col-sm-4">
-                {% if not is_granted('ROLE_USUARIO' ) %}
-                    <a class="btn btn-sm btn-default  pull-left" href="{{ path('omnibus_new') }}">
-                        <img src="{{ asset('assets/dist/img/add_database_26px.png') }}" alt="User Image"> Nuevo
-                    </a>
-                {% endif %}
-            </div>
-            <div class="col-sm-4">
-                {#{{ knp_pagination_render(pagination) }}#}
-            </div>
-            <div class="col-sm-4">
-
-
-            </div>
-        </div>
-
-
-    </div><!-- /.box -->
-    <div id="mymodal" class="modal  inmodal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <button aria-label="Close" data-dismiss="modal" class="close" type="button">
-                        <span aria-hidden="true">×</span></button>
-                    <i class="fa-3x fa fa-warning modal-icon text-red"></i>
-                    <h4 class="modal-title">Acción Peligrosa</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Está acción puede ocacionar, comprometer la integridad de los datos!</p>
-                    <small>Si no es un usuario avanzado, recomendamos que cancele esta acción.</small>
-                </div>
-                <div class="modal-footer">
-                    <button data-dismiss="modal" class="btn btn-primary" type="button">Cerrar</button>
-                    <a class="btn btn-primary btn-danger btn-delete" href="#">Eliminar</a>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
+{% extends 'index.html.twig' %} {% block contenido %}
+<br />
+<div class="card shadow">
+  <div class="card-header py-3">
+    <div class="row">
+      <div class="col-md-6">
+        <h3 class="m-0 font-weight-bold text-primary">Lista de Ómnibus</h3>
+      </div>
+      <div class="col-md-6 text-right">
+        {% if not is_granted('ROLE_USUARIO' ) %}
+        <a
+          class="btn btn-sm btn-default  pull-left"
+          href="{{ path('omnibus_new') }}"
+        >
+          <img
+            src="{{ asset('assets/dist/img/add_database_26px.png') }}"
+            alt="User Image"
+          />
+          Nuevo
+        </a>
+        {% endif %}
+      </div>
     </div>
-
+  </div>
+  <div class="card-body text-center" style="font-size: 0.65rem;">
+    <div class="table responsive">
+      <table
+        class="table table-bordered"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+      >
+        <thead>
+          <th>No.</th>
+          <th>Chapa</th>
+          <th>Tipo</th>
+          <th>Base</th>
+          <th>Tarjeta de Combustible</th>
+          <th>Total de Kms Recorridos</th>
+          <th>En Revisión</th>
+          <th>Roto</th>
+          <th>Por mantenim.</th>
+          <th>Vence FICAV</th>
+          <th>Lic. Operativa Vence</th>
+          {% if not is_granted('ROLE_USUARIO' ) %}
+          <th>
+            <img
+              src="{{ asset('assets/dist/img/data_configuration_26px.png') }}"
+              alt="User Image"
+            />
+            Acciones
+          </th>
+          {% endif %}
+        </thead>
+        <tbody>
+          {% for omnibus in omnibuses %}
+          <tr>
+            <td>{{ omnibus.noOmnibus }}</td>
+            <td>{{ omnibus.chapa }}</td>
+            <td>{{ omnibus.typeOmnibus }}</td>
+            <td>{{ omnibus.base }}</td>
+            <td>{{ omnibus.tarjetaCombustible }}</td>
+            <td>{{ omnibus.kmRecorridosAcumulados }}</td>
+            <td>{% if omnibus.EnRevision %}Yes{% else %}No{% endif %}</td>
+            <td>{% if omnibus.IsRoto %}Yes{% else %}No{% endif %}</td>
+            <td>{% if omnibus.isMantenimiento %}Yes{% else %}No{% endif %}</td>
+            <td>
+              {% if omnibus.FICAVVencimiento %}
+              {{ omnibus.FICAVVencimiento|date('Y-m-d')}}
+              {% endif %}
+            </td>
+            <td>
+              {% if omnibus.licenciaOperativaVencimiento %}
+              {{ omnibus.licenciaOperativaVencimiento|date('Y-m-d')}}
+              {% endif %}
+            </td>
+            <td>
+              {#
+              <a
+                href="{{ path('omnibus_show', { id: omnibus.id }) }}"
+                class="btn btn-warning btn-xs"
+                data-toggle="tooltip"
+                data-placement="left"
+                title="Visualizar elemento"
+                ><i class="glyphicon glyphicon-eye-open"></i>
+              </a>
+              #}
+              <div class="row" style="font-size: 1rem;">
+                <div class="col-md-6">
+                  <a
+                    href="{{ path('omnibus_delete', { id: omnibus.id }) }}"
+                    class="text-secondary"
+                    data-toggle="tooltip"
+                    data-placement="left"
+                    title="Eliminar elemento"
+                    onclick="return confirm('Esta seguro que desea eliminar el elemento')"
+                  >
+                    <i class="fas fa-trash-alt"></i>
+                  </a>
+                </div>
+                <div class="col-md-6">
+                  <a
+                    href="{{ path('omnibus_edit', { id: omnibus.id }) }}"
+                    class="text-primary"
+                    data-toggle="tooltip"
+                    data-placement="left"
+                    title="Editar elemento"
+                    ><i class="fas fa-edit"></i>
+                  </a>
+                </div>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- /.box -->
+<div id="mymodal" class="modal  inmodal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <button
+          aria-label="Close"
+          data-dismiss="modal"
+          class="close"
+          type="button"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+        <i class="fa-3x fa fa-warning modal-icon text-red"></i>
+        <h4 class="modal-title">Acción Peligrosa</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          Está acción puede ocacionar, comprometer la integridad de los datos!
+        </p>
+        <small
+          >Si no es un usuario avanzado, recomendamos que cancele esta
+          acción.</small
+        >
+      </div>
+      <div class="modal-footer">
+        <button data-dismiss="modal" class="btn btn-primary" type="button">
+          Cerrar
+        </button>
+        <a class="btn btn-primary btn-danger btn-delete" href="#">Eliminar</a>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
-{#<h1>Omnibus list</h1>#}
-
-{#<table>#}
-    {#<thead>#}
-    {#<tr>#}
-
-        {#<th>Chapa</th>#}
-        {#<th>No.omnibus</th>#}
-        {#<th>Tipo</th>#}
-        {#<th>Indice CN</th>#}
-        {#<th>Indice CR</th>#}
-        {#<th>Kms Recorridos A</th>#}
-        {#<th>Capacidad</th>#}
-        {#<th>Descripcion</th>#}
-        {#<th>Revision</th>#}
-        {#<th>Roto</th>#}
-        {#<th>Emisionficav</th>#}
-        {#<th>Vencimientoficav</th>#}
-        {#<th>Circulacio E</th>#}
-        {#<th>CirculacionV</th>#}
-        {#<th>Actions</th>#}
-    {#</tr>#}
-    {#</thead>#}
-    {#<tbody>#}
-    {#{% for omnibus in omnibuses %}#}
-        {#<tr>#}
-            {#<td><a href="{{ path('omnibus_show', { 'id': omnibus.id }) }}">{{ omnibus.id }}</a></td>#}
-            {#<td>{{ omnibus.chapa }}</td>#}
-            {#<td>{{ omnibus.noOmnibus }}</td>#}
-            {#<td>{{ omnibus.tipo }}</td>#}
-            {#<td>{{ omnibus.indiceConsumoNormado }}</td>#}
-            {#<td>{{ omnibus.indiceConsumoReal }}</td>#}
-            {#<td>{{ omnibus.kmRecorridosAcumulados }}</td>#}
-            {#<td>{{ omnibus.capacidad }}</td>#}
-            {#<td>{{ omnibus.descripcion }}</td>#}
-            {#<td>{% if entity.revision %}Yes{% else %}No{% endif %}</td>#}
-            {#<td>{% if entity.roto %}Yes{% else %}No{% endif %}</td>#}
-            {#<td>{% if omnibus.emisionFICAV %}{{ omnibus.emisionFICAV|date('Y-m-d') }}{% endif %}</td>#}
-            {#<td>{% if omnibus.vencimientoFICAV %}{{ omnibus.vencimientoFICAV|date('Y-m-d') }}{% endif %}</td>#}
-            {#<td>{% if omnibus.circulacionEmision %}{{ omnibus.circulacionEmision|date('Y-m-d') }}{% endif %}</td>#}
-            {#<td>{% if omnibus.circulacionVencimiento %}{{ omnibus.circulacionVencimiento|date('Y-m-d') }}{% endif %}</td>#}
-            {#<td>#}
-                {#<ul>#}
-                    {#<li>#}
-                        {#<a href="{{ path('omnibus_show', { 'id': omnibus.id }) }}">show</a>#}
-                    {#</li>#}
-                    {#<li>#}
-                        {#<a href="{{ path('omnibus_edit', { 'id': omnibus.id }) }}">edit</a>#}
-                    {#</li>#}
-                {#</ul>#}
-            {#</td>#}
-        {#</tr>#}
-    {#{% endfor %}#}
-    {#</tbody>#}
-{#</table>#}
-
-{#<ul>#}
-    {#<li>#}
-        {#<a href="{{ path('omnibus_new') }}">Create a new entry</a>#}
-    {#</li>#}
-{#</ul>#}
