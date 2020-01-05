@@ -5,6 +5,8 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
 
 class baseType extends AbstractType
 {
@@ -16,11 +18,10 @@ class baseType extends AbstractType
     {
         $builder
             ->add('nombre')
-            ->add('descripcion')
-            ->add('direccion')
-        ;
+            ->add('descripcion', TextareaType::class)
+            ->add('direccion');
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
