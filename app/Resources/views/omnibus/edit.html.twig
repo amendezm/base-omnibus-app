@@ -1,167 +1,121 @@
-{% extends 'index.html.twig' %}
-
-{% block contenido%}
-    {{ form_start(edit_form, {'method' :'POST'}) }}
-<div class="box box-danger">
-    <div class="box-header with-border">
-        <div class="user-block">
-            <h3 class="text-center ">Editar Ómnibus</h3>
-        </div><!-- /.user-block -->
-        <div class="box-tools">
-            <ul class="list-inline">
-                <li>
-                    <a class="text-info" href="{{ path('omnibus_index') }}">
-                        <i class="glyphicon glyphicon glyphicon-hand-left"></i> Atràs</a>
-                </li>
-            </ul>
-        </div><!-- /.box-tools -->
-</div><!-- /.box-header -->
-    <div class="box-body">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">NoControl</label>
-                    {{ form_widget(edit_form.noOmnibus, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }})}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Chapa</label>
-                    {{ form_widget(edit_form.chapa, {'attr' : {'class' : 'form-control' }})}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Tipo</label>
-                    {{ form_widget(edit_form.typeOmnibus, {'attr' : {'class' : 'form-control' }})}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Marca</label>
-                    {{ form_widget(edit_form.marca, {'attr' : {'class' : 'form-control' }})}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Base</label>
-                    {{ form_widget(edit_form.base, {'attr' : {'class' : 'form-control' }})}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Tarjeta de Combustible</label>
-                    {{ form_widget(edit_form.tarjetaCombustible, {'attr' : {'class' : 'form-control' }})}}
-                </div>
-            </div>
-        </div>
-        {#<div class="row">#}
-            {#<div class="col-sm-6">#}
-                {#<div class="form-group">#}
-                    {#<label class="col-sm-4 control-label">Índice CR</label>#}
-                    {#{{ form_widget(edit_form.indiceConsumoReal, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }})}}#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-        {#<div class="row">#}
-            {#<div class="col-sm-6">#}
-                {#<div class="form-group">#}
-                    {#<label class="col-sm-4 control-label">Kms Recorridos A</label>#}
-                    {#{{ form_widget(edit_form.kmRecorridosAcumulados, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }})}}#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-
-        {#<div class="row">#}
-            {#<div class="col-sm-6">#}
-                {#<div class="form-group">#}
-                    {#<label class="col-sm-4 control-label">Capacidad</label>#}
-                    {#{{ form_widget(edit_form.capacidad, {'attr' : {'class' : 'form-control' }})}}#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-        {#<div class="row">#}
-            {#<div class="col-sm-6">#}
-                {#<div class="form-group">#}
-                    {#<label class="col-sm-4 control-label">Descripción</label>#}
-                    {#{{ form_widget(edit_form.descripcion, {'attr' : {'class' : 'form-control' }})}}#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Revisión</label>
-                    {{ form_widget(edit_form.en_revision, {'attr' : {'class' : '' }})}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Roto</label>
-                    {{ form_widget(edit_form.is_roto, {'attr' : {'class' : '' }})}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Emisión FICAV</label>
-                    {{ form_widget(edit_form.FICAV_emision, {'attr' : {'class' : 'form-control' }})}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Vencimiento FICAV</label>
-                    {{ form_widget(edit_form.FICAV_vencimiento, {'attr' : {'class' : 'form-control' }})}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Licencia Operativa Emitida</label>
-                    {{ form_widget(edit_form.licenciaOperativaEmision, {'attr' : {'class' : '' }})}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Licencia Operativa Vence</label>
-                    {{ form_widget(edit_form.licenciaOperativaVencimiento, {'attr' : {'class' : '' }})}}
-                </div>
-            </div>
-        </div>
-
-        {#<div class="row">#}
-        {#<div class="col-sm-6">#}
-        {#<label class="col-sm-4 control-label"></label>#}
-        {#{{ form_widget(edit_form.Submit) }}#}
-        {#</div>#}
-        {#</div>#}
-        {#</div><!-- /.box-body -->#}
-        <table align="center">
-            <tr>
-                <td><input type="submit" class="btn btn-danger btn " style="background-color: #6290ff" value="Editar" /></td>
-            </tr>
-        </table>
+{% extends 'index.html.twig' %} {% block contenido%}
+<br />
+<div class="col-md-8 offset-md-2">
+  {{ form_start(edit_form, { method: "POST" }) }}
+  <div class="card">
+    <div class="card-header">
+      <h3>Editar Ómnibus</h3>
     </div>
-    {#<!-- /.box widget-->#}
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">NoControl</label>
+            {{ form_widget(edit_form.noOmnibus, 
+                {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
+            )}}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Chapa</label>
+            {{ form_widget(edit_form.chapa,
+                {'attr' : {'class' : 'form-control'}}
+            )}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Tipo</label>
+            {{ form_widget(edit_form.typeOmnibus, 
+                {'attr' : {'class' : 'form-control'}}
+            )}}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Marca</label>
+            {{ form_widget(edit_form.marca, 
+                {'attr' : {'class' : 'form-control'}}
+            )}}
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Base</label>
+        {{ form_widget(edit_form.base,
+            {'attr' : {'class' : 'form-control'}}
+        )}}
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Emisión FICAV</label>
+            {{ form_widget(edit_form.FICAV_emision,
+                 {'attr' : {'class' : 'form-control datepicker-here'}}
+            )}}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Vencimiento FICAV</label>
+            {{ form_widget(edit_form.FICAV_vencimiento, 
+                {'attr' : {'class' : 'form-control datepicker-here'}}
+            )}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Licencia Operativa Emitida</label>
+            {{ form_widget(edit_form.licenciaOperativaEmision, 
+                {'attr' : {'class' : 'form-control datepicker-here'}}
+            )}}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Licencia Operativa Vence</label>
+            {{ form_widget(edit_form.licenciaOperativaVencimiento, 
+                {'attr' : {'class' : 'form-control datepicker-here'}}
+            )}}
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-4 control-label">Tarjeta de Combustible</label>
+        {{ form_widget(edit_form.tarjetaCombustible, 
+                {'attr' : {'class' : 'form-control'}}
+        )}}
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Revisión</label>
+            {{ form_widget(edit_form.en_revision, {'attr' : {'class' : '' }})}}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Roto</label>
+            {{ form_widget(edit_form.is_roto, {'attr' : {'class' : '' }})}}
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="text-right">
+        <a class="btn btn-outline-secondary" href="{{ path('omnibus_index') }}">
+          Cancelar
+        </a>
+        <button type="submit" class="btn btn-primary" value="Editar">
+          Guardar
+        </button>
+      </div>
+    </div>
     {{ form_end(edit_form) }}
+  </div>
 </div>
-    {% endblock %}
+{% endblock %}

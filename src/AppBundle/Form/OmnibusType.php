@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -19,21 +20,37 @@ class OmnibusType extends AbstractType
             ->add('chapa')
             ->add('noOmnibus')
             ->add('typeOmnibus')
-//            ->add('indiceConsumoReal')
-//            ->add('kmRecorridosAcumulados')
+            //            ->add('indiceConsumoReal')
+            //            ->add('kmRecorridosAcumulados')
             ->add('marca')
-//            ->add('descripcion')
+            //            ->add('descripcion')
             ->add('base')
             ->add('en_revision')
             ->add('is_roto')
-            ->add('FICAV_emision')
-            ->add('FICAV_vencimiento')
-            ->add('licenciaOperativaEmision')
-            ->add('licenciaOperativaVencimiento')
-            ->add('tarjetaCombustible',EntityType::class, array('class' => 'AppBundle\Entity\Tarjeta_combustible', 'multiple' => false, 'expanded' => false));
-//            ->add('mantenimiento');
+            ->add('FICAV_emision', DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+            ])
+            ->add('FICAV_vencimiento', DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+            ])
+            ->add('licenciaOperativaEmision', DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+            ])
+            ->add('licenciaOperativaVencimiento', DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+            ])
+            ->add('tarjetaCombustible', EntityType::class, array('class' => 'AppBundle\Entity\Tarjeta_combustible', 'multiple' => false, 'expanded' => false));
+        //            ->add('mantenimiento');
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
