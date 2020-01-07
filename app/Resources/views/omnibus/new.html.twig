@@ -1,12 +1,12 @@
 {% extends 'index.html.twig' %} {% block contenido%}
 <br />
-<div class="col-md-8 offset-md-2">
-  {{ form_start(form, { method: "POST" }) }}
-  <div class="card">
-    <div class="card-header ">
-      <h3 class="panel-title">Nuevo Ómnibus</h3>
-    </div>
-    <div class="card-body">
+{{ form_start(form, { method: "POST" }) }}
+<div class="card">
+  <div class="card-header ">
+    <h3 class="panel-title">Nuevo Ómnibus</h3>
+  </div>
+  <div class="card-body">
+    <div class="col-md-8 offset-md-2">
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">

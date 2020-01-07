@@ -1,13 +1,13 @@
 {% extends 'index.html.twig' %} {% block contenido %}
 <br />
-<div class="col-md-8 offset-md-2">
-  <div class="card">
-    <div class="card-header">
-      <h3 class="panel-title">
-        Nuevo Usuario
-      </h3>
-    </div>
-    <div class="card-body">
+<div class="card">
+  <div class="card-header">
+    <h3 class="panel-title">
+      Nuevo Usuario
+    </h3>
+  </div>
+  <div class="card-body">
+    <div class="col-md-8 offset-md-2">
       <form action="{{ path('usuario_new') }}" method="post" role="form">
         {% if error is defined %}
         <div class="alert_error">
