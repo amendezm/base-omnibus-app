@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,13 +19,11 @@ class Tipo_omnibusType extends AbstractType
             ->add('tipo')
             ->add('capacidad_sentados')
             ->add('capacidad_parados')
-//            ->add('capacidad_total')
             ->add('indiceConsumoNormado')
             ->add('desviacion')
-            ->add('cantidadkmtsxlitro')
-        ;
+            ->add('cantidadkmtsxlitro', IntegerType::class, ['required' => true]);
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

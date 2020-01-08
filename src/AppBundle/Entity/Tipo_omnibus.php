@@ -19,7 +19,7 @@ class Tipo_omnibus
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      *
-    */
+     */
     private $id;
 
     /**
@@ -73,10 +73,10 @@ class Tipo_omnibus
      */
     protected $omnibus;
 
-public function __toString()
-{
-    return $this->tipo;
-}
+    public function __toString()
+    {
+        return $this->tipo;
+    }
 
 
     /**
@@ -256,7 +256,4 @@ public function __toString()
     {
         $this->tipo = $tipo;
     }
-
-
-
 }
