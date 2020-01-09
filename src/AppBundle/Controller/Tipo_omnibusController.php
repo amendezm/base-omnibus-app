@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use AppBundle\Entity\Tipo_omnibus;
 use AppBundle\Form\Tipo_omnibusType;
+
 /**
  *
  * Función para llamar a la plantilla de administración
@@ -43,7 +44,7 @@ class Tipo_omnibusController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $capacidadTotal= $tipo_omnibus->getCapacidadSentados()+$tipo_omnibus->getCapacidadParados();
+            $capacidadTotal = $tipo_omnibus->getCapacidadSentados() + $tipo_omnibus->getCapacidadParados();
             $tipo_omnibus->setCapacidadTotal($capacidadTotal);
 
             $em->persist($tipo_omnibus);
@@ -64,11 +65,11 @@ class Tipo_omnibusController extends Controller
      */
     public function showAction(Tipo_omnibus $tipo_omnibus)
     {
-//        $deleteForm = $this->createDeleteForm($tipo_omnibus);
+        //        $deleteForm = $this->createDeleteForm($tipo_omnibus);
 
         return $this->render('tipo_omnibus/show.html.twig', array(
             'tipo_omnibus' => $tipo_omnibus,
-//            'delete_form' => $deleteForm->createView(),
+            //            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -78,14 +79,13 @@ class Tipo_omnibusController extends Controller
      */
     public function editAction(Request $request, Tipo_omnibus $tipo_omnibus)
     {
-//        $deleteForm = $this->createDeleteForm($tipo_omnibus);
         $editForm = $this->createForm('AppBundle\Form\Tipo_omnibusType', $tipo_omnibus);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $capacidadTotal= $tipo_omnibus->getCapacidadSentados()+$tipo_omnibus->getCapacidadParados();
+            $capacidadTotal = $tipo_omnibus->getCapacidadSentados() + $tipo_omnibus->getCapacidadParados();
             $tipo_omnibus->setCapacidadTotal($capacidadTotal);
 
             $em->persist($tipo_omnibus);
@@ -97,7 +97,6 @@ class Tipo_omnibusController extends Controller
         return $this->render('tipo_omnibus/edit.html.twig', array(
             'tipo_omnibus' => $tipo_omnibus,
             'edit_form' => $editForm->createView(),
-//            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -107,14 +106,14 @@ class Tipo_omnibusController extends Controller
      */
     public function deleteAction(Request $request, Tipo_omnibus $tipo_omnibus)
     {
-//        $form = $this->createDeleteForm($tipo_omnibus);
-//        $form->handleRequest($request);
+        //        $form = $this->createDeleteForm($tipo_omnibus);
+        //        $form->handleRequest($request);
 
-//        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($tipo_omnibus);
-            $em->flush();
-//        }
+        //        if ($form->isSubmitted() && $form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($tipo_omnibus);
+        $em->flush();
+        //        }
 
         return $this->redirectToRoute('tipo_omnibus_index');
     }
@@ -131,7 +130,6 @@ class Tipo_omnibusController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('tipo_omnibus_delete', array('id' => $tipo_omnibus->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
