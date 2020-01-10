@@ -1,91 +1,107 @@
-{% extends "base.html.twig" %}
-
-{% block contenido %}
-<div class="login-box ">
-    <div>
-
-        <div class="middle-box text-center loginscreen  animated fadeInDown">
-            <div>
-                <div>
-                    <div class="m-b-md">
-                        <img height="120" width="150" alt="image" class="img-circle circle-border" src="{{ asset('assets/dist/img/logo_thg_circular.png') }}">
-                    </div>
-
-                </div>
-            </div>
-
-            <b><h1>Bienvenido</h1 ></b>
-            <b><p style="font-size: 18px">Un sistema especialmente diseñado y desarrollado para la Empresa Transporte Holguín.</b>
-            <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
-            </p>
-            <b> <p style="font-family: Arial">Introduzca sus credenciales para poder entrar al sistema.</p>   </b>     <!-- /.login-logo -->
-            <div class="login-box-body bg-gray">
-                {% if error %}
-                    <div class="alert alert-danger alert-dismissible">
-                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-                        <i class="icon fa fa-shield"></i>{{ error.messageKey| trans(error.messageData, 'security' ) }}
-                    </div>
-                {% endif %}
-
-                <form action="{{ path("login_check") }}" method="post">
-                    {#<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />#}
-
-                    <div class="form-group has-feedback">
-
-                        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required"  class="form-control" placeholder="Usuario"/>
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                    </div>
-
-
-                    <div class="form-group has-feedback">
-
-                        <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="Contraseña" />
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                    </div>
-
-                    <div class="row">
-                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-                        <div class="col-xs-12">
-                            <button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-primary btn-block btn-flat">Entrar</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-
-                </form>
-            </div>
-            <!-- /.login-box-body -->
+{% extends "base.html.twig" %} {% block stylesheets %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ asset('assets/plugins/animate/animate.css') }}"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ asset('assets/bootstrap/css/bootstrap.css') }}"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ asset('assets/plugins/css-hamburgers/hamburgers.min.css') }}"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ asset('assets/plugins/animsition/css/animsition.min.css') }}"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ asset('assets/plugins/select2/select2.min.css') }}"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ asset('assets/plugins/daterangepicker/daterangepicker.css') }}"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ asset('css/login/util.css') }}"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ asset('css/login/main.css') }}"
+/>
+{%endblock%} {% block contenido %}
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100" style="height: 100vh;">
+      
+      <form class="login100-form validate-form" action="{{ path("login_check") }}" method="post">
+        <div class="row">
+          <div class="col-md-8 offset-md-2 text-center text-secondary">
+            Un sistema especialmente diseñado y desarrollado para la Empresa Transporte Holguín
+          </div>
         </div>
-        {% endblock %}
-        {#<div class="login" >#}
-        {#<form id="formLogin" name="formLogin" method="post" action="{{ path('login_check') }}" style="background-color: #CC7832" >#}
-        {#<div class="row" style="background-color: #CC7832;">#}
+        <br/>
+        <span class="login100-form-title p-b-43">
+            Introduzca sus credenciales
+          </span>
+          <div class="wrap-input100 validate-input" data-validate="El usuario es requerido"/>
+            <input class="input100" type="text" id="username" name="_username" required="required" value="{{last_username}}" autocomplete="off" placeholder="Usuario"/>
+            <span class="focus-input100"></span>
+          </div>
+          <div class="wrap-input100 validate-input" data-validate="La contraseña es requerida">
+            <input class="input100" type="password" id="password" name="_password" required="required" value = "" autocomplete="new-password" placeholder="Contraseña" />
+            <span class="focus-input100"></span>
+          </div>
+          <div class="container-login100-form-btn">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-outline-primary" style="width:100%;">Entrar</button>
+        </div>
+      </form>
+      <div
+        class="login100-more"
+        style="background-image: url('{{asset('assets/dist/img/thg_front.jpg')}}');"
+      ></div>
+    </div>
+  </div>
+</div>
 
-        {#<div class="user">#}
-        {#<input name="_username" placeholder="usuario" value="{{ last_username }}"#}
-        {#style="border:0px; background:#FFF0C5"#}
-        {#size="18" type="text" >#}
-        {#</div>#}
-        {#<div class="passw">#}
-        {#<input id="password" placeholder="password" name="_password"#}
-        {#style=" border:0px; background:#FFF0C5"#}
-        {#size="18" type="PASSWORD">#}
-        {#</div>#}
-        {#<div id="button">#}
+{% block javascripts %}
+<script>
+  window.onload=()=>{
+    if(document.getElementById("username").value !==""){
+      $('.input100').each(function(){
+        $(this).addClass('has-val');
+      })
 
-        {#<center> <button style="width: 100%;" type="submit" class="btn waves-effect waves-light" name="action" id="button1">#}
-        {#<i class="material-icons right"></i>Aceptar#}
-        {#</button></center>#}
-        {#</div>#}
-
-        {#</div>#}
-        {#</form>#}
-        {#</div>#}
-
-        {#{% if error %}#}
-        {#{% if error.message  == 'Bad credentials.' %}#}
-        {#<div style="margin-top: 0px;padding-left: 0px;align-items: center"><h1#}
-        {#style="color: white; background-color: red">Usuario o contraseña#}
-        {#incorrectos</h1>#}
-        {#</div>#}
-        {#{% endif %}#}
-{#{% endif %}#}
+    }
+    console.log(JSON.stringify(document.getElementById("username").value))
+     
+  }
+</script>
+<script src="{{ asset('assets/plugins/jQuery/jquery-3.2.1.min.js') }}"></script>
+<script src="{{
+    asset('assets/plugins/animsition/js/animsition.min.js')
+  }}"></script>
+<script src="{{ asset('assets/bootstrap/js/popper.js') }}"></script>
+<script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
+<script src="{{
+    asset('assets/plugins/daterangepicker/moment.min.js')
+  }}"></script>
+<script src="{{
+    asset('assets/plugins/daterangepicker/daterangepicker.js')
+  }}"></script>
+<script src="{{
+    asset('assets/plugins/countdowntime/countdowntime.js')
+  }}"></script>
+<script src="{{ asset('js/login/main.js') }}"></script>
+{% endblock %} {% endblock %}
