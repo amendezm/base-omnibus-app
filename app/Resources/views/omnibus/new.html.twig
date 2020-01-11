@@ -89,16 +89,16 @@
         )}}
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-3">
           <div class="form-group">
-            <label class="col-sm-4 control-label">Revisión</label>
             {{ form_widget(form.en_revision, {'attr' : {'class' : '' }})}}
+            <label class="control-label">Revisión</label>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
           <div class="form-group">
-            <label class="col-sm-4 control-label">Roto</label>
             {{ form_widget(form.is_roto, {'attr' : {'class' : '' }})}}
+            <label class="control-label">Roto</label>
           </div>
         </div>
       </div>
@@ -112,6 +112,7 @@
         </button>
       </div>
     </div>
+    <br />
     {{ form_end(form) }}
   </div>
 </div>

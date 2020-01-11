@@ -3,7 +3,9 @@
 {{ form_start(edit_form, { method: "POST" }) }}
 <div class="card">
   <div class="card-header">
-    <h3>Editar Ómnibus</h3>
+    <div class="col-md-8 offset-md-2">
+      <h3>Editar Ómnibus</h3>
+    </div>
   </div>
   <div class="card-body">
     <div class="col-md-8 offset-md-2">
@@ -116,6 +118,7 @@
       </div>
     </div>
     {{ form_end(edit_form) }}
+    <br />
   </div>
 </div>
 {% endblock %}
