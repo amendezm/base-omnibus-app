@@ -293,7 +293,7 @@ iframe {
   min-height: 100vh;
   display: block;
   background-color: #f7f7f7;
-  padding: 8rem 7rem 55px 7rem;
+  padding: 20vh 7rem 20vh 7rem;
 }
 
 .login100-form-title {

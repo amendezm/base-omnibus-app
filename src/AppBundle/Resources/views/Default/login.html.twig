@@ -52,19 +52,25 @@
         </div>
         <br/>
         <span class="login100-form-title p-b-43">
-            Introduzca sus credenciales
-          </span>
-          <div class="wrap-input100 validate-input" data-validate="El usuario es requerido"/>
-            <input class="input100" type="text" id="username" name="_username" required="required" value="{{last_username}}" autocomplete="off" placeholder="Usuario"/>
-            <span class="focus-input100"></span>
+          Introduzca sus credenciales
+        </span>
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <div class="wrap-input100 validate-input" data-validate="El usuario es requerido"/>
+              <input class="input100" style="border-radius:10px;" type="text" id="username" name="_username" required="required" value="{{last_username}}" autocomplete="off" placeholder="Usuario"/>
+              <span class="focus-input100"></span>
+            </div>
+            <div class="wrap-input100 validate-input" data-validate="La contraseña es requerida">
+              <input class="input100" style="border-radius:10px;" type="password" id="password" name="_password" required="required" value = "" autocomplete="new-password" placeholder="Contraseña" />
+              <span class="focus-input100"></span>
+            </div>
+            <div class="container-login100-form-btn">
+              <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+              <button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-outline-primary" style="width:100%;">
+                Entrar
+              </button>
+            </div>
           </div>
-          <div class="wrap-input100 validate-input" data-validate="La contraseña es requerida">
-            <input class="input100" type="password" id="password" name="_password" required="required" value = "" autocomplete="new-password" placeholder="Contraseña" />
-            <span class="focus-input100"></span>
-          </div>
-          <div class="container-login100-form-btn">
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-                <button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-outline-primary" style="width:100%;">Entrar</button>
         </div>
       </form>
       <div
