@@ -10,7 +10,10 @@
         {% if not is_granted('ROLE_USUARIO' ) %}
         <a
           class="btn btn-sm btn-default  pull-left"
+          data-toggle="tooltip"
+          data-placement="top"
           href="{{ path('usuario_new') }}"
+          title="Nuevo Usuario"
         >
           <img
             src="{{ asset('assets/dist/img/add_database_26px.png') }}"

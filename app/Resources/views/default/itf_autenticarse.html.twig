@@ -28,8 +28,6 @@
                 {% endif %}
 
                 <form action="{{ path("login_check") }}" method="post">
-                    {#<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />#}
-
                     <div class="form-group has-feedback">
 
                         <input type="text" id="username" name="_username" value="{{ last_username }}" required="required"  class="form-control" placeholder="Usuario"/>
@@ -55,82 +53,7 @@
             </div>
             <!-- /.login-box-body -->
         </div>
+        </div>
+        </div>
         {% endblock %}
-        {#<div class="login" >#}
-        {#<form id="formLogin" name="formLogin" method="post" action="{{ path('login_check') }}" style="background-color: #CC7832" >#}
-        {#<div class="row" style="background-color: #CC7832;">#}
-
-        {#<div class="user">#}
-        {#<input name="_username" placeholder="usuario" value="{{ last_username }}"#}
-        {#style="border:0px; background:#FFF0C5"#}
-        {#size="18" type="text" >#}
-        {#</div>#}
-        {#<div class="passw">#}
-        {#<input id="password" placeholder="password" name="_password"#}
-        {#style=" border:0px; background:#FFF0C5"#}
-        {#size="18" type="PASSWORD">#}
-        {#</div>#}
-        {#<div id="button">#}
-
-        {#<center> <button style="width: 100%;" type="submit" class="btn waves-effect waves-light" name="action" id="button1">#}
-        {#<i class="material-icons right"></i>Aceptar#}
-        {#</button></center>#}
-        {#</div>#}
-
-        {#</div>#}
-        {#</form>#}
-        {#</div>#}
-
-        {#{% if error %}#}
-        {#{% if error.message  == 'Bad credentials.' %}#}
-        {#<div style="margin-top: 0px;padding-left: 0px;align-items: center"><h1#}
-        {#style="color: white; background-color: red">Usuario o contraseña#}
-        {#incorrectos</h1>#}
-        {#</div>#}
-        {#{% endif %}#}
-        {#{% endif %}#}
-
-{#<!DOCTYPE html>#}
-{#<head xmlns="http://www.w3.org/1999/html">#}
-    {#<meta charset="UTF-8" />#}
-    {#<title>{% block title %}Autenticarse{% endblock %}</title>#}
-    {#{% block stylesheets %}#}
-        {#<link href="{{ asset('css/bootstrap.min.css' ) }}" rel="stylesheet" type="text/css" media="screen" />#}
-        {#<link href="{{ asset('css/signin.css' ) }}" rel="stylesheet" type="text/css" media="screen" />#}
-    {#{% endblock %}#}
-    {#<link rel="icon" type="image/x-icon" href="{{ asset('emcomed.ico') }}" />#}
-{#</head>#}
-{#<body>#}
-{#{% block body %}#}
-    {#<div class="container">#}
-        {#<img class="nav" src='{{ asset('emcomed.jpg') }}'  />#}
-        {#<form class="form-signin" action="{{ path('login_check') }}" method="post">#}
-
-            {#{% if error %}#}
-                {#<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>#}
-            {#{% endif %}#}
-
-			{#<h2 class="form-signin-heading">Introduzca Usuario y Contraseña</h2>#}
-            {#<label for="inputEmail" class="sr-only">Usuario</label>#}
-            {#<input type="text" id="username" name="_username" class="form-control" value="{{ last_username }}" placeholder="Usuario" required autofocus>#}
-            {#<label for="inputPassword" class="sr-only">Contraseña</label>#}
-            {#<input type="password" id="password" name="_password" class="form-control" placeholder="Contraseña" required>#}
-            {#<div class="checkbox">#}
-                {#<label>#}
-                    {#<input type="checkbox" value="remember-me"> Recordarme#}
-                {#</label>#}
-            {#</div>#}
-            {#<button class="btn btn-lg btn-primary btn-block" type="submit">Aceptar</button>#}
-        {#</form>#}
-
-    {#</div> <!-- /container -->#}
-
-{#{% endblock %}#}
-
-
-{#{% block javascripts %}#}
-
-{#{% endblock %}#}
-
-{#</body>#}
-{#</html>#}
+      
