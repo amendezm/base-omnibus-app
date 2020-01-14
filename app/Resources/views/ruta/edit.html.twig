@@ -1,133 +1,112 @@
-{% extends 'index.html.twig' %}
-
-{% block contenido %}
-    {{ form_start(edit_form, {'method' :'POST'}) }}
-<div class="box box-danger">
-    <div class="box-header with-border">
-        <div class="user-block">
-            <h3 class="text-center ">Editar Ruta</h3>
-        </div><!-- /.user-block -->
-        <div class="box-tools">
-            <ul class="list-inline">
-                <li>
-                    <a class="text-info" href="{{ path('ruta_index') }}">
-                        <i class="glyphicon glyphicon glyphicon-hand-left"></i> Atràs</a>
-                </li>
-            </ul>
-        </div><!-- /.box-tools -->
-    </div><!-- /.box-header -->
-    <div class="box-body">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Ruta</label>
-                    {{ form_widget(edit_form.noRuta, {'attr' : {'class' : 'form-control' }})}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Tipo de Servicio</label>
-                    {{ form_widget(edit_form.servicio, {'attr' : {'class' : '' }})}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Distancia en kms</label>
-                    {{ form_widget(edit_form.distanciaKm, {'attr' : {'class' : 'form-control' }})}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Cantidad de Pasajeros Promedio</label>
-                    {{ form_widget(edit_form.cantPasajerosPromedio, {'attr' : {'class' : 'form-control' }})}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Precio Pasaje</label>
-                    {{ form_widget(edit_form.precioPasaje, {'attr' : {'class' : 'form-control' }})}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Salida</label>
-                    {{ form_widget(edit_form.salida, {'attr' : {'class' : 'form-control' }})}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Destino</label>
-                    {{ form_widget(edit_form.destino, {'attr' : {'class' : 'form-control' }})}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Frecuencia</label>
-                    {{ form_widget(edit_form.dias, {'attr' : {'class' : '' }})}}
-                </div>
-            </div>
-        </div>
-        {#<div class="row">#}
-            {#<div class="col-sm-6">#}
-                {#<div class="form-group">#}
-                    {#<label class="col-sm-4 control-label">Recaudación</label>#}
-                    {#{{ form_widget(edit_form.recaudacion, {'attr' : {'class' : 'form-control' }})}}#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Cantidad de Medios</label>
-                    {{ form_widget(edit_form.cantidadMedios, {'attr' : {'class' : '' }})}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Punto de Expedición</label>
-                    {{ form_widget(edit_form.expedicion, {'attr' : {'class' : 'form-control' }})}}
-                </div>
-            </div>
-        </div>
-        <table align="center">
-            <tr>
-                <td><input type="submit" class="btn btn-danger btn " style="background-color: #6290ff" value="Editar" /></td>
-            </tr>
-        </table>
+{% extends 'index.html.twig' %} {% block contenido %}
+<br />
+{{ form_start(edit_form, { method: "POST" }) }}
+<div class="card shadow">
+  <div class="card-header">
+    <div class="col-md-8 offset-md-2">
+      <h3>Editar Ruta</h3>
     </div>
-    {#<!-- /.box widget-->#}
+  </div>
+  <div class="card-body">
+    <div class="col-md-8 offset-md-2">
+      <div class="form-group">
+        <label class="control-label">Ruta</label>
+        {{ form_widget(edit_form.noRuta, 
+            {'attr' : {'class' : 'form-control'}}
+        )}}
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Tipo de Servicio</label>
+            {{ form_widget(edit_form.servicio, 
+                {'attr' : {'class' : 'form-control' }}
+            )}}
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Distancia en kms</label>
+            {{ form_widget(edit_form.distanciaKm, 
+            {'attr' : {'class' : 'form-control' }}
+            )}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Cantidad de Pasajeros Promedio</label>
+            {{ form_widget(edit_form.cantPasajerosPromedio, 
+            {'attr' : {'class' : 'form-control'}}
+            )}}
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Precio Pasaje</label>
+            {{ form_widget(edit_form.precioPasaje, 
+            {'attr' : {'class' : 'form-control'}}
+            )}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Salida</label>
+            {{ form_widget(edit_form.salida,
+             {'attr' : {'class' : 'form-control' }}
+            )}}
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Destino</label>
+            {{ form_widget(edit_form.destino, {'attr' : {'class' : 'form-control'}}
+            )}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Frecuencia</label>
+            {{ form_widget(edit_form.dias, {'attr' : {'class' : '' }})}}
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Cantidad de Medios</label>
+            {{ form_widget(edit_form.cantidadMedios,
+                {'attr' : {'class' : 'form-control'}}
+            )}}
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Punto de Expedición</label>
+            {{ form_widget(edit_form.expedicion,
+             {'attr' : {'class' : 'form-control'}}
+            )}}
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="text-right">
+        <a class="btn btn-outline-secondary" href="{{ path('ruta_index') }}">
+          Cancelar
+        </a>
+        <button type="submit" class="btn btn-primary " value="Editar">
+          Guardar
+        </button>
+      </div>
+      <br />
+    </div>
     {{ form_end(edit_form) }}
+  </div>
+</div>
 {% endblock %}
-{#<h1>Ruta edit</h1>#}
-
-{#{{ form_start(edit_form) }}#}
-        {#{{ form_widget(edit_form) }}#}
-        {#<input type="submit" value="Edit" />#}
-    {#{{ form_end(edit_form) }}#}
-
-    {#<ul>#}
-        {#<li>#}
-            {#<a href="{{ path('ruta_index') }}">Back to the list</a>#}
-        {#</li>#}
-        {#<li>#}
-            {#{{ form_start(delete_form) }}#}
-                {#<input type="submit" value="Delete">#}
-            {#{{ form_end(delete_form) }}#}
-        {#</li>#}
-    {#</ul>#}

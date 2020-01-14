@@ -1,125 +1,108 @@
-{% extends 'index.html.twig' %}
-
-{% block contenido %}
-     {{ form_start(form, {'method' :'POST'}) }}
-<div class="box box-danger">
-    <div class="box-header with-border">
-        <div class="user-block">
-            <h3 class="text-center ">Nueva Ruta</h3>
-        </div><!-- /.user-block -->
-        <div class="box-tools">
-            <ul class="list-inline">
-                <li>
-                    <a class="text-info" href="{{ path('ruta_index') }}">
-                        <i class="glyphicon glyphicon glyphicon-hand-left"></i> Atràs</a>
-                </li>
-            </ul>
-        </div><!-- /.box-tools -->
-    </div><!-- /.box-header -->
+{% extends 'index.html.twig' %} {% block contenido %}
+<br />
+{{ form_start(form, { method: "POST" }) }}
+<div class="card shadow">
+  <div class="card-header">
+    <div class="col-md-8 offset-md-2">
+      <h3>Nueva Ruta</h3>
     </div>
-    <div class="box-body">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Ruta</label>
-                    {{ form_widget(form.noRuta, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }})}}
-                </div>
-            </div>
+  </div>
+  <div class="card-body">
+    <div class="col-md-8 offset-md-2">
+      <div class="form-group">
+        <label class="control-label">Ruta</label>
+        {{ form_widget(form.noRuta, 
+            {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }}
+        )}}
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Tipo de Servicio</label>
+            {{ form_widget(form.servicio,
+             {'attr' : {'class' : 'form-control','pattern':'([0-9,]+)$'}}
+            )}}
+          </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Tipo de Servicio</label>
-                    {{ form_widget(form.servicio, {'attr' : {'class' : 'form-control','pattern':'([0-9,]+)$' }})}}
-                </div>
-            </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Distancia en kms</label>
+            {{ form_widget(form.distanciaKm, 
+            {'attr' : {'class' : 'form-control','pattern':'([0-9,]+)$'}}
+            )}}
+          </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Distancia en kms</label>
-                    {{ form_widget(form.distanciaKm, {'attr' : {'class' : 'form-control','pattern':'([0-9,]+)$' }})}}
-                </div>
-            </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Cantidad de Pasajeros Promedio</label>
+            {{ form_widget(form.cantPasajerosPromedio, 
+            {'attr' : {'class' : 'form-control','pattern':'([0-9,]+)$'}}
+            )}}
+          </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Cantidad de Pasajeros Promedio</label>
-                    {{ form_widget(form.cantPasajerosPromedio, {'attr' : {'class' : 'form-control','pattern':'([0-9,]+)$' }})}}
-                </div>
-            </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Precio Pasaje</label>
+            {{ form_widget(form.precioPasaje, 
+            {'attr' : {'class' : 'form-control'}}
+            )}}
+          </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Precio Pasaje</label>
-                    {{ form_widget(form.precioPasaje, {'attr' : {'class' : 'form-control' }})}}
-                </div>
-            </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Salida</label>
+            {{ form_widget(form.salida,
+                 {'attr' : {'class' : 'form-control'}}
+            )}}
+          </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Salida</label>
-                    {{ form_widget(form.salida, {'attr' : {'class' : 'form-control' }})}}
-                </div>
-            </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Destino</label>
+            {{ form_widget(form.destino,
+                 {'attr' : {'class' : 'form-control' }}
+            )}}
+          </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Destino</label>
-                    {{ form_widget(form.destino, {'attr' : {'class' : 'form-control' }})}}
-                </div>
-            </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Frecuencia</label>
+        {{ form_widget(form.dias, {'attr' : {'class' : '' }})}}
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Cantidad de Medios (Ómnibus)</label>
+            {{ form_widget(form.cantidadMedios, 
+            {'attr' : {'class' : 'form-control'}}
+            )}}
+          </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Frecuencia</label>
-                    {{ form_widget(form.dias, {'attr' : {'class' : '' }})}}
-                </div>
-            </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Punto de Expedición</label>
+            {{
+              form_widget(form.expedicion, { attr: { class: "form-control" } })
+            }}
+          </div>
         </div>
-        {#<div class="row">#}
-            {#<div class="col-sm-6">#}
-                {#<div class="form-group">#}
-                    {#<label class="col-sm-4 control-label">Recaudación</label>#}
-                    {#{{ form_widget(form.recaudacion, {'attr' : {'class' : '' }})}}#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Cantidad de Medios (Ómnibus)</label>
-                    {{ form_widget(form.cantidadMedios, {'attr' : {'class' : 'form-control' }})}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Punto de Expedición</label>
-                    {{ form_widget(form.expedicion, {'attr' : {'class' : 'form-control' }})}}
-                </div>
-            </div>
-        </div>
-        </div><!--/.box-body-->
-        <table align="center">
-            <tr align="">
-                {#<td></td>#}
-                {#<td  >   {{ form_widget(form.Submit) }}</td>#}
-                <td style="width: 10px"> </td>
-                <td><input type="submit" class="btn btn-danger btn " style="background-color: #6290ff;margin-right: 5%" value="Crear" /></td>
-                <td><a class= "btn btn-danger btn " onclick="window.history.back();" href=""><span class=""> </span>Cancelar</a></td>
-            </tr>
-            <tr align="">
-                {#<td style="width: 0px"> </td>#}
-
-            </tr>
-        </table>
-    </div><!-- /.box widget-->
-    {{ form_end(form) }}
+      </div>
+      <br />
+      <div class="text-right">
+        <a class="btn btn-outline-secondary" href="{{ path('ruta_index') }}">
+          Cancelar</a
+        >
+        <button type="submit" class="btn btn-primary" value="Crear">
+          Guardar
+        </button>
+      </div>
+      <br />
+    </div>
+  </div>
+</div>
+{{ form_end(form) }}
 {% endblock %}
