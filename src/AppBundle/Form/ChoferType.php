@@ -22,38 +22,38 @@ class ChoferType extends AbstractType
             ->add('recalificacion_emision', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
             ])
             ->add('recalificacionVencimiento', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
             ])
             ->add('noLicenciaOperativa')
             ->add('examenMedicoEmision', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
             ])
             ->add('examenMedicoVencimiento', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
             ])
             ->add('examenPsicofisiologicoEmision',  DateType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
             ])
             ->add('licencia_emision', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
             ])
             ->add('licencia_vencimiento', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
             ])
             ->add('examenPsicofisiologicoVencimiento', DateType::class, [
                 'widget' => 'single_text',

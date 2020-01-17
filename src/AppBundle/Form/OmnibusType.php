@@ -20,35 +20,31 @@ class OmnibusType extends AbstractType
             ->add('chapa')
             ->add('noOmnibus')
             ->add('typeOmnibus')
-            //            ->add('indiceConsumoReal')
-            //            ->add('kmRecorridosAcumulados')
             ->add('marca')
-            //            ->add('descripcion')
             ->add('base')
             ->add('en_revision')
             ->add('is_roto')
             ->add('FICAV_emision', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
             ])
             ->add('FICAV_vencimiento', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
             ])
             ->add('licenciaOperativaEmision', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
             ])
             ->add('licenciaOperativaVencimiento', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here'],
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
             ])
             ->add('tarjetaCombustible', EntityType::class, array('class' => 'AppBundle\Entity\Tarjeta_combustible', 'multiple' => false, 'expanded' => false));
-        //            ->add('mantenimiento');
     }
 
     /**
