@@ -1,162 +1,149 @@
-{% extends 'index.html.twig' %}
-
-{% block contenido %}
-    <!-- Default box -->
-    <div class="box box-danger">
-        <div class="box-header with-border">
-            <div class="user-block">
-                <h3 class="text-center ">Lista de Escogidas de Turnos</h3>
-            </div><!-- /.user-block -->
-            <div class="box-tools">
-
-            </div><!-- /.box-tools -->
-        </div><!-- /.box-header -->
-        <div class="box-body">
-            {#<h5>Total de registros: {{ pagination.getTotalItemCount }}</h5>#}
-
-            <table class="table table-hover">
-                <thead>
-                <th>Ruta</th>
-                <th>Ómnibus</th>
-                <th>Turno</th>
-                <th>Empieza</th>
-                <th>Sale</th>
-                <th>Termina</th>
-                <th>Cant de viajes</th>
-                <th>Chofer</th>
-                <th>Período de escogida</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for escogidaTurno in escogidaTurnos %}
-                    <tr>
-                        <td>{{ escogidaTurno.ruta}}</td>
-                        <td>{{ escogidaTurno.omnibus}}</td>
-                        <td>{{ escogidaTurno.turno }}</td>
-                        {#<td><a href="{{ path('escogidaturno_show', { 'id': escogidaTurno.id }) }}">{{ escogidaTurno.id }}</a></td>#}
-                        <td>{% if escogidaTurno.empieza %}{{ escogidaTurno.empieza|date('H:i') }}{% endif %}</td>
-                        <td>{% if escogidaTurno.sale %}{{ escogidaTurno.sale|date('H:i') }}{% endif %}</td>
-                        <td>{% if escogidaTurno.termina %}{{ escogidaTurno.termina|date('H:i') }}{% endif %}</td>
-                        <td>{{ escogidaTurno.cantidadViajes }}</td>
-                        <td>{{ escogidaTurno.chofer }}</td>
-                        <td>{{ escogidaTurno.periodoEscogida }}</td>
-                        <td>
-                            <ul>
-                                <a href="{{ path('escogidaturno_edit',{ 'id': escogidaTurno.id }) }}"
-                                   class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="right"
-                                   title="Editar elemento"><i class="glyphicon glyphicon-pencil"></i>
-                                </a>
-                                <a href="{{ path('escogidaturno_show',{ 'id': escogidaTurno.id }) }}"
-                                   class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="right"
-                                   title="Visualizar elemento"><i class="glyphicon glyphicon-eye-open"></i>
-                                </a>
-                                <a href="{{ path('escogidaturno_delete',{'id': escogidaTurno.id}) }}"
-                                   class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="right"
-                                   title="Eliminar elemento"
-                                   onclick="return confirm('Esta seguro que desea eliminar el elemento')">
-                                    <i class="glyphicon glyphicon-remove"></i>
-                                </a>
-                            </ul>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-
-        </div><!-- /.box-body -->
-
-        <div class="row">
-
-            <div class="col-sm-4">
-                {% if not is_granted('ROLE_USUARIO' ) %}
-                    <a class="btn btn-sm btn-default  pull-left" href="{{ path('escogidaturno_new') }}">
-                        <img src="{{ asset('assets/dist/img/add_database_26px.png') }}" alt="User Image"> Nuevo
-                    </a>
-                {% endif %}
-            </div>
-            <div class="col-sm-4">
-                {#{{ knp_pagination_render(pagination) }}#}
-            </div>
-            <div class="col-sm-4">
-
-
-            </div>
-        </div>
-
-
-    </div><!-- /.box -->
-    <div id="mymodal" class="modal  inmodal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <button aria-label="Close" data-dismiss="modal" class="close" type="button">
-                        <span aria-hidden="true">×</span></button>
-                    <i class="fa-3x fa fa-warning modal-icon text-red"></i>
-                    <h4 class="modal-title">Acción Peligrosa</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Está acción puede ocacionar, comprometer la integridad de los datos!</p>
-                    <small>Si no es un usuario avanzado, recomendamos que cancele esta acción.</small>
-                </div>
-                <div class="modal-footer">
-                    <button data-dismiss="modal" class="btn btn-primary" type="button">Cerrar</button>
-                    <a class="btn btn-primary btn-danger btn-delete" href="#">Eliminar</a>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
+{% extends 'index.html.twig' %} {% block contenido %}
+<br />
+<div class="card shadow">
+  <div class="card-header py-3">
+    <div class="row">
+      <div class="col-md-6">
+        <h3 class="m-0 font-weight-bold text-primary">
+          Lista de Escogidas de Turnos
+        </h3>
+      </div>
+      <div class="col-md-6 text-right">
+        {% if not is_granted('ROLE_USUARIO' ) %}
+        <a
+          class="btn btn-sm btn-default  pull-left"
+          href="{{ path('escogidaturno_new') }}"
+        >
+          <img
+            src="{{ asset('assets/dist/img/add_database_26px.png') }}"
+            alt="User Image"
+          />
+          Nuevo
+        </a>
+        {% endif %}
+      </div>
     </div>
+  </div>
+  <div class="card-body" style="font-size: 0.75rem;">
+    <div class="table-reponsive">
+      <table
+        class="table table-bordered text-center"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+      >
+        <thead>
+          <th>Ruta</th>
+          <th>Ómnibus</th>
+          <th>Turno</th>
+          <th>Empieza</th>
+          <th>Sale</th>
+          <th>Termina</th>
+          <th>Cant de viajes</th>
+          <th>Chofer</th>
+          <th>Período de escogida</th>
+          <th>
+            <img
+              src="{{ asset('assets/dist/img/data_configuration_26px.png') }}"
+              alt="User Image"
+            />
+            Acciones
+          </th>
+        </thead>
+        <tbody>
+          {% for escogidaTurno in escogidaTurnos %}
+          <tr>
+            <td>{{ escogidaTurno.ruta }}</td>
+            <td>{{ escogidaTurno.omnibus }}</td>
+            <td>{{ escogidaTurno.turno }}</td>
+            <td>
+              {% if escogidaTurno.empieza %}
+              {{ escogidaTurno.empieza|date('H:i')}}
+              {% endif %}
+            </td>
+            <td>
+              {% if escogidaTurno.sale %}
+              {{ escogidaTurno.sale|date('H:i') }}
+              {%endif %}
+            </td>
+            <td>
+              {% if escogidaTurno.termina %}
+              {{ escogidaTurno.termina|date('H:i')}}
+              {% endif %}
+            </td>
+            <td>{{ escogidaTurno.cantidadViajes }}</td>
+            <td>{{ escogidaTurno.chofer }}</td>
+            <td>{{ escogidaTurno.periodoEscogida }}</td>
+            <td>
+              <div class="row" style="font-size:1rem;">
+                <div class="col md-6">
+                  <a
+                    href="{{
+                      path('escogidaturno_delete', { id: escogidaTurno.id })
+                    }}"
+                    class="text-secondary"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    title="Eliminar elemento"
+                    onclick="return confirm('Esta seguro que desea eliminar el elemento')"
+                  >
+                    <i class="fas fa-trash-alt"></i>
+                  </a>
+                </div>
+                <div class="col md-6">
+                  <a
+                    href="{{
+                      path('escogidaturno_edit', { id: escogidaTurno.id })
+                    }}"
+                    class="text-primary"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    title="Editar elemento"
+                  >
+                    <i class="fas fa-edit"></i>
+                  </a>
+                </div>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div id="mymodal" class="modal  inmodal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <button
+          aria-label="Close"
+          data-dismiss="modal"
+          class="close"
+          type="button"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+        <i class="fa-3x fa fa-warning modal-icon text-red"></i>
+        <h4 class="modal-title">Acción Peligrosa</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          Está acción puede ocacionar, comprometer la integridad de los datos!
+        </p>
+        <small
+          >Si no es un usuario avanzado, recomendamos que cancele esta
+          acción.</small
+        >
+      </div>
+      <div class="modal-footer">
+        <button data-dismiss="modal" class="btn btn-primary" type="button">
+          Cerrar
+        </button>
+        <a class="btn btn-primary btn-danger btn-delete" href="#">Eliminar</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
-{#<h1>EscogidaTurno list</h1>#}
-
-{#<table>#}
-    {#<thead>#}
-    {#<tr>#}
-        {#<th>Id</th>#}
-        {#<th>Cantidadviajes</th>#}
-        {#<th>Turno</th>#}
-        {#<th>Horaempieza</th>#}
-        {#<th>Horatermina</th>#}
-        {#<th>Horasalida</th>#}
-        {#<th>Trabaja</th>#}
-        {#<th>Descanso</th>#}
-        {#<th>Fechas</th>#}
-        {#<th>Combustibleasignado</th>#}
-        {#<th>Actions</th>#}
-    {#</tr>#}
-    {#</thead>#}
-    {#<tbody>#}
-    {#{% for escogidaTurno in escogidaTurnos %}#}
-        {#<tr>#}
-            {#<td><a href="{{ path('escogidaturno_show', { 'id': escogidaTurno.id }) }}">{{ escogidaTurno.id }}</a></td>#}
-            {#<td>{{ escogidaTurno.cantidadViajes }}</td>#}
-            {#<td>{{ escogidaTurno.turno }}</td>#}
-            {#<td>{% if escogidaTurno.horaEmpieza %}{{ escogidaTurno.horaEmpieza|date('Y-m-d') }}{% endif %}</td>#}
-            {#<td>{% if escogidaTurno.horaTermina %}{{ escogidaTurno.horaTermina|date('Y-m-d') }}{% endif %}</td>#}
-            {#<td>{% if escogidaTurno.horaSalida %}{{ escogidaTurno.horaSalida|date('Y-m-d') }}{% endif %}</td>#}
-            {#<td>{{ escogidaTurno.trabaja }}</td>#}
-            {#<td>{{ escogidaTurno.descanso }}</td>#}
-            {#<td>{{ escogidaTurno.fechas }}</td>#}
-            {#<td>{{ escogidaTurno.combustibleAsignado }}</td>#}
-            {#<td>#}
-                {#<ul>#}
-                    {#<li>#}
-                        {#<a href="{{ path('escogidaturno_show', { 'id': escogidaTurno.id }) }}">show</a>#}
-                    {#</li>#}
-                    {#<li>#}
-                        {#<a href="{{ path('escogidaturno_edit', { 'id': escogidaTurno.id }) }}">edit</a>#}
-                    {#</li>#}
-                {#</ul>#}
-            {#</td>#}
-        {#</tr>#}
-    {#{% endfor %}#}
-    {#</tbody>#}
-{#</table>#}
-
-{#<ul>#}
-    {#<li>#}
-        {#<a href="{{ path('escogidaturno_new') }}">Create a new entry</a>#}
-    {#</li>#}
-{#</ul>#}

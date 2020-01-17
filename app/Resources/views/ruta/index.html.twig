@@ -8,7 +8,6 @@
       </div>
       <div class="col-md-6 text-right">
         {% if not is_granted('ROLE_USUARIO' ) %}
-
         <a
           class="btn btn-sm btn-default  pull-left"
           href="{{ path('ruta_new') }}"
@@ -22,7 +21,6 @@
         {% endif %}
       </div>
     </div>
-    <div class="box-tools"></div>
   </div>
   <div class="card-body" style="font-size: 0.75rem;">
     <div class="table-reponsive">
