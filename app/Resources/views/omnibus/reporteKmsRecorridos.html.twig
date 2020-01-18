@@ -51,45 +51,34 @@
   </div>
   {% endfor %}
 </div>
-<br /><br />
-<div class="box box-danger">
-  <div class="box-header with-border">
-    <div class="user-block">
-      <h3 class="text-center ">Kilómetros recorridos por Ómnibus</h3>
+<br />
+<input
+  id="kilometersData"
+  type="text"
+  value="{{ kmValuesArray }}"
+  style="display:none;"
+/>
+<input
+  id="omnibusNumbers"
+  type="text"
+  value="{{ omnibusNumbers }}"
+  style="display:none;"
+/>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Visualización</h6>
+      </div>
+      <div class="card-body">
+        <div class="chart-bar">
+          <canvas id="myBarChart"></canvas>
+        </div>
+        <hr />
+        En total se han recorrido
+        <span class="font-weight-bold">{{ totalKilometers }}km</span>
+      </div>
     </div>
-    <!-- /.user-block -->
-    <div class="box-tools">
-      <ul class="list-inline">
-        <li>
-          <a class="text-info" href="{{ path('omnibus_index') }}">
-            <i class="glyphicon glyphicon glyphicon-hand-left"></i> Atràs</a
-          >
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="panel-body">
-    <table
-      id="sample-table-2"
-      class="table table-striped table-bordered table-hover"
-    >
-      <thead>
-        <tr>
-          <th class="bg-primary">Ómnibus</th>
-          <th class="bg-primary">Kms Recorridos Acumulados</th>
-          <th class="bg-primary">Mantenimiento</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for reporte in reportes %}
-        <tr>
-          <td>{{ reporte.noomnibus }}</td>
-          <td>{{ reporte.kmrecorridosacumulados }}</td>
-          <td>{{ reporte.mantenimiento }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
   </div>
 </div>
 {% endblock %}

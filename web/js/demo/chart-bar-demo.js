@@ -29,18 +29,20 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 }
 
 // Bar Chart Example
+var kilometers = JSON.parse(document.getElementById("kilometersData").value);
+var labels = JSON.parse(document.getElementById("omnibusNumbers").value);
 var ctx = document.getElementById("myBarChart");
 var myBarChart = new Chart(ctx, {
   type: "bar",
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: labels,
     datasets: [
       {
-        label: "Revenue",
+        label: "Kilómetros",
         backgroundColor: "#4e73df",
         hoverBackgroundColor: "#2e59d9",
         borderColor: "#4e73df",
-        data: [4215, 5312, 6251, 7841, 9821, 14984]
+        data: kilometers
       }
     ]
   },
@@ -58,7 +60,7 @@ var myBarChart = new Chart(ctx, {
       xAxes: [
         {
           time: {
-            unit: "month"
+            unit: "Omnibus"
           },
           gridLines: {
             display: false,
@@ -74,12 +76,11 @@ var myBarChart = new Chart(ctx, {
         {
           ticks: {
             min: 0,
-            max: 15000,
             maxTicksLimit: 5,
             padding: 10,
             // Include a dollar sign in the ticks
             callback: function(value, index, values) {
-              return "$" + number_format(value);
+              return number_format(value) + " km";
             }
           },
           gridLines: {
@@ -93,7 +94,7 @@ var myBarChart = new Chart(ctx, {
       ]
     },
     legend: {
-      display: false
+      display: true
     },
     tooltips: {
       titleMarginBottom: 10,
@@ -108,10 +109,13 @@ var myBarChart = new Chart(ctx, {
       displayColors: false,
       caretPadding: 10,
       callbacks: {
+        title: function(tooltipItem, data) {
+          return "Ómnibus " + data.labels[tooltipItem[0].index];
+        },
         label: function(tooltipItem, chart) {
           var datasetLabel =
             chart.datasets[tooltipItem.datasetIndex].label || "";
-          return datasetLabel + ": $" + number_format(tooltipItem.yLabel);
+          return datasetLabel + ": " + number_format(tooltipItem.yLabel);
         }
       }
     }
