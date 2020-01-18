@@ -19,7 +19,8 @@ textarea::-webkit-scrollbar {
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 0.5vw;
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -37,7 +38,8 @@ textarea::-webkit-scrollbar {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #b3b3b3;
+  visibility: visible;
+  background: rgb(193, 193, 193);
 }
 
 .main-footer {
