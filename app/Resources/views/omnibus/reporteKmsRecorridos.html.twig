@@ -1,13 +1,57 @@
 {% extends 'index.html.twig' %} {% block contenido %}
 <br />
-<div class="row">
-  <div class="col-md-8">
-    <div class="chart-bar">
-      <canvas id="myBarChart"></canvas>
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Kilómetros recorridos por ómnibus</h1>
+</div>
+<div class="row" style="font-size: 0.65rem;">
+  {% for reporte in reportes %}
+  <div class="col-md-3">
+    <div class="card shadow" style="margin-bottom: 1rem;">
+      <div class="card-body" style="padding:0.55rem;">
+        <div class="media">
+          <img
+            src="{{ asset('assets/dist/img/yutong.jpg') }}"
+            class="mr-3 rounded"
+            alt="..."
+            height="40"
+            width="45"
+          />
+          <div class="media-body">
+            <div class="row">
+              <div class="col">
+                <h6 class="mt-0" style="font-size: 0.85rem;">
+                  Carro {{ reporte.noomnibus }}
+                </h6>
+              </div>
+              <div class="col-auto text-right">
+                <span
+                  data-tooltip="{{
+                    reporte.mantenimiento ? 'En mantenimiento' : 'Disponible'
+                  }}"
+                  data-tooltip-location="top"
+                >
+                  <i
+                    class="fas fa-circle {{
+                      reporte.mantenimiento ? 'text-danger' : 'text-success'
+                    }}"
+                  ></i>
+                </span>
+              </div>
+            </div>
+            <p>
+              <span class="font-weight-bold">
+                {{ reporte.kmrecorridosacumulados }}
+              </span>
+              kilómetros
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="col-md-4"></div>
+  {% endfor %}
 </div>
+<br /><br />
 <div class="box box-danger">
   <div class="box-header with-border">
     <div class="user-block">
@@ -48,4 +92,4 @@
     </table>
   </div>
 </div>
-{% endblock %} 
+{% endblock %}
