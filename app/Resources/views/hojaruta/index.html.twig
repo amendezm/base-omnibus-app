@@ -1,165 +1,154 @@
-{% extends 'index.html.twig' %}
-
-{% block contenido %}
-    <!-- Default box -->
-    <div class="box box-danger">
-        <div class="box-header with-border">
-            <div class="user-block">
-                <h3 class="text-center ">Lista de Hojas de Rutas</h3>
-            </div><!-- /.user-block -->
-            <div class="box-tools">
-
-            </div><!-- /.box-tools -->
-        </div><!-- /.box-header -->
-        <div class="box-body">
-            {#<h5>Total de registros: {{ pagination.getTotalItemCount }}</h5>#}
-
-            <table class="table table-hover">
-                <thead>
-                <th>No. </th>
-                <th>Fecha</th>
-                <th>Ruta</th>
-                <th>Ómnibus</th>
-                <th>Cantidad de Viajes</th>
-                <th>Cantidad de Salidas</th>
-                <th>Total de Horas</th>
-                <th>Incidencias</th>
-                <th>Observaciones</th>
-                {% if not is_granted('ROLE_USUARIO' ) %}<th><img src="{{ asset('assets/dist/img/data_configuration_26px.png') }}" alt="User Image"> Acciones</th>{% endif %}
-                </thead>
-                <tbody>
-                {% for hojaRuta in hojaRutas %}
-                    <tr>
-                        <td>{{ hojaRuta.noHojaRuta}}</td>
-                        <td>{{ hojaRuta.fecha|date('y-m-d')}}</td>
-                        <td>{{ hojaRuta.ruta}}</td>
-                        <td>{{ hojaRuta.omnibus}}</td>
-                        <td>{{ hojaRuta.cantidadViajes }}</td>
-                        <td>{{ hojaRuta.cantidadSalidas }}</td>
-                        <td>{{ hojaRuta.totalHoras }}</td>
-                        <td>
-                            <ul>
-                                <a href="{{ path('incidencia_new',{ 'id_hojaruta': hojaRuta.id }) }}"
-                                   class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="right"
-                                   title="Editar elemento"><i class="glyphicon glyphicon-pencil"></i>
-                                </a>
-                                </ul>
-                        </td>
-                        <td>{{ hojaRuta.observaciones}}</td>
-                        <td>
-                            <ul>
-                                <a href="{{ path('hojaruta_edit',{ 'id': hojaRuta.id }) }}"
-                                   class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="right"
-                                   title="Editar elemento"><i class="glyphicon glyphicon-pencil"></i>
-                                </a>
-                                <a href="{{ path('hojaruta_show',{ 'id': hojaRuta.id }) }}"
-                                   class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="right"
-                                   title="Editar elemento"><i class="glyphicon glyphicon-eye-open"></i>
-                                </a>
-                                <a href="{{ path('hojaruta_delete',{'id': hojaRuta.id}) }}"
-                                   class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="right"
-                                   title="Eliminar elemento"
-                                   onclick="return confirm('Esta seguro que desea eliminar el elemento')">
-                                    <i class="glyphicon glyphicon-remove"></i>
-                                </a>
-                            </ul>
-                        </td>
-                    </tr>
-                {% endfor %}
-
-                </tbody>
-            </table>
-
-        </div><!-- /.box-body -->
-
-        <div class="row">
-
-            <div class="col-sm-4">
-                {% if not is_granted('ROLE_USUARIO' ) %}
-                    <a class="btn btn-sm btn-default  pull-left" href="{{ path('hojaruta_new') }}">
-                        <img src="{{ asset('assets/dist/img/add_database_26px.png') }}" alt="User Image"> Nuevo
-                    </a>
-                {% endif %}
-            </div>
-            <div class="col-sm-4">
-                {#{{ knp_pagination_render(pagination) }}#}
-            </div>
-            <div class="col-sm-4">
-
-
-            </div>
-        </div>
-
-
-    </div><!-- /.box -->
-    <div id="mymodal" class="modal  inmodal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <button aria-label="Close" data-dismiss="modal" class="close" type="button">
-                        <span aria-hidden="true">×</span></button>
-                    <i class="fa-3x fa fa-warning modal-icon text-red"></i>
-                    <h4 class="modal-title">Acción Peligrosa</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Está acción puede ocacionar, comprometer la integridad de los datos!</p>
-                    <small>Si no es un usuario avanzado, recomendamos que cancele esta acción.</small>
-                </div>
-                <div class="modal-footer">
-                    <button data-dismiss="modal" class="btn btn-primary" type="button">Cerrar</button>
-                    <a class="btn btn-primary btn-danger btn-delete" href="#">Eliminar</a>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
+{% extends 'index.html.twig' %} {% block contenido %}
+<br />
+<div class="card shadow mb'4">
+  <div class="card-header py-3">
+    <div class="row">
+      <div class="col-md-6">
+        <h3 class="m-0 font-weight-bold text-primary">
+          Lista de Hojas de Rutas
+        </h3>
+      </div>
+      <div class="col-md-6 text-right">
+        {% if not is_granted('ROLE_USUARIO' ) %}
+        <a
+          class="btn btn-sm btn-default  pull-left"
+          href="{{ path('hojaruta_new') }}"
+        >
+          <img
+            src="{{ asset('assets/dist/img/add_database_26px.png') }}"
+            alt="User Image"
+          />
+          Nuevo
+        </a>
+        {% endif %}
+      </div>
     </div>
+    <div class="box-tools"></div>
+  </div>
+  <div class="card-body">
+    <div class="table-reponsive">
+      <table
+        class="table table-bordered text-center"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+        style="font-size:0.85rem;"
+      >
+        <thead>
+          <th>No.</th>
+          <th>Fecha</th>
+          <th>Ruta</th>
+          <th>Ómnibus</th>
+          <th>Cantidad de Viajes</th>
+          <th>Cantidad de Salidas</th>
+          <th>Total de Horas</th>
+          <th>Incidencias</th>
+          <th>Observaciones</th>
+          {% if not is_granted('ROLE_USUARIO' ) %}
+          <th>
+            <img
+              src="{{ asset('assets/dist/img/data_configuration_26px.png') }}"
+              alt="User Image"
+            />
+            Acciones
+          </th>
+          {% endif %}
+        </thead>
+        <tbody>
+          {% for hojaRuta in hojaRutas %}
+          <tr>
+            <td>{{ hojaRuta.noHojaRuta }}</td>
+            <td>{{ hojaRuta.fecha|date('y-m-d')}}</td>
+            <td>{{ hojaRuta.ruta }}</td>
+            <td>{{ hojaRuta.omnibus }}</td>
+            <td>{{ hojaRuta.cantidadViajes }}</td>
+            <td>{{ hojaRuta.cantidadSalidas }}</td>
+            <td>{{ hojaRuta.totalHoras }}</td>
+            <td>
+              <a
+                href="{{
+                  path('incidencia_new', { id_hojaruta: hojaRuta.id })
+                }}"
+                class="text-info"
+                data-tooltip="Nueva incidencia"
+                data-tooltip-location="top"
+                title="Editar elemento"
+                ><i class="fas fa-plus-circle"></i>
+              </a>
+            </td>
+            <td>{{ hojaRuta.observaciones }}</td>
+            <td>
+              <div class="row">
+                <div class="col-md-4">
+                  <a
+                    href="{{ path('hojaruta_delete', { id: hojaRuta.id }) }}"
+                    class="text-secondary"
+                    data-tooltip="Eliminar"
+                    data-tooltip-location="top"
+                    onclick="return confirm('Esta seguro que desea eliminar el elemento')"
+                  >
+                    <i class="fas fa-trash-alt"></i>
+                  </a>
+                </div>
+                <div class="col-md-4">
+                  <a
+                    href="{{ path('hojaruta_show', { id: hojaRuta.id }) }}"
+                    class="text-secondary"
+                    data-tooltip="Visualizar"
+                    data-tooltip-location="top"
+                    ><i class="fas fa-eye"></i>
+                  </a>
+                </div>
+                <div class="col-md-4">
+                  <a
+                    href="{{ path('hojaruta_edit', { id: hojaRuta.id }) }}"
+                    class="text-primary"
+                    data-tooltip="Editar"
+                    data-tooltip-location="top"
+                    ><i class="fas fa-edit"></i>
+                  </a>
+                </div>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div id="mymodal" class="modal  inmodal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <button
+          aria-label="Close"
+          data-dismiss="modal"
+          class="close"
+          type="button"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+        <i class="fa-3x fa fa-warning modal-icon text-red"></i>
+        <h4 class="modal-title">Acción Peligrosa</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          Está acción puede ocacionar, comprometer la integridad de los datos!
+        </p>
+        <small
+          >Si no es un usuario avanzado, recomendamos que cancele esta
+          acción.</small
+        >
+      </div>
+      <div class="modal-footer">
+        <button data-dismiss="modal" class="btn btn-primary" type="button">
+          Cerrar
+        </button>
+        <a class="btn btn-primary btn-danger btn-delete" href="#">Eliminar</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
-{#<h1>HojaRuta list</h1>#}
-
-{#<table>#}
-    {#<thead>#}
-    {#<tr>#}
-        {#<th>Id</th>#}
-        {#<th>Cantidadtipohoras</th>#}
-        {#<th>Tipohoras</th>#}
-        {#<th>Totalhoras</th>#}
-        {#<th>Incidencias</th>#}
-        {#<th>Observaciones</th>#}
-        {#<th>Cantidadviajes</th>#}
-        {#<th>Cantidadsalidas</th>#}
-        {#<th>Actions</th>#}
-    {#</tr>#}
-    {#</thead>#}
-    {#<tbody>#}
-    {#{% for hojaRutum in hojaRutas %}#}
-        {#<tr>#}
-            {#<td><a href="{{ path('hojaruta_show', { 'id': hojaRutum.id }) }}">{{ hojaRutum.id }}</a></td>#}
-            {#<td>{{ hojaRutum.cantidadTipoHoras }}</td>#}
-            {#<td>{{ hojaRutum.tipoHoras }}</td>#}
-            {#<td>{{ hojaRutum.totalHoras }}</td>#}
-            {#<td>{{ hojaRutum.incidencias }}</td>#}
-            {#<td>{{ hojaRutum.observaciones }}</td>#}
-            {#<td>{{ hojaRutum.cantidadViajes }}</td>#}
-            {#<td>{{ hojaRutum.cantidadSalidas }}</td>#}
-            {#<td>#}
-                {#<ul>#}
-                    {#<li>#}
-                        {#<a href="{{ path('hojaruta_show', { 'id': hojaRutum.id }) }}">show</a>#}
-                    {#</li>#}
-                    {#<li>#}
-                        {#<a href="{{ path('hojaruta_edit', { 'id': hojaRutum.id }) }}">edit</a>#}
-                    {#</li>#}
-                {#</ul>#}
-            {#</td>#}
-        {#</tr>#}
-    {#{% endfor %}#}
-    {#</tbody>#}
-{#</table>#}
-
-{#<ul>#}
-    {#<li>#}
-        {#<a href="{{ path('hojaruta_new') }}">Create a new entry</a>#}
-    {#</li>#}
-{#</ul>#}
