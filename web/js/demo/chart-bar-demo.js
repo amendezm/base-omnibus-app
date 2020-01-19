@@ -31,6 +31,41 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 // Bar Chart Example
 var kilometers = JSON.parse(document.getElementById("kilometersData").value);
 var labels = JSON.parse(document.getElementById("omnibusNumbers").value);
+var colors = [];
+kilometers.forEach(kmValue => {
+  if (kmValue < 200) {
+    colors = [...colors, "#FF0010"];
+  } else if (kmValue < 300) {
+    colors = [...colors, "#FF1400"];
+  } else if (kmValue < 400) {
+    colors = [...colors, "#FF3c00"];
+  } else if (kmValue < 500) {
+    colors = [...colors, "#FF6400"];
+  } else if (kmValue < 600) {
+    colors = [...colors, "#FF8200"];
+  } else if (kmValue < 700) {
+    colors = [...colors, "#FFaa00"];
+  } else if (kmValue < 800) {
+    colors = [...colors, "#FFe600"];
+  } else if (kmValue < 900) {
+    colors = [...colors, "#d7ff00"];
+  } else if (kmValue < 1000) {
+    colors = [...colors, "#00ff10"];
+  } else if (kmValue < 1100) {
+    colors = [...colors, "#00ff83"];
+  } else if (kmValue < 1200) {
+    colors = [...colors, "#00fff4"];
+  } else if (kmValue < 1300) {
+    colors = [...colors, "#00a4ff"];
+  } else if (kmValue < 1400) {
+    colors = [...colors, "#0074ff"];
+  } else if (kmValue < 1500) {
+    colors = [...colors, "#0012ff"];
+  } else {
+    colors = [...colors, "#0500ff"];
+  }
+});
+
 var ctx = document.getElementById("myBarChart");
 var myBarChart = new Chart(ctx, {
   type: "bar",
@@ -39,7 +74,7 @@ var myBarChart = new Chart(ctx, {
     datasets: [
       {
         label: "Kilómetros",
-        backgroundColor: "#4e73df",
+        backgroundColor: colors,
         hoverBackgroundColor: "#2e59d9",
         borderColor: "#4e73df",
         data: kilometers
@@ -94,7 +129,7 @@ var myBarChart = new Chart(ctx, {
       ]
     },
     legend: {
-      display: true
+      display: false
     },
     tooltips: {
       titleMarginBottom: 10,
