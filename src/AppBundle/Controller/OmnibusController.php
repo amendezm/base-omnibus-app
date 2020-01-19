@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use AppBundle\Entity\Omnibus;
 use AppBundle\Form\OmnibusType;
+
 /**
  *
  * Función para llamar a la plantilla de administración
@@ -142,7 +143,7 @@ class OmnibusController extends Controller
         $stmt2->execute($params2);
         $otro = $stmt2->fetchAll();
         return $this->render('omnibus/plan_combustible.html.twig', array('reportes' => $reportes));
-//        return $this->render('omnibus/plan_combustible.html.twig', array('otro' => $otro));
+        //        return $this->render('omnibus/plan_combustible.html.twig', array('otro' => $otro));
     }
 
     public function reporteporOmnibusAction()
@@ -189,9 +190,9 @@ class OmnibusController extends Controller
         $omnibus = new Omnibus();
         $form = $this->createForm('AppBundle\Form\OmnibusType', $omnibus);
         $form->handleRequest($request);
-        $KmRecorridosAcumulados=0;
-        $Mantenimiento=FALSE;
-        $indiceCR=0;
+        $KmRecorridosAcumulados = 0;
+        $Mantenimiento = FALSE;
+        $indiceCR = 0;
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -218,7 +219,7 @@ class OmnibusController extends Controller
      */
     public function showAction(Omnibus $omnibus)
     {
-//        $deleteForm = $this->createDeleteForm($omnibus);
+        //        $deleteForm = $this->createDeleteForm($omnibus);
 
         return $this->render('omnibus/show.html.twig', array(
             'omnibus' => $omnibus,
@@ -232,7 +233,7 @@ class OmnibusController extends Controller
      */
     public function editAction(Request $request, Omnibus $omnibus)
     {
-//        $deleteForm = $this->createDeleteForm($omnibus);
+        //        $deleteForm = $this->createDeleteForm($omnibus);
         $editForm = $this->createForm('AppBundle\Form\OmnibusType', $omnibus);
         $editForm->handleRequest($request);
 
@@ -247,7 +248,7 @@ class OmnibusController extends Controller
         return $this->render('omnibus/edit.html.twig', array(
             'omnibus' => $omnibus,
             'edit_form' => $editForm->createView(),
-//            'delete_form' => $deleteForm->createView(),
+            //            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -257,14 +258,14 @@ class OmnibusController extends Controller
      */
     public function deleteAction(Request $request, Omnibus $omnibus)
     {
-//        $form = $this->createDeleteForm($omnibus);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($omnibus);
-            $em->flush();
-//        }
+        //        $form = $this->createDeleteForm($omnibus);
+        //        $form->handleRequest($request);
+        //
+        //        if ($form->isSubmitted() && $form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($omnibus);
+        $em->flush();
+        //        }
 
         return $this->redirectToRoute('omnibus_index');
     }
@@ -281,7 +282,6 @@ class OmnibusController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('omnibus_delete', array('id' => $omnibus->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

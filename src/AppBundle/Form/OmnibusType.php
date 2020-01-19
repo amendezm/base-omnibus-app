@@ -27,22 +27,22 @@ class OmnibusType extends AbstractType
             ->add('FICAV_emision', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd', 'autocomplete' => 'off'],
             ])
             ->add('FICAV_vencimiento', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd', 'autocomplete' => 'off'],
             ])
             ->add('licenciaOperativaEmision', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd', 'autocomplete' => 'off'],
             ])
             ->add('licenciaOperativaVencimiento', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd', 'autocomplete' => 'off'],
             ])
             ->add('tarjetaCombustible', EntityType::class, array('class' => 'AppBundle\Entity\Tarjeta_combustible', 'multiple' => false, 'expanded' => false));
     }
