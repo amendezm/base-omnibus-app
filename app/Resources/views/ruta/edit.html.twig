@@ -71,26 +71,33 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group">
-            <label class="control-label">Frecuencia</label>
-            {{ form_widget(edit_form.dias, {'attr' : {'class' : '' }})}}
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="form-group">
             <label class="control-label">Cantidad de Medios</label>
             {{ form_widget(edit_form.cantidadMedios,
                 {'attr' : {'class' : 'form-control'}}
             )}}
           </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-md-6">
           <div class="form-group">
             <label class="control-label">Punto de Expedición</label>
             {{ form_widget(edit_form.expedicion,
              {'attr' : {'class' : 'form-control'}}
+            )}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Frecuencia</label>
+            {{ form_widget(edit_form.dias, {'attr' : {'class' : '' }})}}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Recaudación</label>
+            {{ form_widget(edit_form.recaudacion, 
+              {'attr' : {'class' : 'form-control'}}
             )}}
           </div>
         </div>

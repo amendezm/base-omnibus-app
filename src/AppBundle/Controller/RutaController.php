@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use AppBundle\Entity\Ruta;
 use AppBundle\Form\RutaType;
+
 /**
  *
  * Función para llamar a la plantilla de administración
@@ -53,11 +54,11 @@ class RutaController extends Controller
 
     public function showIncidencias_xRuta_reporteAction(Reporte $reporte)
     {
-//        $deleteForm = $this->createDeleteForm($ruta);
+        //        $deleteForm = $this->createDeleteForm($ruta);
 
         return $this->render('ruta/showIncidencias_xRuta_reporte.html.twig', array(
             'reporte' => $reporte,
-//            'delete_form' => $deleteForm->createView(),
+            //            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -70,18 +71,19 @@ class RutaController extends Controller
         $ruta = new Ruta();
         $form = $this->createForm('AppBundle\Form\RutaType', $ruta);
         $form->handleRequest($request);
-        $cantDias=0;
+        $cantDias = 0;
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            // Coje los dias escojidos y lo guarda en la frecuencia
-            $dias= $ruta->getDias();
+            $dias = $ruta->getDias();
             $strDias = "";
 
-            foreach ($dias as $d) {
-                $strDias .= $d . ", ";
-                $cantDias= $cantDias+1;
+            if ($dias != null) {
+                foreach ($dias as $d) {
+                    $strDias .= $d . ", ";
+                    $cantDias = $cantDias + 1;
+                }
             }
 
             $ruta->setFrecuencia($strDias);
@@ -104,11 +106,11 @@ class RutaController extends Controller
      */
     public function showAction(Ruta $ruta)
     {
-//        $deleteForm = $this->createDeleteForm($ruta);
+        //        $deleteForm = $this->createDeleteForm($ruta);
 
         return $this->render('ruta/show.html.twig', array(
             'ruta' => $ruta,
-//            'delete_form' => $deleteForm->createView(),
+            //            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -118,18 +120,20 @@ class RutaController extends Controller
      */
     public function editAction(Request $request, Ruta $ruta)
     {
-//        $deleteForm = $this->createDeleteForm($ruta);
+        //        $deleteForm = $this->createDeleteForm($ruta);
 
         // Cojer la frecuencia para generar los dias
         $strAux = $ruta->getFrecuencia();
-        $strArr = str_split($strAux, 5);
-        foreach ($strArr as $t) {
-            $ruta->addDia($this->getDoctrine()->getManager()->getRepository('AppBundle:DiasSemana')->findOneByDia(substr($t, 0, 3)));
-    }
+        if ($strAux != "") {
+            $strArr = str_split($strAux, 5);
+            foreach ($strArr as $t) {
+                $ruta->addDia($this->getDoctrine()->getManager()->getRepository('AppBundle:DiasSemana')->findOneByDia(substr($t, 0, 3)));
+            }
+        }
 
         $editForm = $this->createForm('AppBundle\Form\RutaType', $ruta);
         $editForm->handleRequest($request);
-        $cantDias=0;
+        $cantDias = 0;
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
@@ -139,9 +143,11 @@ class RutaController extends Controller
             $dias = $ruta->getDias();
             $strDias = "";
 
-            foreach ($dias as $d) {
-                $strDias .= $d . ", ";
-                $cantDias= $cantDias +1;
+            if ($dias != null) {
+                foreach ($dias as $d) {
+                    $strDias .= $d . ", ";
+                    $cantDias = $cantDias + 1;
+                }
             }
 
             $ruta->setFrecuencia($strDias);
@@ -151,12 +157,12 @@ class RutaController extends Controller
             $em->flush();
 
             // Coje los servicios escojidos y lo guarda en la Tipo de Servicios
-//            $servicio = $ruta->getServicio();
-//            $strServicio = "";
-//            foreach ($servicio as $d) {
-//                $strServicio .= $d . "";
-//            }
-//            $ruta->setServicio($strServicio);
+            //            $servicio = $ruta->getServicio();
+            //            $strServicio = "";
+            //            foreach ($servicio as $d) {
+            //                $strServicio .= $d . "";
+            //            }
+            //            $ruta->setServicio($strServicio);
             $em->persist($ruta);
             $em->flush();
             return $this->redirectToRoute('ruta_index', array('id' => $ruta->getId()));
@@ -165,7 +171,7 @@ class RutaController extends Controller
         return $this->render('ruta/edit.html.twig', array(
             'ruta' => $ruta,
             'edit_form' => $editForm->createView(),
-//            'delete_form' => $deleteForm->createView(),
+            //            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -175,14 +181,14 @@ class RutaController extends Controller
      */
     public function deleteAction(Request $request, Ruta $ruta)
     {
-//        $form = $this->createDeleteForm($ruta);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
+        //        $form = $this->createDeleteForm($ruta);
+        //        $form->handleRequest($request);
+        //
+        //        if ($form->isSubmitted() && $form->isValid()) {
         $em = $this->getDoctrine()->getManager();
         $em->remove($ruta);
         $em->flush();
-//        }
+        //        }
 
         return $this->redirectToRoute('ruta_index');
     }
@@ -202,14 +208,15 @@ class RutaController extends Controller
             ->getForm();
     }
 
-    private function orderDays(Ruta $ruta){
+    private function orderDays(Ruta $ruta)
+    {
         $days = $ruta->getDias()->getValues();
 
         $ruta->getDias()->clear();
 
         sort($days);
 
-        foreach($days as $d){
+        foreach ($days as $d) {
             $ruta->addDia($d);
         }
     }
