@@ -34,35 +34,35 @@ var labels = JSON.parse(document.getElementById("omnibusNumbers").value);
 var colors = [];
 kilometers.forEach(kmValue => {
   if (kmValue < 200) {
-    colors = [...colors, "#FF0010"];
-  } else if (kmValue < 300) {
-    colors = [...colors, "#FF1400"];
-  } else if (kmValue < 400) {
-    colors = [...colors, "#FF3c00"];
-  } else if (kmValue < 500) {
-    colors = [...colors, "#FF6400"];
-  } else if (kmValue < 600) {
-    colors = [...colors, "#FF8200"];
-  } else if (kmValue < 700) {
-    colors = [...colors, "#FFaa00"];
-  } else if (kmValue < 800) {
-    colors = [...colors, "#FFe600"];
-  } else if (kmValue < 900) {
-    colors = [...colors, "#d7ff00"];
-  } else if (kmValue < 1000) {
-    colors = [...colors, "#00ff10"];
-  } else if (kmValue < 1100) {
-    colors = [...colors, "#00ff83"];
-  } else if (kmValue < 1200) {
     colors = [...colors, "#00fff4"];
-  } else if (kmValue < 1300) {
+  } else if (kmValue < 300) {
+    colors = [...colors, "#00e4ff"];
+  } else if (kmValue < 400) {
+    colors = [...colors, "#00d4ff"];
+  } else if (kmValue < 500) {
+    colors = [...colors, "#00c4ff"];
+  } else if (kmValue < 600) {
+    colors = [...colors, "#00b4ff"];
+  } else if (kmValue < 700) {
     colors = [...colors, "#00a4ff"];
-  } else if (kmValue < 1400) {
+  } else if (kmValue < 800) {
+    colors = [...colors, "#0094ff"];
+  } else if (kmValue < 900) {
+    colors = [...colors, "#0084ff"];
+  } else if (kmValue < 1000) {
     colors = [...colors, "#0074ff"];
+  } else if (kmValue < 1100) {
+    colors = [...colors, "#0064ff"];
+  } else if (kmValue < 1200) {
+    colors = [...colors, "#0054ff"];
+  } else if (kmValue < 1300) {
+    colors = [...colors, "#0044ff"];
+  } else if (kmValue < 1400) {
+    colors = [...colors, "#0032ff"];
   } else if (kmValue < 1500) {
-    colors = [...colors, "#0012ff"];
+    colors = [...colors, "#0022ff"];
   } else {
-    colors = [...colors, "#0500ff"];
+    colors = [...colors, "#0012ff"];
   }
 });
 
