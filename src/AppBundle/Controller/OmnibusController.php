@@ -6,6 +6,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use AppBundle\Entity\Omnibus;
+use Doctrine\ORM\Query;
+
 use AppBundle\Form\OmnibusType;
 
 /**
@@ -65,19 +67,23 @@ class OmnibusController extends Controller
     public function KmsRecorridosAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $db = $em->getConnection();
-        $query = 'SELECT
-          omnibus.noomnibus,
-          omnibus.kmrecorridosacumulados,
-          omnibus.mantenimiento
-        FROM
-          public.omnibus';
-        $stmt = $db->prepare($query);
-        $params = array();
-        $stmt->execute($params);
-        $reportes = $stmt->fetchAll();
+        $reportes = $em->getRepository('AppBundle:Omnibus')->findAll(Query::HYDRATE_ARRAY);
+
+        $dataPoints = array();
+        $omnibusNumbers = array();
+
+        foreach ($reportes as $array) {
+            array_push($dataPoints, $array->getKmRecorridosAcumulados());
+            array_push($omnibusNumbers, $array->getNoOmnibus());
+        }
+
+        $totalKilometers = array_sum($dataPoints);
+
         return $this->render('omnibus/reporteKmsRecorridos.html.twig', array(
-            'reportes' => $reportes
+            'reportes' => $reportes,
+            'kmValuesArray' => json_encode($dataPoints),
+            'omnibusNumbers' => json_encode($omnibusNumbers),
+            'totalKilometers' => $totalKilometers,
         ));
     }
 

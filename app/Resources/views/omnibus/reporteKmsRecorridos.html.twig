@@ -1,42 +1,84 @@
 {% extends 'index.html.twig' %} {% block contenido %}
-<div class="box box-danger">
-  <div class="box-header with-border">
-    <div class="user-block">
-      <h3 class="text-center ">Kilómetros recorridos por Ómnibus</h3>
-    </div>
-    <!-- /.user-block -->
-    <div class="box-tools">
-      <ul class="list-inline">
-        <li>
-          <a class="text-info" href="{{ path('omnibus_index') }}">
-            <i class="glyphicon glyphicon glyphicon-hand-left"></i> Atràs</a
-          >
-        </li>
-      </ul>
+<br />
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Kilómetros recorridos por ómnibus</h1>
+</div>
+<div class="row" style="font-size: 0.65rem;">
+  {% for reporte in reportes %}
+  <div class="col-md-3">
+    <div class="card shadow" style="margin-bottom: 1rem;">
+      <div class="card-body" style="padding:0.55rem;">
+        <div class="media">
+          <img
+            src="{{ asset('assets/dist/img/yutong.jpg') }}"
+            class="mr-3 rounded"
+            alt="..."
+            height="40"
+            width="45"
+          />
+          <div class="media-body">
+            <div class="row">
+              <div class="col">
+                <h6 class="mt-0" style="font-size: 0.85rem;">
+                  Carro {{ reporte.noomnibus }}
+                </h6>
+              </div>
+              <div class="col-auto text-right">
+                <span
+                  data-tooltip="{{
+                    reporte.mantenimiento ? 'En mantenimiento' : 'Disponible'
+                  }}"
+                  data-tooltip-location="left"
+                >
+                  <i
+                    class="fas fa-circle {{
+                      reporte.mantenimiento ? 'text-danger' : 'text-success'
+                    }}"
+                  ></i>
+                </span>
+              </div>
+            </div>
+            <p>
+              <span class="font-weight-bold">
+                {{ reporte.kmrecorridosacumulados }}
+              </span>
+              kilómetros
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="panel-body">
-    <table
-      id="sample-table-2"
-      class="table table-striped table-bordered table-hover"
-    >
-      <thead>
-        <tr>
-          <th class="bg-primary">Ómnibus</th>
-          <th class="bg-primary">Kms Recorridos Acumulados</th>
-          <th class="bg-primary">Mantenimiento</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for reporte in reportes %}
-        <tr>
-          <td>{{ reporte.noomnibus }}</td>
-          <td>{{ reporte.kmrecorridosacumulados }}</td>
-          <td>{{ reporte.mantenimiento }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+  {% endfor %}
+</div>
+<br />
+<input
+  id="kilometersData"
+  type="text"
+  value="{{ kmValuesArray }}"
+  style="display:none;"
+/>
+<input
+  id="omnibusNumbers"
+  type="text"
+  value="{{ omnibusNumbers }}"
+  style="display:none;"
+/>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Visualización</h6>
+      </div>
+      <div class="card-body">
+        <div class="chart-bar">
+          <canvas id="myBarChart"></canvas>
+        </div>
+        <hr />
+        En total se han recorrido
+        <span class="font-weight-bold">{{ totalKilometers }}km</span>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
