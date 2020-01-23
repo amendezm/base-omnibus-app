@@ -17,21 +17,7 @@
       rel="stylesheet"
       href="{{ asset('assets/fontawesome-free/css/all.min.css') }}"
     />
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('assets/dist/css/AdminLTE.css') }}" />
-    <link
-      rel="stylesheet"
-      href="{{ asset('assets/dist/css/fonts.googleapis.SourceSansPro.css') }}"
-    />
 
-    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-      page. However, you can choose any other skin. Make sure you
-      apply the skin class to the body tag so the changes take effect.
-    -->
-    <link
-      rel="stylesheet"
-      href="{{ asset('assets/dist/css/skins/_all-skins.css') }}"
-    />
     <link
       rel="icon"
       type="image/x-icon"
@@ -104,39 +90,16 @@
     {% endblock %}
   </head>
   <body id="page-top">
-    <!-- Page Wrapper -->
     <div id="wrapper">
-      <!-- Sidebar -->
       {% block sidebar %} {% include 'sidebar.html.twig' %} {% endblock %}
-      <!-- End of Sidebar -->
 
-      <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
-        <!-- Topbar -->
         {% block navbar %} {% include 'header.html.twig' %} {% endblock %}
-        <!-- End of Topbar -->
 
-        <!-- Main Content -->
         <div id="content">
-          <!-- Begin Page Content -->
           <div class="container-fluid">
             {% block contenido %}
-            <!-- Page Heading -->
-            <!-- <div
-              class="d-sm-flex align-items-center justify-content-between mb-4"
-            >
-              <h1 class="h3 mb-0 text-gray-800"></h1>
-              <a
-                href="#"
-                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-                ><i class="fas fa-download fa-sm text-white-50"></i> Generate
-                Report</a
-              >
-            </div> -->
-
-            <!-- Content Row -->
             <div class="row">
-              <!-- Earnings (Monthly) Card Example -->
               <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                   <div class="card-body">
@@ -158,8 +121,6 @@
                   </div>
                 </div>
               </div>
-
-              <!-- Earnings (Monthly) Card Example -->
               <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-success shadow h-100 py-2">
                   <div class="card-body">
@@ -181,8 +142,6 @@
                   </div>
                 </div>
               </div>
-
-              <!-- Earnings (Monthly) Card Example -->
               <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-info shadow h-100 py-2">
                   <div class="card-body">
@@ -222,8 +181,6 @@
                   </div>
                 </div>
               </div>
-
-              <!-- Pending Requests Card Example -->
               <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-warning shadow h-100 py-2">
                   <div class="card-body">
@@ -246,13 +203,9 @@
                 </div>
               </div>
             </div>
-
-            <!-- Content Row -->
-
             <div class="row">
               <div class="col-xl-8 col-lg-7">
                 <div class="card shadow mb-4">
-                  <!-- Card Header -->
                   <div
                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
                   >
@@ -260,7 +213,6 @@
                       Misión
                     </h6>
                   </div>
-                  <!-- Card Body -->
                   <div class="card-body">
                     Satisfacemos las expectativas de los clientes con servicios
                     de transportación de pasajeros, conexos y cargas en general
@@ -270,7 +222,6 @@
                 </div>
 
                 <div class="card shadow mb-4">
-                  <!-- Card Header -->
                   <div
                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
                   >
@@ -278,14 +229,12 @@
                       Visión
                     </h6>
                   </div>
-                  <!-- Card Body -->
                   <div class="card-body">
                     Somos líderes en la prestación de servicios a nuestros
                     clientes, con calidad, oportunidad y seguridad.
                   </div>
                 </div>
               </div>
-
               <div class="col-xl-4 col-lg-5">
                 <img
                   class="img-fluid px-3 px-sm-4 pt-3 pb-3 mb-4 img-thumbnail"
@@ -295,25 +244,13 @@
                 />
               </div>
             </div>
-
-            <!-- Content Row -->
             <div class="row">
-              <!-- Content Column -->
               <div class="col-xl-8 col-lg-7">
-                <!-- Project Card Example -->
                 <div class="card shadow mb-4">
                   <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Ubicación</h6>
                   </div>
                   <div class="card-body">
-                    <!-- <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d59643.452255686054!2d-76.30438340035937!3d20.883503735622167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x8ecded625e883733%3A0x1d93a78faef0e88b!2sTerminal%20de%20%C3%93mnibus%20Inter%20Provinciales%20Jos%C3%A9%20Mar%C3%ADa%20P%C3%A9rez%2C%20Carretera%20Central%20de%20Cuba%2C%20Holgu%C3%ADn!3m2!1d20.883507299999998!2d-76.2693637!4m5!1s0x8ecded625e883733%3A0x1d93a78faef0e88b!2sTerminal%20Santiago-Habana%2C%20Carr.%20Central%20de%20Cuba%2C%20Holgu%C3%ADn!3m2!1d20.883507299999998!2d-76.2693637!5e0!3m2!1ses-419!2scu!4v1577667479684!5m2!1ses-419!2scu"
-                      width="100%"
-                      height="300"
-                      frameborder="0"
-                      style="border:0;"
-                      allowfullscreen=""
-                    ></iframe> -->
                     <img
                       src="{{ asset('assets/dist/img/thg_location.PNG') }}"
                       alt="location"
@@ -330,60 +267,7 @@
                     </span>
                   </div>
                 </div>
-
-                <!-- Color System -->
-                <div class="row">
-                  <div class="col-lg-6 mb-4">
-                    <div class="card bg-primary text-white shadow">
-                      <div class="card-body">
-                        Primary
-                        <div class="text-white-50 small">#4e73df</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
-                    <div class="card bg-success text-white shadow">
-                      <div class="card-body">
-                        Success
-                        <div class="text-white-50 small">#1cc88a</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
-                    <div class="card bg-info text-white shadow">
-                      <div class="card-body">
-                        Info
-                        <div class="text-white-50 small">#36b9cc</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
-                    <div class="card bg-warning text-white shadow">
-                      <div class="card-body">
-                        Warning
-                        <div class="text-white-50 small">#f6c23e</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
-                    <div class="card bg-danger text-white shadow">
-                      <div class="card-body">
-                        Danger
-                        <div class="text-white-50 small">#e74a3b</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
-                    <div class="card bg-secondary text-white shadow">
-                      <div class="card-body">
-                        Secondary
-                        <div class="text-white-50 small">#858796</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
-
               <div class="col-xl-4 col-lg-5">
                 <div class="card shadow mb-4">
                   <div class="card-header py-3">
@@ -455,11 +339,8 @@
             </div>
             {% endblock %}
           </div>
-          <!-- /.container-fluid -->
         </div>
-        <!-- End of Main Content -->
 
-        <!-- Footer -->
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
@@ -470,18 +351,12 @@
             </div>
           </div>
         </footer>
-        <!-- End of Footer -->
       </div>
-      <!-- End of Content Wrapper -->
     </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
     <div
       class="modal fade"
       id="logoutModal"
