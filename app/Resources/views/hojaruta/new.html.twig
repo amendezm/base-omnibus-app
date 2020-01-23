@@ -1,169 +1,131 @@
-{% extends 'index.html.twig' %}
-
-{% block contenido %}
-   {{ form_start(form, {'method' :'POST'}) }}
-<div class="box box-danger">
-    <div class="box-header with-border">
-        <div class="user-block">
-            <h3 class="text-center ">Nueva Hoja de Ruta</h3>
-        </div><!-- /.user-block -->
-        <div class="box-tools">
-            <ul class="list-inline">
-                <li>
-                    <a class="text-info" href="{{ path('hojaruta_index') }}">
-                        <i class="glyphicon glyphicon glyphicon-hand-left"></i> Atràs</a>
-                </li>
-            </ul>
-        </div><!-- /.box-tools -->
-    </div><!-- /.box-header -->
-    <div class="box-body">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">No. Hoja de ruta</label>
-                    {{ form_widget(form.NoHojaRuta, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }})}}
-                </div>
-            </div>
+{% extends 'index.html.twig' %} {% block contenido %}
+<br />
+{{ form_start(form, { method: "POST" }) }}
+<div class="card">
+  <div class="card-header">
+    <div class="col-md-8 offset-md-2">
+      <h3>Nueva Hoja de Ruta</h3>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="col-md-8 offset-md-2">
+      <div class="form-group">
+        <label class="control-label">No. Hoja de ruta</label>
+        {{ form_widget(form.NoHojaRuta, 
+            {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }}
+        )}}
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Fecha</label>
+            {{ form_widget(form.fecha,
+                {'attr' : {'class' : 'datepicker-here form-control'}}
+            )}}
+          </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Fecha</label>
-                    {{ form_widget(form.fecha, {'attr' : {'class' : ''}})}}
-                </div>
-            </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Ruta</label>
+            {{ form_widget(form.ruta, 
+            {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
+            )}}
+          </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Ruta</label>
-                    {{ form_widget(form.ruta, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }})}}
-                </div>
-            </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Ómnibus</label>
+        {{ form_widget(form.omnibus,
+             {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
+        )}}
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Cantidad de Viajes</label>
+            {{ form_widget(form.cantidadViajes,
+             {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }}
+            )}}
+          </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Ómnubis</label>
-                    {{ form_widget(form.omnibus, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }})}}
-                </div>
-            </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Cantidad de Salidas</label>
+            {{ form_widget(form.cantidadSalidas,
+             {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
+            )}}
+          </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Cantidad de Viajes</label>
-                    {{ form_widget(form.cantidadViajes, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }})}}
-                </div>
-            </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Horas de Trabajo Básico</label>
+            {{ form_widget(form.basico, 
+            {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
+            )}}
+          </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Cantidad de Salidas</label>
-                    {{ form_widget(form.cantidadSalidas, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }})}}
-                </div>
-            </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Horas de Trabajo con Incremento</label>
+            {{ form_widget(form.conIncremento, 
+            {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
+            )}}
+          </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Horas de Trabajo Básico</label>
-                    {{ form_widget(form.basico, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }})}}
-                </div>
-            </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Horas de Trabajo Confronta</label>
+            {{ form_widget(form.confronta,
+             {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
+            )}}
+          </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Horas de Trabajo con Incremento</label>
-                    {{ form_widget(form.conIncremento, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }})}}
-                </div>
-            </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label"
+              >Horas de Trabajo en Turno Partido</label
+            >
+            {{ form_widget(form.turnopartido, 
+            {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
+            )}}
+          </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Horas de Trabajo Confronta</label>
-                    {{ form_widget(form.confronta, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }})}}
-                </div>
-            </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Horas de Trabajo Voluntario</label>
+            {{ form_widget(form.voluntario,
+             {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
+            )}}
+          </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Horas de Trabajo en Turno Partido</label>
-                    {{ form_widget(form.turnopartido, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }})}}
-                </div>
-            </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Observaciones</label>
+            {{ form_widget(form.observaciones,
+             {'attr' : {'class' : 'form-control','pattern':'([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$'}}
+            )}}
+          </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Horas de Trabajo Voluntario</label>
-                    {{ form_widget(form.voluntario, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }})}}
-                </div>
-            </div>
-        </div>
-        {#<div class="row">#}
-            {#<div class="col-sm-6">#}
-                {#<div class="form-group">#}
-                    {#<label class="col-sm-4 control-label">Total de Horas</label>#}
-                    {#{{ form_widget(form.totalHoras, {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }})}}#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-        {#<div class="row">#}
-            {#<div class="col-sm-6">#}
-                {#<div class="form-group">#}
-                    {#<label class="col-sm-4 control-label">Incidencias</label>#}
-                        {#{% if not is_granted('ROLE_USUARIO' ) %}#}
-                            {#<a class="btn btn-sm btn-default  pull-left" href="{{ path('incidencia_new') }}">#}
-                                {#<img src="{{ asset('assets/dist/img/add_database_26px.png') }}" alt="User Image"> Nuevo#}
-                            {#</a>#}
-                        {#{% endif %}#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-        {#<div class="row rejilla" data-prototype="{{ form_widget(form.deficiencia_add.vars.prototype)| e }}">#}
-            {#<div class="col-sm-12">#}
-                {#&#123;&#35; iterate over each existing tag and render its only field: name &#35;&#125;#}
-                {#{% for detalle in form.deficiencia_add %}#}
-                    {#<div class="row detalles">#}
-                        {#<div class="col-sm-2">#}
-                            {#<div class="form-group">#}
-                                {#<label class="control-label" for="product_name">Product</label>#}
-                                {#{{ form_widget(detalle.deficiencia, {'attr' : {'class' : 'form-control' }}) }}#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#{% endfor %}#}
-            {#</div>#}
-        {#</div>#}
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Observaciones</label>
-                    {{ form_widget(form.observaciones, {'attr' : {'class' : 'form-control','pattern':'([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$' }})}}
-                </div>
-            </div>
-        </div>
-
-        <table align="center">
-            <tr align="">
-                {#<td></td>#}
-                {#<td  >   {{ form_widget(form.Submit) }}</td>#}
-                <td style="width: 10px"> </td>
-                <td><input type="submit" class="btn btn-danger btn " style="background-color: #6290ff;margin-right: 5%" value="Crear" /></td>
-                <td><a class= "btn btn-danger btn " onclick="window.history.back();" href=""><span class=""> </span>Cancelar</a></td>
-            </tr>
-            <tr align="">
-                {#<td style="width: 0px"> </td>#}
-
-            </tr>
-        </table>
-
-    </div><!-- /.box widget-->
+      </div>
+      <br />
+      <div class="text-right">
+        <a
+          class="btn btn-outline-secondary"
+          href="{{ path('hojaruta_index') }}"
+        >
+          Cancelar
+        </a>
+        <input type="submit" class="btn btn-primary" value="Guardar" />
+      </div>
+      <br />
+    </div>
     {{ form_end(form) }}
+  </div>
 </div>
-    {% endblock %}
+{% endblock %}

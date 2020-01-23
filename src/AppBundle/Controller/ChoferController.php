@@ -24,7 +24,7 @@ class ChoferController extends Controller
      */
     public function indexAction()
     {
-         $em = $this->getDoctrine()->getManager()->getConnection();
+        $em = $this->getDoctrine()->getManager()->getConnection();
 
         $query = 'SELECT
            chofer.nombre,
@@ -62,11 +62,11 @@ class ChoferController extends Controller
      */
     public function showAction(Chofer $chofer)
     {
-//        $deleteForm = $this->createDeleteForm($chofer);
+        //        $deleteForm = $this->createDeleteForm($chofer);
 
         return $this->render('chofer/show.html.twig', array(
             'chofer' => $chofer,
-//            'delete_form' => $deleteForm->createView(),
+            //            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -76,7 +76,7 @@ class ChoferController extends Controller
      */
     public function editAction(Request $request, Chofer $chofer)
     {
-//        $deleteForm = $this->createDeleteForm($chofer);
+        //        $deleteForm = $this->createDeleteForm($chofer);
         $editForm = $this->createForm('AppBundle\Form\ChoferType', $chofer);
         $editForm->handleRequest($request);
 
@@ -91,7 +91,7 @@ class ChoferController extends Controller
         return $this->render('chofer/edit.html.twig', array(
             'chofer' => $chofer,
             'edit_form' => $editForm->createView(),
-//            'delete_form' => $deleteForm->createView(),
+            //            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -101,14 +101,14 @@ class ChoferController extends Controller
      */
     public function deleteAction(Request $request, Chofer $chofer)
     {
-//        $form = $this->createDeleteForm($chofer);
-//        $form->handleRequest($request);
+        //        $form = $this->createDeleteForm($chofer);
+        //        $form->handleRequest($request);
 
-//        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($chofer);
-            $em->flush();
-//        }
+        //        if ($form->isSubmitted() && $form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($chofer);
+        $em->flush();
+        //        }
 
         return $this->redirectToRoute('chofer_index');
     }
@@ -125,8 +125,7 @@ class ChoferController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('chofer_delete', array('id' => $chofer->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
     public function reporteHorasAction()
     {

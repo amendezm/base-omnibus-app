@@ -1,10 +1,12 @@
 <?php
 
 namespace AppBundle\Form;
+
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class HojaRutaEditType extends AbstractType
 {
@@ -20,19 +22,22 @@ class HojaRutaEditType extends AbstractType
             ->add('confronta')
             ->add('turnopartido')
             ->add('voluntario')
-            ->add('fecha')
+            ->add('fecha', DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd', 'autocomplete' => 'off'],
+            ])
             ->add('ruta', EntityType::class, array('class' => 'AppBundle\Entity\Ruta', 'multiple' => false, 'expanded' => false))
             ->add('NoHojaRuta')
-//            ->add('tipo_horas', EntityType::class, array('class' => 'AppBundle\Entity\Tipo_horas_trabajo', 'multiple' => true, 'expanded' => true))
-//            ->add('totalHoras')
-//            ->add('incidenciahr', EntityType::class, array('class' => 'AppBundle\Entity\Incidencia', 'multiple' => false, 'expanded' => false))
+            //            ->add('tipo_horas', EntityType::class, array('class' => 'AppBundle\Entity\Tipo_horas_trabajo', 'multiple' => true, 'expanded' => true))
+            //            ->add('totalHoras')
+            //            ->add('incidenciahr', EntityType::class, array('class' => 'AppBundle\Entity\Incidencia', 'multiple' => false, 'expanded' => false))
             ->add('observaciones')
             ->add('cantidadViajes')
             ->add('cantidadSalidas')
-            ->add('omnibus', EntityType::class, array('class' => 'AppBundle\Entity\Omnibus', 'multiple' => false, 'expanded' => false))
-        ;
+            ->add('omnibus', EntityType::class, array('class' => 'AppBundle\Entity\Omnibus', 'multiple' => false, 'expanded' => false));
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
