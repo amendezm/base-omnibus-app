@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use AppBundle\Entity\Incidencia;
 use AppBundle\Form\IncidenciaType;
+
 /**
  *
  * Función para llamar a la plantilla de administración
@@ -36,14 +37,14 @@ class IncidenciaController extends Controller
      * Creates a new Incidencia entity.
      *
      */
-    public function newAction(Request $request,$id_hojaruta)
+    public function newAction(Request $request, $id_hojaruta)
     {
-		$em= $this->getDoctrine()->getManager(); 
+        $em = $this->getDoctrine()->getManager();
 
         $incidencia = new Incidencia();
         $hojaRuta = new HojaRuta();
         $incidenciaHR = new Incidencias_HR();
-		$hojaruta = $em->getRepository('AppBundle:HojaRuta')->find($id_hojaruta); 
+        $hojaruta = $em->getRepository('AppBundle:HojaRuta')->find($id_hojaruta);
 
         $form = $this->createForm('AppBundle\Form\IncidenciaType', $incidencia);
         $form->handleRequest($request);
@@ -57,16 +58,14 @@ class IncidenciaController extends Controller
             $incidenciaHR->setIncidencias($incidencia);
             $em->persist($incidenciaHR);
             $em->flush();
-        $hojaRutas = $em->getRepository('AppBundle:HojaRuta')->findAll();
-		
-        return $this->render('hojaruta/index.html.twig', array(
-            'hojaRutas' => $hojaRutas,
-        ));
+            $hojaRutas = $em->getRepository('AppBundle:HojaRuta')->findAll();
+
+            return $this->redirectToRoute('hojaruta_index', array('hojaRutas' => $hojaRutas));
         }
 
         return $this->render('incidencia/new.html.twig', array(
             'incidencia' => $incidencia,
-            'hojaRuta' => $hojaruta,			
+            'hojaRuta' => $hojaruta,
             'form' => $form->createView(),
         ));
     }
@@ -77,7 +76,7 @@ class IncidenciaController extends Controller
      */
     public function showAction(Incidencia $incidencia)
     {
-//        $deleteForm = $this->createDeleteForm($incidencia);
+        //        $deleteForm = $this->createDeleteForm($incidencia);
 
         return $this->render('incidencia/show.html.twig', array(
             'incidencia' => $incidencia,
@@ -91,7 +90,7 @@ class IncidenciaController extends Controller
      */
     public function editAction(Request $request, Incidencia $incidencia)
     {
-//        $deleteForm = $this->createDeleteForm($incidencia);
+        //        $deleteForm = $this->createDeleteForm($incidencia);
         $editForm = $this->createForm('AppBundle\Form\IncidenciaType', $incidencia);
         $editForm->handleRequest($request);
 
@@ -106,7 +105,7 @@ class IncidenciaController extends Controller
         return $this->render('incidencia/edit.html.twig', array(
             'incidencia' => $incidencia,
             'edit_form' => $editForm->createView(),
-//            'delete_form' => $deleteForm->createView(),
+            //            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -116,14 +115,14 @@ class IncidenciaController extends Controller
      */
     public function deleteAction(Request $request, Incidencia $incidencia)
     {
-//        $form = $this->createDeleteForm($incidencia);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($incidencia);
-            $em->flush();
-//        }
+        //        $form = $this->createDeleteForm($incidencia);
+        //        $form->handleRequest($request);
+        //
+        //        if ($form->isSubmitted() && $form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($incidencia);
+        $em->flush();
+        //        }
 
         return $this->redirectToRoute('incidencia_index');
     }
@@ -140,8 +139,7 @@ class IncidenciaController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('incidencia_delete', array('id' => $incidencia->getIdincidencia())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 
     public function indexAction()
@@ -170,6 +168,5 @@ class IncidenciaController extends Controller
         $reportes = $stmt->fetchAll();
 
         return $this->render('incidencia/incidencia_index.html.twig', array('reportes' => $reportes));
-
     }
 }
