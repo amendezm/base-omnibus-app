@@ -1,97 +1,117 @@
-{% extends 'index.html.twig' %}
-
-{% block contenido %}
-    <h1>HojaRuta</h1>
-<div class="box box-danger">
-    <div class="box-header with-border">
-        <div class="user-block">
-            <h3 class="text-center ">Lista de Hojas de Rutas</h3>
-        </div><!-- /.user-block -->
-        <div class="box-tools">
-            <ul class="list-inline">
-                <li>
-                    <a class="text-info" href="{{ path('hojaruta_index') }}">
-                        <i class="glyphicon glyphicon glyphicon-hand-left"></i> Atràs</a>
-                </li>
-            </ul>
-        </div><!-- /.box-tools -->
-    </div><!-
-    <div class="box-body">
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>No. Hoja de Ruta</th>
-                <td>{{ hojaRutum.noHojaRuta }}</td>
-            </tr>
-
-            <tr>
-                <th>Fecha</th>
-                <td>{{ hojaRutum.fecha|date('y-m-d') }}</td>
-            </tr>
-            <tr>
-                <th>Ruta</th>
-                <td>{{ hojaRutum.ruta }}</td>
-            </tr>
-            <tr>
-                <th>Ómnibus</th>
-                <td>{{ hojaRutum.omnibus }}</td>
-            </tr>
-            <tr>
-                <th>Cantidad de viajes</th>
-                <td>{{ hojaRutum.cantidadViajes }}</td>
-            </tr>
-            <tr>
-                <th>Cantidad de salidas</th>
-                <td>{{ hojaRutum.cantidadSalidas }}</td>
-            </tr>
-            <tr>
-                <th>Horas de Trabajo Básico</th>
-                <td>{{ hojaRutum.basico }}</td>
-            </tr>
-            <tr>
-                <th>Horas de Trabajo Turno Partido</th>
-                <td>{{ hojaRutum.turnopartido}}</td>
-            </tr>
-            <tr>
-                <th>Horas de Trabajo Con Incremento</th>
-                <td>{{ hojaRutum.conIncremento}}</td>
-            </tr>
-            <tr>
-                <th>Horas de Trabajo Confronta</th>
-                <td>{{ hojaRutum.confronta }}</td>
-            </tr>
-            <tr>
-                <th>Horas de Trabajo Voluntario</th>
-                <td>{{ hojaRutum.voluntario }}</td>
-            </tr>
-            <tr>
-                <th>Total de Horas</th>
-                <td>{{ hojaRutum.totalHoras }}</td>
-            </tr>
-            <tr>
-                <th>Observaciones</th>
-                <td>{{ hojaRutum.observaciones }}</td>
-            </tr>
-
-            <tr>
-                <th>{% if not is_granted('ROLE_USUARIO' ) %}<img src="{{ asset('assets/dist/img/data_configuration_26px.png') }}" alt="User Image"> Acciones{% endif %}
-                <td>
-                    {#<ul>#}
-                    <a href="{{ path('hojaruta_edit',{ 'id': hojaRutum.id }) }}"
-                       class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="left"
-                       title="Editar elemento"><i class="glyphicon glyphicon-pencil"></i>
-                    </a>
-                    <a href="{{ path('hojaruta_delete',{'id': hojaRutum.id}) }}"
-                       class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="rigth"
-                       title="Eliminar elemento"
-                       onclick="return confirm('Esta seguro que desea eliminar el elemento')">
-                        <i class="glyphicon glyphicon-remove"></i>
-                    </a>
-                    {#</ul>#}
-                </td>
-                </th>
-            </tr>
-        </thead>
-    </table>
+{% extends 'index.html.twig' %} {% block contenido %}
+<br />
+<div class="col-md-8 offset-md-2">
+  <div class="card promoting-card">
+    <div class="card-body d-flex flex-row">
+      <img
+        src="{{
+          asset('assets/dist/img/mapa-de-ruta-ethereum-ethereum-classic.jpg')
+        }}"
+        class="rounded-circle mr-3"
+        height="50px"
+        width="50px"
+        alt="avatar"
+      />
+      <div style="width:100%">
+        <div class="row">
+          <div class="col-md-9">
+            <h4 class="card-title font-weight-bold mb-2">
+              Hoja de ruta {{ hojaRutum.noHojaRuta }}
+            </h4>
+          </div>
+          <div class="col-md-3 text-right">
+            <a
+              class="text-secondary"
+              href="{{ path('hojaruta_index') }}"
+              data-tooltip="Atrás"
+              data-tooltip-location="top"
+            >
+              <i class="fas fa-arrow-left"></i
+            ></a>
+          </div>
+        </div>
+        <p class="card-text">
+          <i class="far fa-clock pr-2"></i>{{ hojaRutum.fecha|date('d/m/Y') }}
+        </p>
+        <br />
+        <table class="table" style="width:90%">
+          <tr>
+            <th>Ruta</th>
+            <td>{{ hojaRutum.ruta }}</td>
+          </tr>
+          <tr>
+            <th>Omnibus</th>
+            <td>{{ hojaRutum.omnibus }}</td>
+          </tr>
+          <tr>
+            <th>Cantidad de viajes</th>
+            <td>{{ hojaRutum.cantidadViajes }}</td>
+          </tr>
+          <tr>
+            <th>Cantidad de salidas</th>
+            <td>{{ hojaRutum.cantidadSalidas }}</td>
+          </tr>
+          <tr>
+            <th>Horas de Trabajo Básico</th>
+            <td>{{ hojaRutum.basico }}</td>
+          </tr>
+          <tr>
+            <th>Horas de Trabajo Turno Partido</th>
+            <td>{{ hojaRutum.turnopartido }}</td>
+          </tr>
+          <tr>
+            <th>Horas de Trabajo Con Incremento</th>
+            <td>{{ hojaRutum.conIncremento }}</td>
+          </tr>
+          <tr>
+            <th>Horas de Trabajo Confronta</th>
+            <td>{{ hojaRutum.confronta }}</td>
+          </tr>
+          <tr>
+            <th>Horas de Trabajo Voluntario</th>
+            <td>{{ hojaRutum.voluntario }}</td>
+          </tr>
+          <tr>
+            <th>Total de Horas</th>
+            <td>{{ hojaRutum.totalHoras }}</td>
+          </tr>
+          <tr>
+            <th>Observaciones</th>
+            <td>{{ hojaRutum.observaciones }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-2 offset-md-9">
+        <div class="row">
+          <div class="col-md-6 text-right">
+            <a
+              href="{{ path('hojaruta_delete', { id: hojaRutum.id }) }}"
+              class="text-secondary"
+              data-tooltip="Eliminar"
+              data-tooltip-location="top"
+              onclick="return confirm('Esta seguro que desea eliminar el elemento')"
+            >
+              <i class="fas fa-trash-alt"></i>
+            </a>
+          </div>
+          <div class="col-md-6">
+            <a
+              class="text-secondary"
+              role="button"
+              href="{{ path('hojaruta_edit', { id: hojaRutum.id }) }}"
+              data-tooltip="Editar"
+              data-tooltip-location="top"
+            >
+              <i class="fas fa-edit"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body"></div>
+  </div>
 </div>
-    {% endblock %}
+{% endblock %}
