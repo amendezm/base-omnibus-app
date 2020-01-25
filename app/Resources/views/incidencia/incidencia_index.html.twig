@@ -1,140 +1,113 @@
-{% extends 'index.html.twig' %}
-
-{% block contenido %}
-<!-- Default box -->
-<div class="box box-danger">
-    <div class="box-header with-border">
-        <div class="user-block">
-            <h3 class="text-center ">Incidencias</h3>
-        </div><!-- /.user-block -->
-        <div class="box-tools">
-
-        </div><!-- /.box-tools -->
-    </div><!-- /.box-header -->
-    <div class="box-body">
-        {#<h5>Total de registros: {{ pagination.getTotalItemCount }}</h5>#}
-
-        <table class="table table-hover">
-            <thead>
-
-            <th>No. incidencia</th>
-            <th>Tipo</th>
-            <th>Incidencia</th>
-            <th>No. Hoja de Ruta</th>
-            {#<th>Chofer</th>#}
-            <th>Fecha</th>
-            {% if not is_granted('ROLE_USUARIO' ) %}<th><img src="{{ asset('assets/dist/img/data_configuration_26px.png') }}" alt="User Image"> Acciones</th>{% endif %}
-            </thead>
-            <tbody>
-            {% for reporte in reportes %}
-                <tr>
-                    <td>{{ reporte.idincidencia }}</td>
-                    <td>{{ reporte.tipoincidencias }}</td>
-                    <td>{{ reporte.detalles }}</td>
-                    <td>{{ reporte.nohojaruta }}</td>
-                    {#<td>{{ reporte.chofer }}</td>#}
-                    <td>{% if reporte.fecha %}{{ reporte.fecha|date('Y-m-d') }}{% endif %}</td>
-                    <td>
-                        <ul>
-                            <a href="{{ path('incidencia_edit',{ 'id': reporte.idincidencia }) }}"
-                               class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="right"
-                               title="Editar elemento"><i class="glyphicon glyphicon-pencil"></i>
-                            </a>
-                            <a href="{{ path('incidencia_delete',{'id': reporte.idincidencia}) }}"
-                               class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="right"
-                               title="Eliminar elemento"
-                               onclick="return confirm('Esta seguro que desea eliminar el elemento')">
-                                <i class="glyphicon glyphicon-remove"></i>
-                            </a>
-                        </ul>
-                    </td>
-                </tr>
-            {% endfor %}
-
-            </tbody>
-        </table>
-
-    </div><!-- /.box-body -->
-
-    {#<div class="row">#}
-
-        {#<div class="col-sm-4">#}
-            {#{% if not is_granted('ROLE_USUARIO' ) %}#}
-                {#<a class="btn btn-sm btn-default  pull-left" href="{{ path('gps_new') }}">#}
-                    {#<img src="{{ asset('assets/dist/img/add_database_26px.png') }}" alt="User Image"> Nuevo#}
-                {#</a>#}
-            {#{% endif %}#}
-        {#</div>#}
-        {#<div class="col-sm-4">#}
-            {#{#{{ knp_pagination_render(pagination) }}#}
-        {#</div>#}
-        {#<div class="col-sm-4">#}
-
-
-        {#</div>#}
-    {#</div>#}
-
-
-</div><!-- /.box -->
-<div id="mymodal" class="modal  inmodal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header text-center">
-                <button aria-label="Close" data-dismiss="modal" class="close" type="button">
-                    <span aria-hidden="true">×</span></button>
-                <i class="fa-3x fa fa-warning modal-icon text-red"></i>
-                <h4 class="modal-title">Acción Peligrosa</h4>
-            </div>
-            <div class="modal-body">
-                <p>Está acción puede ocacionar, comprometer la integridad de los datos!</p>
-                <small>Si no es un usuario avanzado, recomendamos que cancele esta acción.</small>
-            </div>
-            <div class="modal-footer">
-                <button data-dismiss="modal" class="btn btn-primary" type="button">Cerrar</button>
-                <a class="btn btn-primary btn-danger btn-delete" href="#">Eliminar</a>
-            </div>
-        </div>
-        <!-- /.modal-content -->
+{% extends 'index.html.twig' %} {% block contenido %}
+<br />
+<div class="card shadow">
+  <div class="card-header py-3">
+    <h3 class="m-0 font-weight-bold text-primary">
+      Incidencias
+    </h3>
+  </div>
+  <div class="card-body">
+    <div class="table-reponsive">
+      <table
+        class="table table-bordered text-center"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+        style="font-size:0.85rem;"
+      >
+        <thead>
+          <th>No. incidencia</th>
+          <th>Tipo</th>
+          <th>Incidencia</th>
+          <th>No. Hoja de Ruta</th>
+          <th>Fecha</th>
+          {% if not is_granted('ROLE_USUARIO' ) %}
+          <th>
+            <img
+              src="{{ asset('assets/dist/img/data_configuration_26px.png') }}"
+              alt="User Image"
+            />
+            Acciones
+          </th>
+          {% endif %}
+        </thead>
+        <tbody>
+          {% for reporte in reportes %}
+          <tr>
+            <td>{{ reporte.idincidencia }}</td>
+            <td>{{ reporte.tipoincidencias }}</td>
+            <td>{{ reporte.detalles }}</td>
+            <td>{{ reporte.nohojaruta }}</td>
+            <td>
+              {% if reporte.fecha %}{{ reporte.fecha|date('Y-m-d') }}{% endif %}
+            </td>
+            <td>
+              <div class="row">
+                <div class="col-md-4 offset-md-2">
+                  <a
+                    href="{{
+                      path('incidencia_delete', { id: reporte.idincidencia })
+                    }}"
+                    class="text-secondary"
+                    data-tooltip="Eliminar"
+                    data-tooltip-location="top"
+                    onclick="return confirm('Esta seguro que desea eliminar el elemento')"
+                  >
+                    <i class="fas fa-trash-alt"></i>
+                  </a>
+                </div>
+                <div class="col-md-4">
+                  <a
+                    href="{{
+                      path('incidencia_edit', { id: reporte.idincidencia })
+                    }}"
+                    class="text-primary"
+                    data-tooltip="Editar"
+                    data-tooltip-location="top"
+                    title="Editar elemento"
+                    ><i class="fas fa-edit"></i>
+                  </a>
+                </div>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
-    <!-- /.modal-dialog -->
+  </div>
 </div>
-    {% endblock %}
-{#<h1>GPS list</h1>#}
-
-{#<table>#}
-    {#<thead>#}
-    {#<tr>#}
-        {#<th>Id</th>#}
-        {#<th>Combustible</th>#}
-        {#<th>Kmrecorridos</th>#}
-        {#<th>Fecha</th>#}
-        {#<th>Actions</th>#}
-    {#</tr>#}
-    {#</thead>#}
-    {#<tbody>#}
-    {#{% for gP in gPSs %}#}
-        {#<tr>#}
-            {#<td><a href="{{ path('gps_show', { 'id': gP.id }) }}">{{ gP.id }}</a></td>#}
-            {#<td>{{ gP.combustible }}</td>#}
-            {#<td>{{ gP.kmRecorridos }}</td>#}
-            {#<td>{% if gP.fecha %}{{ gP.fecha|date('Y-m-d') }}{% endif %}</td>#}
-            {#<td>#}
-                {#<ul>#}
-                    {#<li>#}
-                        {#<a href="{{ path('gps_show', { 'id': gP.id }) }}">show</a>#}
-                    {#</li>#}
-                    {#<li>#}
-                        {#<a href="{{ path('gps_edit', { 'id': gP.id }) }}">edit</a>#}
-                    {#</li>#}
-                {#</ul>#}
-            {#</td>#}
-        {#</tr>#}
-    {#{% endfor %}#}
-    {#</tbody>#}
-{#</table>#}
-
-{#<ul>#}
-    {#<li>#}
-        {#<a href="{{ path('gps_new') }}">Create a new entry</a>#}
-    {#</li>#}
-{#</ul>#}
+<div id="mymodal" class="modal  inmodal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <button
+          aria-label="Close"
+          data-dismiss="modal"
+          class="close"
+          type="button"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+        <i class="fa-3x fa fa-warning modal-icon text-red"></i>
+        <h4 class="modal-title">Acción Peligrosa</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          Está acción puede ocacionar, comprometer la integridad de los datos!
+        </p>
+        <small
+          >Si no es un usuario avanzado, recomendamos que cancele esta
+          acción.</small
+        >
+      </div>
+      <div class="modal-footer">
+        <button data-dismiss="modal" class="btn btn-primary" type="button">
+          Cerrar
+        </button>
+        <a class="btn btn-primary btn-danger btn-delete" href="#">Eliminar</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
