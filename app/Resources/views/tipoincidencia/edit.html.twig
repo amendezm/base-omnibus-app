@@ -1,61 +1,32 @@
-{% extends 'index.html.twig' %}
-
-{% block contenido %}
-   {{ form_start(edit_form, {'method' :'POST'}) }}
-<div class="box box-danger">
-    <div class="box-header with-border">
-        <div class="user-block">
-            <h3 class="text-center ">Editar Tipo de Incidencias</h3>
-        </div><!-- /.user-block -->
-        <div class="box-tools">
-            <ul class="list-inline">
-                <li>
-                    <a class="text-info" href="{{ path('tipoincidencia_index') }}">
-                        <i class="glyphicon glyphicon glyphicon-hand-left"></i> Atràs</a>
-                </li>
-            </ul>
-        </div><!-- /.box-tools -->
-    </div><!-- /.box-header -->
-    <div class="box-body">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Tipo</label>
-                    {{ form_widget(edit_form.tipoIncidencias, {'attr' : {'class' : 'form-control' }})}}
-                </div>
-            </div>
-        </div>
-
-        {#<div class="row">#}
-        {#<div class="col-sm-6">#}
-        {#<label class="col-sm-4 control-label"></label>#}
-        {#{{ form_widget(edit_form.Submit) }}#}
-        {#</div>#}
-        {#</div>#}
-        {#</div><!-- /.box-body -->#}
-        <table align="center">
-            <tr>
-                <td><input type="submit" class="btn btn-danger btn " style="background-color: #6290ff" value="Editar" /></td>
-            </tr>
-        </table>
+{% extends 'index.html.twig' %} {% block contenido %}
+<br />
+{{ form_start(edit_form, { method: "POST" }) }}
+<div class="card shadow">
+  <div class="card-header">
+    <div class="col-md-8 offset-md-2">
+      <h3>Editar Tipo de Incidencias</h3>
     </div>
-    {#<!-- /.box widget-->#}
-    {{ form_end(edit_form) }}
+  </div>
+  <div class="card-body">
+    <div class="col-md-8 offset-md-2">
+      <div class="form-group">
+        <label class="col-sm-4 control-label">Tipo</label>
+        {{ form_widget(edit_form.tipoIncidencias,
+             {'attr' : {'class' : 'form-control' }}
+        )}}
+      </div>
+      <br />
+      <div class="text-right">
+        <a
+          class="btn btn-outline-secondary"
+          href="{{ path('tipoincidencia_index') }}"
+        >
+          Cancelar
+        </a>
+        <input type="submit" class="btn btn-primary" value="Guardar" />
+      </div>
+    </div>
+  </div>
+  {{ form_end(edit_form) }}
+</div>
 {% endblock %}
-{#<h1>TipoIncidencia edit</h1>#}
-
-{#{{ form_start(edit_form) }}#}
-        {#{{ form_widget(edit_form) }}#}
-{#<input type="submit" value="Edit" />#}
-{#{{ form_end(edit_form) }}#}
-
-{#<ul>#}
-    {#<li>#}
-        {#<a href="{{ path('tipoincidencia_index') }}">Back to the list</a>#}
-    {#</li>#}
-    {#<li>#}
-        {#{{ form_start(delete_form) }}#}
-        {#<input type="submit" value="Delete">#}
-        {#{{ form_end(delete_form) }}#}
-    {#</li>#}
-{#</ul>#}
