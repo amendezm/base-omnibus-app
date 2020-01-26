@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use AppBundle\Entity\Trabajador;
 use AppBundle\Form\TrabajadorType;
+
 /**
  *
  * Función para llamar a la plantilla de administración
@@ -48,11 +49,11 @@ class TrabajadorController extends Controller
             $em->persist($trabajador);
             $em->flush();
 
-            if($trabajador->getCargo() == 'chofer'){
-            $chofer->setTrabajador($trabajador);
-            $chofer->setNombre($trabajador->getNombre());
-            $em->persist($chofer);
-            $em->flush();
+            if ($trabajador->getCargo() == 'chofer') {
+                $chofer->setTrabajador($trabajador);
+                $chofer->setNombre($trabajador->getNombre());
+                $em->persist($chofer);
+                $em->flush();
             }
 
             return $this->redirectToRoute('trabajador_index', array('id' => $trabajador->getId()));
@@ -70,11 +71,11 @@ class TrabajadorController extends Controller
      */
     public function showAction(Trabajador $trabajador)
     {
-//        $deleteForm = $this->createDeleteForm($trabajador);
+        //        $deleteForm = $this->createDeleteForm($trabajador);
 
         return $this->render('trabajador/show.html.twig', array(
             'trabajador' => $trabajador,
-//            'delete_form' => $deleteForm->createView(),
+            //            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -84,22 +85,22 @@ class TrabajadorController extends Controller
      */
     public function editAction(Request $request, Trabajador $trabajador)
     {
-//        $deleteForm = $this->createDeleteForm($trabajador);
+        //        $deleteForm = $this->createDeleteForm($trabajador);
         $editForm = $this->createForm('AppBundle\Form\TrabajadorType', $trabajador);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $chofer = $em->getRepository('AppBundle:Chofer')->findByIdTrabajador($trabajador->getId());
+            $chofer = $em->getRepository('AppBundle:Chofer')->find($trabajador->getId());
 
-            if($chofer!=null){
-                if($trabajador->getCargo() == 'chofer'){
+            if ($chofer != null) {
+                if ($trabajador->getCargo() == 'chofer') {
                     $chofer->setNombre($trabajador->getNombre());
+                    $chofer->setId($trabajador->getId());
 
                     $em->flush();
-            }
-                else {
+                } else {
                     $em->remove($chofer);
 
                     $em->flush();
@@ -114,7 +115,7 @@ class TrabajadorController extends Controller
         return $this->render('trabajador/edit.html.twig', array(
             'trabajador' => $trabajador,
             'edit_form' => $editForm->createView(),
-//            'delete_form' => $deleteForm->createView(),
+            //            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -124,16 +125,16 @@ class TrabajadorController extends Controller
      */
     public function deleteAction(Request $request, Trabajador $trabajador)
     {
-            $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
-        if($trabajador->getCargo() == 'Chofer'){
+        if ($trabajador->getCargo() == 'Chofer') {
             $chofer = $em->getRepository('AppBundle:Chofer')->findByIdTrabajador($trabajador->getId());
             $em->remove($chofer);
             $em->flush();
         }
 
-            $em->remove($trabajador);
-            $em->flush();
+        $em->remove($trabajador);
+        $em->flush();
 
         return $this->redirectToRoute('trabajador_index');
     }
@@ -150,7 +151,6 @@ class TrabajadorController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('trabajador_delete', array('id' => $trabajador->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
