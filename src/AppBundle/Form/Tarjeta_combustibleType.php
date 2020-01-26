@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,16 +18,23 @@ class Tarjeta_combustibleType extends AbstractType
     {
         $builder
             ->add('asignacion')
-            ->add('fechaAsignacion')
-//            ->add('gastoReal')
-            ->add('fechaVencimiento')
+            ->add('fechaAsignacion', DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
+            ])
+            //            ->add('gastoReal')
+            ->add('fechaVencimiento', DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
+            ])
             ->add('noTarjeta')
             ->add('combustibleTipo', EntityType::class, array('class' => 'AppBundle\Entity\TipoCombustible', 'multiple' => false, 'expanded' => false))
             ->add('ping')
-            ->add('saldoActual')
-        ;
+            ->add('saldoActual');
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
