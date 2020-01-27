@@ -1,7 +1,9 @@
 <?php
 
 namespace AppBundle\Form;
+
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,10 +20,13 @@ class GPSType extends AbstractType
             ->add('omnibus', EntityType::class, array('class' => 'AppBundle\Entity\Omnibus', 'multiple' => false, 'expanded' => false))
             ->add('combustible')
             ->add('kmRecorridos')
-            ->add('fecha')
-        ;
+            ->add('fecha', DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
+            ]);
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
