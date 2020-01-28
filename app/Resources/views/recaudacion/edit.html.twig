@@ -36,7 +36,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label class="control-label">Recaudación</label>
-            {{ form_widget(edit_form.recaudacion, {'attr' : {'class' : 'form-control','pattern':'([0-9,]+)$'}}
+            {{ form_widget(edit_form.recaudacion, {'attr' : {'class' : 'form-control','pattern':'([0-9.]+)$'}}
             )}}
           </div>
         </div>
@@ -75,7 +75,7 @@
         >
           Cancelar
         </a>
-        <input type="submit" class="btn btn-primary" value="Editar" />
+        <input type="submit" class="btn btn-primary" value="Guardar" />
       </div>
       <br />
     </div>
