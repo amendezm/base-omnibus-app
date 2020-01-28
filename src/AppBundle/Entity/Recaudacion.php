@@ -60,7 +60,7 @@ class Recaudacion
     /**
      * @var \Time
      *
-     * @ORM\Column(name="hora", type="date")
+     * @ORM\Column(name="hora", type="time")
      */
     private $hora;
     public function __toString()
@@ -196,5 +196,4 @@ class Recaudacion
     {
         return $this->recaudador;
     }
-
 }
