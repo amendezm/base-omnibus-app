@@ -1,59 +1,47 @@
-{% extends 'index.html.twig' %}
-
-{% block contenido %}
-<div class="box box-danger">
-    <div class="box-header with-border">
-        <div class="user-block">
-            <h3 class="text-center ">Resumen de horas trabajadas por Chofer</h3>
-        </div><!-- /.user-block -->
-        <div class="box-tools">
-            <ul class="list-inline">
-                <li>
-                    <a class="text-info" href="{{ path('index') }}">
-                        <i class="glyphicon glyphicon glyphicon-hand-left"></i> Atràs</a>
-                </li>
-            </ul>
-        </div>
-
+{% extends 'index.html.twig' %} {% block contenido %}
+<br />
+<div class="card shadow">
+  <div class="card-header py-3">
+    <h3 class="m-0 font-weight-bold text-primary">
+      Resumen de horas trabajadas por chofer
+    </h3>
+  </div>
+  <div class="card-body">
+    <div class="table-reponsive">
+      <table
+        class="table table-bordered text-center"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+        style="font-size:0.85rem;"
+      >
+        <thead>
+          <tr>
+            <th>Chofer</th>
+            <th>Básico</th>
+            <th>Con incremento</th>
+            <th>Confronta</th>
+            <th>Turno Partido</th>
+            <th>Voluntario</th>
+            <th>Total de Horas</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for reporte in reportes %}
+          <tr>
+            <td>{{ reporte.nombre }}</td>
+            <td>{{ reporte.horas_basico }}</td>
+            <td>{{ reporte.horas_conincremento }}</td>
+            <td>{{ reporte.horas_turnopartido }}</td>
+            <td>{{ reporte.horas_confronta }}</td>
+            <td>{{ reporte.horas_voluntario }}</td>
+            <td>{{ reporte.totalhorastrabajadas }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
-    <div class="panel-body">
-        <table id="sample-table-2" class="table table-striped table-bordered table-hover">
-
-            <thead>
-            <tr>
-                {#<th class="bg-primary">ID</th>#}
-                {#<th class="bg-primary">Ruta</th>#}
-                {#<th class="bg-primary">Ómnibus</th>#}
-                {#<th class="bg-primary">Hoja de Ruta</th>#}
-                <th class="bg-primary">Chofer</th>
-                <th class="bg-primary">Básico</th>
-                <th class="bg-primary">Con incremento</th>
-                <th class="bg-primary">Confronta</th>
-                <th class="bg-primary">Turno Partido</th>
-                <th class="bg-primary">Voluntario</th>
-                <th class="bg-primary">Total de Horas</th>
-            </tr>
-            </thead>
-            <tbody>
-
-            {% for reporte in reportes %}
-                <tr>
-                    <td>{{ reporte.nombre }}</td>
-                    <td>{{ reporte.horas_basico }}</td>
-                    <td>{{ reporte.horas_conincremento }}</td>
-                    <td>{{ reporte.horas_turnopartido }}</td>
-                    <td>{{ reporte.horas_confronta }}</td>
-                    <td>{{ reporte.horas_voluntario }}</td>
-                    <td>{{ reporte.totalhorastrabajadas }}</td>
-                    {#<td>{{ reporte.recaudador }}</td>#}
-                    {#<td>{{ reporte.pre_min }}</td>#}
-                    {#<td>{{ reporte.demandatotal }}</td>#}
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
+  </div>
 </div>
 
 {% endblock %}
