@@ -1,85 +1,47 @@
-{% extends 'index.html.twig' %}
-
-{% block contenido %}
-<div class="box box-danger">
-    <div class="box-header with-border">
-        <div class="user-block">
-            <h3 class="text-center ">Plan de Combustible</h3>
-        </div><!-- /.user-block -->
-        <div class="box-tools">
-            <ul class="list-inline">
-                {#<li>#}
-                    {#<a class="text-info" href="{{ path('omnibus_index') }}">#}
-                        {#<i class="glyphicon glyphicon glyphicon-hand-left"></i> Atras</a>#}
-                {#</li>#}
-            </ul>
-        </div>
-
+{% extends 'index.html.twig' %} {% block contenido %}
+<br />
+<div class="card shadow">
+  <div class="card-header py-3">
+    <h3 class="m-0 font-weight-bold text-primary">Plan de Combustible</h3>
+  </div>
+  <div class="card-body">
+    <div class="table-reponsive">
+      <table
+        class="table table-bordered text-center"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+        style="font-size:0.85rem;"
+      >
+        <thead>
+          <tr>
+            <th>Ruta</th>
+            <th>Servicio</th>
+            <th>Distancia Kms</th>
+            <th>Cantidad viajes promedio</th>
+            <th>Tipo ómnibus</th>
+            <th>Índice de consumo</th>
+            <th>Consumo por Viaje</th>
+            <th>Consumo Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for reporte in reportes %}
+          <tr>
+            <td>{{ reporte.noruta }}</td>
+            <td>{{ reporte.servicio }}</td>
+            <td>{{ reporte.distanciakm }}</td>
+            <td>{{ reporte.viajespromedio|number_format(2) }}</td>
+            <td>{{ reporte.tipo_omnibus }}</td>
+            <td>{{ reporte.indiceconsumonormado }}</td>
+            <td>{{ reporte.consumoxviaje }}</td>
+            <td>{{ reporte.consumototal }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
-    <div class="panel-body">
-        <table id="sample-table-2" class="table table-striped table-bordered table-hover">
-
-            <thead>
-            <tr>
-                <th class="bg-primary">Ruta</th>
-                <th class="bg-primary">Servicio</th>
-                <th class="bg-primary">Distancia Kms</th>
-                <th class="bg-primary">Cantidad viajes promedio</th>
-                <th class="bg-primary">Tipo ómnibus</th>
-                <th class="bg-primary">Índice de consumo</th>
-                <th class="bg-primary">Consumo por Viaje</th>
-                <th class="bg-primary">Consumo Total</th>
-
-            </tr>
-            </thead>
-            <tbody>
-
-            {% for reporte in reportes %}
-                <tr>
-                    <td>{{ reporte.noruta }}</td>
-                    <td>{{ reporte.servicio }}</td>
-                    <td>{{ reporte.distanciakm }}</td>
-                    <td>{{ reporte.viajespromedio }}</td>
-                    <td>{{ reporte.tipo_omnibus }}</td>
-                    <td>{{ reporte.indiceconsumonormado }}</td>
-                    <td>{{ reporte.consumoxviaje }}</td>
-                    <td>{{ reporte.consumototal }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    <div class="panel-body">
-        <table id="sample-table-2" class="table table-striped table-bordered table-hover">
-
-            {#<thead>#}
-            {#<tr>#}
-                {#<th class="bg-primary">Ruta</th>#}
-                {#<th class="bg-primary">Servicio</th>#}
-                {#<th class="bg-primary">Distancia Kms</th>#}
-                {#<th class="bg-primary">Cantidad viajes promedio</th>#}
-                {#<th class="bg-primary">Cantidad de medios(Ómnibus)</th>#}
-                {#<th class="bg-primary">Índice de consumo</th>#}
-                {#<th class="bg-primary">Consumo Total</th>#}
-
-            {#</tr>#}
-            {#</thead>#}
-            {#<tbody>#}
-
-            {#{% for otro in reportes %}#}
-                {#<tr>#}
-                    {#<td>{{ otro.noruta }}</td>#}
-                    {#<td>{{ otro.servicio }}</td>#}
-                    {#<td>{{ otro.distanciakm }}</td>#}
-                    {#<td>{{ otro.viajespromedio }}</td>#}
-                    {#<td>{{ otro.cantidadmedios }}</td>#}
-                    {#<td>{{ otro.indiceconsumonormado }}</td>#}
-                    {#<td>{{ otro.consumototal }}</td>#}
-                {#</tr>#}
-            {#{% endfor %}#}
-            {#</tbody>#}
-        </table>
-    </div>
+  </div>
 </div>
 
 {% endblock %}
