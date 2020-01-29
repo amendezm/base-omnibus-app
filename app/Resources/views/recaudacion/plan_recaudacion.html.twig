@@ -1,56 +1,48 @@
-{% extends 'index.html.twig' %}
-
-{% block contenido %}
-<div class="box box-danger">
-    <div class="box-header with-border">
-        <div class="user-block">
-            <h3 class="text-center ">Plan de Recaudación</h3>
-        </div><!-- /.user-block -->
-        <div class="box-tools">
-            <ul class="list-inline">
-                {#<li>#}
-                    {#<a class="text-info" href="{{ path('omnibus_index') }}">#}
-                        {#<i class="glyphicon glyphicon glyphicon-hand-left"></i> Atras</a>#}
-                {#</li>#}
-            </ul>
-        </div>
-
+{% extends 'index.html.twig' %} {% block contenido %}
+<br />
+<div class="card shadow">
+  <div class="card-header py-3">
+    <h3 class="m-0 font-weight-bold text-primary">Plan de Recaudación</h3>
+  </div>
+  <div class="card-body">
+    <div class="table-reponsive">
+      <table
+        class="table table-bordered text-center"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+        style="font-size:0.75rem;"
+      >
+        <thead>
+          <tr>
+            <th>Ruta</th>
+            <th>Fecuencia</th>
+            <th>Cantidad Viajes Promedio</th>
+            <th>Cantidad Pasajeros Promedio</th>
+            <th>Precio Pasaje(- 10% evación)</th>
+            <th>Recaudación por Pasajeros</th>
+            <th>Combustible Asignado</th>
+            <th>Recaudación por Litros de Combustible</th>
+            <th>Recaudación Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for reporte in reportes %}
+          <tr>
+            <td>{{ reporte.noruta }}</td>
+            <td>{{ reporte.frecuencia_cantdias }}</td>
+            <td>{{ reporte.cantidadviajes_promedio|number_format(2) }}</td>
+            <td>{{ reporte.cantpasajerospromedio }}</td>
+            <td>{{ reporte.preciopasaj_evasion }}</td>
+            <td>{{ reporte.recaudacion_xpasajero }}</td>
+            <td>{{ reporte.asignacion }}</td>
+            <td>{{ reporte.recaudacion_xltrcombustible }}</td>
+            <td>{{ reporte.recaudacion_total }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
-    <div class="panel-body">
-        <table id="sample-table-2" class="table table-striped table-bordered table-hover">
-
-            <thead>
-            <tr>
-                <th class="bg-primary">Ruta</th>
-                <th class="bg-primary">Fecuencia</th>
-                <th class="bg-primary">Cantidad Viajes Promedio</th>
-                <th class="bg-primary">Cantidad Pasajeros Promedio</th>
-                <th class="bg-primary">Precio Pasaje(- 10% evación)</th>
-                <th class="bg-primary">Recaudación por Pasajeros</th>
-                <th class="bg-primary">Combustible Asignado</th>
-                <th class="bg-primary">Recaudación por Litros de Combustible</th>
-                <th class="bg-primary">Recaudación Total</th>
-            </tr>
-            </thead>
-            <tbody>
-
-            {% for reporte in reportes %}
-                <tr>
-                    <td>{{ reporte.noruta }}</td>
-                    <td>{{ reporte.frecuencia_cantdias }}</td>
-                    <td>{{ reporte.cantidadviajes_promedio }}</td>
-                    <td>{{ reporte.cantpasajerospromedio }}</td>
-                    <td>{{ reporte.preciopasaj_evasion }}</td>
-                    <td>{{ reporte.recaudacion_xpasajero }}</td>
-                    <td>{{ reporte.asignacion }}</td>
-                    <td>{{ reporte.recaudacion_xltrcombustible }}</td>
-                    <td>{{ reporte.recaudacion_total }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
+  </div>
 </div>
-
 {% endblock %}
