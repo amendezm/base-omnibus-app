@@ -1,4 +1,4 @@
-{% extends 'index.html.twig' %} {% block contenido%}
+{% extends 'index.html.twig' %} {% block contenido %}
 <br />
 <div class="card shadow mb-4">
   <div class="card-header py-3">
@@ -28,25 +28,23 @@
   <div class="card-body">
     <div class="table-reponsive">
       <table
-        class="table table-bordered"
+        class="table table-striped"
         id="dataTable"
         width="100%"
         cellspacing="0"
+        style="font-size:0.85rem"
       >
         <thead>
           <tr>
-            <th class="text-center">Activo</th>
             <th class="text-center">Usuario</th>
             <th class="text-center">Fecha-registro</th>
+            <th class="text-center">Estado</th>
             <th class="text-center">Acciones</th>
           </tr>
         </thead>
         <tbody>
           {% for usuario in usuarios %}
           <tr>
-            <td class="text-center">
-              {% if usuario.isActive %}Si{% else %}No{% endif %}
-            </td>
             <td class="text-center">{{ usuario.usuario }}</td>
             <td class="text-center">
               {% if usuario.fechaRegistro %}
@@ -54,26 +52,33 @@
               {% endif %}
             </td>
             <td class="text-center">
+              {% if usuario.isActive %} activo {% else %}
+              <span style="font-weight: bold;">
+                inactivo
+              </span>
+              {% endif %}
+            </td>
+            <td class="text-center">
               <div class="row">
-                <div class="col-sm-12 col-md-6">
+                <div class="col-md-3 offset-md-3">
                   <a
                     class="text-dark"
                     onclick="return confirm('Está seguro de realizar esta acción?')"
                     href="{{ path('usuario_delete', { id: usuario.id }) }}"
-                    datatype="tooltip"
-                    title="Eliminar"
+                    data-tooltip="Eliminar"
+                    data-tooltip-location="top"
                   >
                     <i class="fas fa-trash-alt"></i>
-                    <span>Eliminar</span>
                   </a>
                 </div>
-                <div class="col-sm-12 col-md-6">
+                <div class="col-md-3">
                   <a
+                    class="text-primary"
                     href="{{ path('usuario_edit', { id: usuario.id }) }}"
-                    title="Editar"
+                    data-tooltip="Editar"
+                    data-tooltip-location="top"
                   >
                     <i class="fas fa-edit"></i>
-                    <span>Editar</span>
                   </a>
                 </div>
               </div>
