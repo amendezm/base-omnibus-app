@@ -31,7 +31,10 @@ class UsuarioType extends AbstractType
                 'required' => false
 
             ))
-            ->add('isActive', CheckboxType::class, array('required' => false))
+            ->add('isActive', CheckboxType::class, [
+                'required' => false,
+                'attr' => ['class' => 'custom-control-input'],
+            ])
             ->add('roles', EntityType::class, array(
                 'class' => 'AppBundle:Rol',
             ));
