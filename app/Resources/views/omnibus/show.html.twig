@@ -63,6 +63,13 @@
             </th>
         </tr>
         <tr>
+            <th>Licencia Circulacion E : <td>{{ omnibus.licenciaCirculacionEmision|date('Y-m-d') }}</td></th>
+        </tr>
+        <tr>
+            <th>Licencia Circulacion V : <td>{{ omnibus.licenciaCirculacionVencimiento|date('Y-m-d') }}</td>
+            </th>
+        </tr>
+        <tr>
             <th>{% if not is_granted('ROLE_USUARIO' ) %}<img src="{{ asset('assets/dist/img/data_configuration_26px.png') }}" alt="User Image"> Acciones{% endif %}
             <td>
                 {#<ul>#}
