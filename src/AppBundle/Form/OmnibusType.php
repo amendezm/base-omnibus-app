@@ -44,6 +44,16 @@ class OmnibusType extends AbstractType
                 'html5' => false,
                 'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd', 'autocomplete' => 'off'],
             ])
+            ->add('licenciaCirculacionEmision', DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd', 'autocomplete' => 'off'],
+            ])
+            ->add('licenciaCirculacionVencimiento', DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd', 'autocomplete' => 'off'],
+            ])
             ->add('tarjetaCombustible', EntityType::class, array('class' => 'AppBundle\Entity\Tarjeta_combustible', 'multiple' => false, 'expanded' => false));
     }
 

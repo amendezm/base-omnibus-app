@@ -25,7 +25,7 @@
   <div class="card-body" style="font-size: 0.65rem;">
     <div class="table responsive">
       <table
-        class="table table-bordered text-center"
+        class="table text-center"
         id="dataTable"
         width="100%"
         cellspacing="0"
@@ -34,14 +34,13 @@
           <th>No.</th>
           <th>Chapa</th>
           <th>Tipo</th>
-          <th>Base</th>
-          <th>Tarjeta de Combustible</th>
           <th>Total de Kms Recorridos</th>
           <th>En Revisión</th>
           <th>Roto</th>
           <th>Por mantenim.</th>
           <th>Vence FICAV</th>
           <th>Lic. Operativa Vence</th>
+          <th>Lic. Circulación Vence</th>
           {% if not is_granted('ROLE_USUARIO' ) %}
           <th>
             <img
@@ -58,8 +57,6 @@
             <td>{{ omnibus.noOmnibus }}</td>
             <td>{{ omnibus.chapa }}</td>
             <td>{{ omnibus.typeOmnibus }}</td>
-            <td>{{ omnibus.base }}</td>
-            <td>{{ omnibus.tarjetaCombustible }}</td>
             <td>{{ omnibus.kmRecorridosAcumulados }}</td>
             <td>{% if omnibus.EnRevision %}Yes{% else %}No{% endif %}</td>
             <td>{% if omnibus.IsRoto %}Yes{% else %}No{% endif %}</td>
@@ -75,8 +72,13 @@
               {% endif %}
             </td>
             <td>
-              <div class="row" style="font-size: 1rem;">
-                <div class="col-md-6">
+              {% if omnibus.licenciaCirculacionVencimiento %}
+              {{ omnibus.licenciaCirculacionVencimiento|date('Y-m-d')}}
+              {% endif %}
+            </td>
+            <td>
+              <div class="row">
+                <div class="col-md-3">
                   <a
                     href="{{ path('omnibus_delete', { id: omnibus.id }) }}"
                     class="text-secondary"
@@ -88,7 +90,17 @@
                     <i class="fas fa-trash-alt"></i>
                   </a>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
+                  <a
+                    href="{{ path('omnibus_show', { id: omnibus.id }) }}"
+                    class="text-secondary"
+                    data-toggle="tooltip"
+                    data-placement="left"
+                    title="Editar elemento"
+                    ><i class="fas fa-eye"></i>
+                  </a>
+                </div>
+                <div class="col-md-3">
                   <a
                     href="{{ path('omnibus_edit', { id: omnibus.id }) }}"
                     class="text-primary"
