@@ -31,52 +31,55 @@
           </div>
         </div>
         <p class="card-text">
-          <i class="far fa-clock pr-2"></i>{{ hojaRutum.fecha|date('d/m/Y') }}
+          <span class="mr-3" data-tooltip="Fecha" data-tooltip-location="top">
+            <i class="fas fa-clock pr-2"></i>{{ hojaRutum.fecha|date('d/m/Y') }}
+          </span>
+          <span class="mr-3" data-tooltip="Ruta" data-tooltip-location="top">
+            <i class="fas fa-route pr-2"></i>{{ hojaRutum.ruta }}
+          </span>
+          <span class="mr-3" data-tooltip="Ómnibus" data-tooltip-location="top">
+            <i class="fas fa-bus pr-2"></i>{{ hojaRutum.omnibus }}
+          </span>
         </p>
-        <br />
-        <table class="table" style="width:90%">
+        <hr />
+        <table
+          class="table table-borderless"
+          style="width:90%; font-size:0.85rem;"
+        >
           <tr>
-            <th>Ruta</th>
-            <td>{{ hojaRutum.ruta }}</td>
-          </tr>
-          <tr>
-            <th>Omnibus</th>
-            <td>{{ hojaRutum.omnibus }}</td>
-          </tr>
-          <tr>
-            <th>Cantidad de viajes</th>
+            <th style="padding: 0.25rem;">Cantidad de viajes</th>
             <td>{{ hojaRutum.cantidadViajes }}</td>
           </tr>
           <tr>
-            <th>Cantidad de salidas</th>
+            <th style="padding: 0rem;">Cantidad de salidas</th>
             <td>{{ hojaRutum.cantidadSalidas }}</td>
           </tr>
           <tr>
-            <th>Horas de Trabajo Básico</th>
+            <th style="padding: 0rem;">Horas de Trabajo Básico</th>
             <td>{{ hojaRutum.basico }}</td>
           </tr>
           <tr>
-            <th>Horas de Trabajo Turno Partido</th>
+            <th style="padding: 0rem;">Horas de Trabajo Turno Partido</th>
             <td>{{ hojaRutum.turnopartido }}</td>
           </tr>
           <tr>
-            <th>Horas de Trabajo Con Incremento</th>
+            <th style="padding: 0rem;">Horas de Trabajo Con Incremento</th>
             <td>{{ hojaRutum.conIncremento }}</td>
           </tr>
           <tr>
-            <th>Horas de Trabajo Confronta</th>
+            <th style="padding: 0rem;">Horas de Trabajo Confronta</th>
             <td>{{ hojaRutum.confronta }}</td>
           </tr>
           <tr>
-            <th>Horas de Trabajo Voluntario</th>
+            <th style="padding: 0rem;">Horas de Trabajo Voluntario</th>
             <td>{{ hojaRutum.voluntario }}</td>
           </tr>
           <tr>
-            <th>Total de Horas</th>
+            <th style="padding: 0rem;">Total de Horas</th>
             <td>{{ hojaRutum.totalHoras }}</td>
           </tr>
           <tr>
-            <th>Observaciones</th>
+            <th style="padding: 0rem;">Observaciones</th>
             <td>{{ hojaRutum.observaciones }}</td>
           </tr>
         </table>

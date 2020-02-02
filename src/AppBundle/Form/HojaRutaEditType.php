@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
 
 class HojaRutaEditType extends AbstractType
 {
@@ -32,7 +34,9 @@ class HojaRutaEditType extends AbstractType
             //            ->add('tipo_horas', EntityType::class, array('class' => 'AppBundle\Entity\Tipo_horas_trabajo', 'multiple' => true, 'expanded' => true))
             //            ->add('totalHoras')
             //            ->add('incidenciahr', EntityType::class, array('class' => 'AppBundle\Entity\Incidencia', 'multiple' => false, 'expanded' => false))
-            ->add('observaciones')
+            ->add('observaciones', TextareaType::class, [
+                'attr' => ['rows' => 4],
+            ])
             ->add('cantidadViajes')
             ->add('cantidadSalidas')
             ->add('omnibus', EntityType::class, array('class' => 'AppBundle\Entity\Omnibus', 'multiple' => false, 'expanded' => false));
