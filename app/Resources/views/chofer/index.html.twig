@@ -8,23 +8,20 @@
   <div class="card-body">
     <div class="table-responsive">
       <table
-        class="table table-bordered"
+        class="table"
         id="dataTable"
         width="100%"
         cellspacing="0"
+        style="font-size:0.85rem;"
       >
         <thead>
           <th class="text-center">Nombre y Apellidos</th>
           <th class="text-center">CI</th>
           <th class="text-center">Código Trabajador</th>
-          <th class="text-center">No. Licencia Operativa</th>
+          <th class="text-center">No. Licencia Conducción</th>
 
           {% if not is_granted('ROLE_USUARIO' ) %}
-          <th>
-            <img
-              src="{{ asset('assets/dist/img/data_configuration_26px.png') }}"
-              alt="User Image"
-            />
+          <th class="text-center">
             Acciones
           </th>
           {% endif %}
@@ -38,26 +35,24 @@
             <td>{{ reporte.nolicenciaoperativa }}</td>
             <td>
               <div class="row">
-                <div class="col-sm-12 col-md-6 text-center">
+                <div class="col-md-3 offset-md-3 text-center">
                   <a
                     href="{{
                       path('chofer_show', { id: reporte.trabajador_id })
                     }}"
                     class="text-secondary"
-                    data-toggle="tooltip"
-                    data-placement="left"
-                    title="Visualizar elemento"
+                    data-tooltip="Visualizar"
+                    data-tooltip-location="top"
                     ><i class="fas fa-eye"></i>
                   </a>
                 </div>
-                <div class="col-sm-12 col-md-6 text-center">
+                <div class="col-md-3 text-center">
                   <a
                     href="{{
                       path('chofer_edit', { id: reporte.trabajador_id })
                     }}"
-                    data-toggle="tooltip"
-                    data-placement="left"
-                    title="Editar elemento"
+                    data-tooltip="Editar"
+                    data-tooltip-location="top"
                     ><i class="fas fa-edit"></i>
                   </a>
                 </div>
