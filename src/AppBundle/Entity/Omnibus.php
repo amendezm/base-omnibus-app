@@ -19,7 +19,7 @@ class Omnibus
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-       private $id;
+    private $id;
 
     /**
      * @var string
@@ -107,6 +107,18 @@ class Omnibus
      * @ORM\Column(name="licenciaOperativaVencimiento", type="date")
      */
     private $licenciaOperativaVencimiento;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="licenciaCirculacionEmision", type="date")
+     */
+    private $licenciaCirculacionEmision;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="licenciaCirculacionVencimiento", type="date")
+     */
+    private $licenciaCirculacionVencimiento;
     /**
      * @var \DateTime
      *
@@ -575,7 +587,81 @@ class Omnibus
         $this->typeOmnibus = $typeOmnibus;
     }
 
+    /**
+     * Set licenciaCirculacionVencimiento
+     *
+     * @param \DateTime $licenciaCirculacionVencimiento
+     *
+     * @return Omnibus
+     */
+    public function setLicenciaCirculacionVencimiento($licenciaCirculacionVencimiento)
+    {
+        $this->licenciaCirculacionVencimiento = $licenciaCirculacionVencimiento;
 
+        return $this;
+    }
 
+    /**
+     * Get licenciaCirculacionVencimiento
+     *
+     * @return \DateTime
+     */
+    public function getLicenciaCirculacionVencimiento()
+    {
+        return $this->licenciaCirculacionVencimiento;
+    }
 
+    /**
+     * Get mantenimiento
+     *
+     * @return boolean
+     */
+    public function getMantenimiento()
+    {
+        return $this->mantenimiento;
+    }
+
+    /**
+     * Get enRevision
+     *
+     * @return boolean
+     */
+    public function getEnRevision()
+    {
+        return $this->en_revision;
+    }
+
+    /**
+     * Get isRoto
+     *
+     * @return boolean
+     */
+    public function getIsRoto()
+    {
+        return $this->is_roto;
+    }
+
+    /**
+     * Set licenciaCirculacionEmision
+     *
+     * @param \DateTime $licenciaCirculacionEmision
+     *
+     * @return Omnibus
+     */
+    public function setLicenciaCirculacionEmision($licenciaCirculacionEmision)
+    {
+        $this->licenciaCirculacionEmision = $licenciaCirculacionEmision;
+
+        return $this;
+    }
+
+    /**
+     * Get licenciaCirculacionEmision
+     *
+     * @return \DateTime
+     */
+    public function getLicenciaCirculacionEmision()
+    {
+        return $this->licenciaCirculacionEmision;
+    }
 }
