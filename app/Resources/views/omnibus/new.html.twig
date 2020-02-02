@@ -82,6 +82,24 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Licencia Circulación Emitida</label>
+            {{ form_widget(form.licenciaCirculacionEmision, 
+                {'attr' : {'class' : 'form-control datepicker-here'}}
+            )}}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Licencia Circulación Vence</label>
+            {{ form_widget(form.licenciaCirculacionVencimiento, 
+                {'attr' : {'class' : 'form-control datepicker-here'}}
+            )}}
+          </div>
+        </div>
+      </div>
       <div class="form-group">
         <label class="control-label">Tarjeta de Combustible</label>
         {{ form_widget(form.tarjetaCombustible,
