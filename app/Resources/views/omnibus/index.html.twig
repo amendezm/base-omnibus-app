@@ -82,8 +82,8 @@
                   <a
                     href="{{ path('omnibus_delete', { id: omnibus.id }) }}"
                     class="text-secondary"
-                    data-toggle="tooltip"
-                    data-placement="left"
+                    data-tooltip="Eliminar"
+                    data-tooltip-location="top"
                     title="Eliminar elemento"
                     onclick="return confirm('Esta seguro que desea eliminar el elemento')"
                   >
@@ -94,9 +94,8 @@
                   <a
                     href="{{ path('omnibus_show', { id: omnibus.id }) }}"
                     class="text-secondary"
-                    data-toggle="tooltip"
-                    data-placement="left"
-                    title="Editar elemento"
+                    data-tooltip="Visualizar"
+                    data-tooltip-location="top"
                     ><i class="fas fa-eye"></i>
                   </a>
                 </div>
@@ -104,9 +103,8 @@
                   <a
                     href="{{ path('omnibus_edit', { id: omnibus.id }) }}"
                     class="text-primary"
-                    data-toggle="tooltip"
-                    data-placement="left"
-                    title="Editar elemento"
+                    data-tooltip="Editar"
+                    data-tooltip-location="top"
                     ><i class="fas fa-edit"></i>
                   </a>
                 </div>

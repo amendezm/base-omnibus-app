@@ -440,28 +440,4 @@ class HojaRuta
 
 
 
-
-    /**
-     * Add incidenciaHr
-     *
-     * @param \AppBundle\Entity\Incidencias_HR $incidenciaHr
-     *
-     * @return HojaRuta
-     */
-    public function addIncidenciaHr(\AppBundle\Entity\Incidencias_HR $incidenciaHr)
-    {
-        $this->incidencia_hr[] = $incidenciaHr;
-
-        return $this;
-    }
-
-    /**
-     * Remove incidenciaHr
-     *
-     * @param \AppBundle\Entity\Incidencias_HR $incidenciaHr
-     */
-    public function removeIncidenciaHr(\AppBundle\Entity\Incidencias_HR $incidenciaHr)
-    {
-        $this->incidencia_hr->removeElement($incidenciaHr);
-    }
 }
