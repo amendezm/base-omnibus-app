@@ -48,41 +48,64 @@
         >
           <tr>
             <th style="padding: 0.25rem;">Cantidad de viajes</th>
-            <td>{{ hojaRutum.cantidadViajes }}</td>
+            <td class="text-center" style="padding: 0.25rem;">
+              {{ hojaRutum.cantidadViajes }}
+            </td>
           </tr>
           <tr>
-            <th style="padding: 0rem;">Cantidad de salidas</th>
-            <td>{{ hojaRutum.cantidadSalidas }}</td>
+            <th style="padding: 0.25rem;">Cantidad de salidas</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {{ hojaRutum.cantidadSalidas }}
+            </td>
           </tr>
           <tr>
-            <th style="padding: 0rem;">Horas de Trabajo Básico</th>
-            <td>{{ hojaRutum.basico }}</td>
+            <th style="padding: 0.25rem;">Horas de Trabajo Básico</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {{ hojaRutum.basico }}
+            </td>
           </tr>
           <tr>
-            <th style="padding: 0rem;">Horas de Trabajo Turno Partido</th>
-            <td>{{ hojaRutum.turnopartido }}</td>
+            <th style="padding: 0.25rem;">Horas de Trabajo Turno Partido</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {{ hojaRutum.turnopartido }}
+            </td>
           </tr>
           <tr>
-            <th style="padding: 0rem;">Horas de Trabajo Con Incremento</th>
-            <td>{{ hojaRutum.conIncremento }}</td>
+            <th style="padding: 0.25rem;">Horas de Trabajo Con Incremento</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {{ hojaRutum.conIncremento }}
+            </td>
           </tr>
           <tr>
-            <th style="padding: 0rem;">Horas de Trabajo Confronta</th>
-            <td>{{ hojaRutum.confronta }}</td>
+            <th style="padding: 0.25rem;">Horas de Trabajo Confronta</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {{ hojaRutum.confronta }}
+            </td>
           </tr>
           <tr>
-            <th style="padding: 0rem;">Horas de Trabajo Voluntario</th>
-            <td>{{ hojaRutum.voluntario }}</td>
+            <th style="padding: 0.25rem;">Horas de Trabajo Voluntario</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {{ hojaRutum.voluntario }}
+            </td>
           </tr>
           <tr>
-            <th style="padding: 0rem;">Total de Horas</th>
-            <td>{{ hojaRutum.totalHoras }}</td>
-          </tr>
-          <tr>
-            <th style="padding: 0rem;">Observaciones</th>
-            <td>{{ hojaRutum.observaciones }}</td>
+            <th style="padding: 0.25rem;">Total de Horas</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {{ hojaRutum.totalHoras }}
+            </td>
           </tr>
         </table>
+
+        <p class="font-weight-bold">Observaciones</p>
+        <p class="ml-2">{{ hojaRutum.observaciones }}</p>
+        <p class="font-weight-bold">Incidencias</p>
+        <ul>
+          {%for incidencia in incidencias%}
+          <li>
+            {{ incidencia.detalles }}
+          </li>
+          {%endfor%}
+        </ul>
       </div>
     </div>
     <br />

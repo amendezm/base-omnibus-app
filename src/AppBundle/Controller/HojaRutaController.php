@@ -76,13 +76,27 @@ class HojaRutaController extends Controller
      * Finds and displays a HojaRuta entity.
      *
      */
-    public function showAction(HojaRuta $hojaRutum)
+    public function showAction(HojaRuta $hojaRuta)
     {
-        //        $deleteForm = $this->createDeleteForm($hojaRutum);
+        $em = $this->getDoctrine()->getManager()->getConnection();
+
+        $query = "SELECT
+               incidencia.detalles
+            FROM
+               public.incidencia_hr,
+               public.incidencia
+            WHERE
+               incidencia_hr.idhojaruta = {$hojaRuta->getId()} AND
+               incidencia.idincidencia = incidencia_hr.idincidencia";
+
+        $stmt = $em->prepare($query);
+        $params = array();
+        $stmt->execute($params);
+        $detallesIncidencias = $stmt->fetchAll();
 
         return $this->render('hojaruta/show.html.twig', array(
-            'hojaRutum' => $hojaRutum,
-            //            'delete_form' => $deleteForm->createView(),
+            'hojaRutum' => $hojaRuta,
+            'incidencias' => $detallesIncidencias,
         ));
     }
 
