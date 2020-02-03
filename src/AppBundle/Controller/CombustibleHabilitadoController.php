@@ -24,10 +24,10 @@ class CombustibleHabilitadoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $tarjeta_combustibles = $em->getRepository('AppBundle:Tarjeta_combustible')->findAll();
+        $habilitaciones = $em->getRepository('AppBundle:CombustibleHabilitado')->findAll();
 
-        return $this->render('tarjeta_combustible/index.html.twig', array(
-            'tarjeta_combustibles' => $tarjeta_combustibles,
+        return $this->render('combustible_habilitado/index.html.twig', array(
+            'habilitaciones' => $habilitaciones,
         ));
     }
 }
