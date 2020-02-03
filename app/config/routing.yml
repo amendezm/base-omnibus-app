@@ -467,3 +467,7 @@ combustible_habilitado_index:
   path: /combustible_habilitado
   defaults: { _controller: "AppBundle:CombustibleHabilitado:index" }
   methods: GET
+combustible_habilitado_new:
+  path: /combustible_habilitado/new
+  defaults: { _controller: "AppBundle:CombustibleHabilitado:new" }
+  methods: [GET, POST]
