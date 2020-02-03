@@ -31,7 +31,10 @@ class ChoferController extends Controller
            trabajador.ci,
            trabajador.codigo,
            chofer.nolicenciaoperativa,
-           chofer.trabajador_id
+           chofer.trabajador_id,
+           chofer.licenciavencimiento,
+           chofer.examenmedicovencimiento,
+           chofer.examenpsicofisiologicovencimiento
         FROM
            public.chofer,
            public.trabajador
