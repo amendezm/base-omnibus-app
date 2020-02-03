@@ -55,7 +55,7 @@
             <td>{{ habilitacion.cupet }}</td>
             <td>
               {% if habilitacion.fecha %}
-              {{ habilitacion.fecha|date('Y-m-d H:i:s')}}
+              {{ habilitacion.fecha|date('Y-m-d H:i', false)}}
               {% endif %}
             </td>
             <td>
@@ -87,7 +87,17 @@
                   </a>
                 </div>
                 <div class="col-md-3">
-                  
+                  <a
+                    href="{{
+                      path('combustible_habilitado_edit', {
+                        id: habilitacion.id
+                      })
+                    }}"
+                    class="text-primary"
+                    data-tooltip="Editar"
+                    data-tooltip-location="top"
+                    ><i class="fas fa-edit"></i>
+                  </a>
                 </div>
               </div>
             </td>

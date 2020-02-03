@@ -48,6 +48,26 @@ class CombustibleHabilitadoController extends Controller
         ));
     }
 
+
+    public function editAction(Request $request, CombustibleHabilitado $combustibleHabilitado)
+    {
+        $editForm = $this->createForm('AppBundle\Form\CombustibleHabilitadoType', $combustibleHabilitado);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($combustibleHabilitado);
+            $em->flush();
+
+            return $this->redirectToRoute('combustible_habilitado_index', array('id' => $combustibleHabilitado->getId()));
+        }
+
+        return $this->render('combustible_habilitado/edit.html.twig', array(
+            'combustibleHabilitado' => $combustibleHabilitado,
+            'edit_form' => $editForm->createView(),
+        ));
+    }
+
     public function deleteAction(Request $request, CombustibleHabilitado $combustibleHabilitado)
     {
 
