@@ -462,3 +462,8 @@ pronostico_recaudacion:
   path: /pronostico/recaudacion
   defaults: { _controller: "AppBundle:Pronostico:recaudacion" }
   methods: [GET]
+
+combustible_habilitado_index:
+  path: /combustible_habilitado
+  defaults: { _controller: "AppBundle:CombustibleHabilitado:index" }
+  methods: GET
