@@ -47,4 +47,14 @@ class CombustibleHabilitadoController extends Controller
             'form' => $form->createView(),
         ));
     }
+
+    public function deleteAction(Request $request, CombustibleHabilitado $combustibleHabilitado)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($combustibleHabilitado);
+        $em->flush();
+
+        return $this->redirectToRoute('combustible_habilitado_index');
+    }
 }

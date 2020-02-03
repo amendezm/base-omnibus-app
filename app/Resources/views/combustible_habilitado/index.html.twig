@@ -70,7 +70,26 @@
               {{ habilitacion.noControl }}
             </td>
             <td>
-              <div class="row"></div>
+              <div class="row">
+                <div class="col-md-3 offset-md-3">
+                  <a
+                    class="text-secondary"
+                    onclick="return confirm('Está seguro de realizar esta acción?')"
+                    href="{{
+                      path('combustible_habilitado_delete', {
+                        id: habilitacion.id
+                      })
+                    }}"
+                    data-tooltip="Eliminar"
+                    data-tooltip-location="top"
+                  >
+                    <i class="fas fa-trash-alt"></i>
+                  </a>
+                </div>
+                <div class="col-md-3">
+                  
+                </div>
+              </div>
             </td>
           </tr>
           {% endfor %}
