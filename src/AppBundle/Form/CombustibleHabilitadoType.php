@@ -5,10 +5,10 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 
-class CombustibleHabilitado extends AbstractType
+class CombustibleHabilitadoType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -19,10 +19,10 @@ class CombustibleHabilitado extends AbstractType
         $builder
             ->add('noComprobante')
             ->add('cupet')
-            ->add('fecha', TimeType::class, [
+            ->add('fecha', DateTimeType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-time-format' => 'yyyy-mm-dd hh:ii'],
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd', 'data-time-format' => 'hh:ii', 'autocomplete' => 'off'],
             ])
             ->add('habilitador')
             ->add('omnibus')
@@ -37,7 +37,7 @@ class CombustibleHabilitado extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Usuario',
+            'data_class' => 'AppBundle\Entity\CombustibleHabilitado',
         ));
     }
 }

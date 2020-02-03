@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\User\User;
  * @ORM\Table(name="usuario")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UsuarioRepository")
  */
-class Usuario implements  UserInterface, \Serializable, AdvancedUserInterface
+class Usuario implements UserInterface, \Serializable, AdvancedUserInterface
 {
 
     /**
@@ -57,16 +57,15 @@ class Usuario implements  UserInterface, \Serializable, AdvancedUserInterface
     /**
      * @ORM\ManyToMany(targetEntity="Rol", inversedBy="usuarios")
      *
-    */
+     */
     protected $roles;
 
 
     public function __construct()
     {
         $this->isActive = true;
-        $this->roles= new ArrayCollection();
+        $this->roles = new ArrayCollection();
         $this->fechaRegistro = new \DateTime();
-
     }
 
     /**
@@ -158,20 +157,20 @@ class Usuario implements  UserInterface, \Serializable, AdvancedUserInterface
             $this->id,
             $this->usuario,
             $this->password,
-// see section on salt below
-// $this->salt,
+            // see section on salt below
+            // $this->salt,
         ));
     }
     /** @see \Serializable::unserialize() */
     public function unserialize($serialized)
     {
-        list (
+        list(
             $this->id,
             $this->usuario,
             $this->password,
-// see section on salt below
-// $this->salt
-            ) = unserialize($serialized);
+            // see section on salt below
+            // $this->salt
+        ) = unserialize($serialized);
     }
 
     /**
@@ -241,7 +240,7 @@ class Usuario implements  UserInterface, \Serializable, AdvancedUserInterface
      */
     public function isAccountNonLocked()
     {
-      return true;
+        return true;
     }
 
     /**
@@ -274,13 +273,14 @@ class Usuario implements  UserInterface, \Serializable, AdvancedUserInterface
         // TODO: Implement isEnabled() method.
         return $this->isActive;
     }
-    public function setRoles($rol){
+    public function setRoles($rol)
+    {
         $this->roles->add($rol);
         return $this;
     }
-    public function setAllRoles($roles2){
-        $this->roles= $roles2;
-
+    public function setAllRoles($roles2)
+    {
+        $this->roles = $roles2;
     }
     public function __toString()
     {
