@@ -27,7 +27,7 @@
   <div class="card-body">
     <div class="table-reponsive">
       <table
-        class="table table-bordered text-center"
+        class="table text-center"
         id="dataTable"
         width="100%"
         cellspacing="0"
@@ -41,13 +41,8 @@
           <th>Gasto Real (litros)</th>
           <th>Saldo Actual</th>
           <th>Fecha de Vencimiento</th>
-          <th>Ping</th>
           {% if not is_granted('ROLE_USUARIO' ) %}
           <th>
-            <img
-              src="{{ asset('assets/dist/img/data_configuration_26px.png') }}"
-              alt="User Image"
-            />
             Acciones
           </th>
           {% endif %}
@@ -70,7 +65,6 @@
               {{ tarjeta_combustible.fechaVencimiento|date('Y-m-d')}}
               {% endif %}
             </td>
-            <td>{{ tarjeta_combustible.ping }}</td>
             <td>
               <div class="row">
                 <div class="col-md-6">
