@@ -31,7 +31,6 @@ class Tarjeta_combustibleType extends AbstractType
             ])
             ->add('noTarjeta')
             ->add('combustibleTipo', EntityType::class, array('class' => 'AppBundle\Entity\TipoCombustible', 'multiple' => false, 'expanded' => false))
-            ->add('ping')
             ->add('saldoActual');
     }
 

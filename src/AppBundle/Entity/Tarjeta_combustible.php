@@ -50,10 +50,10 @@ class Tarjeta_combustible
     private $gastoReal;
 
     /**
- * @var \DateTime
- *
- * @ORM\Column(name="fecha_vencimiento", type="date")
- */
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_vencimiento", type="date")
+     */
     private $fechaVencimiento;
 
     /**
@@ -82,13 +82,6 @@ class Tarjeta_combustible
      * @ORM\Column(name="noTarjeta", type="string", length=255)
      */
     private $noTarjeta;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="ping", type="string", length=255)
-     */
-    private $ping;
 
     public function __toString()
     {
@@ -327,5 +320,4 @@ class Tarjeta_combustible
     {
         return $this->tipoCombustible;
     }
-
 }
