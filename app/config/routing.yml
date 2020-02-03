@@ -462,3 +462,20 @@ pronostico_recaudacion:
   path: /pronostico/recaudacion
   defaults: { _controller: "AppBundle:Pronostico:recaudacion" }
   methods: [GET]
+
+combustible_habilitado_index:
+  path: /combustible_habilitado
+  defaults: { _controller: "AppBundle:CombustibleHabilitado:index" }
+  methods: GET
+combustible_habilitado_new:
+  path: /combustible_habilitado/new
+  defaults: { _controller: "AppBundle:CombustibleHabilitado:new" }
+  methods: [GET, POST]
+combustible_habilitado_edit:
+  path: /combustible_habilitado/{id}/edit
+  defaults: { _controller: "AppBundle:CombustibleHabilitado:edit" }
+  methods: [GET, POST]
+combustible_habilitado_delete:
+  path: /combustible_habilitado/{id}/delete
+  defaults: { _controller: "AppBundle:CombustibleHabilitado:delete" }
+  methods: [GET, POST, DELETE]

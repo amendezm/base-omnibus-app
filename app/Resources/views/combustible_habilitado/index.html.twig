@@ -1,0 +1,144 @@
+{% extends 'index.html.twig' %} {% block contenido %}
+<br />
+<div class="card shadow">
+  <div class="card-header py-3">
+    <div class="row">
+      <div class="col-md-6">
+        <h3 class="m-0 font-weight-bold text-primary">
+          Combustible Habilitado
+        </h3>
+      </div>
+      <div class="col-md-6 text-right">
+        {% if not is_granted('ROLE_USUARIO' ) %}
+        <a
+          class="btn btn-sm btn-default  pull-left"
+          href="{{ path('combustible_habilitado_new') }}"
+        >
+          <img
+            src="{{ asset('assets/dist/img/add_database_26px.png') }}"
+            alt="User Image"
+          />
+          Nuevo
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="table-reponsive">
+      <table
+        class="table text-center"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+        style="font-size:0.85rem;"
+      >
+        <thead>
+          <th>No. Comprobante</th>
+          <th>Cupet</th>
+          <th>Fecha y Hora</th>
+          <th>Habilitador</th>
+          <th>Ómnibus (chapa)</th>
+          <th>Importe</th>
+          <th>Cantidad (litros)</th>
+          <th>No. Control</th>
+          {% if not is_granted('ROLE_USUARIO' ) %}
+          <th>
+            Acciones
+          </th>
+          {% endif %}
+        </thead>
+        <tbody>
+          {% for habilitacion in habilitaciones %}
+          <tr>
+            <td>{{ habilitacion.noComprobante }}</td>
+            <td>{{ habilitacion.cupet }}</td>
+            <td>
+              {% if habilitacion.fecha %}
+              {{ habilitacion.fecha|date('Y-m-d H:i', false)}}
+              {% endif %}
+            </td>
+            <td>
+              {{ habilitacion.habilitador }}
+            </td>
+            <td>{{ habilitacion.omnibus }}</td>
+            <td>{{ habilitacion.importe }}</td>
+            <td>
+              {{ habilitacion.cantLitros }}
+            </td>
+            <td>
+              {{ habilitacion.noControl }}
+            </td>
+            <td>
+              <div class="row">
+                <div class="col-md-3 offset-md-3">
+                  <a
+                    class="text-secondary"
+                    onclick="return confirm('Está seguro de realizar esta acción?')"
+                    href="{{
+                      path('combustible_habilitado_delete', {
+                        id: habilitacion.id
+                      })
+                    }}"
+                    data-tooltip="Eliminar"
+                    data-tooltip-location="top"
+                  >
+                    <i class="fas fa-trash-alt"></i>
+                  </a>
+                </div>
+                <div class="col-md-3">
+                  <a
+                    href="{{
+                      path('combustible_habilitado_edit', {
+                        id: habilitacion.id
+                      })
+                    }}"
+                    class="text-primary"
+                    data-tooltip="Editar"
+                    data-tooltip-location="top"
+                    ><i class="fas fa-edit"></i>
+                  </a>
+                </div>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="mymodal" class="modal  inmodal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <button
+            aria-label="Close"
+            data-dismiss="modal"
+            class="close"
+            type="button"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+          <i class="fa-3x fa fa-warning modal-icon text-red"></i>
+          <h4 class="modal-title">Acción Peligrosa</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+            Está acción puede ocacionar, comprometer la integridad de los datos!
+          </p>
+          <small
+            >Si no es un usuario avanzado, recomendamos que cancele esta
+            acción.</small
+          >
+        </div>
+        <div class="modal-footer">
+          <button data-dismiss="modal" class="btn btn-primary" type="button">
+            Cerrar
+          </button>
+          <a class="btn btn-primary btn-danger btn-delete" href="#">Eliminar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

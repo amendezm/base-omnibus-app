@@ -162,15 +162,22 @@
             </a>
             <div
                 id="collapseEnergia"
-                class="collapse {% if 'tarjeta_combustible' in app.request.attributes.get('_route') %}show{% endif %}"
+                class="collapse {% if 'tarjeta_combustible' in app.request.attributes.get('_route') or
+                'combustible_habilitado' in app.request.attributes.get('_route')%}
+                show
+                {% endif %}"
                 aria-labelledby="headingEnergia"
                 data-parent="#accordionSidebar"
             >
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item {% if 'tarjeta_combustible' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('tarjeta_combustible_index') }}">
-                      <i class="fa fa-credit-card"></i> 
-                      <span>Tarjeta Combustible</span>
-                    </a>
+                  <a class="collapse-item {% if 'tarjeta_combustible' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('tarjeta_combustible_index') }}">
+                    <i class="fa fa-credit-card"></i> 
+                    <span>Tarjeta Combustible</span>
+                  </a>
+                  <a class="collapse-item {% if 'combustible_habilitado' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('combustible_habilitado_index') }}">
+                    <i class="fa fa-gas-pump"></i> 
+                    <span>Habilitaciones</span>
+                  </a>
                 </div>
             </div>
         </li>

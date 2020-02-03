@@ -1,0 +1,100 @@
+{% extends 'index.html.twig' %} {% block contenido %}
+{{ form_start(form, { method: "POST" }) }}
+<br />
+<div class="col-md-8 offset-md-2">
+  <div class="card shadow">
+    <div class="card-body">
+      <h4 class="font-weight-bold text-primary">
+        Nueva Habilitación
+      </h4>
+      <br />
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">No. Comprobante</label>
+            {{ form_widget(form.noComprobante, 
+                {'attr' : {'class' : 'form-control' }}
+            )}}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Cupet</label>
+            {{ form_widget(form.cupet, 
+                {'attr' : {'class' : 'form-control' }}
+            )}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Fecha</label>
+            {{ form_widget(form.fecha, 
+                {'attr' : {'class' : 'form-control datepicker-here','data-timepicker':"true"}}
+            )}}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Efectuada por</label>
+            {{ form_widget(form.habilitador, 
+                {'attr' : {'class' : 'form-control' }}
+            )}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Ómnibus</label>
+            {{ form_widget(form.omnibus, 
+                {'attr' : {'class' : 'form-control'}}
+            )}}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Importe</label>
+            {{ form_widget(form.importe, 
+                {'attr' : {'class' : 'form-control' }}
+            )}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Cantidad (litros)</label>
+            {{ form_widget(form.cantLitros, 
+                {'attr' : {'class' : 'form-control'}}
+            )}}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">No. Control</label>
+            {{ form_widget(form.noControl, 
+                {'attr' : {'class' : 'form-control' }}
+            )}}
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="text-right">
+        <a
+          class="btn btn-outline-secondary"
+          href="{{ path('combustible_habilitado_index') }}"
+        >
+          Cancelar
+        </a>
+        <button type="submit" class="btn btn-primary" value="Crear">
+          Guardar
+        </button>
+      </div>
+      <br />
+    </div>
+  </div>
+  {{ form_end(form) }}
+</div>
+{% endblock %}
