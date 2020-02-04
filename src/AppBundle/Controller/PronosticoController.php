@@ -63,6 +63,22 @@ class PronosticoController extends Controller
             "segundoSemestre" => round($total - $primerSemestre, 2)
         );
 
-        return $this->render("pronostico/pronostico_recaudacion.html.twig", array("recaudacion" => json_encode($dataPoints), "recaudacionPorcientos" => json_encode($recaudacionPorcientos), "recaudacionSemestral" => json_encode($recaudacionSemestral)));
+        return $this->render("pronostico/pronostico_recaudacion.html.twig", array(
+            "recaudacion" => json_encode($dataPoints),
+            "recaudacionPorcientos" => json_encode($recaudacionPorcientos),
+            "recaudacionSemestral" => json_encode($recaudacionSemestral),
+            "enero" => $dataPoints[0],
+            "febrero" => $dataPoints[1],
+            "marzo" => $dataPoints[2],
+            "abril" => $dataPoints[3],
+            "mayo" => $dataPoints[4],
+            "junio" => $dataPoints[5],
+            "julio" => $dataPoints[6],
+            "agosto" => $dataPoints[7],
+            "septiembre" => $dataPoints[8],
+            "octubre" => $dataPoints[9],
+            "noviembre" => $dataPoints[10],
+            "diciembre" => $dataPoints[11],
+        ));
     }
 }

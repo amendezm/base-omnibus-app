@@ -34,6 +34,22 @@ var recaudacionAnual = JSON.parse(
 );
 const dataPoints = forecast(recaudacionAnual, 1, 0, 0, 12, 12);
 
+const cards = document.getElementsByClassName("recaudacion-card");
+const values = dataPoints.slice(36);
+
+cards[0].innerHTML = `${values[0].toFixed(2)} mil`;
+cards[1].innerHTML = `${values[1].toFixed(2)} mil`;
+cards[2].innerHTML = `${values[2].toFixed(2)} mil`;
+cards[3].innerHTML = `${values[3].toFixed(2)} mil`;
+cards[4].innerHTML = `${values[4].toFixed(2)} mil`;
+cards[5].innerHTML = `${values[5].toFixed(2)} mil`;
+cards[6].innerHTML = `${values[6].toFixed(2)} mil`;
+cards[7].innerHTML = `${values[7].toFixed(2)} mil`;
+cards[8].innerHTML = `${values[8].toFixed(2)} mil`;
+cards[9].innerHTML = `${values[9].toFixed(2)} mil`;
+cards[10].innerHTML = `${values[10].toFixed(2)} mil`;
+cards[11].innerHTML = `${values[11].toFixed(2)} mil`;
+
 var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: "line",
