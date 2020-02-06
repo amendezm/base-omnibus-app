@@ -25,7 +25,7 @@
   <div class="card-body" style="font-size: 0.75rem;">
     <div class="table-reponsive">
       <table
-        class="table table-bordered text-center"
+        class="table text-center"
         id="dataTable"
         width="100%"
         cellspacing="0"
@@ -42,10 +42,6 @@
           <th>Cantidad de Ómnibus</th>
           {% if not is_granted('ROLE_USUARIO' ) %}
           <th>
-            <img
-              src="{{ asset('assets/dist/img/data_configuration_26px.png') }}"
-              alt="User Image"
-            />
             Acciones
           </th>
           {% endif %}
@@ -63,8 +59,8 @@
             <td>{{ ruta.frecuencia }}</td>
             <td>{{ ruta.cantidadMedios }}</td>
             <td>
-              <div class="row" style="font-size:1rem;">
-                <div class="col-sm-12 col-md-6">
+              <div class="row">
+                <div class="col-md-4 offset-md-2">
                   <a
                     href="{{ path('ruta_delete', { id: ruta.id }) }}"
                     class="text-secondary"
@@ -76,7 +72,7 @@
                     <i class="fas fa-trash-alt"></i>
                   </a>
                 </div>
-                <div class="col-sm-12 col-md-6">
+                <div class="col-md-4">
                   <a
                     href="{{ path('ruta_edit', { id: ruta.id }) }}"
                     class="text-primary"

@@ -264,14 +264,9 @@ class OmnibusController extends Controller
      */
     public function deleteAction(Request $request, Omnibus $omnibus)
     {
-        //        $form = $this->createDeleteForm($omnibus);
-        //        $form->handleRequest($request);
-        //
-        //        if ($form->isSubmitted() && $form->isValid()) {
         $em = $this->getDoctrine()->getManager();
         $em->remove($omnibus);
         $em->flush();
-        //        }
 
         return $this->redirectToRoute('omnibus_index');
     }
