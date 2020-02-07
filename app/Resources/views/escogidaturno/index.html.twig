@@ -27,7 +27,7 @@
   <div class="card-body" style="font-size: 0.75rem;">
     <div class="table-reponsive">
       <table
-        class="table table-bordered text-center"
+        class="table text-center"
         id="dataTable"
         width="100%"
         cellspacing="0"
@@ -43,10 +43,6 @@
           <th>Chofer</th>
           <th>Período de escogida</th>
           <th>
-            <img
-              src="{{ asset('assets/dist/img/data_configuration_26px.png') }}"
-              alt="User Image"
-            />
             Acciones
           </th>
         </thead>
@@ -75,16 +71,15 @@
             <td>{{ escogidaTurno.chofer }}</td>
             <td>{{ escogidaTurno.periodoEscogida }}</td>
             <td>
-              <div class="row" style="font-size:1rem;">
+              <div class="row">
                 <div class="col md-6">
                   <a
                     href="{{
                       path('escogidaturno_delete', { id: escogidaTurno.id })
                     }}"
                     class="text-secondary"
-                    data-toggle="tooltip"
-                    data-placement="right"
-                    title="Eliminar elemento"
+                    data-tooltip="Eliminar"
+                    data-tooltip-location="top"
                     onclick="return confirm('Esta seguro que desea eliminar el elemento')"
                   >
                     <i class="fas fa-trash-alt"></i>
@@ -96,9 +91,8 @@
                       path('escogidaturno_edit', { id: escogidaTurno.id })
                     }}"
                     class="text-primary"
-                    data-toggle="tooltip"
-                    data-placement="right"
-                    title="Editar elemento"
+                    data-tooltip="Editar"
+                    data-tooltip-location="top"
                   >
                     <i class="fas fa-edit"></i>
                   </a>

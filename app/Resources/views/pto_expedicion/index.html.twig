@@ -27,10 +27,11 @@
   <div class="card-body">
     <div class="table-reponsive">
       <table
-        class="table table-bordered text-center"
+        class="table text-center"
         id="dataTable"
         width="100%"
         cellspacing="0"
+        style="font-size:0.85rem;"
       >
         <thead>
           <th>Nombre</th>
@@ -38,10 +39,6 @@
           <th>Descripción</th>
           {% if not is_granted('ROLE_USUARIO' ) %}
           <th>
-            <img
-              src="{{ asset('assets/dist/img/data_configuration_26px.png') }}"
-              alt="User Image"
-            />
             Acciones
           </th>
           {% endif %}
@@ -60,9 +57,8 @@
                       path('pto_expedicion_delete', { id: pto_expedicion.id })
                     }}"
                     class="text-secondary"
-                    data-toggle="tooltip"
-                    data-placement="right"
-                    title="Eliminar elemento"
+                    data-tooltip="Eliminar"
+                    data-tooltip-location="top"
                     onclick="return confirm('Esta seguro que desea eliminar el elemento')"
                   >
                     <i class="fas fa-trash-alt"></i>
@@ -74,9 +70,8 @@
                       path('pto_expedicion_edit', { id: pto_expedicion.id })
                     }}"
                     class="text-primary"
-                    data-toggle="tooltip"
-                    data-placement="right"
-                    title="Editar elemento"
+                    data-tooltip="Editar"
+                    data-tooltip-location="top"
                     ><i class="fas fa-edit"></i>
                   </a>
                 </div>
