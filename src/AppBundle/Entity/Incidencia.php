@@ -21,6 +21,7 @@ class Incidencia
      *
      */
     private $idincidencia;
+    
     /**
      * @var string
      *

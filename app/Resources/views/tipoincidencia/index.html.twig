@@ -27,19 +27,17 @@
   <div class="card-body">
     <div class="table-reponsive">
       <table
-        class="table table-bordered text-center"
+        class="table text-center"
         id="dataTable"
         width="100%"
         cellspacing="0"
+        style="font-size:0.85rem"
       >
         <thead>
           <th>Tipo</th>
+          <th>Descripción</th>
           {% if not is_granted('ROLE_USUARIO' ) %}
           <th>
-            <img
-              src="{{ asset('assets/dist/img/data_configuration_26px.png') }}"
-              alt="User Image"
-            />
             Acciones
           </th>
           {% endif %}
@@ -48,6 +46,7 @@
           {% for tipoIncidencia in tipoIncidencias %}
           <tr>
             <td>{{ tipoIncidencia.tipoIncidencias }}</td>
+            <td>{{ tipoIncidencia.descripcion }}</td>
             <td>
               <div class="row">
                 <div class="col-md-2 offset-md-4">

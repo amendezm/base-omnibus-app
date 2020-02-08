@@ -19,7 +19,7 @@ class TipoIncidencia
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      *
-    */
+     */
     private $id;
 
     /**
@@ -28,6 +28,13 @@ class TipoIncidencia
      * @ORM\Column(name="tipoIncidencias", type="string", length=255, nullable=true)
      */
     private $tipoIncidencias;
+
+    /**
+     * @var string
+     *
+     * @orm\Column(name="descripcion", type="string", nullable=true)
+     */
+    private $descripcion;
 
     /**
      * @orm\OneToMany(targetEntity="AppBundle\Entity\Incidencia", mappedBy="tipoIncidencia")
@@ -96,5 +103,51 @@ class TipoIncidencia
         return $this->tipoIncidencias;
     }
 
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     *
+     * @return TipoIncidencia
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
 
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * Add incidencium
+     *
+     * @param \AppBundle\Entity\Incidencia $incidencium
+     *
+     * @return TipoIncidencia
+     */
+    public function addIncidencium(\AppBundle\Entity\Incidencia $incidencium)
+    {
+        $this->incidencia[] = $incidencium;
+
+        return $this;
+    }
+
+    /**
+     * Remove incidencium
+     *
+     * @param \AppBundle\Entity\Incidencia $incidencium
+     */
+    public function removeIncidencium(\AppBundle\Entity\Incidencia $incidencium)
+    {
+        $this->incidencia->removeElement($incidencium);
+    }
 }
