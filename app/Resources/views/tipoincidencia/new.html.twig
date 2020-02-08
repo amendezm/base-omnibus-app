@@ -12,7 +12,13 @@
       <div class="form-group">
         <label class="col-sm-4 control-label">Tipo</label>
         {{ form_widget(form.tipoIncidencias,
-                        {'attr' : {'class' : 'form-control'}}
+          {'attr' : {'class' : 'form-control'}}
+        )}}
+      </div>
+      <div class="form-group">
+        <label class="col-sm-4 control-label">Descripción</label>
+        {{ form_widget(form.descripcion,
+          {'attr' : {'class' : 'form-control'}}
         )}}
       </div>
       <br />
@@ -23,7 +29,7 @@
         >
           Cancelar
         </a>
-        <input type="submit" class="btn btn-primary" value="Crear" />
+        <input type="submit" class="btn btn-primary" value="Guardar" />
       </div>
       <br />
     </div>

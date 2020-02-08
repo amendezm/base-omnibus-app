@@ -5,6 +5,8 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
 
 class TipoIncidenciaType extends AbstractType
 {
@@ -16,9 +18,9 @@ class TipoIncidenciaType extends AbstractType
     {
         $builder
             ->add('tipoIncidencias')
-        ;
+            ->add('descripcion', TextareaType::class);
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
