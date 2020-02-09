@@ -27,11 +27,11 @@
   <div class="card-body">
     <div class="table-reponsive">
       <table
-        class="table table-bordered text-center"
+        class="table text-center"
         id="dataTable"
         width="100%"
         cellspacing="0"
-        style="font-size:0.85rem;"
+        style="font-size:0.75rem;"
       >
         <thead>
           <th>ID/Código</th>
@@ -41,10 +41,6 @@
           <th>Cargo</th>
           {% if not is_granted('ROLE_USUARIO' ) %}
           <th>
-            <img
-              src="{{ asset('assets/dist/img/data_configuration_26px.png') }}"
-              alt="User Image"
-            />
             Acciones
           </th>
           {% endif %}
