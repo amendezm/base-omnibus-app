@@ -138,9 +138,6 @@ class UsuarioController extends Controller
             $em->flush();
             $this->addFlash('notice', 'Se ha borrado correctamente!');
         }
-
-
-
         return $this->redirectToRoute('usuario_index');
     }
 
