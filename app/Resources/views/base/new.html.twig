@@ -1,51 +1,52 @@
 {% extends 'index.html.twig' %} {% block contenido%}
 <br />
-<div class="card">
-  {{ form_start(form, { method: "POST" }) }}
-  <div class="card-header">
-    <div class="col-md-8 offset-md-2">
-      <h3>Nueva Base</h3>
-    </div>
-  </div>
-  <!-- /.box-header -->
-  <div class="card-body">
-    <div class="col-md-8 offset-md-2">
-      <div class="form-group">
-        <label class="col-sm-4 control-label">Nombre</label>
-        {{
-          form_widget(form.nombre, {
-            attr: { class: "form-control" }
-          })
-        }}
-      </div>
-      <div class="form-group">
-        <label class="col-sm-4 control-label">Descripción</label>
-        {{
-          form_widget(form.descripcion, {
-            attr: { class: "form-control" }
-          })
-        }}
-      </div>
-      <div class="form-group">
-        <label class="col-sm-4 control-label">Direccion</label>
-        {{
-          form_widget(form.direccion, {
-            attr: { class: "form-control" }
-          })
-        }}
+<div class="col-md-10 offset-md-1">
+  <div class="card shadow">
+    {{ form_start(form, { method: "POST" }) }}
+    <div class="card-body">
+      <br />
+      <div class="col-md-8 offset-md-2">
+        <h4 class="text-primary">
+          Nueva Base
+        </h4>
+        <br />
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Nombre</label>
+          {{
+            form_widget(form.nombre, {
+              attr: { class: "form-control" }
+            })
+          }}
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Descripción</label>
+          {{
+            form_widget(form.descripcion, {
+              attr: { class: "form-control" }
+            })
+          }}
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Direccion</label>
+          {{
+            form_widget(form.direccion, {
+              attr: { class: "form-control" }
+            })
+          }}
+        </div>
+        <br />
+        <div class="text-right">
+          <a class="btn btn-outline-secondary" href="{{ path('base_index') }}"
+            ><span class=""> </span>Cancelar</a
+          >
+          <button type="submit" class="btn btn-primary" value="Crear">
+            Guardar
+          </button>
+        </div>
       </div>
       <br />
-      <div class="text-right">
-        <a class="btn btn-outline-secondary" href="{{ path('base_index') }}"
-          ><span class=""> </span>Cancelar</a
-        >
-        <button type="submit" class="btn btn-primary" value="Crear">
-          Guardar
-        </button>
-      </div>
+      {{ form_end(form) }}
     </div>
-    <br />
-    {{ form_end(form) }}
   </div>
 </div>
 {% endblock %}
