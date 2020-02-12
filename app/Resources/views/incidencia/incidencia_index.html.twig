@@ -39,20 +39,66 @@
             </td>
             <td>
               <div class="row">
-                <div class="col-md-4 offset-md-2">
+                <div class="col-md-3 offset-md-2">
                   <a
-                    href="{{
-                      path('incidencia_delete', { id: reporte.idincidencia })
-                    }}"
                     class="text-secondary"
+                    href="#"
+                    rol="button"
+                    data-toggle="modal"
+                    data-target="#modalConfirmDelete-{{ reporte.idincidencia }}"
                     data-tooltip="Eliminar"
                     data-tooltip-location="top"
-                    onclick="return confirm('Esta seguro que desea eliminar el elemento')"
                   >
                     <i class="fas fa-trash-alt"></i>
                   </a>
+                  <!--Modal: modalConfirmDelete-->
+                  <div
+                    class="modal fade"
+                    id="modalConfirmDelete-{{ reporte.idincidencia }}"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div
+                      class="modal-dialog modal-sm modal-notify modal-danger"
+                      role="document"
+                    >
+                      <div class="modal-content text-center">
+                        <div class="modal-header d-flex justify-content-center">
+                          <p class="heading">
+                            Está seguro de realizar esta acción?
+                          </p>
+                        </div>
+                        <div class="modal-body">
+                          <i class="fas fa-times fa-4x animated rotateIn"></i>
+                        </div>
+                        <div class="modal-footer flex-center">
+                          <a
+                            type="button"
+                            class="btn btn-outline-danger waves-effect"
+                            href="{{
+                              path('incidencia_delete', {
+                                id: reporte.idincidencia
+                              })
+                            }}"
+                          >
+                            Aceptar
+                          </a>
+                          <a
+                            type="button"
+                            class="btn  btn-danger waves-effect"
+                            data-dismiss="modal"
+                          >
+                            Cancelar
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--Modal: modalConfirmDelete-->
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <a
                     href="{{
                       path('incidencia_edit', { id: reporte.idincidencia })
@@ -70,39 +116,6 @@
           {% endfor %}
         </tbody>
       </table>
-    </div>
-  </div>
-</div>
-<div id="mymodal" class="modal  inmodal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <button
-          aria-label="Close"
-          data-dismiss="modal"
-          class="close"
-          type="button"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-        <i class="fa-3x fa fa-warning modal-icon text-red"></i>
-        <h4 class="modal-title">Acción Peligrosa</h4>
-      </div>
-      <div class="modal-body">
-        <p>
-          Está acción puede ocacionar, comprometer la integridad de los datos!
-        </p>
-        <small
-          >Si no es un usuario avanzado, recomendamos que cancele esta
-          acción.</small
-        >
-      </div>
-      <div class="modal-footer">
-        <button data-dismiss="modal" class="btn btn-primary" type="button">
-          Cerrar
-        </button>
-        <a class="btn btn-primary btn-danger btn-delete" href="#">Eliminar</a>
-      </div>
     </div>
   </div>
 </div>
