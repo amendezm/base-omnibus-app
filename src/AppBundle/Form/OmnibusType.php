@@ -7,6 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class OmnibusType extends AbstractType
 {
@@ -22,8 +23,14 @@ class OmnibusType extends AbstractType
             ->add('typeOmnibus')
             ->add('marca')
             ->add('base')
-            ->add('en_revision')
-            ->add('is_roto')
+            ->add('en_revision', CheckboxType::class, [
+                'required' => false,
+                'attr' => ['class' => 'custom-control-input'],
+            ])
+            ->add('is_roto', CheckboxType::class, [
+                'required' => false,
+                'attr' => ['class' => 'custom-control-input'],
+            ])
             ->add('FICAV_emision', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => false,

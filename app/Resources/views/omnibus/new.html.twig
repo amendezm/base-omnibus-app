@@ -1,134 +1,149 @@
 {% extends 'index.html.twig' %} {% block contenido%}
 <br />
-{{ form_start(form, { method: "POST" }) }}
-<div class="card">
-  <div class="card-header ">
-    <div class="col-md-8 offset-md-2">
-      <h3 class="panel-title">Nuevo Ómnibus</h3>
-    </div>
-  </div>
-  <div class="card-body">
-    <div class="col-md-8 offset-md-2">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">NoControl</label>
-            {{ form_widget(form.noOmnibus, 
+<div class="col-md-10 offset-md-1" style="font-size: 0.85rem;">
+  {{ form_start(form, { method: "POST" }) }}
+  <div class="card shadow">
+    <div class="card-body">
+      <div class="col-md-10 offset-md-1">
+        <h4 class="text-primary">
+          Nuevo Ómnibus
+        </h4>
+        <br />
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">NoControl</label>
+              {{ form_widget(form.noOmnibus, 
                 {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
-            )}}
+              )}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Chapa</label>
+              {{ form_widget(form.chapa, {
+                'attr' : {'class' : 'form-control'}}
+              )}}
+            </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="col-sm-4 control-label">Chapa</label>
-            {{ form_widget(form.chapa, {'attr' : {'class' : 'form-control' }})}}
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Tipo</label>
+              {{ form_widget(form.typeOmnibus, 
+              {'attr' : {'class' : 'form-control'}}
+              )}}
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="col-sm-4 control-label">Tipo</label>
-            {{ form_widget(form.typeOmnibus, 
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Marca</label>
+              {{ form_widget(form.marca, 
                 {'attr' : {'class' : 'form-control'}}
-            )}}
+              )}}
+            </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="col-sm-4 control-label">Marca</label>
-            {{ form_widget(form.marca, {'attr' : {'class' : 'form-control' }})}}
-          </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Base</label>
+          {{ form_widget(form.base, {'attr' : {'class' : 'form-control' }})}}
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-4 control-label">Base</label>
-        {{ form_widget(form.base, {'attr' : {'class' : 'form-control' }})}}
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Emisión FICAV</label>
-            {{ form_widget(form.FICAV_emision, 
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Emisión FICAV</label>
+              {{ form_widget(form.FICAV_emision, 
                 {'attr' : {'class' : 'form-control datepicker-here'}}
-            )}}
+              )}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Vencimiento FICAV</label>
+              {{ form_widget(form.FICAV_vencimiento, 
+              {'attr' : {'class' : 'form-control datepicker-here' }}
+              )}}
+            </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Vencimiento FICAV</label>
-            {{ form_widget(form.FICAV_vencimiento, 
-                {'attr' : {'class' : 'form-control datepicker-here' }}
-            )}}
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Licencia Operativa Emitida</label>
+              {{ form_widget(form.licenciaOperativaEmision, 
+              {'attr' : {'class' : 'form-control datepicker-here'}}
+              )}}
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Licencia Operativa Emitida</label>
-            {{ form_widget(form.licenciaOperativaEmision, 
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Licencia Operativa Vence</label>
+              {{ form_widget(form.licenciaOperativaVencimiento, 
                 {'attr' : {'class' : 'form-control datepicker-here'}}
-            )}}
+              )}}
+            </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Licencia Operativa Vence</label>
-            {{ form_widget(form.licenciaOperativaVencimiento, 
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Licencia Circulación Emitida</label>
+              {{ form_widget(form.licenciaCirculacionEmision, 
                 {'attr' : {'class' : 'form-control datepicker-here'}}
-            )}}
+              )}}
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Licencia Circulación Emitida</label>
-            {{ form_widget(form.licenciaCirculacionEmision, 
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Licencia Circulación Vence</label>
+              {{ form_widget(form.licenciaCirculacionVencimiento, 
                 {'attr' : {'class' : 'form-control datepicker-here'}}
-            )}}
+              )}}
+            </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Licencia Circulación Vence</label>
-            {{ form_widget(form.licenciaCirculacionVencimiento, 
-                {'attr' : {'class' : 'form-control datepicker-here'}}
-            )}}
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label">Tarjeta de Combustible</label>
-        {{ form_widget(form.tarjetaCombustible,
+        <div class="form-group">
+          <label class="control-label">Tarjeta de Combustible</label>
+          {{ form_widget(form.tarjetaCombustible,
                  {'attr' : {'class' : 'form-control'}}
-        )}}
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          <div class="form-group">
-            {{ form_widget(form.en_revision, {'attr' : {'class' : '' }})}}
-            <label class="control-label">Revisión</label>
+          )}}
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group" style="margin-left: 1.5rem">
+              <div class="cutom-control custom-checkbox">
+                {{ form_widget(form.en_revision) }}
+                <label class="custom-control-label" for="omnibus_en_revision">
+                  Revisión
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <div class="cutom-control custom-checkbox">
+                {{ form_widget(form.is_roto) }}
+                <label class="custom-control-label" for="omnibus_is_roto">
+                  Roto
+                </label>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            {{ form_widget(form.is_roto, {'attr' : {'class' : '' }})}}
-            <label class="control-label">Roto</label>
-          </div>
+        <br />
+        <div class="text-right">
+          <a
+            class="btn btn-outline-secondary"
+            href="{{ path('omnibus_index') }}"
+          >
+            Cancelar
+          </a>
+          <input type="submit" class="btn btn-primary" value="Guardar" />
         </div>
       </div>
       <br />
-      <div class="text-right">
-        <a class="btn btn-outline-secondary" href="{{ path('omnibus_index') }}">
-          Cancelar
-        </a>
-        <input type="submit" class="btn btn-primary" value="Guardar" />
-      </div>
     </div>
-    <br />
   </div>
 </div>
 {{ form_end(form) }}
