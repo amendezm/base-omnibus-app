@@ -80,52 +80,9 @@
                   >
                     <i class="fas fa-trash-alt"></i>
                   </a>
-                  <!--Modal: modalConfirmDelete-->
-                  <div
-                    class="modal fade"
-                    id="modalConfirmDelete-{{ recaudacion.id }}"
-                    tabindex="-1"
-                    role="dialog"
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true"
-                  >
-                    <div
-                      class="modal-dialog modal-sm modal-notify modal-danger"
-                      role="document"
-                    >
-                      <div class="modal-content text-center">
-                        <div class="modal-header d-flex justify-content-center">
-                          <p class="heading">
-                            Está seguro de realizar esta acción?
-                          </p>
-                        </div>
-                        <div class="modal-body">
-                          <i class="fas fa-times fa-4x animated rotateIn"></i>
-                        </div>
-                        <div class="modal-footer flex-center">
-                          <a
-                            type="button"
-                            class="btn btn-outline-danger waves-effect"
-                            href="{{
-                              path('recaudacion_delete', {
-                                id: recaudacion.id
-                              })
-                            }}"
-                          >
-                            Aceptar
-                          </a>
-                          <a
-                            type="button"
-                            class="btn  btn-danger waves-effect"
-                            data-dismiss="modal"
-                          >
-                            Cancelar
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--Modal: modalConfirmDelete-->
+                  {% include "commons/confirmDeleteModal.html.twig" with
+                  {'instanceToDelete': recaudacion, 'path':'recaudacion_delete'}
+                  %}
                 </div>
                 <div class="col-md-3">
                   <a

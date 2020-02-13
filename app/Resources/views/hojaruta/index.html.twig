@@ -4,7 +4,7 @@
   <div class="card-header py-3">
     <div class="row">
       <div class="col-md-6">
-        <h3 class="m-0 font-weight-bold text-primary">
+        <h3 class="m-0 font-weight-normal text-primary">
           Hojas de Rutas
         </h3>
       </div>
@@ -86,50 +86,8 @@
                   >
                     <i class="fas fa-trash-alt"></i>
                   </a>
-                  <!--Modal: modalConfirmDelete-->
-                  <div
-                    class="modal fade"
-                    id="modalConfirmDelete-{{ hojaRuta.id }}"
-                    tabindex="-1"
-                    role="dialog"
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true"
-                  >
-                    <div
-                      class="modal-dialog modal-sm modal-notify modal-danger"
-                      role="document"
-                    >
-                      <div class="modal-content text-center">
-                        <div class="modal-header d-flex justify-content-center">
-                          <p class="heading">
-                            Está seguro de realizar esta acción?
-                          </p>
-                        </div>
-                        <div class="modal-body">
-                          <i class="fas fa-times fa-4x animated rotateIn"></i>
-                        </div>
-                        <div class="modal-footer flex-center">
-                          <a
-                            type="button"
-                            class="btn btn-outline-danger waves-effect"
-                            href="{{
-                              path('hojaruta_delete', { id: hojaRuta.id })
-                            }}"
-                          >
-                            Aceptar
-                          </a>
-                          <a
-                            type="button"
-                            class="btn  btn-danger waves-effect"
-                            data-dismiss="modal"
-                          >
-                            Cancelar
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--Modal: modalConfirmDelete-->
+                  {% include "commons/confirmDeleteModal.html.twig" with
+                  {'instanceToDelete': hojaRuta, 'path':'hojaruta_delete'} %}
                 </div>
                 <div class="col-md-4">
                   <a

@@ -147,7 +147,7 @@ class IncidenciaController extends Controller
         $em = $this->getDoctrine()->getManager();
         $db = $em->getConnection();
         $query = 'SELECT
-           incidencia.idincidencia,
+           incidencia.idincidencia as id,
            tipo_incidencia.tipoincidencias,
            incidencia.detalles,
            hoja_ruta.nohojaruta,
