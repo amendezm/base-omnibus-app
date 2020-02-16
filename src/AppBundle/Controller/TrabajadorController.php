@@ -50,6 +50,7 @@ class TrabajadorController extends Controller
             $em->flush();
 
             if ($trabajador->getCargo() == 'chofer') {
+                $chofer->setId($trabajador->getId());
                 $chofer->setTrabajador($trabajador);
                 $chofer->setNombre($trabajador->getNombre());
                 $em->persist($chofer);

@@ -18,7 +18,6 @@ class Chofer
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
 
     private $id;
@@ -56,12 +55,12 @@ class Chofer
      * @ORM\Column(name="recalificacionEmision", type="date", nullable=true)
      */
     private $recalificacion_emision;
-//    /**
-//     * @var int
-//     *
-//     * @ORM\Column(name="tiempo_servicio", type="integer", nullable=true)
-//     */
-//    private $tiempoServicio;
+    //    /**
+    //     * @var int
+    //     *
+    //     * @ORM\Column(name="tiempo_servicio", type="integer", nullable=true)
+    //     */
+    //    private $tiempoServicio;
 
     /**
      * @var \DateTime
@@ -111,7 +110,8 @@ class Chofer
     protected $trabajador;
 
 
-    public function __toString(){
+    public function __toString()
+    {
         return $this->getNombre();
     }
 
@@ -371,5 +371,4 @@ class Chofer
     {
         return $this->nombre;
     }
-
 }

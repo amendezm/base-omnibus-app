@@ -53,7 +53,7 @@ class Trabajador
     /**
      * @var string
      *
-     * @ORM\Column(name="direccion", type="string", length=255, unique=true)
+     * @ORM\Column(name="direccion", type="string", length=255)
      */
     private $direccion;
 
@@ -68,8 +68,8 @@ class Trabajador
     public function __toString()
     {
         return $this->getNombre();
-    //    return $this->getCi();
-    //    return $this->getDireccion();// TODO: Implement __toString() method.
+        //    return $this->getCi();
+        //    return $this->getDireccion();// TODO: Implement __toString() method.
     }
 
     /**
@@ -257,6 +257,4 @@ class Trabajador
     {
         return $this->codigo;
     }
-
-
 }
