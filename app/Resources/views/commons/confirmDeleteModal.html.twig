@@ -20,7 +20,14 @@
       <div class="modal-footer flex-center">
         <a
           type="button"
-          class="btn btn-outline-danger waves-effect"
+          class="btn  btn-outline-danger waves-effect"
+          data-dismiss="modal"
+        >
+          Cancelar
+        </a>
+        <a
+          type="button"
+          class="btn btn-danger waves-effect"
           href="{{
             path(path, {
               id: instanceToDelete.id
@@ -28,13 +35,6 @@
           }}"
         >
           Aceptar
-        </a>
-        <a
-          type="button"
-          class="btn  btn-danger waves-effect"
-          data-dismiss="modal"
-        >
-          Cancelar
         </a>
       </div>
     </div>
