@@ -18,10 +18,22 @@
         Filtrar por kilometros
       </div>
       <div class="col-md-4">
-        <input type="number" class="form-control" placeholder="Desde..." />
+        <input
+          id="minKilometersFilter"
+          type="number"
+          min="0"
+          class="form-control"
+          placeholder="Desde..."
+        />
       </div>
       <div class="col-md-4">
-        <input type="number" class="form-control" placeholder="Hasta..." />
+        <input
+          id="maxKilometersFilter"
+          type="number"
+          min="0"
+          class="form-control"
+          placeholder="Hasta..."
+        />
       </div>
     </div>
   </div>
@@ -29,7 +41,11 @@
 <br /><br />
 <div class="row bus-container" style="font-size: 0.65rem;">
   {% for reporte in reportes %}
-  <div id="{{ reporte.noomnibus }}" class="col-md-3 bus-item">
+  <div
+    class="col-md-3 bus-item"
+    data-number="{{ reporte.noomnibus }}"
+    data-kilometers="{{ reporte.kmrecorridosacumulados }}"
+  >
     <div class="card shadow" style="margin-bottom: 1rem;">
       <div class="card-body" style="padding:0.55rem;">
         <div class="media">
