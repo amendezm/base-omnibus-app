@@ -22,19 +22,26 @@ window.onload = () => {
     handleChange(busNumber);
   };
 
-  maxKilometersFilter.onchange = event => {
-    maxKilometers = event.target.value || Number.MAX_VALUE;
+  const maxFilterHandler = event => {
+    maxKilometers =
+      Number.parseInt(event.target.value) > minKilometers
+        ? Number.parseInt(event.target.value)
+        : Number.MAX_VALUE;
     handleChange(busNumber);
   };
 
-  maxKilometersFilter.onkeyup = event => {
-    maxKilometers = event.target.value || Number.MAX_VALUE;
-    handleChange(busNumber);
-  };
+  maxKilometersFilter.onchange = maxFilterHandler;
+
+  maxKilometersFilter.onkeyup = maxFilterHandler;
 
   const handleChange = numberFilterValue => {
     busNumber = numberFilterValue;
+    const hidenElements = document.getElementsByClassName(
+      "bus-item hide-element"
+    );
+    const message = document.getElementsByClassName("empty-bus-message")[0];
     const size = busContainer.children.length;
+
     for (let i = 0; i < size; i++) {
       const node = busContainer.children.item(i);
       const busNumber = node.getAttribute("data-number");
@@ -48,6 +55,11 @@ window.onload = () => {
       } else {
         node.classList.remove("hide-element");
       }
+    }
+    if (hidenElements.length === size) {
+      message.classList.remove("hide-element");
+    } else {
+      message.classList.add("hide-element");
     }
   };
 };
