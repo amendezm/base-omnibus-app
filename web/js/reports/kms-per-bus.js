@@ -1,8 +1,26 @@
 window.onload = () => {
+  const busTab = document.getElementById("bus-tab");
+  const graphicTab = document.getElementById("graphic-tab");
   const busNumberInput = document.getElementById("busNumberFilter");
   const minKilometersFilter = document.getElementById("minKilometersFilter");
   const maxKilometersFilter = document.getElementById("maxKilometersFilter");
   const busContainer = document.querySelector(".bus-container");
+  const graphicsContainer = document.querySelector(".graphics-container");
+  const busListContainer = document.querySelector(".bus-list-container");
+
+  graphicTab.onclick = () => {
+    busTab.classList.remove("active");
+    graphicTab.classList.add("active");
+    graphicsContainer.classList.remove("hide-element");
+    busListContainer.classList.add("hide-element");
+  };
+
+  busTab.onclick = () => {
+    graphicTab.classList.remove("active");
+    busTab.classList.add("active");
+    graphicsContainer.classList.add("hide-element");
+    busListContainer.classList.remove("hide-element");
+  };
 
   let busNumber = "";
   let minKilometers = 0;

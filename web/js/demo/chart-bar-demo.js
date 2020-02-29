@@ -29,7 +29,9 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 }
 
 // Bar Chart Example
-var kilometers = JSON.parse(document.getElementById("kilometersData").value);
+var kilometers = JSON.parse(
+  document.getElementById("kilometersData").value
+).map(value => (value === 0 ? 10 : value));
 var labels = JSON.parse(document.getElementById("omnibusNumbers").value);
 var colors = [];
 kilometers.forEach(kmValue => {
@@ -74,9 +76,9 @@ var myBarChart = new Chart(ctx, {
     datasets: [
       {
         label: "Kilómetros",
-        backgroundColor: colors,
+        backgroundColor: "#157dd8",
         hoverBackgroundColor: "#2e59d9",
-        borderColor: "#4e73df",
+        borderColor: "#1d1d1d",
         data: kilometers
       }
     ]
