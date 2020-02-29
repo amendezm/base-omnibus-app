@@ -23,11 +23,11 @@
 
         {% if is_granted('ROLE_ADMIN') %}
         <!-- Heading -->
-        <div class="sidebar-heading">
+        <div class="sidebar-heading admin1">
           Administración
         </div>
-        <div class="sidebar-heading" style="visibility: hidden;">
-          Administración
+        <div class="sidebar-heading admin2">
+          Admin
         </div>
         <li class="nav-item {% if 'usuario' in app.request.attributes.get('_route') %}active{% endif %}" >
           <a class="nav-link sidebar-item" href="{{ path('usuario_index') }}">

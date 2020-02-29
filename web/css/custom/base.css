@@ -51,19 +51,23 @@ textarea::-webkit-scrollbar {
   visibility: hidden;
 }
 
-.sidebar > .sidebar-heading.dpto1 {
+.sidebar > .sidebar-heading.dpto1,
+.sidebar > .sidebar-heading.admin1 {
   visibility: visible;
 }
 
-.sidebar > .sidebar-heading.dpto2 {
+.sidebar > .sidebar-heading.dpto2,
+.sidebar > .sidebar-heading.admin2 {
   visibility: hidden;
 }
 
-.sidebar.toggled > .sidebar-heading.dpto1 {
+.sidebar.toggled > .sidebar-heading.dpto1,
+.sidebar.toggled > .sidebar-heading.admin1 {
   visibility: hidden;
 }
 
-.sidebar.toggled > .sidebar-heading.dpto2 {
+.sidebar.toggled > .sidebar-heading.dpto2,
+.sidebar.toggled > .sidebar-heading.admin2 {
   visibility: visible;
 }
 
