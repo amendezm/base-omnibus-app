@@ -1,201 +1,165 @@
-
-    {% extends 'index.html.twig' %}
-
-{% block contenido %}
-<br>
+{% extends 'index.html.twig' %}{% block contenido %}
+<br />
 <div class="col-md-8 offset-md-2">
-    <div class="card promoting-card">
-        <div class="card-body d-flex flex-row">
-          <img
-            src="{{
-              asset('assets/dist/img/mapa-de-ruta-ethereum-ethereum-classic.jpg')
-            }}"
-            class="rounded-circle mr-3"
-            height="50px"
-            width="50px"
-            alt="avatar"
-          />
-          <div style="width:100%">
-            <div class="row">
-              <div class="col-md-9">
-                <h4 class="card-title font-weight-bold mb-2">
-                  Ómnibus {{ omnibus.noOmnibus }}
-                </h4>
-              </div>
-              <div class="col-md-3 text-right">
-                <a
-                  class="text-secondary"
-                  href="{{ path('hojaruta_index') }}"
-                  data-tooltip="Atrás"
-                  data-tooltip-location="top"
-                >
-                  <i class="fas fa-arrow-left"></i
-                ></a>
-              </div>
-            </div>
-            <p class="card-text">
-              <span class="mr-3" data-tooltip="Fecha" data-tooltip-location="top">
-                <i class="fas fa-clock pr-2"></i>
-              </span>
-              <span class="mr-3" data-tooltip="Ruta" data-tooltip-location="top">
-                <i class="fas fa-route pr-2"></i>
-              </span>
-              <span class="mr-3" data-tooltip="Ómnibus" data-tooltip-location="top">
-                <i class="fas fa-bus pr-2"></i>
-              </span>
-            </p>
-            <hr />
-            <table
-              class="table table-borderless"
-              style="width:90%; font-size:0.85rem;"
-            >
-              <tr>
-                <th style="padding: 0.25rem;">Cantidad de viajes</th>
-                <td class="text-center" style="padding: 0.25rem;">
-                </td>
-              </tr>
-            </table>
-    
-            <p class="font-weight-bold">Observaciones</p>
-            <p class="ml-2"></p>
-            <p class="font-weight-bold">Incidencias</p>
-            <ul>
-            </ul>
-          </div>
-        </div>
-        <br />
+  <div class="card promoting-card">
+    <div class="card-body d-flex flex-row">
+      <img
+        src="{{ asset('assets/dist/img/yutong.jpg') }}"
+        class="rounded-circle mr-3"
+        height="50px"
+        width="50px"
+        alt="avatar"
+      />
+      <div style="width:100%">
         <div class="row">
-          <div class="col-md-2 offset-md-9">
-            <div class="row">
-              <div class="col-md-6 text-right">
-                <a
-                  href="{{ path('omnibus_delete', { id: omnibus.id }) }}"
-                  class="text-secondary"
-                  data-tooltip="Eliminar"
-                  data-tooltip-location="top"
-                  onclick="return confirm('Esta seguro que desea eliminar el elemento')"
-                >
-                  <i class="fas fa-trash-alt"></i>
-                </a>
-              </div>
-              <div class="col-md-6">
-                <a
-                  class="text-secondary"
-                  role="button"
-                  href="{{ path('omnibus_edit', { id: omnibus.id }) }}"
-                  data-tooltip="Editar"
-                  data-tooltip-location="top"
-                >
-                  <i class="fas fa-edit"></i>
-                </a>
-              </div>
-            </div>
+          <div class="col-md-9">
+            <h4 class="card-title font-weight-bold mb-2">
+              Ómnibus {{ omnibus.noOmnibus }}
+            </h4>
+          </div>
+          <div class="col-md-3 text-right">
+            <a
+              class="text-secondary"
+              href="{{ path('omnibus_index') }}"
+              data-tooltip="Atrás"
+              data-tooltip-location="top"
+            >
+              <i class="fas fa-arrow-left"></i
+            ></a>
           </div>
         </div>
-        <div class="card-body"></div>
+        <p class="card-text">
+          <span class="mr-3" data-tooltip="Chapa" data-tooltip-location="top">
+            <i class="fas fa-bus pr-2"></i>
+            {{ omnibus.chapa }}
+          </span>
+        </p>
+        <hr />
+        <table
+          class="table table-striped"
+          style="width:90%; font-size:0.85rem;"
+        >
+          <tr>
+            <th style="padding: 0.25rem;">Tipo</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {{ omnibus.typeOmnibus }}
+            </td>
+          </tr>
+          <tr>
+            <th style="padding: 0.25rem;">Base</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {{ omnibus.base }}
+            </td>
+          </tr>
+          <tr>
+            <th style="padding: 0.25rem;">Tarjeta de Combustible</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {{ omnibus.tarjetaCombustible }}
+            </td>
+          </tr>
+          <tr>
+            <th style="padding: 0.25rem;">Índice CR</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {{ omnibus.indiceConsumoReal }}
+            </td>
+          </tr>
+          <tr>
+            <th style="padding: 0.25rem;">Kms Recorridos A</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {{ omnibus.kmRecorridosAcumulados }}
+            </td>
+          </tr>
+          <tr>
+            <th style="padding: 0.25rem;">Revisión</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {% if omnibus.EnRevision %}Sí{% else %}No{% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th style="padding: 0.25rem;">Roto</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {% if omnibus.IsRoto %}Sí{% else %}No{% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th style="padding: 0.25rem;">Por mantenimiento</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {% if omnibus.isMantenimiento %}Sí{% else %}No{% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th style="padding: 0.25rem;">Emisión FICAV</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {% if omnibus.FICAVEmision %}
+              {{ omnibus.FICAVEmision|date('Y-m-d')}}
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th style="padding: 0.25rem;">Vencimiento FICAV</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {% if omnibus.FICAVVencimiento %}
+              {{ omnibus.FICAVVencimiento|date('Y-m-d')}}
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th style="padding: 0.25rem;">Licencia Operativa E</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {{ omnibus.licenciaOperativaEmision|date('Y-m-d') }}
+            </td>
+          </tr>
+          <tr>
+            <th style="padding: 0.25rem;">Licencia Operativa V</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {{ omnibus.licenciaOperativaVencimiento|date('Y-m-d') }}
+            </td>
+          </tr>
+          <tr>
+            <th style="padding: 0.25rem;">Licencia Circulacion E</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {{ omnibus.licenciaCirculacionEmision|date('Y-m-d') }}
+            </td>
+          </tr>
+          <tr>
+            <th style="padding: 0.25rem;">Licencia Circulacion V</th>
+            <td class="text-center" style="padding: 0.25rem;">
+              {{ omnibus.licenciaCirculacionVencimiento|date('Y-m-d') }}
+            </td>
+          </tr>
+        </table>
       </div>
-    <div class="box shadow">
-        <div class="box-header with-border">
-            <div class="user-block">
-                <h3 class="text-center ">Lista de Ómnibus</h3>
-            </div><!-- /.user-block -->
-            <div class="box-tools">
-                <ul class="list-inline">
-                    <li>
-                        <a class="text-info" href="{{ path('omnibus_index') }}">
-                            <i class="glyphicon glyphicon glyphicon-hand-left"></i> Atràs</a>
-                        </li>
-                    </ul>
-                </div><!-- /.box-tools -->
-            </div><!-- /.box-header -->
-            <div class="box-body">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Chapa :<td>{{ omnibus.chapa }}</td></th>
-                        </tr>
-                        <tr>
-                            <th>No.Ómnibus/Control : <td>{{ omnibus.noOmnibus }}</td></th>
-                        </tr>
-                        <tr>
-                            <th>Tipo :   <td>{{ omnibus.typeOmnibus}}</td></th>
-                        </tr>
-                        <tr>
-                            <th>Base :<td>{{ omnibus.base }}</td></th>
-                        </tr>
-                        <tr>
-                            <th>Tarjeta de Combustible : <td>{{ omnibus.tarjetaCombustible }}</td></th>
-                        </tr>
-                        <tr>
-                            <th>Índice CR :<td>{{ omnibus.indiceConsumoReal }}</td></th>
-                        </tr>
-                        <tr>
-                            <th>Kms Recorridos A : <td>{{ omnibus.kmRecorridosAcumulados }}</td></th>
-                        </tr>
-                        <tr>
-                            <th>Revisión :  <td>{% if omnibus.EnRevision %}Yes{% else %}No{% endif %}</td></th>
-                        </tr>
-                        <tr>
-                            <th>Roto :<td>{% if omnibus.IsRoto %}Yes{% else %}No{% endif %}</td></th>
-        </tr>
-        <tr>
-            <th>Por mantenimiento :  <td>{% if omnibus.isMantenimiento %}Yes{% else %}No{% endif %}</td></th>
-        </tr>
-        <tr>
-            <th>Emisión FICAV :<td>{% if omnibus.FICAVEmision %}{{ omnibus.FICAVEmision|date('Y-m-d') }}{% endif %}</td></th>
-        </tr>
-        <tr>
-            <th>Vencimiento FICAV : <td>{% if omnibus.FICAVVencimiento %}{{ omnibus.FICAVVencimiento|date('Y-m-d') }}{% endif %}</td></th>
-        </tr>
-        <tr>
-            <th>Licencia Operativa E : <td>{{ omnibus.licenciaOperativaEmision|date('Y-m-d') }}</td></th>
-        </tr>
-        <tr>
-            <th>Licencia Operativa V : <td>{{ omnibus.licenciaOperativaVencimiento|date('Y-m-d') }}</td>
-            </th>
-        </tr>
-        <tr>
-            <th>Licencia Circulacion E : <td>{{ omnibus.licenciaCirculacionEmision|date('Y-m-d') }}</td></th>
-        </tr>
-        <tr>
-            <th>Licencia Circulacion V : <td>{{ omnibus.licenciaCirculacionVencimiento|date('Y-m-d') }}</td>
-            </th>
-        </tr>
-        <tr>
-            <th>{% if not is_granted('ROLE_USUARIO' ) %}<img src="{{ asset('assets/dist/img/data_configuration_26px.png') }}" alt="User Image"> Acciones{% endif %}
-                <td>
-                {#<ul>#}
-                    <a href="{{ path('omnibus_edit',{ 'id': omnibus.id }) }}"
-                    class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="left"
-                    title="Editar elemento"><i class="glyphicon glyphicon-pencil"></i>
-                </a>
-                {#<a href="{{ path('omnibus_delete',{'id': omnibus.id}) }}"#}
-                {#class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="rigth"#}
-                       {#title="Eliminar elemento"#}
-                       {#onclick="return confirm('Esta seguro que desea eliminar el elemento')">#}
-                       {#<i class="glyphicon glyphicon-remove"></i>#}
-                       {#</a>#}
-                       {#</ul>#}
-                    </td>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            {#{% for omnibus in omnibuses %}#}
-            <tr>
-
-                
-            </tr>
-            {#{% endfor %}#}
-            
-        </tbody>
-    </table>
-    {#<div align="left">#}
-
-        
-            {#</div>#}
-        </div>
     </div>
+    <br />
+    <div class="row">
+      <div class="col-md-2 offset-md-9">
+        <div class="row">
+          <div class="col-md-6 text-right">
+            <a
+              href="{{ path('omnibus_delete', { id: omnibus.id }) }}"
+              class="text-secondary"
+              data-tooltip="Eliminar"
+              data-tooltip-location="top"
+              onclick="return confirm('Esta seguro que desea eliminar el elemento')"
+            >
+              <i class="fas fa-trash-alt"></i>
+            </a>
+          </div>
+          <div class="col-md-6">
+            <a
+              class="text-secondary"
+              role="button"
+              href="{{ path('omnibus_edit', { id: omnibus.id }) }}"
+              data-tooltip="Editar"
+              data-tooltip-location="top"
+            >
+              <i class="fas fa-edit"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body"></div>
+  </div>
 </div>
-    {% endblock %}
-    
+{% endblock %}
