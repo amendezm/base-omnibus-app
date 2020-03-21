@@ -1,86 +1,86 @@
 {% extends 'index.html.twig' %} {% block contenido %}
-{{ form_start(edit_form, { method: "POST" }) }}
-<div class="card shadow">
-  <div class="card-header">
-    <div class="col-md-8 offset-md-2">
-      <h3 class="panel-title ">Editar Tipo de Ómnibus</h3>
-    </div>
-  </div>
-  <div class="box-body">
-    <div class="col-md-8 offset-md-2">
-      <div class="form-group">
-        <label class="col-sm-4 control-label">Tipo</label>
-        {{ form_widget(edit_form.tipo, 
+<br />
+<div class="col-md-10 offset-md-1" style="font-size: 0.85rem;">
+  {{ form_start(edit_form, { method: "POST" }) }}
+  <div class="card shadow">
+    <div class="card-body">
+      <div class="col-md-10 offset-md-1">
+        <h4 class="text-primary">Editar Tipo de Ómnibus</h4>
+        <br />
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Tipo</label>
+          {{ form_widget(edit_form.tipo, 
           {'attr' : {'class' : 'form-control','pattern':'[A-Za-z]+$'}}
-        )}}
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Capacidad pasajeros sentados</label>
-            {{ form_widget(edit_form.capacidad_sentados, 
+          )}}
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Capacidad pasajeros sentados</label>
+              {{ form_widget(edit_form.capacidad_sentados, 
               {'attr' : {'class' : 'form-control','pattern':'[0-9]{2,3}'}}
-            )}}
+              )}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Capacidad pasajeros parados</label>
+              {{ form_widget(edit_form.capacidad_parados, 
+              {'attr' : {'class' : 'form-control','pattern':'[0-9]{2,3}'}}
+              )}}
+            </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Capacidad pasajeros parados</label>
-            {{ form_widget(edit_form.capacidad_parados, 
-              {'attr' : {'class' : 'form-control','pattern':'[0-9]{2,3}'}}
-            )}}
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label"
-              >Índice de Consumo Normado por Kms</label
-            >
-            {{ form_widget(edit_form.indiceConsumoNormado,
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label"
+                >Índice de Consumo Normado por Kms</label
+              >
+              {{ form_widget(edit_form.indiceConsumoNormado,
              {'attr' : {'class' : 'form-control','pattern':'([0-9.]+)$'}}
-            )}}
+              )}}
+            </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">% de Desviación</label>
-            {{ form_widget(edit_form.desviacion, 
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">% de Desviación</label>
+              {{ form_widget(edit_form.desviacion, 
             {'attr' : {'class' : 'form-control','pattern':'([0-9%]){2,3}'}}
-            )}}
+              )}}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label"
-              >Cant de Kmts X Litro Combust. - norma</label
-            >
-            {{
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label"
+                >Cant de Kmts X Litro Combust. - norma</label
+              >
+              {{
               form_widget(edit_form.cantidadkmtsxlitro, {
                 attr: { class: "form-control", pattern: "([0-9.]+)$" },
               })
-            }}
+              }}
+            </div>
           </div>
+        </div>
+        <br />
+        <div class="text-right">
+          <a
+            class="btn btn-outline-secondary"
+            href="{{ path('tipo_omnibus_index') }}"
+          >
+            Cancelar
+          </a>
+          <button type="submit" class="btn btn-primary" value="Editar">
+            Guardar
+          </button>
         </div>
       </div>
       <br />
-      <div class="text-right">
-        <a
-          class="btn btn-outline-secondary"
-          href="{{ path('tipo_omnibus_index') }}"
-        >
-          Cancelar
-        </a>
-        <button type="submit" class="btn btn-primary" value="Editar">
-          Guardar
-        </button>
-      </div>
     </div>
-    <br />
   </div>
+  {{ form_end(edit_form) }}
 </div>
-{{ form_end(edit_form) }}
 {% endblock %}
