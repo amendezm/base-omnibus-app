@@ -19,14 +19,20 @@ textarea::-webkit-scrollbar {
 }
 
 ::-webkit-scrollbar {
-  width: 0.5vw;
+  width: 0.4vw;
   cursor: pointer;
+  position: absolute;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #ccc;
   border-radius: 4px;
   visibility: hidden;
+  background-clip: padding-box;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+  background: lightgray;
 }
 
 *:hover::-webkit-scrollbar-thumb {
@@ -51,23 +57,23 @@ textarea::-webkit-scrollbar {
   visibility: hidden;
 }
 
-.sidebar > .sidebar-heading.dpto1,
-.sidebar > .sidebar-heading.admin1 {
+.sidebar > .sidebar-content > .sidebar-heading.dpto1,
+.sidebar > .sidebar-content > .sidebar-heading.admin1 {
   visibility: visible;
 }
 
-.sidebar > .sidebar-heading.dpto2,
-.sidebar > .sidebar-heading.admin2 {
+.sidebar > .sidebar-content > .sidebar-heading.dpto2,
+.sidebar > .sidebar-content > .sidebar-heading.admin2 {
   visibility: hidden;
 }
 
-.sidebar.toggled > .sidebar-heading.dpto1,
-.sidebar.toggled > .sidebar-heading.admin1 {
+.sidebar.toggled > .sidebar-content > .sidebar-heading.dpto1,
+.sidebar.toggled > .sidebar-content > .sidebar-heading.admin1 {
   visibility: hidden;
 }
 
-.sidebar.toggled > .sidebar-heading.dpto2,
-.sidebar.toggled > .sidebar-heading.admin2 {
+.sidebar.toggled > .sidebar-content > .sidebar-heading.dpto2,
+.sidebar.toggled > .sidebar-content > .sidebar-heading.admin2 {
   visibility: visible;
 }
 
@@ -81,4 +87,44 @@ textarea::-webkit-scrollbar {
 
 .hide-element {
   display: none !important;
+}
+
+/* The following styles refers to layout, including fixed height and scrolls */
+
+#page-top {
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.sidebar-brand {
+  height: 4rem !important;
+}
+
+.sidebar-content {
+  height: calc(100vh - 4rem);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-top: 1rem;
+}
+
+#elemento1 {
+  height: 4rem;
+  z-index: 5;
+}
+
+.navbar-nav {
+  padding: 0 0.1rem;
+}
+
+#content {
+  height: calc(100vh - 7rem);
+  overflow-y: scroll;
+  padding-top: 2rem;
+}
+
+.sticky-footer {
+  height: 3rem;
+  box-shadow: -2px 0 5px 1px lightgrey;
+  z-index: 5;
+  background-color: ghostwhite !important;
 }
