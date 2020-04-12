@@ -120,6 +120,7 @@ textarea::-webkit-scrollbar {
   height: calc(100vh - 7rem);
   overflow-y: scroll;
   padding-top: 2rem;
+  padding-bottom: 4rem;
 }
 
 .sticky-footer {
