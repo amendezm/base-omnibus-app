@@ -36,23 +36,13 @@ class DefaultController extends Controller
         $omnibus = $em->getRepository('AppBundle:Omnibus')->findAll();
         $bases = $em->getRepository('AppBundle:base')->findAll();
 
-        //    $roles= $em->getRepository('AppBundle:Rol')->findAll();
-        //    $rol = 0;
+        
         $cant = 0;
         $cont = 0;
         $comb = 0;
         $horas = 0;
         $incidencias = 0;
-        //    foreach ($roles as $d) {
-        //        $rol++;
-        //    }
-        //    if ($rol == 0) {
-        //        $usuario = new Rol();
-        //        $usuario->setRole("Usuario");
-        //        $em->persist($usuario);
-        //
-        //        $em->flush();
-        //    }
+       
         foreach ($dias as $d) {
             $cant++;
         }
@@ -167,32 +157,7 @@ class DefaultController extends Controller
             $em->persist($gasolina);
             $em->flush();
         }
-        //    foreach ($tipoHoras as $c) {
-        //        $horas++;
-        //    }
-        //    if ($horas == 0) {
-        //        $basico = new Tipo_horas_trabajo();
-        //        $basico->setTipoHoras("Básico");
-        //        $em->persist($basico);
-        //
-        //        $incremento = new Tipo_horas_trabajo();
-        //        $incremento->setTipoHoras("Con incremento");
-        //        $em->persist($incremento);
-        //
-        //        $partido = new Tipo_horas_trabajo();
-        //        $partido->setTipoHoras("Turno partido");
-        //        $em->persist($partido);
-        //
-        //        $confrota = new Tipo_horas_trabajo();
-        //        $confrota->setTipoHoras("Confronta");
-        //        $em->persist($confrota);
-        //        $voluntario = new Tipo_horas_trabajo();
-        //        $voluntario->setTipoHoras("Voluntario");
-        //        $em->persist($voluntario);
-        //
-        //        $em->flush();
-        //    }
-        // replace this example code with whatever you need
+
         return $this->render('index.html.twig', array(
             'numeroTrabajadores' => count($trabajadores),
             'numeroOmnibus' => count($omnibus),

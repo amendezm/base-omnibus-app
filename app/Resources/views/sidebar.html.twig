@@ -19,8 +19,9 @@
         </a>
         
         <!-- Divider -->
-        <hr class="sidebar-divider" />
+        <hr class="sidebar-divider mb-0 ml-0 mr-0" />
 
+      <div class="sidebar-content">
         {% if is_granted('ROLE_ADMIN') %}
         <!-- Heading -->
         <div class="sidebar-heading admin1">
@@ -399,8 +400,9 @@
         <hr class="sidebar-divider d-none d-md-block" />
             
         <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
+        <div class="text-center">
           <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
+      <div/>
     </ul>
     <!-- /.sidebar-menu -->
