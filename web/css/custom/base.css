@@ -31,6 +31,12 @@ textarea::-webkit-scrollbar {
   background-clip: padding-box;
 }
 
+.sidebar-content::-webkit-scrollbar {
+  width: 0.25vw;
+  cursor: pointer;
+  position: absolute;
+}
+
 .sidebar-content::-webkit-scrollbar-thumb {
   background: lightgray;
 }
