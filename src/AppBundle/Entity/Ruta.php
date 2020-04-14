@@ -27,6 +27,7 @@ class Ruta
      * @orm\Column(name="noruta", type="string", length=3)
      */
     private $noruta;
+
     /**
      * @var float
      *
@@ -73,6 +74,13 @@ class Ruta
      * @orm\Column(name="salida", type="string", length=255)
      */
     private $salida;
+
+    /**
+     * @var float
+     *
+     * @orm\Column(name="kmSalida", type="float")
+     */
+    private $kmSalida;
 
     /**
      * @var string
@@ -432,7 +440,7 @@ class Ruta
         return $this->hojaruta;
     }
 
-   /**
+    /**
      * @param float $preciopasaje
      */
     public function setPreciopasaje($preciopasaje)
@@ -480,4 +488,27 @@ class Ruta
         return $this->salida;
     }
 
+    /**
+     * Set kmSalida
+     *
+     * @param float $kmSalida
+     *
+     * @return Ruta
+     */
+    public function setKmSalida($kmSalida)
+    {
+        $this->kmSalida = $kmSalida;
+
+        return $this;
+    }
+
+    /**
+     * Get kmSalida
+     *
+     * @return float
+     */
+    public function getKmSalida()
+    {
+        return $this->kmSalida;
+    }
 }

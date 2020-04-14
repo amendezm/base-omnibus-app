@@ -7,14 +7,16 @@
       <div class="col-md-10 offset-md-1">
         <h4 class="text-primary">Nueva Ruta</h4>
         <br />
-        <div class="form-group">
-          <label class="control-label">Ruta</label>
-          {{ form_widget(form.noRuta, 
-            {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }}
-          )}}
-        </div>
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Ruta</label>
+              {{ form_widget(form.noRuta, 
+                {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }}
+              )}}
+            </div>
+          </div>
+          <div class="col-md-6">
             <div class="form-group">
               <label class="control-label">Tipo de Servicio</label>
               {{ form_widget(form.servicio,
@@ -22,11 +24,21 @@
               )}}
             </div>
           </div>
+        </div>
+        <div class="row">
           <div class="col-sm-6">
             <div class="form-group">
               <label class="control-label">Distancia en kms</label>
               {{ form_widget(form.distanciaKm, 
-            {'attr' : {'class' : 'form-control','pattern':'([0-9,]+)$'}}
+                {'attr' : {'class' : 'form-control','pattern':'([0-9,]+)$'}}
+              )}}
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label class="control-label">Km Salida</label>
+              {{ form_widget(form.kmSalida, 
+                {'attr' : {'class' : 'form-control','pattern':'([0-9,]+)$'}}
               )}}
             </div>
           </div>
