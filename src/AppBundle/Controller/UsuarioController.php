@@ -52,7 +52,8 @@ class UsuarioController extends Controller
             $usuario->setPassword($encoded);
             $em->persist($usuario);
             $em->flush();
-            $this->addFlash('notice', 'Se ha insertado correctamente el Usuario!');
+            $this->addFlash('notice', 'Se ha insertado correctamente el usuario!');
+            
             return $this->redirectToRoute('usuario_index', array('id' => $usuario->getId()));
         }
         return $this->render('usuario/new.html.twig', array(

@@ -135,3 +135,12 @@ textarea::-webkit-scrollbar {
   z-index: 5;
   background-color: ghostwhite !important;
 }
+
+/* flash messages custom styles */
+.alert {
+  z-index: 10;
+  position: absolute;
+  right: 3rem;
+  top: 8.2rem;
+  width: 79vw;
+}
