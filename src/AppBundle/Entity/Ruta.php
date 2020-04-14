@@ -78,7 +78,7 @@ class Ruta
     /**
      * @var float
      *
-     * @orm\Column(name="kmSalida", type="float", nullable=true)
+     * @orm\Column(name="kmSalida", type="float")
      */
     private $kmSalida;
 
