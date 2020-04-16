@@ -1,7 +1,9 @@
 window.onload = () => {
-  const flash = document.getElementsByClassName("alert")[0];
+  const flash = document.getElementsByClassName("notice-flash")[0];
+  const notifier = new Notifier();
 
-  setTimeout(() => {
-    flash.classList.add("hide-element");
-  }, 4000);
+  if (flash && flash.textContent) {
+    const notification = notifier.notify("success", flash.textContent);
+    notification.push();
+  }
 };
