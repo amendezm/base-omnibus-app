@@ -47,9 +47,9 @@ class baseController extends Controller
             $this->addFlash('notice', 'Se ha insertado correctamente!');
 
             return $this->redirectToRoute('base_index', array('id' => $base->getId()));
+        }else if($form->isSubmitted() && !$form->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al insertar');
         }
-
-        $this->addFlash('error', 'Ha ocurrido algún error al insertar');
 
         return $this->render('base/new.html.twig', array(
             'base' => $base,
@@ -89,9 +89,9 @@ class baseController extends Controller
             $this->addFlash('notice', 'Se ha editado correctamente!');
 
             return $this->redirectToRoute('base_index', array('id' => $base->getId()));
+        }else if($editForm->isSubmitted() && !$editForm->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al editar');
         }
-
-        $this->addFlash('error', 'Ha ocurrido algún error al editar');
 
         return $this->render('base/edit.html.twig', array(
             'base' => $base,

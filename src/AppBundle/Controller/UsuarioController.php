@@ -56,9 +56,9 @@ class UsuarioController extends Controller
             $this->addFlash('notice', 'Se ha insertado correctamente el usuario!');
             
             return $this->redirectToRoute('usuario_index', array('id' => $usuario->getId()));
+        }else if($form->isSubmitted() && !$form->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al insertar');
         }
-
-        $this->addFlash('error', 'Ha ocurrido algún error al insertar');
 
         return $this->render('usuario/new.html.twig', array(
             'usuario' => $usuario,
@@ -124,9 +124,9 @@ class UsuarioController extends Controller
             $em->flush();
             $this->addFlash('notice', 'Se ha editado correctamente!');
             return $this->redirectToRoute('usuario_index', array('id' => $usuario->getId()));
+        }else if($editForm->isSubmitted() && !$editForm->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al editar');
         }
-
-        $this->addFlash('error', 'Ha ocurrido algún error al editar');
 
         return $this->render('usuario/edit.html.twig', array(
             'usuario' => $usuario,
