@@ -44,8 +44,12 @@ class baseController extends Controller
             $em->persist($base);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha insertado correctamente!');
+
             return $this->redirectToRoute('base_index', array('id' => $base->getId()));
         }
+
+        $this->addFlash('error', 'Ha ocurrido algún error al insertar');
 
         return $this->render('base/new.html.twig', array(
             'base' => $base,
@@ -82,8 +86,12 @@ class baseController extends Controller
             $em->persist($base);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha editado correctamente!');
+
             return $this->redirectToRoute('base_index', array('id' => $base->getId()));
         }
+
+        $this->addFlash('error', 'Ha ocurrido algún error al editar');
 
         return $this->render('base/edit.html.twig', array(
             'base' => $base,
@@ -106,6 +114,8 @@ class baseController extends Controller
             $em->remove($base);
             $em->flush();
 //        }
+
+        $this->addFlash('notice', 'Se ha borrado correctamente!');
 
         return $this->redirectToRoute('base_index');
     }
