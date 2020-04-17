@@ -91,7 +91,12 @@ class RutaController extends Controller
             $em->persist($ruta);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha insertado correctamente!');
+
             return $this->redirectToRoute('ruta_index', array('id' => $ruta->getId()));
+
+        }else if($form->isSubmitted() && !$form->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al insertar');
         }
 
         return $this->render('ruta/new.html.twig', array(
@@ -165,7 +170,13 @@ class RutaController extends Controller
             //            $ruta->setServicio($strServicio);
             $em->persist($ruta);
             $em->flush();
+
+            $this->addFlash('notice', 'Se ha editado correctamente!');
+
             return $this->redirectToRoute('ruta_index', array('id' => $ruta->getId()));
+
+        }else if($editForm->isSubmitted() && !$editForm->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al editar');
         }
 
         return $this->render('ruta/edit.html.twig', array(
@@ -189,6 +200,8 @@ class RutaController extends Controller
         $em->remove($ruta);
         $em->flush();
         //        }
+
+        $this->addFlash('notice', 'Se ha borrado correctamente!');
 
         return $this->redirectToRoute('ruta_index');
     }
