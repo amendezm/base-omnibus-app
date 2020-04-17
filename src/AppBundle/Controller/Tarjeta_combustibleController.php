@@ -54,7 +54,12 @@ class Tarjeta_combustibleController extends Controller
             $em->persist($tarjeta_combustible);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha insertado correctamente!');
+
             return $this->redirectToRoute('tarjeta_combustible_index', array('id' => $tarjeta_combustible->getId()));
+
+        }else if($form->isSubmitted() && !$form->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al insertar');
         }
 
         return $this->render('tarjeta_combustible/new.html.twig', array(
@@ -69,11 +74,8 @@ class Tarjeta_combustibleController extends Controller
      */
     public function showAction(Tarjeta_combustible $tarjeta_combustible)
     {
-//        $deleteForm = $this->createDeleteForm($tarjeta_combustible);
-
         return $this->render('tarjeta_combustible/show.html.twig', array(
             'tarjeta_combustible' => $tarjeta_combustible,
-//            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -83,7 +85,6 @@ class Tarjeta_combustibleController extends Controller
      */
     public function editAction(Request $request, Tarjeta_combustible $tarjeta_combustible)
     {
-//        $deleteForm = $this->createDeleteForm($tarjeta_combustible);
         $editForm = $this->createForm('AppBundle\Form\Tarjeta_combustibleType', $tarjeta_combustible);
         $editForm->handleRequest($request);
 
@@ -100,13 +101,17 @@ class Tarjeta_combustibleController extends Controller
             $em->persist($tarjeta_combustible);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha editado correctamente!');
+
             return $this->redirectToRoute('tarjeta_combustible_index', array('id' => $tarjeta_combustible->getId()));
+
+        }else if($editForm->isSubmitted() && !$editForm->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al editar');
         }
 
         return $this->render('tarjeta_combustible/edit.html.twig', array(
             'tarjeta_combustible' => $tarjeta_combustible,
             'edit_form' => $editForm->createView(),
-//            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -116,14 +121,10 @@ class Tarjeta_combustibleController extends Controller
      */
     public function deleteAction(Request $request, Tarjeta_combustible $tarjeta_combustible)
     {
-//        $form = $this->createDeleteForm($tarjeta_combustible);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($tarjeta_combustible);
-            $em->flush();
-//        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($tarjeta_combustible);
+        $em->flush();
+        $this->addFlash('notice', 'Se ha borrado correctamente!');
 
         return $this->redirectToRoute('tarjeta_combustible_index');
     }

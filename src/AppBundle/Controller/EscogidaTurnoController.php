@@ -46,7 +46,11 @@ class EscogidaTurnoController extends Controller
             $em->persist($escogidaTurno);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha insertado correctamente!');
+
             return $this->redirectToRoute('escogidaturno_index', array('id' => $escogidaTurno->getId()));
+        }else if($form->isSubmitted() && !$form->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al insertar');
         }
 
         return $this->render('escogidaturno/new.html.twig', array(
@@ -84,7 +88,11 @@ class EscogidaTurnoController extends Controller
             $em->persist($escogidaTurno);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha editado correctamente!');
+
             return $this->redirectToRoute('escogidaturno_index', array('id' => $escogidaTurno->getId()));
+        }else if($editForm->isSubmitted() && !$editForm->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al editar');
         }
 
         return $this->render('escogidaturno/edit.html.twig', array(
@@ -100,14 +108,11 @@ class EscogidaTurnoController extends Controller
      */
     public function deleteAction(Request $request, EscogidaTurno $escogidaTurno)
     {
-//        $form = $this->createDeleteForm($escogidaTurno);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($escogidaTurno);
-            $em->flush();
-//        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($escogidaTurno);
+        $em->flush();
+
+        $this->addFlash('notice', 'Se ha borrado correctamente!');
 
         return $this->redirectToRoute('escogidaturno_index');
     }

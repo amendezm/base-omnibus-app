@@ -18,10 +18,6 @@ use AppBundle\Form\TrabajadorType;
  */
 class TrabajadorController extends Controller
 {
-    /**
-     * Lists all Trabajador entities.
-     *
-     */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -33,10 +29,6 @@ class TrabajadorController extends Controller
         ));
     }
 
-    /**
-     * Creates a new Trabajador entity.
-     *
-     */
     public function newAction(Request $request)
     {
         $trabajador = new Trabajador();
@@ -57,7 +49,12 @@ class TrabajadorController extends Controller
                 $em->flush();
             }
 
+            $this->addFlash('notice', 'Se ha insertado correctamente!');
+
             return $this->redirectToRoute('trabajador_index', array('id' => $trabajador->getId()));
+
+        }else if($form->isSubmitted() && !$form->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al insertar');
         }
 
         return $this->render('trabajador/new.html.twig', array(
@@ -66,27 +63,15 @@ class TrabajadorController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a Trabajador entity.
-     *
-     */
     public function showAction(Trabajador $trabajador)
     {
-        //        $deleteForm = $this->createDeleteForm($trabajador);
-
         return $this->render('trabajador/show.html.twig', array(
             'trabajador' => $trabajador,
-            //            'delete_form' => $deleteForm->createView(),
         ));
     }
 
-    /**
-     * Displays a form to edit an existing Trabajador entity.
-     *
-     */
     public function editAction(Request $request, Trabajador $trabajador)
     {
-        //        $deleteForm = $this->createDeleteForm($trabajador);
         $editForm = $this->createForm('AppBundle\Form\TrabajadorType', $trabajador);
         $editForm->handleRequest($request);
 
@@ -110,7 +95,12 @@ class TrabajadorController extends Controller
             $em->persist($trabajador);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha editado correctamente!');
+
             return $this->redirectToRoute('trabajador_index', array('id' => $trabajador->getId()));
+
+        }else if($editForm->isSubmitted() && !$editForm->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al editar');
         }
 
         return $this->render('trabajador/edit.html.twig', array(
@@ -136,6 +126,8 @@ class TrabajadorController extends Controller
 
         $em->remove($trabajador);
         $em->flush();
+
+        $this->addFlash('notice', 'Se ha borrado correctamente!');
 
         return $this->redirectToRoute('trabajador_index');
     }
