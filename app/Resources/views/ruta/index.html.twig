@@ -9,7 +9,7 @@
       <div class="col-md-6 text-right">
         {% if not is_granted('ROLE_USUARIO' ) %}
         <a
-          class="btn btn-sm btn-default  pull-left"
+          class="btn btn-sm btn-default pull-left"
           href="{{ path('ruta_new') }}"
         >
           <img
@@ -37,6 +37,7 @@
           <th>Cant. Pasajeros Promedio</th>
           <th>Precio Pasaje</th>
           <th>Salida</th>
+          <th>Km Salida</th>
           <th>Destino</th>
           <th>Frecuencia</th>
           <th>Cantidad de Ómnibus</th>
@@ -55,6 +56,7 @@
             <td>{{ ruta.cantPasajerosPromedio }}</td>
             <td>{{ ruta.precioPasaje }}</td>
             <td>{{ ruta.salida }}</td>
+            <td>{{ ruta.kmSalida }}</td>
             <td>{{ ruta.destino }}</td>
             <td>{{ ruta.frecuencia }}</td>
             <td>{{ ruta.cantidadMedios }}</td>
@@ -94,7 +96,7 @@
     </div>
   </div>
 </div>
-<div id="mymodal" class="modal  inmodal fade">
+<div id="mymodal" class="modal inmodal fade">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header text-center">

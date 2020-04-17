@@ -9,14 +9,16 @@
   </div>
   <div class="card-body">
     <div class="col-md-8 offset-md-2">
-      <div class="form-group">
-        <label class="control-label">Ruta</label>
-        {{ form_widget(edit_form.noRuta, 
-            {'attr' : {'class' : 'form-control'}}
-        )}}
-      </div>
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Ruta</label>
+            {{ form_widget(edit_form.noRuta, 
+                {'attr' : {'class' : 'form-control'}}
+            )}}
+          </div>
+        </div>
+        <div class="col-md-6">
           <div class="form-group">
             <label class="control-label">Tipo de Servicio</label>
             {{ form_widget(edit_form.servicio, 
@@ -24,11 +26,21 @@
             )}}
           </div>
         </div>
+      </div>
+      <div class="row">
         <div class="col-sm-6">
           <div class="form-group">
             <label class="control-label">Distancia en kms</label>
             {{ form_widget(edit_form.distanciaKm, 
-            {'attr' : {'class' : 'form-control' }}
+              {'attr' : {'class' : 'form-control','pattern':'([0-9,]+)$' }}
+            )}}
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Km Salida</label>
+            {{ form_widget(edit_form.kmSalida, 
+                {'attr' : {'class' : 'form-control','pattern':'([0-9,]+)$' }}
             )}}
           </div>
         </div>
@@ -107,7 +119,7 @@
         <a class="btn btn-outline-secondary" href="{{ path('ruta_index') }}">
           Cancelar
         </a>
-        <button type="submit" class="btn btn-primary " value="Editar">
+        <button type="submit" class="btn btn-primary" value="Editar">
           Guardar
         </button>
       </div>

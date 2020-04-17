@@ -24,6 +24,7 @@ class RutaType extends AbstractType
             ->add('distanciaKm', NumberType::class, array('required' => true))
             ->add('cantPasajerosPromedio', IntegerType::class, array('required' => true))
             ->add('salida')
+            ->add('kmSalida', NumberType::class, array('required' => true))
             ->add('destino')
             ->add('dias', EntityType::class, array('class' => 'AppBundle\Entity\DiasSemana', 'multiple' => true, 'expanded' => true, 'required' => true))
             ->add('recaudacion')
