@@ -9,7 +9,7 @@
       <div class="col-sm-12 col-md-6 text-right">
         {% if not is_granted('ROLE_USUARIO' ) %}
         <a
-          class="btn btn-sm btn-default  pull-left"
+          class="btn btn-sm btn-default pull-left"
           data-toggle="tooltip"
           data-placement="top"
           href="{{ path('usuario_new') }}"
@@ -32,7 +32,7 @@
         id="dataTable"
         width="100%"
         cellspacing="0"
-        style="font-size:0.85rem"
+        style="font-size: 0.85rem;"
       >
         <thead>
           <tr>

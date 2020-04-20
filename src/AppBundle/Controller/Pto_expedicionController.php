@@ -46,7 +46,12 @@ class Pto_expedicionController extends Controller
             $em->persist($pto_expedicion);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha insertado correctamente!');
+
             return $this->redirectToRoute('pto_expedicion_index', array('id' => $pto_expedicion->getId()));
+
+        }else if($form->isSubmitted() && !$form->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al insertar');
         }
 
         return $this->render('pto_expedicion/new.html.twig', array(
@@ -84,7 +89,12 @@ class Pto_expedicionController extends Controller
             $em->persist($pto_expedicion);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha editado correctamente!');
+
             return $this->redirectToRoute('pto_expedicion_index', array('id' => $pto_expedicion->getId()));
+
+        }else if($editForm->isSubmitted() && !$editForm->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al editar');
         }
 
         return $this->render('pto_expedicion/edit.html.twig', array(
@@ -108,6 +118,8 @@ class Pto_expedicionController extends Controller
             $em->remove($pto_expedicion);
             $em->flush();
 //        }
+
+        $this->addFlash('notice', 'Se ha borrado correctamente!');
 
         return $this->redirectToRoute('pto_expedicion_index');
     }

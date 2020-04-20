@@ -60,7 +60,12 @@ class IncidenciaController extends Controller
             $em->flush();
             $hojaRutas = $em->getRepository('AppBundle:HojaRuta')->findAll();
 
+            $this->addFlash('notice', 'Se ha insertado correctamente!');
+
             return $this->redirectToRoute('hojaruta_index', array('hojaRutas' => $hojaRutas));
+
+        }else if($form->isSubmitted() && !$form->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al insertar');
         }
 
         return $this->render('incidencia/new.html.twig', array(
@@ -99,7 +104,12 @@ class IncidenciaController extends Controller
             $em->persist($incidencia);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha editado correctamente!');
+
             return $this->redirectToRoute('incidencia_index', array('id' => $incidencia->getIdincidencia()));
+
+        }else if($editForm->isSubmitted() && !$editForm->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al editar');
         }
 
         return $this->render('incidencia/edit.html.twig', array(
@@ -115,14 +125,11 @@ class IncidenciaController extends Controller
      */
     public function deleteAction(Request $request, Incidencia $incidencia)
     {
-        //        $form = $this->createDeleteForm($incidencia);
-        //        $form->handleRequest($request);
-        //
-        //        if ($form->isSubmitted() && $form->isValid()) {
         $em = $this->getDoctrine()->getManager();
         $em->remove($incidencia);
         $em->flush();
-        //        }
+
+        $this->addFlash('notice', 'Se ha borrado correctamente!');
 
         return $this->redirectToRoute('incidencia_index');
     }

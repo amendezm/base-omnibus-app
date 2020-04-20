@@ -92,7 +92,12 @@ class RecaudacionController extends Controller
             $em->persist($recaudacion);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha insertado correctamente!');
+
             return $this->redirectToRoute('recaudacion_index', array('id' => $recaudacion->getId()));
+
+        }else if($form->isSubmitted() && !$form->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al insertar');
         }
 
         return $this->render('recaudacion/new.html.twig', array(
@@ -113,7 +118,6 @@ class RecaudacionController extends Controller
         $OmnibusXno = $session->get('OmnibusXno');
         $NoRuta = $em->getRepository('CapacitacionBundle:Ruta')->findAll();
         $NoOmnibus = $em->getRepository('CapacitacionBundle:Omnibus')->findAll();
-//        $trab = $session->get('trabajador');
         $HojaRutas = $em->getRepository('CapacitacionBundle:HojaRuta')->findAll();
 
 
@@ -132,7 +136,6 @@ class RecaudacionController extends Controller
      */
     public function editAction(Request $request, Recaudacion $recaudacion)
     {
-//        $deleteForm = $this->createDeleteForm($recaudacion);
         $editForm = $this->createForm('AppBundle\Form\RecaudacionType', $recaudacion);
         $editForm->handleRequest($request);
 
@@ -141,7 +144,12 @@ class RecaudacionController extends Controller
             $em->persist($recaudacion);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha editado correctamente!');
+
             return $this->redirectToRoute('recaudacion_index', array('id' => $recaudacion->getId()));
+
+        }else if($editForm->isSubmitted() && !$editForm->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al editar');
         }
 
         return $this->render('recaudacion/edit.html.twig', array(
@@ -157,13 +165,12 @@ class RecaudacionController extends Controller
      */
     public function deleteAction(Request $request, Recaudacion $recaudacion)
     {
-//        $form = $this->createDeleteForm($recaudacion);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
         $em = $this->getDoctrine()->getManager();
         $em->remove($recaudacion);
         $em->flush();
+
+        $this->addFlash('notice', 'Se ha borrado correctamente!');
+
         return $this->redirectToRoute('recaudacion_index');
     }
 

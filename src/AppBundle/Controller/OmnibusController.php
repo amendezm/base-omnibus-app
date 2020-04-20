@@ -210,7 +210,11 @@ class OmnibusController extends Controller
             $em->persist($omnibus);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha insertado correctamente!');
+
             return $this->redirectToRoute('omnibus_index', array('id' => $omnibus->getId()));
+        }else if($form->isSubmitted() && !$form->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al insertar');
         }
 
         return $this->render('omnibus/new.html.twig', array(
@@ -248,7 +252,11 @@ class OmnibusController extends Controller
             $em->persist($omnibus);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha editado correctamente');
+
             return $this->redirectToRoute('omnibus_index', array('id' => $omnibus->getId()));
+        }else if($editForm->isSubmitted() && !$editForm->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al editar');
         }
 
         return $this->render('omnibus/edit.html.twig', array(
@@ -267,6 +275,9 @@ class OmnibusController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->remove($omnibus);
         $em->flush();
+
+        $this->addFlash('notice', 'Se ha borrado correctamente');
+
 
         return $this->redirectToRoute('omnibus_index');
     }

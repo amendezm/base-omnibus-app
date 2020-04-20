@@ -39,7 +39,12 @@ class CombustibleHabilitadoController extends Controller
             $em->persist($combustibleHabilitado);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha insertado correctamente!');
+
             return $this->redirectToRoute('combustible_habilitado_index', array('id' => $combustibleHabilitado->getId()));
+
+        }else if($form->isSubmitted() && !$form->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al insertar');
         }
 
         return $this->render('combustible_habilitado/new.html.twig', array(
@@ -59,7 +64,12 @@ class CombustibleHabilitadoController extends Controller
             $em->persist($combustibleHabilitado);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha editado correctamente!');
+
             return $this->redirectToRoute('combustible_habilitado_index', array('id' => $combustibleHabilitado->getId()));
+
+        }else if($editForm->isSubmitted() && !$editForm->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al editar');
         }
 
         return $this->render('combustible_habilitado/edit.html.twig', array(
@@ -74,6 +84,8 @@ class CombustibleHabilitadoController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->remove($combustibleHabilitado);
         $em->flush();
+
+        $this->addFlash('notice', 'Se ha borrado correctamente!');
 
         return $this->redirectToRoute('combustible_habilitado_index');
     }

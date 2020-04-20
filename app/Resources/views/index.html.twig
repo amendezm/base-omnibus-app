@@ -42,6 +42,12 @@
       rel="stylesheet"
     />
 
+    <!-- notifier -->
+    <link
+      href="{{ asset('assets/notifierjs/Notifier.min.css') }}"
+      rel="stylesheet"
+    />
+
     <!-- datetime picker -->
     <link
       href="{{
@@ -88,6 +94,7 @@
     {% endblock %}
   </head>
   <body id="page-top">
+    {% include "commons/flashMessages.html.twig" %}
     <div id="wrapper">
       {% block sidebar %} {% include 'sidebar.html.twig' %} {% endblock %}
 
@@ -426,6 +433,7 @@
 
     <!-- Page level plugins -->
     <script src="{{ asset('assets/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset('assets/notifierjs/Notifier.min.js') }}"></script>
     <script src="{{
         asset('assets/datatables/jquery.dataTables.min.js')
       }}"></script>
@@ -450,6 +458,7 @@
     <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
     <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
     <script src="{{ asset('js/reports/kms-per-bus.js') }}"></script>
+    <script src="{{ asset('js/javascript/flash-messages.js') }}"></script>
     {% endblock javascripts %}
   </body>
 </html>

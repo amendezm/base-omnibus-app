@@ -50,7 +50,11 @@ class Tipo_omnibusController extends Controller
             $em->persist($tipo_omnibus);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha insertado correctamente!');
+
             return $this->redirectToRoute('tipo_omnibus_index', array('id' => $tipo_omnibus->getId()));
+        }else if($form->isSubmitted() && !$form->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al insertar');
         }
 
         return $this->render('tipo_omnibus/new.html.twig', array(
@@ -91,7 +95,11 @@ class Tipo_omnibusController extends Controller
             $em->persist($tipo_omnibus);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha editado correctamente!');
+
             return $this->redirectToRoute('tipo_omnibus_index', array('id' => $tipo_omnibus->getId()));
+        }else if($editForm->isSubmitted() && !$editForm->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al editar');
         }
 
         return $this->render('tipo_omnibus/edit.html.twig', array(
@@ -114,6 +122,8 @@ class Tipo_omnibusController extends Controller
         $em->remove($tipo_omnibus);
         $em->flush();
         //        }
+        
+        $this->addFlash('notice', 'Se ha borrado correctamente!');
 
         return $this->redirectToRoute('tipo_omnibus_index');
     }

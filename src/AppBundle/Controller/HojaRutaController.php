@@ -51,19 +51,19 @@ class HojaRutaController extends Controller
 
             $em->persist($hojaRuta);
             $em->flush();
-            // Coje los tipos de incidencias escojidas y lo guarda en en atributo Incidencias
-            //            $tipoIncidencias= $hojaRuta->getIncidenciahr();
-            //            $strIncidencias = "";
-            //            foreach ($tipoIncidencias as $i) {
-            //                $strIncidencias .= $i . ", ";
-            //            }
+            
             $totalHoras = $hojaRuta->getBasico() + $hojaRuta->getConfronta() + $hojaRuta->getConIncremento() + $hojaRuta->getTurnopartido() + $hojaRuta->getVoluntario();
             $hojaRuta->setTotalHoras($totalHoras);
-            //            $hojaRuta->setIncidenciahr($strIncidencias);
+            
             $em->persist($hojaRuta);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha insertado correctamente!');
+
             return $this->redirectToRoute('hojaruta_index', array('id' => $hojaRuta->getId()));
+
+        }else if($form->isSubmitted() && !$form->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al insertar');
         }
 
         return $this->render('hojaruta/new.html.twig', array(
@@ -106,34 +106,27 @@ class HojaRutaController extends Controller
      */
     public function editAction(Request $request, HojaRuta $hojaRuta)
     {
-        //        $deleteForm = $this->createDeleteForm($hojaRuta);
         $editForm = $this->createForm('AppBundle\Form\HojaRutaEditType', $hojaRuta);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            //            // Coje los tipos de horas escojidas y lo guarda en en atributo ViajesPerdidos
-            //            $tipoHoras= $hojaRuta->getTipoHoras();
-            //            $strHoras = "";
-            //            foreach ($tipoHoras as $d) {
-            //                $strHoras .= $d . ", ";
-            //            }
-            //
-            //            $hojaRuta->setTipoHorasString($strHoras);
-            //            $em->persist($hojaRuta);
-            //            $em->flush();
             $totalHoras = $hojaRuta->getBasico() + $hojaRuta->getConfronta() + $hojaRuta->getConIncremento() + $hojaRuta->getTurnopartido() + $hojaRuta->getVoluntario();
             $hojaRuta->setTotalHoras($totalHoras);
             $em->persist($hojaRuta);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha editado correctamente!');
+            
             return $this->redirectToRoute('hojaruta_index', array('id' => $hojaRuta->getId()));
+
+        }else if($editForm->isSubmitted() && !$editForm->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al editar');
         }
 
         return $this->render('hojaruta/edit.html.twig', array(
             'hojaRuta' => $hojaRuta,
             'edit_form' => $editForm->createView(),
-            //            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -154,6 +147,8 @@ class HojaRutaController extends Controller
         $em->remove($hojaRuta);
         $em->flush();
 
+        $this->addFlash('notice', 'Se ha borrado correctamente!');
+
         return $this->redirectToRoute('hojaruta_index');
     }
 
@@ -171,37 +166,7 @@ class HojaRutaController extends Controller
             ->setMethod('DELETE')
             ->getForm();
     }
-    //captura los id de tipos de horas de trabajo y los de hoja ruta y los incerta en la BD
-    //    public function CapturarIdAction(Ruta $ruta , HojaRuta $HojaRuta)
-    //    {
-    ////        $em = $this->getDoctrine()->getManager();
-    ////        $tipoHoras= $em->getRepository('AppBundle:Tipo_horas_trabajo')->findAll();
-    //        $idtipoHoras=4;;
-    //
-    //        foreach ($idtipoHoras as $c){
-    //            $HojaRuta->getId($this->getDoctrine()->getManager()->getRepository('AppBundle:HojaRuta'));
-    //            $ruta->getId($this->getDoctrine()->getManager()->getRepository('AppBundle:Ruta'));
-    //            if ($HojaRuta==) {
-    //                $id = new Tipo_horas_trabajo();
-    //                $id->getId();
-    //                $em->persist($basico);
-    //        }
-    //
-    ////        $db = $em->getConnection();
-    ////
-    ////        $query = 'SELECT t.tipoincidencias,o.noomnibus,c.nombre,r.noruta,s.tipo
-    ////FROM
-    ////  omnibus o,ruta r,tipo_incidencia t,chofer c,servicio s,hoja_ruta h
-    ////WHERE h.id_ruta=r.id AND h.id_omnibus=o.id AND s.id=r.servicio_id AND o.id=c.omnibus_id
-    //// ';
-    ////        $stmt = $db->prepare($query);
-    ////        $params = array();
-    ////        $stmt->execute($params);
-    ////        $reportes = $stmt->fetchAll();
-    //        return $this->render('ruta/reporte.html.twig', array(
-    ////            'reportes' => $reportes
-    //        ));
-    //    }
+   
     public function reporte_hoja_ruta_fechaAction()
     {
         $em = $this->getDoctrine()->getManager();

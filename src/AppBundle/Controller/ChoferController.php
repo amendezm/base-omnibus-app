@@ -88,6 +88,8 @@ class ChoferController extends Controller
             $em->persist($chofer);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha editado correctamente!');
+
             return $this->redirectToRoute('chofer_index', array('id' => $chofer->getId()));
         }
 

@@ -44,7 +44,12 @@ class TipoIncidenciaController extends Controller
             $em->persist($tipoIncidencia);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha insertado correctamente!');
+            
             return $this->redirectToRoute('tipoincidencia_index', array('id' => $tipoIncidencia->getId()));
+
+        }else if($form->isSubmitted() && !$form->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al insertar');
         }
 
         return $this->render('tipoincidencia/new.html.twig', array(
@@ -82,13 +87,16 @@ class TipoIncidenciaController extends Controller
             $em->persist($tipoIncidencia);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha editado correctamente!');
+
             return $this->redirectToRoute('tipoincidencia_index', array('id' => $tipoIncidencia->getId()));
+        }else if($editForm->isSubmitted() && !$editForm->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al editar');
         }
 
         return $this->render('tipoincidencia/edit.html.twig', array(
             'tipoIncidencia' => $tipoIncidencia,
             'edit_form' => $editForm->createView(),
-//            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -98,14 +106,11 @@ class TipoIncidenciaController extends Controller
      */
     public function deleteAction(Request $request, TipoIncidencia $tipoIncidencia)
     {
-//        $form = $this->createDeleteForm($tipoIncidencia);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($tipoIncidencia);
-            $em->flush();
-//        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($tipoIncidencia);
+        $em->flush();
+
+        $this->addFlash('notice', 'Se ha borrado correctamente!');
 
         return $this->redirectToRoute('tipoincidencia_index');
     }

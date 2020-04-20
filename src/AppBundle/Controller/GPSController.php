@@ -16,10 +16,6 @@ use AppBundle\Form\GPSType;
  */
 class GPSController extends Controller
 {
-    /**
-     * Lists all GPS entities.
-     *
-     */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -31,10 +27,6 @@ class GPSController extends Controller
         ));
     }
 
-    /**
-     * Creates a new GPS entity.
-     *
-     */
     public function newAction(Request $request)
     {
         $gps = new GPS();
@@ -55,7 +47,12 @@ class GPSController extends Controller
             $em->persist($gps);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha insertado correctamente!');
+
             return $this->redirectToRoute('gps_index', array('id' => $gps->getId()));
+
+        }else if($form->isSubmitted() && !$form->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al insertar');
         }
 
         return $this->render('gps/new.html.twig', array(
@@ -64,27 +61,15 @@ class GPSController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a GPS entity.
-     *
-     */
     public function showAction(GPS $gP)
     {
-//        $deleteForm = $this->createDeleteForm($gP);
-
         return $this->render('gps/show.html.twig', array(
             'gP' => $gP,
-//            'delete_form' => $deleteForm->createView(),
         ));
     }
 
-    /**
-     * Displays a form to edit an existing GPS entity.
-     *
-     */
     public function editAction(Request $request, GPS $gps)
     {
-//        $deleteForm = $this->createDeleteForm($gps);
         $editForm = $this->createForm('AppBundle\Form\GPSType', $gps);
         $editForm->handleRequest($request);
 
@@ -102,30 +87,27 @@ class GPSController extends Controller
             $em->persist($gps);
             $em->flush();
 
+            $this->addFlash('notice', 'Se ha editado correctamente!');
+
             return $this->redirectToRoute('gps_index', array('id' => $gps->getId()));
+
+        }else if($editForm->isSubmitted() && !$editForm->isValid()){
+            $this->addFlash('error', 'Ha ocurrido algún error al editar');
         }
 
         return $this->render('gps/edit.html.twig', array(
             'GPS' => $gps,
             'edit_form' => $editForm->createView(),
-//            'delete_form' => $deleteForm->createView(),
         ));
     }
 
-    /**
-     * Deletes a GPS entity.
-     *
-     */
     public function deleteAction(Request $request, GPS $gps)
     {
-//        $form = $this->createDeleteForm($gps);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($gps);
-            $em->flush();
-//        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($gps);
+        $em->flush();
+
+        $this->addFlash('notice', 'Se ha borrado correctamente!');
 
         return $this->redirectToRoute('gps_index');
     }
