@@ -1,0 +1,153 @@
+body {
+  max-height: 100vh;
+}
+
+body > .content {
+  max-height: 94vh;
+}
+
+body > .content > .login-box {
+  margin: 3% auto;
+}
+
+body > .main-footer {
+  max-height: 6vh;
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 0.4vw;
+  cursor: pointer;
+  position: absolute;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+  visibility: hidden;
+  background-clip: padding-box;
+}
+
+.sidebar-content::-webkit-scrollbar {
+  width: 0.35vw;
+  cursor: pointer;
+  position: absolute;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+  background: lightgray;
+}
+
+*:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: #999999;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  visibility: visible;
+  background: rgb(193, 193, 193);
+}
+
+.main-footer {
+  margin-left: 0;
+  height: 8vh;
+}
+
+.sidebar.toggled > .sidebar-brand {
+  visibility: hidden;
+}
+
+.sidebar > .sidebar-content > .sidebar-heading.dpto1,
+.sidebar > .sidebar-content > .sidebar-heading.admin1 {
+  visibility: visible;
+}
+
+.sidebar > .sidebar-content > .sidebar-heading.dpto2,
+.sidebar > .sidebar-content > .sidebar-heading.admin2 {
+  visibility: hidden;
+}
+
+.sidebar.toggled > .sidebar-content > .sidebar-heading.dpto1,
+.sidebar.toggled > .sidebar-content > .sidebar-heading.admin1 {
+  visibility: hidden;
+}
+
+.sidebar.toggled > .sidebar-content > .sidebar-heading.dpto2,
+.sidebar.toggled > .sidebar-content > .sidebar-heading.admin2 {
+  visibility: visible;
+}
+
+.sidebar-brand {
+  margin-left: -3rem !important;
+}
+
+.sidebar-item {
+  padding: 0.4rem 0.25rem 0.4rem 1rem !important;
+}
+
+.hide-element {
+  display: none !important;
+}
+
+/* The following styles refers to layout, including fixed height and scrolls */
+
+#page-top {
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.sidebar-brand {
+  height: 4rem !important;
+}
+
+.sidebar-content {
+  height: calc(100vh - 4rem);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-top: 1rem;
+}
+
+#elemento1 {
+  height: 4rem;
+  z-index: 5;
+}
+
+.navbar-nav {
+  padding: 0 0.2rem;
+}
+
+#content {
+  height: calc(100vh - 7rem);
+  overflow-y: scroll;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.sticky-footer {
+  height: 3rem;
+  box-shadow: -2px 0 5px 1px lightgrey;
+  z-index: 5;
+  background-color: ghostwhite !important;
+}
+
+/* flash messages custom styles */
+.alert {
+  z-index: 10;
+  position: absolute;
+  right: 3rem;
+  top: 8.2rem;
+  width: 79vw;
+}
+
+/*multiple choice days*/
+#ruta_dias {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

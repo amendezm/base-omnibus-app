@@ -1,0 +1,27 @@
+security:
+  providers:
+    our_db_provider:
+      entity:
+        class: App:Usuario
+        property: usuario
+  firewalls:
+    main:
+      pattern: ^/
+      anonymous: lazy
+      provider: our_db_provider
+      form_login:
+        login_path: /login
+        check_path: /login
+        csrf_token_generator: security.csrf.token_manager
+      logout:
+        path: /logout
+        target: /
+  access_control:
+    - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/usuario/*, roles: ROLE_ADMIN }
+  #
+
+  encoders:
+    App\Entity\Usuario:
+      algorithm: bcrypt
+      cost: 12

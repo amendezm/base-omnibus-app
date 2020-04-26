@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="dataSourceStorageLocal">
-    <data-source name="PostgreSQL - BaseOmnibus@localhost" uuid="ec16908f-88f1-4416-8e07-c2a9cdccd091">
-      <user-name>postgres</user-name>
-      <user-password>dfdadfc5dfd9dfdedfcddfd8dfcfdfd9</user-password>
-    </data-source>
-  </component>
-</project>

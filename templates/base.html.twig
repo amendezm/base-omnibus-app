@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+
+    <title id="elemento6">
+      {% block title %} |Bienvenido! {% endblock %}
+    </title>
+
+    <meta
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+      name="viewport"
+    />
+    {% block stylesheets %}
+    <!-- Bootstrap 3.3.5 -->
+    <link
+      rel="stylesheet"
+      href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="{{ asset('assets/dist/font-awesome/css/font-awesome.min.css') }}"
+    />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('assets/dist/css/AdminLTE.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ asset('assets/dist/css/fonts.googleapis.SourceSansPro.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ asset('assets/dist/css/skins/_all-skins.css') }}"
+    />
+    <!-- Custom style -->
+    <link rel="stylesheet" href="{{ asset('css/custom/base.css') }}" />
+    <!-- admin bootstrap template -->
+    <link
+      rel="stylesheet"
+      href="{{ asset('css/admin-template/sb-admin.min.css') }}"
+    />
+
+    {% endblock %}
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ asset('apple-touch-icon.png') }}"
+    />
+  </head>
+  <body>
+    {% block body %}
+    <section class="content">
+      {% block contenido %}
+      <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a href="#tab_1" data-toggle="tab">Misión</a>
+          </li>
+          <li>
+            <a href="#tab_2" data-toggle="tab">Visión</a>
+          </li>
+          <li>
+            <a href="#tab_3" data-toggle="tab">Organigrama</a>
+          </li>
+          <li class="pull-right">
+            <a href="#" class="text-muted">
+              <i class=""></i>
+            </a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div align="justify" class="tab-pane active" id="tab_1">
+            <b></b>
+            <h3>
+              Satisfacemos las expectativas de los clientes con servicios de
+              transportación de pasajeros, conexos y cargas en general con
+              trabajadores de un alto sentido de pertenencia y un parque de
+              equipos en constante revitalización.
+            </h3>
+          </div>
+          <div align="justify" class="tab-pane" id="tab_2">
+            <h3>
+              Somos líderes en la prestación de servicios a nuestros clientes,
+              con calidad, oportunidad y seguridad.
+            </h3>
+          </div>
+          <div class="tab-pane" id="tab_3">
+            <img
+              height="400"
+              width="735"
+              src="{{ asset('assets/dist/img/Organigrama Empresa.png') }}"
+            />
+          </div>
+        </div>
+      </div>
+      {% endblock %}
+    </section>
+    {% endblock %}
+  </body>
+  {% block javascripts %}
+  <script src="{{
+      asset('assets/plugins/jQuery/jQuery-2.2.0.min.js')
+    }}"></script>
+  <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('assets/dist/js/app.min.js') }}"></script>
+  <script src="{{ asset('assets/dist/js/app.min.js') }}"></script>
+  <script src="{{ asset('js/javascript/sb-admin.min.js') }}"></script>
+  {% endblock javascripts %}
+</html>

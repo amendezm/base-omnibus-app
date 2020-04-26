@@ -1,0 +1,142 @@
+{% extends 'index.html.twig' %} {% block contenido %}
+<br />
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a id="bus-tab" class="nav-link active" href="#">Ómnibus</a>
+  </li>
+  <li class="nav-item">
+    <a id="graphic-tab" class="nav-link" href="#">Gráfica</a>
+  </li>
+</ul>
+<div class="bus-list-container">
+  <br />
+  <div class="row">
+    <div class="col-md-3">
+      <input
+        id="busNumberFilter"
+        type="text"
+        class="form-control"
+        placeholder="Carro"
+      />
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <div
+          class="col-md-3 offset-md-1 text-primary font-weight-bold text-right"
+          style="display: flex; align-items: center;"
+        >
+          <span style="width: 100%;">
+            Kilómetros
+          </span>
+        </div>
+        <div class="col-md-4">
+          <input
+            id="minKilometersFilter"
+            type="number"
+            min="0"
+            class="form-control"
+            placeholder="Desde..."
+          />
+        </div>
+        <div class="col-md-4">
+          <input
+            id="maxKilometersFilter"
+            type="number"
+            min="0"
+            class="form-control"
+            placeholder="Hasta..."
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <br /><br />
+  <p class="empty-bus-message hide-element text-center">
+    <span class="icon">
+      <i class="fas fa-info-circle text-warning"></i>
+    </span>
+    No existen ómnibus que cumplan con el criterio especificado
+  </p>
+  <div class="row bus-container" style="font-size: 0.65rem;">
+    {% for reporte in reportes %}
+    <div
+      class="col-md-3 bus-item"
+      data-number="{{ reporte.noomnibus }}"
+      data-kilometers="{{ reporte.kmrecorridosacumulados }}"
+    >
+      <div class="card shadow" style="margin-bottom: 1rem;">
+        <div class="card-body" style="padding: 0.55rem;">
+          <div class="media">
+            <img
+              src="{{ asset('assets/dist/img/yutong.jpg') }}"
+              class="mr-3 rounded"
+              alt="..."
+              height="40"
+              width="45"
+            />
+            <div class="media-body">
+              <div class="row">
+                <div class="col">
+                  <h6 class="mt-0" style="font-size: 0.85rem;">
+                    Carro {{ reporte.noomnibus }}
+                  </h6>
+                </div>
+                <div class="col-auto text-right">
+                  <span
+                    data-tooltip="{{
+                      reporte.mantenimiento ? 'En mantenimiento' : 'Disponible'
+                    }}"
+                    data-tooltip-location="left"
+                  >
+                    <i
+                      class="fas fa-circle {{
+                        reporte.mantenimiento ? 'text-danger' : 'text-success'
+                      }}"
+                    ></i>
+                  </span>
+                </div>
+              </div>
+              <p>
+                <span class="font-weight-bold">
+                  {{ reporte.kmrecorridosacumulados }}
+                </span>
+                kilómetros
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<div class="graphics-container hide-element">
+  <br />
+  <input
+    id="kilometersData"
+    type="text"
+    value="{{ kmValuesArray }}"
+    style="display: none;"
+  />
+  <input
+    id="omnibusNumbers"
+    type="text"
+    value="{{ omnibusNumbers }}"
+    style="display: none;"
+  />
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card shadow mb-4">
+        <div class="card-body">
+          <div class="chart-bar">
+            <canvas id="myBarChart"></canvas>
+          </div>
+          <hr />
+          En total se han recorrido
+          <span class="font-weight-bold">{{ totalKilometers }}km</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
