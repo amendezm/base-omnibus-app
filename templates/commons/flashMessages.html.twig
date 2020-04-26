@@ -1,0 +1,5 @@
+{% for flash_message in app.session.flashBag.get('notice') %}
+<span class="notice-flash hide-element">{{ flash_message }}</span>
+{% endfor %} {% for flash_message in app.session.flashBag.get('error') %}
+<span class="error-flash hide-element">{{ flash_message }}</span>
+{% endfor %}

@@ -1,0 +1,95 @@
+{% extends 'index.html.twig' %} {% block contenido %}
+<br />
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h3 class="m-0 text-primary">Usuarios</h3>
+      </div>
+      <div class="col-sm-12 col-md-6 text-right">
+        <a
+          class="btn btn-sm btn-default pull-left"
+          data-toggle="tooltip"
+          data-placement="top"
+          href="{{ path('usuario_new') }}"
+          title="Nuevo Usuario"
+        >
+          <img
+            src="{{ asset('assets/dist/img/add_database_26px.png') }}"
+            alt="User Image"
+          />
+          Nuevo
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="table-reponsive">
+      <table
+        class="table"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+        style="font-size: 0.85rem;"
+      >
+        <thead>
+          <tr>
+            <th class="text-center">Usuario</th>
+            <th class="text-center">Fecha-registro</th>
+            <th class="text-center">Estado</th>
+            <th class="text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for usuario in usuarios %}
+          <tr>
+            <td class="text-center">{{ usuario.usuario }}</td>
+            <td class="text-center">
+              {% if usuario.fechaRegistro %}
+              {{ usuario.fechaRegistro|date('Y-m-d H:i:s')}}
+              {% endif %}
+            </td>
+            <td class="text-center">
+              {% if usuario.isActive %} activo {% else %}
+              <span style="font-weight: bold;">
+                inactivo
+              </span>
+              {% endif %}
+            </td>
+            <td class="text-center">
+              <div class="row">
+                <div class="col-md-3 offset-md-3">
+                  <a
+                    class="text-secondary"
+                    href="#"
+                    rol="button"
+                    data-toggle="modal"
+                    data-target="#modalConfirmDelete-{{ usuario.id }}"
+                    data-tooltip="Eliminar"
+                    data-tooltip-location="top"
+                  >
+                    <i class="fas fa-trash-alt"></i>
+                  </a>
+                  {% include "commons/confirmDeleteModal.html.twig" with
+                  {'instanceToDelete': usuario, 'path':'usuario_delete'} %}
+                </div>
+                <div class="col-md-3">
+                  <a
+                    class="text-primary"
+                    href="{{ path('usuario_edit', { id: usuario.id }) }}"
+                    data-tooltip="Editar"
+                    data-tooltip-location="top"
+                  >
+                    <i class="fas fa-edit"></i>
+                  </a>
+                </div>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

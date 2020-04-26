@@ -1,0 +1,421 @@
+app:
+  resource: "@App/Controller/"
+  type: annotation
+login:
+  path: /login
+  controller: App\Controller\SecurityController:loginAction
+# login_check:
+#   path: /login_check
+logout:
+  path: /logout
+
+usuario_index:
+  path: /usuario
+  controller: App\Controller\UsuarioController:indexAction
+  methods: GET
+usuario_show:
+  path: /usuario/{id}/show
+  controller: App\Controller\UsuarioController:showAction
+  methods: GET
+usuario_new:
+  path: /usuario/new
+  controller: App\Controller\UsuarioController:newAction
+  methods: [GET, POST]
+usuario_edit:
+  path: /usuario/{id}/edit
+  controller: App\Controller\UsuarioController:editAction
+  methods: [GET, POST]
+usuario_delete:
+  path: /usuario/{id}/delete
+  controller: App\Controller\UsuarioController:deleteAction
+  methods: [GET, POST, DELETE]
+
+ruta_index:
+  path: /ruta
+  controller: App\Controller\RutaController:indexAction
+  methods: GET
+ruta_reporte:
+  path: /ruta/reporte
+  controller: App\Controller\RutaController:reporteAction
+  methods: GET
+ruta_reporte_show:
+  path: /ruta/reporte/visualizar
+  controller: App\Controller\RutaController:showIncidencias_xRuta_reporteAction
+  methods: GET
+ruta_show:
+  path: /ruta/{id}/show
+  controller: App\Controller\RutaController:showAction
+  methods: GET
+ruta_new:
+  path: /ruta/new
+  controller: App\Controller\RutaController:newAction
+  methods: [GET, POST]
+ruta_edit:
+  path: /ruta/{id}/edit
+  controller: App\Controller\RutaController:editAction
+  methods: [GET, POST]
+ruta_delete:
+  path: /ruta/{id}/delete
+  controller: App\Controller\RutaController:deleteAction
+  methods: [GET, POST, DELETE]
+
+escogidaturno_index:
+  path: /escogidaturno
+  controller: App\Controller\EscogidaTurnoController:indexAction
+  methods: GET
+escogidaturno_show:
+  path: /escogidaturno/{id}/show
+  controller: App\Controller\EscogidaTurnoController:showAction
+  methods: GET
+escogidaturno_new:
+  path: /escogidaturno/new
+  controller: App\Controller\EscogidaTurnoController:newAction
+  methods: [GET, POST]
+escogidaturno_edit:
+  path: /escogidaturno/{id}/edit
+  controller: App\Controller\EscogidaTurnoController:editAction
+  methods: [GET, POST]
+escogidaturno_delete:
+  path: /escogidaturno/{id}/delete
+  controller: App\Controller\EscogidaTurnoController:deleteAction
+  methods: [GET, POST, DELETE]
+
+tipo_omnibus_index:
+  path: /tipo_omnibus
+  controller: App\Controller\Tipo_omnibusController:indexAction
+  methods: GET
+tipo_omnibus_show:
+  path: /tipo_omnibus/{id}/show
+  controller: App\Controller\Tipo_omnibusController:showAction
+  methods: GET
+tipo_omnibus_new:
+  path: /tipo_omnibus/new
+  controller: App\Controller\Tipo_omnibusController:newAction
+  methods: [GET, POST]
+tipo_omnibus_edit:
+  path: /tipo_omnibus/{id}/edit
+  controller: App\Controller\Tipo_omnibusController:editAction
+  methods: [GET, POST]
+tipo_omnibus_delete:
+  path: /tipo_omnibus/{id}/delete
+  controller: App\Controller\Tipo_omnibusController:deleteAction
+  methods: [GET, POST, DELETE]
+
+base_index:
+  path: /base
+  controller: App\Controller\baseController:indexAction
+  methods: GET
+base_show:
+  path: /base/{id}/show
+  controller: App\Controller\baseController:showAction
+  methods: GET
+base_new:
+  path: /base/new
+  controller: App\Controller\baseController:newAction
+  methods: [GET, POST]
+base_edit:
+  path: /base/{id}/edit
+  controller: App\Controller\baseController:editAction
+  methods: [GET, POST]
+base_delete:
+  path: /base/{id}/delete
+  controller: App\Controller\baseController:deleteAction
+  methods: [GET, POST, DELETE]
+
+index:
+  path: /
+  controller: App\Controller\DefaultController:indexAction
+
+tipoincidencia_index:
+  path: /tipoincidencia
+  controller: App\Controller\TipoIncidenciaController:indexAction
+  methods: GET
+tipoincidencia_show:
+  path: /tipoincidencia/{id}/show
+  controller: App\Controller\TipoIncidenciaController:showAction
+  methods: GET
+tipoincidencia_new:
+  path: /tipoincidencia/new
+  controller: App\Controller\TipoIncidenciaController:newAction
+  methods: [GET, POST]
+tipoincidencia_edit:
+  path: /tipoincidencia/{id}/edit
+  controller: App\Controller\TipoIncidenciaController:editAction
+  methods: [GET, POST]
+tipoincidencia_delete:
+  path: /tipoincidencia/{id}/delete
+  controller: App\Controller\TipoIncidenciaController:deleteAction
+  methods: [GET, POST, DELETE]
+
+tarjeta_combustible_index:
+  path: /tarjeta_combustible
+  controller: App\Controller\Tarjeta_combustibleController:indexAction
+  methods: GET
+tarjeta_Reporte_mensual:
+  path: /tarjeta_combustible/reporte_mensual
+  defaults:
+  controller: App\Controller\Tarjeta_combustibleController:reporte_tarjeta_mensualAction
+  methods: GET
+tarjeta_combustible_show:
+  path: /tarjeta_combustible/{id}/show
+  controller: App\Controller\Tarjeta_combustibleController:showAction
+  methods: GET
+tarjeta_combustible_new:
+  path: /tarjeta_combustible/new
+  controller: App\Controller\Tarjeta_combustibleController:newAction
+  methods: [GET, POST]
+tarjeta_combustible_edit:
+  path: /tarjeta_combustible/{id}/edit
+  controller: App\Controller\Tarjeta_combustibleController:editAction
+  methods: [GET, POST]
+tarjeta_combustible_delete:
+  path: /tarjeta_combustible/{id}/delete
+  controller: App\Controller\Tarjeta_combustibleController:deleteAction
+  methods: [GET, POST, DELETE]
+
+gps_index:
+  path: /gps
+  controller: App\Controller\GPSController:indexAction
+  methods: GET
+gps_show:
+  path: /gps/{id}/show
+  controller: App\Controller\GPSController:showAction
+  methods: GET
+gps_new:
+  path: /gps/new
+  controller: App\Controller\GPSController:newAction
+  methods: [GET, POST]
+gps_edit:
+  path: /gps/{id}/edit
+  controller: App\Controller\GPSController:editAction
+  methods: [GET, POST]
+gps_delete:
+  path: /gps/{id}/delete
+  controller: App\Controller\GPSController:deleteAction
+  methods: [GET, POST, DELETE]
+
+pto_expedicion_index:
+  path: /pto_expedicion
+  controller: App\Controller\Pto_expedicionController:indexAction
+  methods: GET
+pto_expedicion_show:
+  path: /pto_expedicion/{id}/show
+  controller: App\Controller\Pto_expedicionController:showAction
+  methods: GET
+pto_expedicion_new:
+  path: /pto_expedicion/new
+  controller: App\Controller\Pto_expedicionController:newAction
+  methods: [GET, POST]
+pto_expedicion_edit:
+  path: /pto_expedicion/{id}/edit
+  controller: App\Controller\Pto_expedicionController:editAction
+  methods: [GET, POST]
+pto_expedicion_delete:
+  path: /pto_expedicion/{id}/delete
+  controller: App\Controller\Pto_expedicionController:deleteAction
+  methods: [GET, POST, DELETE]
+
+tipocombustible_index:
+  path: /tipocombustible
+  controller: App\Controller\TipoCombustibleController:indexAction
+  methods: GET
+tipocombustible_show:
+  path: /tipocombustible/{id}/show
+  controller: App\Controller\TipoCombustibleController:showAction
+  methods: GET
+tipocombustible_new:
+  path: /tipocombustible/new
+  controller: App\Controller\TipoCombustibleController:newAction
+  methods: [GET, POST]
+tipocombustible_edit:
+  path: /tipocombustible/{id}/edit
+  controller: App\Controller\TipoCombustibleController:editAction
+  methods: [GET, POST]
+tipocombustible_delete:
+  path: /tipocombustible/{id}/delete
+  controller: App\Controller\TipoCombustibleController:deleteAction
+  methods: [GET, POST, DELETE]
+
+omnibus_index:
+  path: /omnibus
+  controller: App\Controller\OmnibusController:indexAction
+  methods: GET
+plan_combustible:
+  path: /omnibus/plan_combustible
+  controller: App\Controller\OmnibusController:Plan_combustibleAction
+  methods: GET
+combustibleHabilitado:
+  path: /omnibus/combustibleHabilitado
+  controller: App\Controller\OmnibusController:combustibleHabilitadoAction
+  methods: GET
+reporteporOmnibus:
+  path: /omnibus/reporteporOmnibus
+  controller: App\Controller\OmnibusController:reporteporOmnibusAction
+  methods: GET
+omnibus_reporteKms:
+  path: /omnibus/kms
+  controller: App\Controller\OmnibusController:KmsRecorridosAction
+  methods: GET
+omnibus_show:
+  path: /omnibus/{id}/show
+  controller: App\Controller\OmnibusController:showAction
+  methods: GET
+omnibus_new:
+  path: /omnibus/new
+  controller: App\Controller\OmnibusController:newAction
+  methods: [GET, POST]
+omnibus_edit:
+  path: /omnibus/{id}/edit
+  controller: App\Controller\OmnibusController:editAction
+  methods: [GET, POST]
+omnibus_delete:
+  path: /omnibus/{id}/delete
+  controller: App\Controller\OmnibusController:deleteAction
+  methods: [GET, POST, DELETE]
+
+incidencia_index:
+  path: /incidencia/index
+  controller: App\Controller\IncidenciaController:indexAction
+  methods: GET
+incidencia_new:
+  path: /incidencia/{id_hojaruta}/new
+  controller: App\Controller\IncidenciaController:newAction
+  methods: [GET, POST]
+incidencia_edit:
+  path: /incidencia/{id}/edit
+  controller: App\Controller\IncidenciaController:editAction
+  methods: [GET, POST]
+incidencia_delete:
+  path: /incidencia/{id}/delete
+  controller: App\Controller\IncidenciaController:deleteAction
+  methods: [GET, POST, DELETE]
+
+chofer_index:
+  path: /chofer
+  controller: App\Controller\ChoferController:indexAction
+  methods: GET
+chofer_reporte:
+  path: /chofer/reporte
+  controller: App\Controller\ChoferController:reporteHorasAction
+  methods: GET
+chofer_show:
+  path: /chofer/{id}/show
+  controller: App\Controller\ChoferController:showAction
+  methods: GET
+chofer_new:
+  path: /chofer/new
+  controller: App\Controller\ChoferController:newAction
+  methods: [GET, POST]
+chofer_edit:
+  path: /chofer/{id}/edit
+  controller: App\Controller\ChoferController:editAction
+  methods: [GET, POST]
+chofer_delete:
+  path: /chofer/{id}/delete
+  controller: App\Controller\ChoferController:deleteAction
+  methods: [GET, POST, DELETE]
+
+hojaruta_index:
+  path: /hojaruta
+  controller: App\Controller\HojaRutaController:indexAction
+  methods: GET
+reporte_hoja_ruta_fecha:
+  path: /hojaruta/fecha
+  controller: App\Controller\HojaRutaController:reporte_hoja_ruta_fechaAction
+  methods: GET
+hojaruta_show:
+  path: /hojaruta/{id}/show
+  controller: App\Controller\HojaRutaController:showAction
+  methods: GET
+hojaruta_new:
+  path: /hojaruta/new
+  controller: App\Controller\HojaRutaController:newAction
+  methods: [GET, POST]
+hojaruta_edit:
+  path: /hojaruta/{id}/edit
+  controller: App\Controller\HojaRutaController:editAction
+  methods: [GET, POST]
+hojaruta_delete:
+  path: /hojaruta/{id}/delete
+  controller: App\Controller\HojaRutaController:deleteAction
+  methods: [GET, POST, DELETE]
+
+trabajador_index:
+  path: /trabajador
+  controller: App\Controller\TrabajadorController:indexAction
+  methods: GET
+trabajador_show:
+  path: /trabajador/{id}/show
+  controller: App\Controller\TrabajadorController:showAction
+  methods: GET
+trabajador_new:
+  path: /trabajador/new
+  controller: App\Controller\TrabajadorController:newAction
+  methods: [GET, POST]
+trabajador_edit:
+  path: /trabajador/{id}/edit
+  controller: App\Controller\TrabajadorController:editAction
+  methods: [GET, POST]
+trabajador_delete:
+  path: /trabajador/{id}/delete
+  controller: App\Controller\TrabajadorController:deleteAction
+  methods: [GET, POST, DELETE]
+
+recaudacion_index:
+  path: /recaudacion
+  controller: App\Controller\RecaudacionController:indexAction
+  methods: GET
+plan_recaudacion:
+  path: /recaudacion/plan_recaudacion
+  controller: App\Controller\RecaudacionController:plan_recaudacionAction
+  methods: GET
+recaudacion_reporte:
+  path: /recaudacion/reporte
+  controller: App\Controller\RecaudacionController:reporteAction
+  methods: GET
+recaudacion_recaudacionXfecha:
+  path: /recaudacion/recaudacionXfecha
+  controller: App\Controller\RecaudacionController:recaudacionAction
+  methods: GET
+recaudacion_show:
+  path: /recaudacion/{id}/show
+  controller: App\Controller\RecaudacionController:showAction
+  methods: GET
+recaudacion_new:
+  path: /recaudacion/new
+  controller: App\Controller\RecaudacionController:newAction
+  methods: [GET, POST]
+recaudacion_edit:
+  path: /recaudacion/{id}/edit
+  controller: App\Controller\RecaudacionController:editAction
+  methods: [GET, POST]
+recaudacion_delete:
+  path: /recaudacion/{id}/delete
+  controller: App\Controller\RecaudacionController:deleteAction
+  methods: [GET, POST, DELETE]
+
+pronostico_combustible:
+  path: /pronostico/combustible
+  controller: App\Controller\PronosticoController:combustibleAction
+  methods: [GET]
+pronostico_recaudacion:
+  path: /pronostico/recaudacion
+  controller: App\Controller\PronosticoController:recaudacionAction
+  methods: [GET]
+
+combustible_habilitado_index:
+  path: /combustible_habilitado
+  controller: App\Controller\CombustibleHabilitadoController:indexAction
+  methods: GET
+combustible_habilitado_new:
+  path: /combustible_habilitado/new
+  controller: App\Controller\CombustibleHabilitadoController:newAction
+  methods: [GET, POST]
+combustible_habilitado_edit:
+  path: /combustible_habilitado/{id}/edit
+  controller: App\Controller\CombustibleHabilitadoController:editAction
+  methods: [GET, POST]
+combustible_habilitado_delete:
+  path: /combustible_habilitado/{id}/delete
+  controller: App\Controller\CombustibleHabilitadoController:deleteAction
+  methods: [GET, POST, DELETE]

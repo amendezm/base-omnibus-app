@@ -1,0 +1,64 @@
+{% set usuario = app.getUser() %} {% set session = app.session %}
+<!-- Logo -->
+
+<!-- Header Navbar -->
+<nav
+  id="elemento1"
+  class="navbar navbar-expand navbar-light bg-white topbar static-top shadow"
+  role="navigation"
+>
+  <div class="nav-item" style="cursor:initial; color:black; font-size:x-large;">
+    <img
+      height="50"
+      width="130"
+      src="{{ asset('assets/dist/img/logo_thg_horizontal.png') }}"
+    />
+  </div>
+  <!-- <div class="nav-item ml-3 text-secondary font-italic" style="cursor:initial; color:black; font-size:x-large;">
+    EMPRESA TRANSPORTE HOLGUÍN
+  </div> -->
+  <ul class="navbar-nav ml-auto">
+    <div class="topbar-divider d-none d-sm-block"></div>
+
+    <!-- Navbar Right Menu -->
+    <!-- The user image in the navbar-->
+    <li class="nav-item dropdown no-arrow">
+      <a
+        class="nav-link dropdown-toggle"
+        href="#"
+        id="userDropdown"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+          {{ app.getUser() }}
+        </span>
+        <img
+          src="{{ asset('assets/dist/img/user_avatar_profile.png') }}"
+          class="img-profile rounded-circle"
+          alt="User Image"
+        />
+      </a>
+      <ul
+        class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+        aria-labelledby="userDropdown"
+      >
+        <a class="dropdown-item" href="{{ path('login') }}">
+          <i class="fas fa-id-card-alt"></i>
+          <span>
+            Autenticarse
+          </span>
+        </a>
+        <a class="dropdown-item" href="{{ path('logout') }}">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>
+          <span>
+            Salir
+          </span>
+        </a>
+      </ul>
+    </li>
+  </ul>
+</nav>
