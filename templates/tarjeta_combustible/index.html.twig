@@ -1,7 +1,7 @@
 {% extends 'index.html.twig' %} {% block contenido %}
 <br />
 <div class="row">
-  <div class="col-md-2 offset-md-6 card-add">
+  <div class="col-md-2 card-add offset-md-2">
     <input
       id="cardNumberFilter"
       type="text"
@@ -9,18 +9,37 @@
       placeholder="Número"
     />
   </div>
+  <div class="col-md-1 text-right" style="display: flex; align-items: center;">
+    <span class="text-primary font-weight-bold" style="width: 100%;">
+      Saldo
+    </span>
+  </div>
   <div class="col-md-2">
     <input
-      id="minKilometersFilter"
+      id="minMoneyFilter"
       type="number"
       min="0"
       class="form-control"
-      placeholder="Saldo"
+      placeholder="Desde"
     />
   </div>
   <div class="col-md-2">
-    <select id="fuelTypeFilter" class="custom-select">
-      <option selected>Combustible...</option>
+    <input
+      id="maxMoneyFilter"
+      type="number"
+      min="0"
+      class="form-control"
+      placeholder="Hasta"
+    />
+  </div>
+  <div class="col-md-1 text-right" style="display: flex; align-items: center;">
+    <span class="text-primary font-weight-bold" style="width: 100%;">
+      Combustible
+    </span>
+  </div>
+  <div class="col-md-2">
+    <select id="fuelTypeFilter" class="form-control">
+      <option value="Todos" selected>Todos</option>
       <option value="Diesel">Diesel</option>
       <option value="Gasolina">Gasolina</option>
     </select>
@@ -59,6 +78,8 @@
   <div
     class="col-md-2 card-item"
     data-number="{{ tarjeta_combustible.noTarjeta }}"
+    data-money="{{ tarjeta_combustible.saldoActual }}"
+    data-fuel="{{ tarjeta_combustible.combustibleTipo }}"
   >
     <div class="card shadow mb-3 fuel-card">
       <div class="card-body text-dark" style="font-weight: 700;">
