@@ -151,3 +151,51 @@ textarea::-webkit-scrollbar {
   flex-direction: row;
   justify-content: space-between;
 }
+
+/*fuel card*/
+
+.fuel-card {
+  position: relative;
+}
+
+.fuel-card > .card-body {
+  padding: 0.5rem 1rem !important;
+}
+
+.fuel-card__actions {
+  position: absolute;
+  background-color: #504dfc;
+  width: 100%;
+  bottom: 0;
+  border-radius: 0 0 0.35rem 0.35rem;
+  height: 0;
+  transition: 0.5s height ease-in-out 0.05s;
+  display: flex;
+  align-items: center;
+}
+
+.actions-buttons {
+  opacity: 0;
+}
+
+.fuel-card:hover > .fuel-card__actions {
+  display: flex;
+  visibility: visible;
+  height: 2.75rem;
+  font-size: 0.85rem;
+}
+
+.fuel-card:hover > .fuel-card__actions > .actions-buttons {
+  opacity: 1;
+  transition: 0.1s opacity 0.3s;
+}
+
+.new-card:hover {
+  cursor: pointer;
+  border: 2px solid #4e4cc5;
+  transform: scale(1.05, 1.05);
+}
+
+.new-card:hover > .card-body {
+  color: #4e4cc5 !important;
+}
