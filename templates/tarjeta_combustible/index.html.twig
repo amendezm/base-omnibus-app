@@ -1,143 +1,167 @@
 {% extends 'index.html.twig' %} {% block contenido %}
 <br />
-<div class="card shadow">
-  <div class="card-header py-3">
-    <div class="row">
-      <div class="col-md-6">
-        <h3 class="m-0 font-weight-normal text-primary">
-          Tarjetas de Combustible
-        </h3>
-      </div>
-      <div class="col-md-6 text-right">
-        {% if not is_granted('ROLE_USUARIO' ) %}
-        <a
-          class="btn btn-sm btn-default  pull-left"
-          href="{{ path('tarjeta_combustible_new') }}"
-        >
-          <img
-            src="{{ asset('assets/dist/img/add_database_26px.png') }}"
-            alt="User Image"
-          />
-          Nuevo
-        </a>
-        {% endif %}
-      </div>
-    </div>
+<div class="row">
+  <div class="col-md-2 card-add offset-md-2">
+    <input
+      id="cardNumberFilter"
+      type="text"
+      class="form-control"
+      placeholder="Número"
+    />
   </div>
-  <div class="card-body">
-    <div class="table-reponsive">
-      <table
-        class="table text-center"
-        id="dataTable"
-        width="100%"
-        cellspacing="0"
-        style="font-size:0.75rem;"
-      >
-        <thead>
-          <th>No. tarjeta</th>
-          <th>Tipo de Combustible</th>
-          <th>Asignación (litros)</th>
-          <th>Fecha de Asignación</th>
-          <th>Gasto Real (litros)</th>
-          <th>Saldo Actual</th>
-          <th>Fecha de Vencimiento</th>
-          {% if not is_granted('ROLE_USUARIO' ) %}
-          <th>
-            Acciones
-          </th>
-          {% endif %}
-        </thead>
-        <tbody>
-          {% for tarjeta_combustible in tarjeta_combustibles %}
-          <tr>
-            <td>{{ tarjeta_combustible.noTarjeta }}</td>
-            <td>{{ tarjeta_combustible.combustibleTipo }}</td>
-            <td>{{ tarjeta_combustible.asignacion }}</td>
-            <td>
-              {% if tarjeta_combustible.fechaAsignacion %}
-              {{ tarjeta_combustible.fechaAsignacion|date('Y-m-d')}}
-              {% endif %}
-            </td>
-            <td>{{ tarjeta_combustible.gastoReal }}</td>
-            <td>{{ tarjeta_combustible.saldoActual }}</td>
-            <td>
-              {% if tarjeta_combustible.fechaVencimiento %}
-              {{ tarjeta_combustible.fechaVencimiento|date('Y-m-d')}}
-              {% endif %}
-            </td>
-            <td>
-              <div class="row">
-                <div class="col-md-3 offset-md-1">
-                  <a
-                    class="text-secondary"
-                    href="#"
-                    rol="button"
-                    data-toggle="modal"
-                    data-target="#modalConfirmDelete-{{
-                      tarjeta_combustible.id
-                    }}"
-                    data-tooltip="Eliminar"
-                    data-tooltip-location="top"
-                  >
-                    <i class="fas fa-trash-alt"></i>
-                  </a>
-                  {% include "commons/confirmDeleteModal.html.twig" with
-                  {'instanceToDelete': tarjeta_combustible,
-                  'path':'tarjeta_combustible_delete'} %}
-                </div>
-                <div class="col-md-3">
-                  <a
-                    href="{{
-                      path('tarjeta_combustible_edit', {
-                        id: tarjeta_combustible.id
-                      })
-                    }}"
-                    class="text-primary"
-                    data-tooltip="Editar"
-                    data-tooltip-location="top"
-                    ><i class="fas fa-edit"></i>
-                  </a>
-                </div>
-              </div>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
+  <div class="col-md-1 text-right" style="display: flex; align-items: center;">
+    <span class="text-primary font-weight-bold" style="width: 100%;">
+      Saldo
+    </span>
   </div>
-  <div id="mymodal" class="modal  inmodal fade">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <button
-            aria-label="Close"
-            data-dismiss="modal"
-            class="close"
-            type="button"
-          >
-            <span aria-hidden="true">×</span>
-          </button>
-          <i class="fa-3x fa fa-warning modal-icon text-red"></i>
-          <h4 class="modal-title">Acción Peligrosa</h4>
-        </div>
-        <div class="modal-body">
-          <p>
-            Está acción puede ocacionar, comprometer la integridad de los datos!
-          </p>
-          <small
-            >Si no es un usuario avanzado, recomendamos que cancele esta
-            acción.</small
-          >
-        </div>
-        <div class="modal-footer">
-          <button data-dismiss="modal" class="btn btn-primary" type="button">
-            Cerrar
-          </button>
-          <a class="btn btn-primary btn-danger btn-delete" href="#">Eliminar</a>
-        </div>
-      </div>
-    </div>
+  <div class="col-md-2">
+    <input
+      id="minMoneyFilter"
+      type="number"
+      min="0"
+      class="form-control"
+      placeholder="Desde"
+    />
+  </div>
+  <div class="col-md-2">
+    <input
+      id="maxMoneyFilter"
+      type="number"
+      min="0"
+      class="form-control"
+      placeholder="Hasta"
+    />
+  </div>
+  <div class="col-md-1 text-right" style="display: flex; align-items: center;">
+    <span class="text-primary font-weight-bold" style="width: 100%;">
+      Combustible
+    </span>
+  </div>
+  <div class="col-md-2">
+    <select id="fuelTypeFilter" class="form-control">
+      <option value="Todos" selected>Todos</option>
+      <option value="Diesel">Diesel</option>
+      <option value="Gasolina">Gasolina</option>
+    </select>
   </div>
 </div>
+<br />
+<br />
+<div class="row card-container">
+  <div class="col-md-2">
+    <a
+      href="{{ path('tarjeta_combustible_new') }}"
+      class="card shadow mb-3 fuel-card new-card"
+      style="height: 90%; min-height: 18vh;"
+    >
+      <div
+        class="card-body text-dark"
+        style="
+          font-weight: 700;
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+        "
+      >
+        <span
+          class="icon text-center"
+          style="width: 100%;"
+          data-tooltip="Añadir"
+          data-tooltip-location="top"
+        >
+          <i class="icon fas fa-plus fa-4x"></i>
+        </span>
+      </div>
+    </a>
+  </div>
+  {% for tarjeta_combustible in tarjeta_combustibles %}
+  <div
+    class="col-md-2 card-item"
+    data-number="{{ tarjeta_combustible.noTarjeta }}"
+    data-money="{{ tarjeta_combustible.saldoActual }}"
+    data-fuel="{{ tarjeta_combustible.combustibleTipo }}"
+  >
+    <div class="card shadow mb-3 fuel-card">
+      <div class="card-body text-dark" style="font-weight: 700;">
+        <div class="text-primary" style="font-size: 0.75rem;">
+          {{ tarjeta_combustible.noTarjeta }}
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-md-6">
+            <div
+              class="text-gray-900"
+              style="font-weight: 900; font-size: 0.9rem;"
+            >
+              ${{ tarjeta_combustible.saldoActual }}
+            </div>
+          </div>
+          <div
+            class="col-md-6 text-right"
+            style="
+              display: flex;
+              align-items: center;
+              flex-direction: row-reverse;
+              font-size: 0.75rem;
+            "
+          >
+            <div>{{ tarjeta_combustible.combustibleTipo }}</div>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-md-12 text-right">
+            <div style="font-size: 0.75rem;">
+              {{ tarjeta_combustible.fechaVencimiento|date('Y/m/d')}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fuel-card__actions">
+        <div class="actions-buttons text-center" style="width: 100%;">
+          <a
+            class="text-white"
+            href="#"
+            rol="button"
+            data-toggle="modal"
+            data-target="#modalConfirmDelete-{{ tarjeta_combustible.id }}"
+            data-tooltip="Eliminar"
+            data-tooltip-location="top"
+          >
+            <i class="fas fa-trash-alt"></i>
+          </a>
+          &nbsp; &nbsp;
+          <a
+            href="{{
+              path('tarjeta_combustible_edit', {
+                id: tarjeta_combustible.id
+              })
+            }}"
+            class="text-white"
+            data-tooltip="Editar"
+            data-tooltip-location="top"
+            ><i class="fas fa-edit"></i>
+          </a>
+        </div>
+        {% include "commons/confirmDeleteModal.html.twig" with
+        {'instanceToDelete': tarjeta_combustible,
+        'path':'tarjeta_combustible_delete'} %}
+      </div>
+    </div>
+  </div>
+  {%endfor%}
+</div>
+<p class="empty-message hide-element text-center">
+  <span class="icon">
+    <i class="fas fa-info-circle text-warning"></i>
+  </span>
+  No existen elementos con el criterio de búsqueda
+</p>
+{% endblock %} {%block javascripts%}
+<script src="{{ asset('js/reports/tarjeta-combustible.js') }}"></script>
+<script src="{{ asset('assets/jquery/jquery.min.js') }}"></script>
+<script src="{{
+    asset('assets/bootstrap/js/bootstrap.bundle.min.js')
+  }}"></script>
+<script src="{{ asset('assets/bootstrap/js/popper.js') }}"></script>
 {% endblock %}
