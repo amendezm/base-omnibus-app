@@ -1,11 +1,39 @@
 {% extends 'index.html.twig' %} {% block contenido %}
 <br />
 <div class="row">
+  <div class="col-md-2 offset-md-6 card-add">
+    <input
+      id="cardNumberFilter"
+      type="text"
+      class="form-control"
+      placeholder="Número"
+    />
+  </div>
+  <div class="col-md-2">
+    <input
+      id="minKilometersFilter"
+      type="number"
+      min="0"
+      class="form-control"
+      placeholder="Saldo"
+    />
+  </div>
+  <div class="col-md-2">
+    <select id="fuelTypeFilter" class="custom-select">
+      <option selected>Combustible...</option>
+      <option value="Diesel">Diesel</option>
+      <option value="Gasolina">Gasolina</option>
+    </select>
+  </div>
+</div>
+<br />
+<br />
+<div class="row card-container">
   <div class="col-md-2">
     <a
       href="{{ path('tarjeta_combustible_new') }}"
       class="card shadow mb-3 fuel-card new-card"
-      style="height: 92%;"
+      style="height: 90%; min-height: 18vh;"
     >
       <div
         class="card-body text-dark"
@@ -28,7 +56,10 @@
     </a>
   </div>
   {% for tarjeta_combustible in tarjeta_combustibles %}
-  <div class="col-md-2">
+  <div
+    class="col-md-2 card-item"
+    data-number="{{ tarjeta_combustible.noTarjeta }}"
+  >
     <div class="card shadow mb-3 fuel-card">
       <div class="card-body text-dark" style="font-weight: 700;">
         <div class="text-primary" style="font-size: 0.75rem;">
@@ -99,4 +130,17 @@
   </div>
   {%endfor%}
 </div>
+<p class="empty-message hide-element text-center">
+  <span class="icon">
+    <i class="fas fa-info-circle text-warning"></i>
+  </span>
+  No existen elementos con el criterio de búsqueda
+</p>
+{% endblock %} {%block javascripts%}
+<script src="{{ asset('js/reports/tarjeta-combustible.js') }}"></script>
+<script src="{{ asset('assets/jquery/jquery.min.js') }}"></script>
+<script src="{{
+    asset('assets/bootstrap/js/bootstrap.bundle.min.js')
+  }}"></script>
+<script src="{{ asset('assets/bootstrap/js/popper.js') }}"></script>
 {% endblock %}
