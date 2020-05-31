@@ -1,61 +1,57 @@
 {% extends 'index.html.twig' %} {% block contenido %}
 <br />
 {{ form_start(form, { method: "POST" }) }}
-<div class="card shadow">
-  <div class="card-header">
-    <div class="col-md-8 offset-md-2">
-      <h3>Nueva Tarjeta de Combustible</h3>
-    </div>
-  </div>
-  <div class="card-body">
-    <div class="col-md-8 offset-md-2">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">No. tarjeta</label>
-            {{ form_widget(form.noTarjeta,
+<div class="col-md-10 offset-md-1" style="font-size: 0.85rem;">
+  <div class="card shadow">
+    <div class="card-body">
+      <br />
+      <div class="col-md-8 offset-md-2">
+        <h4 class="text-primary">
+          Tarjeta de Combustible
+        </h4>
+        <br />
+        <div class="form-group">
+          <label class="control-label">No. tarjeta</label>
+          {{ form_widget(form.noTarjeta,
              {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
-            )}}
-          </div>
+          )}}
         </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Fecha de Vencimiento</label>
-            {{ form_widget(form.fechaVencimiento,
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Fecha de Vencimiento</label>
+              {{ form_widget(form.fechaVencimiento,
              {'attr' : {'class' : 'form-control datepicker-here' }}
-            )}}
+              )}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Saldo Actual</label>
+              {{ form_widget(form.saldoActual,
+                     {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
+              )}}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Tipo de Combustible</label>
-            {{ form_widget(form.combustibleTipo,
-                 {'attr' : {'class' : 'form-control'}}
-            )}}
-          </div>
+        <div class="form-group">
+          <label class="control-label">Tipo de Combustible</label>
+          {{ form_widget(form.combustibleTipo,
+            {'attr' : {'class' : 'form-control'}}
+          )}}
         </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Saldo Actual</label>
-            {{ form_widget(form.saldoActual,
-             {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
-            )}}
-          </div>
+        <br />
+        <div class="text-right">
+          <a
+            class="btn btn-outline-secondary"
+            href="{{ path('tarjeta_combustible_index') }}"
+          >
+            Cancelar
+          </a>
+          <input type="submit" class="btn btn-primary" value="Guardar" />
         </div>
+        <br />
       </div>
-      <br />
-      <div class="text-right">
-        <a
-          class="btn btn-outline-secondary"
-          href="{{ path('tarjeta_combustible_index') }}"
-        >
-          Cancelar
-        </a>
-        <input type="submit" class="btn btn-primary" value="Guardar" />
-      </div>
-      <br />
     </div>
   </div>
   {{ form_end(form) }}
