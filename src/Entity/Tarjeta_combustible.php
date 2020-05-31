@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -55,6 +57,11 @@ class Tarjeta_combustible
      */
     private $noTarjeta;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\CombustibleAsignado", mappedBy="tarjeta", orphanRemoval=true)
+     */
+    private $combustiblesAsignados;
+
     public function __toString()
     {
         return $this->noTarjeta;
@@ -66,6 +73,7 @@ class Tarjeta_combustible
     public function __construct()
     {
         $this->omnibus = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->combustiblesAsignados = new ArrayCollection();
     }
 
     /**
@@ -211,5 +219,36 @@ class Tarjeta_combustible
     public function getSaldoActual()
     {
         return $this->saldoActual;
+    }
+
+    /**
+     * @return Collection|CombustibleAsignado[]
+     */
+    public function getCombustiblesAsignados(): Collection
+    {
+        return $this->combustiblesAsignados;
+    }
+
+    public function addCombustiblesAsignado(CombustibleAsignado $combustiblesAsignado): self
+    {
+        if (!$this->combustiblesAsignados->contains($combustiblesAsignado)) {
+            $this->combustiblesAsignados[] = $combustiblesAsignado;
+            $combustiblesAsignado->setTarjeta($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCombustiblesAsignado(CombustibleAsignado $combustiblesAsignado): self
+    {
+        if ($this->combustiblesAsignados->contains($combustiblesAsignado)) {
+            $this->combustiblesAsignados->removeElement($combustiblesAsignado);
+            // set the owning side to null (unless already changed)
+            if ($combustiblesAsignado->getTarjeta() === $this) {
+                $combustiblesAsignado->setTarjeta(null);
+            }
+        }
+
+        return $this;
     }
 }
