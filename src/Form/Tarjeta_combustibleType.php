@@ -17,13 +17,6 @@ class Tarjeta_combustibleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('asignacion')
-            ->add('fechaAsignacion', DateType::class, [
-                'widget' => 'single_text',
-                'html5' => false,
-                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd', 'autocomplete' => 'off'],
-            ])
-            //            ->add('gastoReal')
             ->add('fechaVencimiento', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => false,

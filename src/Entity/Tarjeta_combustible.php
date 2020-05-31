@@ -24,14 +24,6 @@ class Tarjeta_combustible
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="asignacion", type="integer", nullable=true)
-     */
-
-    private $asignacion;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\TipoCombustible", inversedBy="tarjetaCombustible")
      * @ORM\JoinColumn(name="id_combustibleTipo", referencedColumnName="id", onDelete="CASCADE")
      */
@@ -43,32 +35,12 @@ class Tarjeta_combustible
     protected $omnibus;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="gastoReal", type="integer",nullable=true)
-     */
-    private $gastoReal;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_vencimiento", type="date")
      */
     private $fechaVencimiento;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="fecha_asignacion", type="date")
-     */
-    private $fechaAsignacion;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="tipo_combustible", type="string", length=255,nullable=true)
-     */
-    private $tipoCombustible;
     /**
      * @var string
      *
@@ -144,22 +116,6 @@ class Tarjeta_combustible
         $this->combustibleTipo->removeElement($combustibleTipo);
     }
 
-    /**
-     * @return int
-     */
-    public function getAsignacion()
-    {
-        return $this->asignacion;
-    }
-
-    /**
-     * @param int $asignacion
-     */
-    public function setAsignacion($asignacion)
-    {
-        $this->asignacion = $asignacion;
-    }
-
 
     /**
      * @param mixed $combustibleTipo
@@ -178,22 +134,6 @@ class Tarjeta_combustible
     }
 
     /**
-     * @param \DateTime $fechaAsignacion
-     */
-    public function setFechaAsignacion($fechaAsignacion)
-    {
-        $this->fechaAsignacion = $fechaAsignacion;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getFechaAsignacion()
-    {
-        return $this->fechaAsignacion;
-    }
-
-    /**
      * @param \DateTime $fechaVencimiento
      */
     public function setFechaVencimiento($fechaVencimiento)
@@ -207,22 +147,6 @@ class Tarjeta_combustible
     public function getFechaVencimiento()
     {
         return $this->fechaVencimiento;
-    }
-
-    /**
-     * @param int $gastoReal
-     */
-    public function setGastoReal($gastoReal)
-    {
-        $this->gastoReal = $gastoReal;
-    }
-
-    /**
-     * @return int
-     */
-    public function getGastoReal()
-    {
-        return $this->gastoReal;
     }
 
     /**
@@ -274,22 +198,6 @@ class Tarjeta_combustible
     }
 
     /**
-     * @param string $ping
-     */
-    public function setPing($ping)
-    {
-        $this->ping = $ping;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPing()
-    {
-        return $this->ping;
-    }
-
-    /**
      * @param string $saldoActual
      */
     public function setSaldoActual($saldoActual)
@@ -303,21 +211,5 @@ class Tarjeta_combustible
     public function getSaldoActual()
     {
         return $this->saldoActual;
-    }
-
-    /**
-     * @param string $tipoCombustible
-     */
-    public function setTipoCombustible($tipoCombustible)
-    {
-        $this->tipoCombustible = $tipoCombustible;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTipoCombustible()
-    {
-        return $this->tipoCombustible;
     }
 }

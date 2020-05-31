@@ -45,14 +45,6 @@ class Tarjeta_combustibleController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $combustibleTipo = $tarjeta_combustible->getCombustibleTipo();
-            $strCombustible = "";
-            foreach ($combustibleTipo as $d) {
-                $strCombustible .= $d . "";
-            }
-            $tarjeta_combustible->setTipoCombustible($strCombustible);
-            $gastoReal = $tarjeta_combustible->getAsignacion() - $tarjeta_combustible->getSaldoActual();
-            $tarjeta_combustible->setGastoReal($gastoReal);
             $em->persist($tarjeta_combustible);
             $em->flush();
 
@@ -91,14 +83,6 @@ class Tarjeta_combustibleController extends AbstractController
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $combustibleTipo = $tarjeta_combustible->getCombustibleTipo();
-            $strCombustible = "";
-            foreach ($combustibleTipo as $d) {
-                $strCombustible .= $d . "";
-            }
-            $tarjeta_combustible->setTipoCombustible($strCombustible);
-            $gastoReal = $tarjeta_combustible->getAsignacion() - $tarjeta_combustible->getSaldoActual();
-            $tarjeta_combustible->setGastoReal($gastoReal);
             $em->persist($tarjeta_combustible);
             $em->flush();
 
