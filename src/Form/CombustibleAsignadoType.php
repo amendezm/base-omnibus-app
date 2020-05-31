@@ -19,7 +19,7 @@ class CombustibleAsignadoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('tarjetaCombustible', EntityType::class, array('class' => 'App\Entity\Tarjeta_combustible', 'multiple' => false, 'expanded' => false))
+            ->add('tarjeta', EntityType::class, array('class' => 'App\Entity\Tarjeta_combustible', 'multiple' => false, 'expanded' => false))
             ->add('cantAsignada')
             ->add('fecha', DateType::class, [
                 'widget' => 'single_text',

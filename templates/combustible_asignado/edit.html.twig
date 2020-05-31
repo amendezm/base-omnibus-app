@@ -4,7 +4,7 @@
 <div class="col-md-8 offset-md-2">
   <div class="card shadow">
     <div class="card-body">
-      <h4 class="font-weight-bold text-primary">
+      <h4 class="text-primary">
         Editar Asignación
       </h4>
       <br />
@@ -23,7 +23,7 @@
       <div class="form-group">
         <label class="control-label">Fecha</label>
         {{ form_widget(edit_form.fecha, 
-                {'attr' : {'class' : 'form-control datepicker-here','data-timepicker':"true",'value': combustibleHabilitado.fecha|date('Y-m-d H:i', false)}}
+                {'attr' : {'class' : 'form-control datepicker-here','value': combustibleAsignado.fecha|date('Y-m-d', false)}}
         )}}
       </div>
       <br />
