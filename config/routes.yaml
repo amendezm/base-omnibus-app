@@ -403,6 +403,23 @@ pronostico_recaudacion:
   controller: App\Controller\PronosticoController:recaudacionAction
   methods: [GET]
 
+combustible_asignado_index:
+  path: /combustible_asignado
+  controller: App\Controller\CombustibleAsignadoController:indexAction
+  methods: GET
+combustible_asignado_new:
+  path: /combustible_asignado/new
+  controller: App\Controller\CombustibleAsignadoController:newAction
+  methods: [GET, POST]
+combustible_asignado_edit:
+  path: /combustible_asignado/{id}/edit
+  controller: App\Controller\CombustibleAsignadoController:editAction
+  methods: [GET, POST]
+combustible_asignado_delete:
+  path: /combustible_asignado/{id}/delete
+  controller: App\Controller\CombustibleAsignadoController:deleteAction
+  methods: [GET, POST, DELETE]
+
 combustible_habilitado_index:
   path: /combustible_habilitado
   controller: App\Controller\CombustibleHabilitadoController:indexAction

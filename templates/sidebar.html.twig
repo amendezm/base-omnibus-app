@@ -162,7 +162,8 @@
             <div
                 id="collapseEnergia"
                 class="collapse {% if 'tarjeta_combustible' in app.request.attributes.get('_route') or
-                'combustible_habilitado' in app.request.attributes.get('_route')%}
+                'combustible_habilitado' in app.request.attributes.get('_route') or
+                'combustible_asignado' in app.request.attributes.get('_route')%}
                 show
                 {% endif %}"
                 aria-labelledby="headingEnergia"
@@ -172,6 +173,10 @@
                   <a class="collapse-item {% if 'tarjeta_combustible' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('tarjeta_combustible_index') }}">
                     <i class="fa fa-credit-card"></i> 
                     <span>Tarjeta Combustible</span>
+                  </a>
+                  <a class="collapse-item {% if 'combustible_asignado' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('combustible_asignado_index') }}">
+                    <i class="fa fa-file-signature"></i> 
+                    <span>Asignaciones</span>
                   </a>
                   <a class="collapse-item {% if 'combustible_habilitado' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('combustible_habilitado_index') }}">
                     <i class="fa fa-gas-pump"></i> 
