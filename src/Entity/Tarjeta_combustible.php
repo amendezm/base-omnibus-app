@@ -62,6 +62,11 @@ class Tarjeta_combustible
      */
     private $combustiblesAsignados;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\CombustibleHabilitado", mappedBy="tarjeta", orphanRemoval=true)
+     */
+    private $habilitaciones;
+
     public function __toString()
     {
         return $this->noTarjeta;
@@ -74,6 +79,7 @@ class Tarjeta_combustible
     {
         $this->omnibus = new \Doctrine\Common\Collections\ArrayCollection();
         $this->combustiblesAsignados = new ArrayCollection();
+        $this->habilitaciones = new ArrayCollection();
     }
 
     /**
@@ -246,6 +252,37 @@ class Tarjeta_combustible
             // set the owning side to null (unless already changed)
             if ($combustiblesAsignado->getTarjeta() === $this) {
                 $combustiblesAsignado->setTarjeta(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CombustibleHabilitado[]
+     */
+    public function getHabilitaciones(): Collection
+    {
+        return $this->habilitaciones;
+    }
+
+    public function addHabilitacione(CombustibleHabilitado $habilitacione): self
+    {
+        if (!$this->habilitaciones->contains($habilitacione)) {
+            $this->habilitaciones[] = $habilitacione;
+            $habilitacione->setTarjeta($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHabilitacione(CombustibleHabilitado $habilitacione): self
+    {
+        if ($this->habilitaciones->contains($habilitacione)) {
+            $this->habilitaciones->removeElement($habilitacione);
+            // set the owning side to null (unless already changed)
+            if ($habilitacione->getTarjeta() === $this) {
+                $habilitacione->setTarjeta(null);
             }
         }
 

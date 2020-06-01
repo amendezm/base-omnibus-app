@@ -50,9 +50,8 @@ class CombustibleHabilitado
     private $habilitador;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="omnibus", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Omnibus")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $omnibus;
 
@@ -76,6 +75,12 @@ class CombustibleHabilitado
      * @ORM\Column(name="noControl", type="integer")
      */
     private $noControl;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tarjeta_combustible", inversedBy="habilitaciones")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $tarjeta;
 
 
     /**
@@ -184,26 +189,14 @@ class CombustibleHabilitado
         return $this->habilitador;
     }
 
-    /**
-     * Set omnibus
-     *
-     * @param string $omnibus
-     *
-     * @return CombustibleHabilitado
-     */
-    public function setOmnibus($omnibus)
+
+    public function setOmnibus(?Omnibus $omnibus): self
     {
         $this->omnibus = $omnibus;
-
         return $this;
     }
 
-    /**
-     * Get omnibus
-     *
-     * @return string
-     */
-    public function getOmnibus()
+    public function getOmnibus(): ?Omnibus
     {
         return $this->omnibus;
     }
@@ -278,5 +271,17 @@ class CombustibleHabilitado
     public function getNoControl()
     {
         return $this->noControl;
+    }
+
+    public function getTarjeta(): ?Tarjeta_combustible
+    {
+        return $this->tarjeta;
+    }
+
+    public function setTarjeta(?Tarjeta_combustible $tarjeta): self
+    {
+        $this->tarjeta = $tarjeta;
+
+        return $this;
     }
 }
