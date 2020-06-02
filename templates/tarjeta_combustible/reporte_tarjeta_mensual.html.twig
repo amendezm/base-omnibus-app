@@ -1,56 +1,46 @@
-{% extends 'index.html.twig' %}
-
-{% block contenido %}
-<div class="box box-danger">
-    <div class="box-header with-border">
-        <div class="user-block">
-            <h3 class="text-center ">Visualizar Recaudación</h3>
-        </div><!-- /.user-block -->
-        <div class="box-tools">
-            <ul class="list-inline">
-                <li>
-                    <a class="text-info" href="{{ path('recaudacion_index') }}">
-                        <i class="glyphicon glyphicon glyphicon-hand-left"></i> Atràs</a>
-                </li>
-            </ul>
-        </div>
-
+{% extends 'index.html.twig' %} {% block contenido %}
+<br />
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h3 class="m-0 text-primary">Parte de tarjeta de combustible</h3>
+      </div>
     </div>
-    <div class="panel-body">
-        <table id="sample-table-2" class="table table-striped table-bordered table-hover">
-
-            <thead>
-            <tr>
-                {#<th class="bg-primary">ID</th>#}
-                <th class="bg-primary">Ruta</th>
-                <th class="bg-primary">Ómnibus</th>
-                <th class="bg-primary">Hoja de Ruta</th>
-                <th class="bg-primary">Chofer</th>
-                <th class="bg-primary">No.sello</th>
-                <th class="bg-primary">No.vale</th>
-                <th class="bg-primary">Recaudación</th>
-                <th class="bg-primary">Recaudador</th>
-                {#<th class="bg-primary">Demanda Total</th>#}
-            </tr>
-            </thead>
-            <tbody>
-
-            {% for reporte in reportes %}
-                <tr>
-                    <td>{{ reporte.noruta }}</td>
-                    <td>{{ reporte.noomnibus }}</td>
-                    <td>{{ reporte.nohojaruta }}</td>
-                    <td>{{ reporte.nombre }}</td>
-                    <td>{{ reporte.nosello }}</td>
-                    <td>{{ reporte.novale }}</td>
-                    <td>{{ reporte.recaudacion }}</td>
-                    <td>{{ reporte.recaudador }}</td>
-                    {#<td>{{ reporte.pre_min }}</td>#}
-                    {#<td>{{ reporte.demandatotal }}</td>#}
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table
+        class="table text-center"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+        style="font-size: 0.85rem;"
+      >
+        <thead>
+          <tr>
+            <th>Tarjeta</th>
+            <th>Saldo inicial</th>
+            <th>Combustible asignado</th>
+            <th>Combustible habilitado</th>
+            <th>Fecha</th>
+            <th>Saldo actual</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for reporte in reportes %}
+          <tr>
+            <td>{{ reporte.notarjeta }}</td>
+            <td>{{ reporte.saldoinicial }}</td>
+            <td>{{ reporte.cant_asignada }}</td>
+            <td>{{ reporte.cantlitros }}</td>
+            <td>{{ reporte.fecha }}</td>
+            <td>{{ reporte.saldoactual }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
+  </div>
 </div>
 {% endblock %}

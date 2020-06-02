@@ -127,6 +127,7 @@ class Tarjeta_combustibleController extends AbstractController
             ->setMethod('DELETE')
             ->getForm();
     }
+
     public function ReporteTarjetaCombustibleAction(Connection $connection)
     {
         $em = $this->getDoctrine()->getManager();
@@ -137,8 +138,6 @@ class Tarjeta_combustibleController extends AbstractController
            tarjeta_combustible.notarjeta,
            tipo_combustible.tipo,
            omnibus.noomnibus,
-           tarjeta_combustible.asignacion,
-           tarjeta_combustible.gastoreal,
            tarjeta_combustible.saldoactual
         FROM
            public.tarjeta_combustible,
@@ -151,6 +150,52 @@ class Tarjeta_combustibleController extends AbstractController
         $params = array();
         $stmt->execute($params);
         $reportes = $stmt->fetchAll();
+        return $this->render('tarjeta_combustible/reporte_tarjeta_mensual.html.twig', array(
+            'reportes' => $reportes
+        ));
+    }
+
+    public function parteTarjetaCombustibleAction(Connection $connection)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $db = $connection;
+
+        $query = 'SELECT notarjeta, 
+                        saldoactual::double precision - SUM(cant_asignada) + SUM(cantlitros) as saldoinicial, 
+                        SUM(cantlitros) as cantlitros,
+                        SUM(cant_asignada) as cant_asignada,
+                        fecha,
+                        saldoactual 
+                        FROM (
+                            SELECT notarjeta, 
+                                    tipo, 
+                                    cast(saldoactual as decimal(9,2)) - cant_asignada as saldoinicial, 
+                                    cant_asignada, 0 as cantlitros, 
+                                    fecha::timestamp::date, 
+                                    saldoactual
+                            FROM public.combustible_asignado 
+                            JOIN public.tarjeta_combustible ON tarjeta_combustible.id = combustible_asignado.tarjeta_id
+                            JOIN public.tipo_combustible ON tarjeta_combustible.id_combustibletipo = tipo_combustible.id
+                        UNION
+                            SELECT notarjeta,
+                                     tipo, 
+                                     cast(saldoactual as decimal(9,2)) + cantlitros, 0, 
+                                     cantlitros, 
+                                     fecha::timestamp::date, 
+                                     saldoactual
+                            FROM public.combustible_habilitado
+                            JOIN public.tarjeta_combustible ON tarjeta_combustible.id = combustible_habilitado.tarjeta_id
+                            JOIN public.tipo_combustible ON tarjeta_combustible.id_combustibletipo = tipo_combustible.id) 
+                        as derivedTable
+                    GROUP BY fecha, notarjeta,saldoactual
+                    ORDER BY fecha DESC
+       ';
+        $stmt = $db->prepare($query);
+        $params = array();
+        $stmt->execute($params);
+        $reportes = $stmt->fetchAll();
+
         return $this->render('tarjeta_combustible/reporte_tarjeta_mensual.html.twig', array(
             'reportes' => $reportes
         ));

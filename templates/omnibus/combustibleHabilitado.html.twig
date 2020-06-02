@@ -13,17 +13,14 @@
         id="dataTable"
         width="100%"
         cellspacing="0"
-        style="font-size:0.75rem;"
+        style="font-size: 0.75rem;"
       >
         <thead>
           <tr>
             <th>No. Ómnibus</th>
             <th>No. Tarjeta Combustible</th>
-            <th>Combustible Asignado (litros)</th>
-            <th>Fecha Asignación</th>
             <th>Km recorridos GPS</th>
             <th>Combustible consumido GPS (litros)</th>
-            <th>Diferencia Tarjeta/GPS</th>
           </tr>
         </thead>
         <tbody>
@@ -31,11 +28,8 @@
           <tr>
             <td>{{ reporte.noomnibus }}</td>
             <td>{{ reporte.notarjeta }}</td>
-            <td>{{ reporte.combustible_asignado }}</td>
-            <td>{{ reporte.fecha_asignacion }}</td>
             <td>{{ reporte.kmrecorridos }}</td>
             <td>{{ reporte.combustible_consumido_gps }}</td>
-            <td>{{ reporte.diferencia_tarjeta_gps }}</td>
           </tr>
           {% endfor %}
         </tbody>
