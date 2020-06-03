@@ -31,6 +31,12 @@ class CombustibleAsignadoController extends AbstractController
             $em->persist($combustibleAsignado);
             $em->flush();
 
+            $tarjeta = $combustibleAsignado->getTarjeta();
+
+            $tarjeta->setSaldoActual($tarjeta->getSaldoActual() + $combustibleAsignado->getCantAsignada());
+            $em->persist($tarjeta);
+            $em->flush();
+
             $this->addFlash('notice', 'Se ha insertado correctamente!');
 
             return $this->redirectToRoute('combustible_asignado_index', array('id' => $combustibleAsignado->getId()));
