@@ -161,7 +161,8 @@ class Tarjeta_combustibleController extends AbstractController
 
         $db = $connection;
 
-        $query = 'SELECT notarjeta, 
+        $query = 'SELECT notarjeta,
+                        tipo, 
                         saldoactual::double precision - SUM(cant_asignada) + SUM(cantlitros) as saldoinicial, 
                         SUM(cantlitros) as cantlitros,
                         SUM(cant_asignada) as cant_asignada,
@@ -188,7 +189,7 @@ class Tarjeta_combustibleController extends AbstractController
                             JOIN public.tarjeta_combustible ON tarjeta_combustible.id = combustible_habilitado.tarjeta_id
                             JOIN public.tipo_combustible ON tarjeta_combustible.id_combustibletipo = tipo_combustible.id) 
                         as derivedTable
-                    GROUP BY fecha, notarjeta,saldoactual
+                    GROUP BY fecha, notarjeta,saldoactual,tipo
                     ORDER BY fecha DESC
        ';
         $stmt = $db->prepare($query);

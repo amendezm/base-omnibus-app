@@ -20,6 +20,7 @@
         <thead>
           <tr>
             <th>Tarjeta</th>
+            <th>Combustible</th>
             <th>Saldo inicial</th>
             <th>Combustible asignado</th>
             <th>Combustible habilitado</th>
@@ -31,6 +32,7 @@
           {% for reporte in reportes %}
           <tr>
             <td>{{ reporte.notarjeta }}</td>
+            <td>{{ reporte.tipo }}</td>
             <td>{{ reporte.saldoinicial }}</td>
             <td>{{ reporte.cant_asignada }}</td>
             <td>{{ reporte.cantlitros }}</td>
