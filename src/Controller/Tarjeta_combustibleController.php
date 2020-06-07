@@ -199,6 +199,54 @@ class Tarjeta_combustibleController extends AbstractController
         $stmt->execute($params);
         $reportes = $stmt->fetchAll();
 
+
+
+        foreach ($reportes as $key => $value) {
+            $query = '
+            SELECT SUM(cant_asignada) as cant_asignada
+            FROM tarjeta_combustible,combustible_asignado
+            WHERE tarjeta_combustible.id = combustible_asignado.tarjeta_id and notarjeta = \'$notarjeta\' and combustible_asignado.fecha > \'$date\'
+            GROUP BY notarjeta
+            ';
+
+            $vars = array(
+                '$notarjeta' => $value['notarjeta'],
+                '$date' => $value['fecha'],
+            );
+
+            $queryValue = strtr($query, $vars);
+
+            $stmt = $db->prepare($queryValue);
+            $params = array();
+            $stmt->execute($params);
+            $asignaciones = $stmt->fetchAll();
+
+            $reportes[$key]['saldoactual'] = $reportes[$key]['saldoactual'] - (count($asignaciones) > 0 ? $asignaciones[0]['cant_asignada'] : 0);
+            $reportes[$key]['saldoinicial'] = $reportes[$key]['saldoinicial'] - (count($asignaciones) > 0 ? $asignaciones[0]['cant_asignada'] : 0);
+
+            $query = '
+            SELECT SUM(cantlitros) as cant_habilitada
+            FROM tarjeta_combustible,combustible_habilitado
+            WHERE tarjeta_combustible.id = combustible_habilitado.tarjeta_id and notarjeta = \'$notarjeta\' and combustible_habilitado.fecha::timestamp::date > \'$date\'
+            GROUP BY notarjeta
+            ';
+
+            $vars = array(
+                '$notarjeta' => $value['notarjeta'],
+                '$date' => $value['fecha'],
+            );
+
+            $queryValue = strtr($query, $vars);
+
+            $stmt = $db->prepare($queryValue);
+            $params = array();
+            $stmt->execute($params);
+            $habilitaciones = $stmt->fetchAll();
+
+            $reportes[$key]['saldoactual'] = $reportes[$key]['saldoactual'] + (count($habilitaciones) > 0 ? $habilitaciones[0]['cant_habilitada'] : 0);
+            $reportes[$key]['saldoinicial'] = $reportes[$key]['saldoinicial'] + (count($habilitaciones) > 0 ? $habilitaciones[0]['cant_habilitada'] : 0);
+        }
+
         return $this->render('tarjeta_combustible/reporte_tarjeta.html.twig', array(
             'reportes' => $reportes
         ));

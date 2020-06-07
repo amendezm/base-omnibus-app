@@ -88,6 +88,12 @@ class CombustibleHabilitadoController extends AbstractController
         $em->remove($combustibleHabilitado);
         $em->flush();
 
+        $tarjeta = $combustibleHabilitado->getTarjeta();
+
+        $tarjeta->setSaldoActual($tarjeta->getSaldoActual() + $combustibleHabilitado->getCantLitros());
+        $em->persist($tarjeta);
+        $em->flush();
+
         $this->addFlash('notice', 'Se ha borrado correctamente!');
 
         return $this->redirectToRoute('combustible_habilitado_index');
