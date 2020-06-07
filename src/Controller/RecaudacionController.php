@@ -31,8 +31,6 @@ class RecaudacionController extends AbstractController
            ruta.cantpasajerospromedio,
            ruta.preciopasaje-(ruta.preciopasaje*10/100) AS preciopasaj_evasion,
            ruta.recaudacion/ruta.cantpasajerospromedio AS recaudacion_xpasajero,
-           tarjeta_combustible.asignacion,
-           ruta.recaudacion/tarjeta_combustible.asignacion AS recaudacion_xltrcombustible,
            ruta.cantdiassemana_trabajo*AVG(hoja_ruta.cantidadviajes)*ruta.cantpasajerospromedio*ruta.preciopasaje-(ruta.preciopasaje*10/100) AS recaudacion_total
         FROM
            public.ruta,
@@ -46,7 +44,6 @@ class RecaudacionController extends AbstractController
         GROUP BY ruta.noruta,
            ruta.cantdiassemana_trabajo,
            ruta.cantpasajerospromedio,
-           tarjeta_combustible.asignacion,
            ruta.preciopasaje,
            ruta.recaudacion';
         $stmt = $db->prepare($query);
