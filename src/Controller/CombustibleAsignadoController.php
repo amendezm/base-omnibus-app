@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\CombustibleAsignado;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\DBAL\Driver\Connection;
+
 
 class CombustibleAsignadoController extends AbstractController
 {
@@ -51,14 +53,43 @@ class CombustibleAsignadoController extends AbstractController
     }
 
 
-    public function editAction(Request $request, CombustibleAsignado $combustibleAsignado)
+    public function editAction(Request $request, CombustibleAsignado $combustibleAsignado, Connection $connection)
     {
         $editForm = $this->createForm('App\Form\CombustibleAsignadoType', $combustibleAsignado);
         $editForm->handleRequest($request);
 
+        $db = $connection;
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+            $query = '
+            SELECT cant_asignada
+            FROM combustible_asignado
+            WHERE combustible_asignado.id = $id
+            ';
+
+            $vars = array(
+                '$id' => $combustibleAsignado->getId(),
+            );
+
+            $queryValue = strtr($query, $vars);
+
+            $stmt = $db->prepare($queryValue);
+            $params = array();
+            $stmt->execute($params);
+            $asignacion = $stmt->fetchAll();
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($combustibleAsignado);
+            $em->flush();
+
+            $tarjeta = $combustibleAsignado->getTarjeta();
+
+            $prevValue = (count($asignacion) > 0 ? $asignacion[0]['cant_asignada'] : 0);
+            $editChange =  $combustibleAsignado->getCantAsignada() - $prevValue;
+
+            $tarjeta->setSaldoActual($tarjeta->getSaldoActual() + $editChange);
+            $em->persist($tarjeta);
             $em->flush();
 
             $this->addFlash('notice', 'Se ha editado correctamente!');

@@ -172,7 +172,7 @@
                 data-parent="#accordionSidebar"
             >
                 <div class="bg-white py-2 collapse-inner rounded">
-                  <a class="collapse-item {% if 'tarjeta_combustible' in app.request.attributes.get('_route') and not 'tarjeta_combustible_parte' in app.request.attributes.get('_route')  %}active{% endif %}" href="{{ path('tarjeta_combustible_index') }}">
+                  <a class="collapse-item {% if 'tarjeta_combustible' in app.request.attributes.get('_route') and not ('tarjeta_combustible_parte' in app.request.attributes.get('_route')) and not ('tarjeta_combustible_mensual_parte' in app.request.attributes.get('_route')) %}active{% endif %}" href="{{ path('tarjeta_combustible_index') }}">
                     <i class="fa fa-credit-card"></i> 
                     <span>Tarjeta Combustible</span>
                   </a>

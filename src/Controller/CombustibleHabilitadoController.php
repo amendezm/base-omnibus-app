@@ -7,6 +7,7 @@ use DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Doctrine\DBAL\Driver\Connection;
 
 /**
  *
@@ -58,14 +59,43 @@ class CombustibleHabilitadoController extends AbstractController
     }
 
 
-    public function editAction(Request $request, CombustibleHabilitado $combustibleHabilitado)
+    public function editAction(Request $request, CombustibleHabilitado $combustibleHabilitado, Connection $connection)
     {
         $editForm = $this->createForm('App\Form\CombustibleHabilitadoType', $combustibleHabilitado);
         $editForm->handleRequest($request);
 
+        $db = $connection;
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+            $query = '
+            SELECT cantlitros
+            FROM combustible_habilitado
+            WHERE combustible_habilitado.id = $id
+            ';
+
+            $vars = array(
+                '$id' => $combustibleHabilitado->getId(),
+            );
+
+            $queryValue = strtr($query, $vars);
+
+            $stmt = $db->prepare($queryValue);
+            $params = array();
+            $stmt->execute($params);
+            $habilitacion = $stmt->fetchAll();
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($combustibleHabilitado);
+            $em->flush();
+
+            $tarjeta = $combustibleHabilitado->getTarjeta();
+
+            $prevValue = (count($habilitacion) > 0 ? $habilitacion[0]['cantlitros'] : 0);
+            $editChange =  $combustibleHabilitado->getCantLitros() - $prevValue;
+
+            $tarjeta->setSaldoActual($tarjeta->getSaldoActual() - $editChange);
+            $em->persist($tarjeta);
             $em->flush();
 
             $this->addFlash('notice', 'Se ha editado correctamente!');
