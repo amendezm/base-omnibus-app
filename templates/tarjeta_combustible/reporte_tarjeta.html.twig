@@ -1,34 +1,13 @@
 {% extends 'index.html.twig' %} {% block contenido %}
-<div class="row">
-  <div class="col-sm-12 col-md-6">
-    <h3 class="m-0 text-primary">Parte mensual de tarjeta de combustible</h3>
-  </div>
-</div>
-<br />
-{{ form_start(form, { method: "POST" }) }}
-<div class="form-inline text-right" style="justify-content: flex-end;">
-  <div class="form-group mr-4">
-    <label class="control-label mr-2 text-primary">Año</label>
-    {{ form_widget(form.year,
-             {'attr' : {'class' : 'form-control'}}
-    )}}
-  </div>
-  &nbsp;
-  <div class="form-group mr-4">
-    <label class="control-label mr-2 text-primary">Mes</label>
-    {{ form_widget(form.month,
-        {'attr' : {'class' : 'form-control' }}
-    )}}
-  </div>
-  &nbsp;
-  <div class="text-right">
-    <input type="submit" class="btn btn-primary" value="Filtrar" />
-  </div>
-  <br />
-  {{ form_end(form) }}
-</div>
 <br />
 <div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h3 class="m-0 text-primary">Parte diario de tarjeta de combustible</h3>
+      </div>
+    </div>
+  </div>
   <div class="card-body">
     <div class="table-responsive">
       <table
@@ -45,6 +24,7 @@
             <th>Saldo inicial</th>
             <th>Combustible asignado</th>
             <th>Combustible habilitado</th>
+            <th>Fecha</th>
             <th>Saldo actual</th>
           </tr>
         </thead>
@@ -54,8 +34,9 @@
             <td>{{ reporte.notarjeta }}</td>
             <td>{{ reporte.tipo }}</td>
             <td>{{ reporte.saldoinicial }}</td>
-            <td>{{ reporte.combustible_asignado }}</td>
-            <td>{{ reporte.combustible_habilitado }}</td>
+            <td>{{ reporte.cant_asignada }}</td>
+            <td>{{ reporte.cantlitros }}</td>
+            <td>{{ reporte.fecha }}</td>
             <td>{{ reporte.saldoactual }}</td>
           </tr>
           {% endfor %}

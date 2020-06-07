@@ -164,6 +164,7 @@
                 class="collapse {% if 'tarjeta_combustible' in app.request.attributes.get('_route') or
                 'combustible_habilitado' in app.request.attributes.get('_route') or
                 'combustible_asignado' in app.request.attributes.get('_route') or
+                'tarjeta_combustible_parte_mensual' in app.request.attributes.get('_route') or
                 'tarjeta_combustible_parte' in app.request.attributes.get('_route')%}
                 show
                 {% endif %}"
@@ -185,7 +186,11 @@
                   </a>
                   <a class="collapse-item {% if 'tarjeta_combustible_parte' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('tarjeta_combustible_parte') }}">
                     <i class="fa fa-file-invoice"></i> 
-                    <span>Parte Tarjeta</span>
+                    <span>Parte Diario</span>
+                  </a>
+                  <a class="collapse-item {% if 'tarjeta_combustible_mensual_parte' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('tarjeta_combustible_mensual_parte') }}">
+                    <i class="fa fa-file-invoice"></i> 
+                    <span>Parte Mensual</span>
                   </a>
                 </div>
             </div>

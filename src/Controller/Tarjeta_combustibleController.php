@@ -8,6 +8,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use App\Entity\Tarjeta_combustible;
 use Doctrine\DBAL\Driver\Connection;
 use App\Form\Tarjeta_combustibleType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  *
@@ -150,7 +152,7 @@ class Tarjeta_combustibleController extends AbstractController
         $params = array();
         $stmt->execute($params);
         $reportes = $stmt->fetchAll();
-        return $this->render('tarjeta_combustible/reporte_tarjeta_mensual.html.twig', array(
+        return $this->render('tarjeta_combustible/reporte_tarjeta.html.twig', array(
             'reportes' => $reportes
         ));
     }
@@ -197,8 +199,102 @@ class Tarjeta_combustibleController extends AbstractController
         $stmt->execute($params);
         $reportes = $stmt->fetchAll();
 
-        return $this->render('tarjeta_combustible/reporte_tarjeta_mensual.html.twig', array(
+        return $this->render('tarjeta_combustible/reporte_tarjeta.html.twig', array(
             'reportes' => $reportes
+        ));
+    }
+
+    public function parteMensualTarjetaCombustibleAction(Request $request, Connection $connection)
+    {
+        $years = [];
+        $currentYear = date("Y");
+
+        for ($i = $currentYear; $i >= $currentYear - 10; $i--) {
+            $years[$i] = $i;
+        }
+
+        $currentMonth = (int) date("m");
+
+        $form = $this->createFormBuilder()
+            ->add('year', ChoiceType::class, ['choices' => $years])
+            ->add('month', ChoiceType::class, [
+                'required' => true,
+                'multiple' => false,
+                'expanded' => false,
+                'choices'  => [
+                    'Enero' => '1',
+                    'Febrero' => '2',
+                    'Marzo' => '3',
+                    'Abril' => '4',
+                    'Mayo' => '5',
+                    'Junio' => '6',
+                    'Julio' => '7',
+                    'Agosto' => '8',
+                    'Septiembre' => '9',
+                    'Octubre' => '10',
+                    'Noviembre' => '11',
+                    'Diciembre' => '12',
+                ],
+                'data' => $currentMonth
+            ])
+            ->getForm();
+
+        $month = null;
+        $year = null;
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+            $month = $data['month'];
+            $year = $data['year'];
+        }
+
+        $monthValue = $month == null ? $currentMonth : $month;
+        $yearValue = $year == null ? $currentYear : $year;
+
+        $db = $connection;
+
+        $query = 'SELECT notarjeta,tipo, saldoactual::double precision - SUM(cant_asignada) + SUM(cantlitros) as saldoinicial, SUM(cant_asignada) as combustible_asignado, SUM(cantlitros) as combustible_habilitado, saldoactual FROM
+                        (SELECT notarjeta, 
+                                tipo, 
+                                saldoactual::double precision - cant_asignada as saldoinicial, 
+                                cant_asignada, 0 as cantlitros, 
+                                fecha::timestamp::date, 
+                                saldoactual
+                        FROM public.tarjeta_combustible
+                        LEFT JOIN public.combustible_asignado ON tarjeta_combustible.id = combustible_asignado.tarjeta_id
+                        LEFT JOIN public.tipo_combustible ON tarjeta_combustible.id_combustibletipo = tipo_combustible.id
+                    UNION
+                        SELECT notarjeta,
+                                 tipo, 
+                                 saldoactual::double precision + cantlitros, 0, 
+                                 cantlitros, 
+                                 fecha::timestamp::date, 
+                                 saldoactual
+                        FROM public.tarjeta_combustible
+                        LEFT JOIN public.combustible_habilitado ON tarjeta_combustible.id = combustible_habilitado.tarjeta_id
+                        LEFT JOIN public.tipo_combustible ON tarjeta_combustible.id_combustibletipo = tipo_combustible.id)
+                        as derivedTable 
+                WHERE date_part(\'month\', fecha) = $month and date_part(\'year\', fecha) = $year
+                GROUP BY notarjeta, tipo, saldoactual	
+       ';
+
+        $vars = array(
+            '$year' => $yearValue,
+            '$month' =>  $monthValue,
+        );
+
+        $queryValue = strtr($query, $vars);
+
+        $stmt = $db->prepare($queryValue);
+        $params = array();
+        $stmt->execute($params);
+        $reportes = $stmt->fetchAll();
+
+        return $this->render('tarjeta_combustible/reporte_tarjeta_mensual.html.twig', array(
+            'reportes' => $reportes,
+            'form' => $form->createView(),
         ));
     }
 }
