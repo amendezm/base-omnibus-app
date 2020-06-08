@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,14 +26,6 @@ class Tarjeta_combustible
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="asignacion", type="integer", nullable=true)
-     */
-
-    private $asignacion;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\TipoCombustible", inversedBy="tarjetaCombustible")
      * @ORM\JoinColumn(name="id_combustibleTipo", referencedColumnName="id", onDelete="CASCADE")
      */
@@ -43,32 +37,12 @@ class Tarjeta_combustible
     protected $omnibus;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="gastoReal", type="integer",nullable=true)
-     */
-    private $gastoReal;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_vencimiento", type="date")
      */
     private $fechaVencimiento;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="fecha_asignacion", type="date")
-     */
-    private $fechaAsignacion;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="tipo_combustible", type="string", length=255,nullable=true)
-     */
-    private $tipoCombustible;
     /**
      * @var string
      *
@@ -83,6 +57,16 @@ class Tarjeta_combustible
      */
     private $noTarjeta;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\CombustibleAsignado", mappedBy="tarjeta", orphanRemoval=true)
+     */
+    private $combustiblesAsignados;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\CombustibleHabilitado", mappedBy="tarjeta", orphanRemoval=true)
+     */
+    private $habilitaciones;
+
     public function __toString()
     {
         return $this->noTarjeta;
@@ -94,6 +78,8 @@ class Tarjeta_combustible
     public function __construct()
     {
         $this->omnibus = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->combustiblesAsignados = new ArrayCollection();
+        $this->habilitaciones = new ArrayCollection();
     }
 
     /**
@@ -144,22 +130,6 @@ class Tarjeta_combustible
         $this->combustibleTipo->removeElement($combustibleTipo);
     }
 
-    /**
-     * @return int
-     */
-    public function getAsignacion()
-    {
-        return $this->asignacion;
-    }
-
-    /**
-     * @param int $asignacion
-     */
-    public function setAsignacion($asignacion)
-    {
-        $this->asignacion = $asignacion;
-    }
-
 
     /**
      * @param mixed $combustibleTipo
@@ -178,22 +148,6 @@ class Tarjeta_combustible
     }
 
     /**
-     * @param \DateTime $fechaAsignacion
-     */
-    public function setFechaAsignacion($fechaAsignacion)
-    {
-        $this->fechaAsignacion = $fechaAsignacion;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getFechaAsignacion()
-    {
-        return $this->fechaAsignacion;
-    }
-
-    /**
      * @param \DateTime $fechaVencimiento
      */
     public function setFechaVencimiento($fechaVencimiento)
@@ -207,22 +161,6 @@ class Tarjeta_combustible
     public function getFechaVencimiento()
     {
         return $this->fechaVencimiento;
-    }
-
-    /**
-     * @param int $gastoReal
-     */
-    public function setGastoReal($gastoReal)
-    {
-        $this->gastoReal = $gastoReal;
-    }
-
-    /**
-     * @return int
-     */
-    public function getGastoReal()
-    {
-        return $this->gastoReal;
     }
 
     /**
@@ -274,22 +212,6 @@ class Tarjeta_combustible
     }
 
     /**
-     * @param string $ping
-     */
-    public function setPing($ping)
-    {
-        $this->ping = $ping;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPing()
-    {
-        return $this->ping;
-    }
-
-    /**
      * @param string $saldoActual
      */
     public function setSaldoActual($saldoActual)
@@ -306,18 +228,64 @@ class Tarjeta_combustible
     }
 
     /**
-     * @param string $tipoCombustible
+     * @return Collection|CombustibleAsignado[]
      */
-    public function setTipoCombustible($tipoCombustible)
+    public function getCombustiblesAsignados(): Collection
     {
-        $this->tipoCombustible = $tipoCombustible;
+        return $this->combustiblesAsignados;
+    }
+
+    public function addCombustiblesAsignado(CombustibleAsignado $combustiblesAsignado): self
+    {
+        if (!$this->combustiblesAsignados->contains($combustiblesAsignado)) {
+            $this->combustiblesAsignados[] = $combustiblesAsignado;
+            $combustiblesAsignado->setTarjeta($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCombustiblesAsignado(CombustibleAsignado $combustiblesAsignado): self
+    {
+        if ($this->combustiblesAsignados->contains($combustiblesAsignado)) {
+            $this->combustiblesAsignados->removeElement($combustiblesAsignado);
+            // set the owning side to null (unless already changed)
+            if ($combustiblesAsignado->getTarjeta() === $this) {
+                $combustiblesAsignado->setTarjeta(null);
+            }
+        }
+
+        return $this;
     }
 
     /**
-     * @return string
+     * @return Collection|CombustibleHabilitado[]
      */
-    public function getTipoCombustible()
+    public function getHabilitaciones(): Collection
     {
-        return $this->tipoCombustible;
+        return $this->habilitaciones;
+    }
+
+    public function addHabilitacione(CombustibleHabilitado $habilitacione): self
+    {
+        if (!$this->habilitaciones->contains($habilitacione)) {
+            $this->habilitaciones[] = $habilitacione;
+            $habilitacione->setTarjeta($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHabilitacione(CombustibleHabilitado $habilitacione): self
+    {
+        if ($this->habilitaciones->contains($habilitacione)) {
+            $this->habilitaciones->removeElement($habilitacione);
+            // set the owning side to null (unless already changed)
+            if ($habilitacione->getTarjeta() === $this) {
+                $habilitacione->setTarjeta(null);
+            }
+        }
+
+        return $this;
     }
 }

@@ -4,10 +4,16 @@
 <div class="col-md-8 offset-md-2">
   <div class="card shadow">
     <div class="card-body">
-      <h4 class="font-weight-bold text-primary">
+      <h4 class="text-primary">
         Editar Habilitación
       </h4>
       <br />
+      <div class="form-group">
+        <label class="control-label">Tarjeta</label>
+        {{ form_widget(edit_form.tarjeta, 
+          {'attr' : {'class' : 'form-control' }}
+        )}}
+      </div>
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">

@@ -11,18 +11,16 @@
         id="dataTable"
         width="100%"
         cellspacing="0"
-        style="font-size:0.75rem;"
+        style="font-size: 0.75rem;"
       >
         <thead>
           <tr>
             <th>Ruta</th>
-            <th>Fecuencia</th>
+            <th>Frecuencia</th>
             <th>Cantidad Viajes Promedio</th>
             <th>Cantidad Pasajeros Promedio</th>
             <th>Precio Pasaje(- 10% evación)</th>
             <th>Recaudación por Pasajeros</th>
-            <th>Combustible Asignado (litros)</th>
-            <th>Recaudación por Litros de Combustible</th>
             <th>Recaudación Total</th>
           </tr>
         </thead>
@@ -35,8 +33,6 @@
             <td>{{ reporte.cantpasajerospromedio }}</td>
             <td>{{ reporte.preciopasaj_evasion }}</td>
             <td>{{ reporte.recaudacion_xpasajero }}</td>
-            <td>{{ reporte.asignacion }}</td>
-            <td>{{ reporte.recaudacion_xltrcombustible }}</td>
             <td>{{ reporte.recaudacion_total }}</td>
           </tr>
           {% endfor %}

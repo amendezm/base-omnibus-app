@@ -2,13 +2,15 @@
 
 namespace App\Form;
 
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-class Tarjeta_combustibleType extends AbstractType
+
+
+class CombustibleAsignadoType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -17,14 +19,13 @@ class Tarjeta_combustibleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fechaVencimiento', DateType::class, [
+            ->add('tarjeta', EntityType::class, array('class' => 'App\Entity\Tarjeta_combustible', 'multiple' => false, 'expanded' => false))
+            ->add('cantAsignada')
+            ->add('fecha', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
                 'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd', 'autocomplete' => 'off'],
-            ])
-            ->add('noTarjeta')
-            ->add('combustibleTipo', EntityType::class, array('class' => 'App\Entity\TipoCombustible', 'multiple' => false, 'expanded' => false))
-            ->add('saldoActual');
+            ]);
     }
 
     /**
@@ -33,7 +34,7 @@ class Tarjeta_combustibleType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'App\Entity\Tarjeta_combustible'
+            'data_class' => 'App\Entity\CombustibleAsignado',
         ));
     }
 }

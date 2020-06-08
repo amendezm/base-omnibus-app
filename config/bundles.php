@@ -17,5 +17,5 @@ return [
     Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => ['all' => true],
     HtmlSanitizer\Bundle\HtmlSanitizerBundle::class => ['all' => true],
     App\App::class => ['all' => true],
-
+    FOS\JsRoutingBundle\FOSJsRoutingBundle::class => ['all' => true],
 ];

@@ -38,12 +38,8 @@ class OmnibusController extends AbstractController
            omnibus.noomnibus,
            tarjeta_combustible.notarjeta,
            tipo_combustible.tipo AS tipoCombustible,
-           tarjeta_combustible.asignacion AS combustible_asignado,
-           tarjeta_combustible.fecha_asignacion,
            g_p_s.kmrecorridos,
-           g_p_s.combustible AS combustible_consumido_gps,
-           tarjeta_combustible.gastoreal AS gasto_combustibleXtarjeta,
-           tarjeta_combustible.gastoreal/g_p_s.combustible AS diferencia_tarjeta_gps
+           g_p_s.combustible AS combustible_consumido_gps
         FROM
            public.omnibus,
            public.tarjeta_combustible,
@@ -159,11 +155,8 @@ class OmnibusController extends AbstractController
            trabajador.ci,
            ruta.noruta,
            tarjeta_combustible.notarjeta,
-           tarjeta_combustible.asignacion AS combustible_asignado,
-           tarjeta_combustible.fecha_asignacion,
            g_p_s.kmrecorridos,
-           g_p_s.combustible AS combustible_consumido_gps,
-           tarjeta_combustible.gastoreal AS gasto_combustibleXtarjeta
+           g_p_s.combustible AS combustible_consumido_gps
         FROM
            public.omnibus,
            public.chofer,

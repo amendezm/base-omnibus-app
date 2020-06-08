@@ -156,6 +156,16 @@ tarjeta_Reporte_mensual:
   defaults:
   controller: App\Controller\Tarjeta_combustibleController:reporte_tarjeta_mensualAction
   methods: GET
+tarjeta_combustible_parte:
+  path: /tarjeta_combustible/parte
+  defaults:
+  controller: App\Controller\Tarjeta_combustibleController:parteTarjetaCombustibleAction
+  methods: GET
+tarjeta_combustible_mensual_parte:
+  path: /tarjeta_combustible/parte_mensual
+  defaults:
+  controller: App\Controller\Tarjeta_combustibleController:parteMensualTarjetaCombustibleAction
+  methods: [GET, POST]
 tarjeta_combustible_show:
   path: /tarjeta_combustible/{id}/show
   controller: App\Controller\Tarjeta_combustibleController:showAction
@@ -402,6 +412,23 @@ pronostico_recaudacion:
   path: /pronostico/recaudacion
   controller: App\Controller\PronosticoController:recaudacionAction
   methods: [GET]
+
+combustible_asignado_index:
+  path: /combustible_asignado
+  controller: App\Controller\CombustibleAsignadoController:indexAction
+  methods: GET
+combustible_asignado_new:
+  path: /combustible_asignado/new
+  controller: App\Controller\CombustibleAsignadoController:newAction
+  methods: [GET, POST]
+combustible_asignado_edit:
+  path: /combustible_asignado/{id}/edit
+  controller: App\Controller\CombustibleAsignadoController:editAction
+  methods: [GET, POST]
+combustible_asignado_delete:
+  path: /combustible_asignado/{id}/delete
+  controller: App\Controller\CombustibleAsignadoController:deleteAction
+  methods: [GET, POST, DELETE]
 
 combustible_habilitado_index:
   path: /combustible_habilitado

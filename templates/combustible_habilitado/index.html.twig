@@ -11,7 +11,7 @@
       <div class="col-md-6 text-right">
         {% if not is_granted('ROLE_USUARIO' ) %}
         <a
-          class="btn btn-sm btn-default  pull-left"
+          class="btn btn-sm btn-default pull-left"
           href="{{ path('combustible_habilitado_new') }}"
         >
           <img
@@ -31,10 +31,11 @@
         id="dataTable"
         width="100%"
         cellspacing="0"
-        style="font-size:0.75rem;"
+        style="font-size: 0.75rem;"
       >
         <thead>
           <th>No. Comprobante</th>
+          <th>Tarjeta</th>
           <th>Cupet</th>
           <th>Fecha y Hora</th>
           <th>Habilitador</th>
@@ -52,6 +53,7 @@
           {% for habilitacion in habilitaciones %}
           <tr>
             <td>{{ habilitacion.noComprobante }}</td>
+            <td>{{ habilitacion.tarjeta }}</td>
             <td>{{ habilitacion.cupet }}</td>
             <td>
               {% if habilitacion.fecha %}
@@ -71,7 +73,7 @@
             </td>
             <td>
               <div class="row">
-                <div class="col-md-3 offset-md-1">
+                <div class="col-md-3 offset-md-3">
                   <a
                     class="text-secondary"
                     href="#"
@@ -108,7 +110,7 @@
       </table>
     </div>
   </div>
-  <div id="mymodal" class="modal  inmodal fade">
+  <div id="mymodal" class="modal inmodal fade">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header text-center">

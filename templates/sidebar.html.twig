@@ -162,20 +162,35 @@
             <div
                 id="collapseEnergia"
                 class="collapse {% if 'tarjeta_combustible' in app.request.attributes.get('_route') or
-                'combustible_habilitado' in app.request.attributes.get('_route')%}
+                'combustible_habilitado' in app.request.attributes.get('_route') or
+                'combustible_asignado' in app.request.attributes.get('_route') or
+                'tarjeta_combustible_parte_mensual' in app.request.attributes.get('_route') or
+                'tarjeta_combustible_parte' in app.request.attributes.get('_route')%}
                 show
                 {% endif %}"
                 aria-labelledby="headingEnergia"
                 data-parent="#accordionSidebar"
             >
                 <div class="bg-white py-2 collapse-inner rounded">
-                  <a class="collapse-item {% if 'tarjeta_combustible' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('tarjeta_combustible_index') }}">
+                  <a class="collapse-item {% if 'tarjeta_combustible' in app.request.attributes.get('_route') and not ('tarjeta_combustible_parte' in app.request.attributes.get('_route')) and not ('tarjeta_combustible_mensual_parte' in app.request.attributes.get('_route')) %}active{% endif %}" href="{{ path('tarjeta_combustible_index') }}">
                     <i class="fa fa-credit-card"></i> 
                     <span>Tarjeta Combustible</span>
+                  </a>
+                  <a class="collapse-item {% if 'combustible_asignado' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('combustible_asignado_index') }}">
+                    <i class="fa fa-file-signature"></i> 
+                    <span>Asignaciones</span>
                   </a>
                   <a class="collapse-item {% if 'combustible_habilitado' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('combustible_habilitado_index') }}">
                     <i class="fa fa-gas-pump"></i> 
                     <span>Habilitaciones</span>
+                  </a>
+                  <a class="collapse-item {% if 'tarjeta_combustible_parte' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('tarjeta_combustible_parte') }}">
+                    <i class="fa fa-file-invoice"></i> 
+                    <span>Parte Diario</span>
+                  </a>
+                  <a class="collapse-item {% if 'tarjeta_combustible_mensual_parte' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('tarjeta_combustible_mensual_parte') }}">
+                    <i class="fa fa-file-invoice"></i> 
+                    <span>Parte Mensual</span>
                   </a>
                 </div>
             </div>

@@ -1,0 +1,48 @@
+{% extends 'index.html.twig' %} {% block contenido %}
+{{ form_start(form, { method: "POST" }) }}
+<br />
+<div class="col-md-10 offset-md-1" style="font-size: 0.85rem;">
+  <div class="card shadow">
+    <div class="card-body">
+      <div class="col-md-10 offset-md-1">
+        <h4 class="text-primary">
+          Nueva Asignación
+        </h4>
+        <br />
+        <div class="form-group">
+          <label class="control-label">Tarjeta</label>
+          {{ form_widget(form.tarjeta, 
+                {'attr' : {'class' : 'form-control' }}
+          )}}
+        </div>
+        <div class="form-group">
+          <label class="control-label">Cantidad asignada</label>
+          {{ form_widget(form.cantAsignada, 
+                {'attr' : {'class' : 'form-control' }}
+          )}}
+        </div>
+        <div class="form-group">
+          <label class="control-label">Fecha</label>
+          {{ form_widget(form.fecha, 
+                {'attr' : {'class' : 'form-control datepicker-here'}}
+          )}}
+        </div>
+        <br />
+        <div class="text-right">
+          <a
+            class="btn btn-outline-secondary"
+            href="{{ path('combustible_asignado_index') }}"
+          >
+            Cancelar
+          </a>
+          <button type="submit" class="btn btn-primary" value="Crear">
+            Guardar
+          </button>
+        </div>
+        <br />
+      </div>
+    </div>
+  </div>
+  {{ form_end(form) }}
+</div>
+{% endblock %}

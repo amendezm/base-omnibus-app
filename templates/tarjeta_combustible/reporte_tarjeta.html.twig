@@ -1,0 +1,48 @@
+{% extends 'index.html.twig' %} {% block contenido %}
+<br />
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h3 class="m-0 text-primary">Parte diario de tarjeta de combustible</h3>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table
+        class="table text-center"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+        style="font-size: 0.85rem;"
+      >
+        <thead>
+          <tr>
+            <th>Tarjeta</th>
+            <th>Combustible</th>
+            <th>Saldo inicial</th>
+            <th>Combustible asignado</th>
+            <th>Combustible habilitado</th>
+            <th>Fecha</th>
+            <th>Saldo final</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for reporte in reportes %}
+          <tr>
+            <td>{{ reporte.notarjeta }}</td>
+            <td>{{ reporte.tipo }}</td>
+            <td>{{ reporte.saldoinicial }}</td>
+            <td>{{ reporte.cant_asignada }}</td>
+            <td>{{ reporte.cantlitros }}</td>
+            <td>{{ reporte.fecha }}</td>
+            <td>{{ reporte.saldoactual }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
