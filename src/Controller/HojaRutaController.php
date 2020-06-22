@@ -211,4 +211,50 @@ class HojaRutaController extends AbstractController
             'reportes' => $reportes
         ));
     }
+
+    public function reporte_indicadoresAction(Connection $connection)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $db = $connection;
+        $query = 'SELECT 
+            ruta.noruta, 
+            ruta.destino, 
+            omnibus.noomnibus, 
+            tipo_omnibus.tipo, 
+            tipo_omnibus.capacidad_total, 
+            ruta.preciopasaje, 
+            hoja_ruta.cantidadviajes, 
+            SUM(g_p_s.kmrecorridos) as kms_recorridos, 
+            SUM(g_p_s.combustible) as combustible, 
+            g_p_s.fecha, 
+            SUM(recaudacion.recaudacion) as recaudacion
+        FROM 
+            public.ruta, 
+            public.omnibus, 
+            public.tipo_omnibus, 
+            public.hoja_ruta, 
+            public.g_p_s, 
+            public.recaudacion 
+        WHERE 
+            hoja_ruta.id_ruta = ruta.id AND 
+            hoja_ruta.id_omnibus = omnibus.id AND 
+            omnibus.id_tipoomnibus = tipo_omnibus.id AND 
+            recaudacion.id_hojaruta = hoja_ruta.id
+        GROUP BY 
+            g_p_s.fecha, 
+            ruta.noruta, 
+            ruta.destino, 
+            omnibus.noomnibus, 
+            tipo_omnibus.tipo, 
+            tipo_omnibus.capacidad_total, 
+            ruta.preciopasaje, 
+            hoja_ruta.cantidadviajes;';
+        $stmt = $db->prepare($query);
+        $params = array();
+        $stmt->execute($params);
+        $reportes = $stmt->fetchAll();
+        return $this->render('hojaruta/reporte_hoja_ruta_indicadores.html.twig', array(
+            'reportes' => $reportes
+        ));
+    }
 }
