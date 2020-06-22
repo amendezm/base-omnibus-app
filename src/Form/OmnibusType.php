@@ -21,7 +21,6 @@ class OmnibusType extends AbstractType
             ->add('chapa')
             ->add('noOmnibus')
             ->add('typeOmnibus')
-            ->add('marca')
             ->add('base')
             ->add('en_revision', CheckboxType::class, [
                 'required' => false,
