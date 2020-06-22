@@ -1,0 +1,48 @@
+{% extends 'index.html.twig' %} {% block contenido %}
+<div class="box box-danger">
+  <div class="box-header with-border">
+    <div class="user-block">
+      <h3 class="text-center">Reporte Indicadores de Hoja de Ruta</h3>
+    </div>
+  </div>
+  <div class="panel-body">
+    <table
+      id="sample-table-2"
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th class="bg-primary">No Ruta</th>
+          <th class="bg-primary">Destino</th>
+          <th class="bg-primary">No Ómnibus</th>
+          <th class="bg-primary">Marca</th>
+          <th class="bg-primary">Capacidad</th>
+          <th class="bg-primary">Precio del pasaje</th>
+          <th class="bg-primary">Cantidad de Viajes</th>
+          <th class="bg-primary">Kms Recorridos</th>
+          <th class="bg-primary">Combustible</th>
+          <th class="bg-primary">Fecha</th>
+          <th class="bg-primary">Recaudación</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for reporte in reportes %}
+        <tr>
+          <td>{{ reporte.noruta }}</td>
+          <td>{{ reporte.destino }}</td>
+          <td>{{ reporte.noomnibus }}</td>
+          <td>{{ reporte.tipo }}</td>
+          <td>{{ reporte.capacidad_total }}</td>
+          <td>{{ reporte.preciopasaje }}</td>
+          <td>{{ reporte.cantidadviajes }}</td>
+          <td>{{ reporte.kms_recorridos }}</td>
+          <td>{{ reporte.combustible }}</td>
+          <td>{{ reporte.fecha }}</td>
+          <td>{{ reporte.recaudacion }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
