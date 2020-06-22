@@ -87,12 +87,6 @@ class Omnibus
      *
      */
     private $kmRecorridosAcumulados;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="marca", type="string", length=10)
-     */
-    private $marca;
 
     /**
      * @var \DateTime
@@ -521,22 +515,6 @@ class Omnibus
     public function setMantenimiento($mantenimiento)
     {
         $this->mantenimiento = $mantenimiento;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMarca()
-    {
-        return $this->marca;
-    }
-
-    /**
-     * @param string $marca
-     */
-    public function setMarca($marca)
-    {
-        $this->marca = $marca;
     }
 
     /**
