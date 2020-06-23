@@ -6,20 +6,6 @@
       <div class="col-md-6">
         <h3 class="m-0 text-primary">Choferes</h3>
       </div>
-      <div class="col-md-6 text-right">
-        {% if not is_granted('ROLE_USUARIO' ) %}
-        <a
-          class="btn btn-sm btn-default  pull-left"
-          href="{{ path('chofer_new') }}"
-        >
-          <img
-            src="{{ asset('assets/dist/img/add_database_26px.png') }}"
-            alt="User Image"
-          />
-          Nuevo
-        </a>
-        {% endif %}
-      </div>
     </div>
   </div>
   <div class="card-body" style="font-size: 0.65rem;">
