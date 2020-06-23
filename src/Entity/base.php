@@ -20,8 +20,8 @@ class base
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      *
-    */
-      private $id;
+     */
+    private $id;
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Omnibus", mappedBy="base")
      */
@@ -163,6 +163,4 @@ class base
     {
         return $this->omnibus;
     }
-
-
 }

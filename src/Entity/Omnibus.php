@@ -45,7 +45,8 @@ class Omnibus
     protected $gps;
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\base", inversedBy="omnibus")
-     * @ORM\JoinColumn(name="id_base", referencedColumnName="id")
+     * @ORM\JoinColumn(name="id_base", referencedColumnName="id",onDelete="CASCADE")
+     * 
      */
     protected $base;
 
