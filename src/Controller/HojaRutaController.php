@@ -218,16 +218,15 @@ class HojaRutaController extends AbstractController
         $db = $connection;
         $query = 'SELECT 
             ruta.noruta, 
-            ruta.destino, 
+            ruta.destino,
             omnibus.noomnibus, 
             tipo_omnibus.tipo, 
             tipo_omnibus.capacidad_total, 
             ruta.preciopasaje, 
             hoja_ruta.cantidadviajes, 
-            SUM(g_p_s.kmrecorridos) as kms_recorridos, 
-            SUM(g_p_s.combustible) as combustible, 
-            g_p_s.fecha, 
-            SUM(recaudacion.recaudacion) as recaudacion
+            SUM(g_p_s.kmrecorridos)/2 as kms_recorridos, 
+            SUM(g_p_s.combustible)/2 as combustible, g_p_s.fecha, 
+            SUM(recaudacion.recaudacion)/2 as recaudacion
         FROM 
             public.ruta, 
             public.omnibus, 
@@ -238,8 +237,11 @@ class HojaRutaController extends AbstractController
         WHERE 
             hoja_ruta.id_ruta = ruta.id AND 
             hoja_ruta.id_omnibus = omnibus.id AND 
+            g_p_s.id_omnibus = omnibus.id AND 
             omnibus.id_tipoomnibus = tipo_omnibus.id AND 
-            recaudacion.id_hojaruta = hoja_ruta.id
+            recaudacion.id_hojaruta = hoja_ruta.id AND
+            hoja_ruta.fecha = g_p_s.fecha AND
+            hoja_ruta.fecha = recaudacion.fecha
         GROUP BY 
             g_p_s.fecha, 
             ruta.noruta, 
@@ -248,7 +250,8 @@ class HojaRutaController extends AbstractController
             tipo_omnibus.tipo, 
             tipo_omnibus.capacidad_total, 
             ruta.preciopasaje, 
-            hoja_ruta.cantidadviajes;';
+            hoja_ruta.cantidadviajes;
+        ';
         $stmt = $db->prepare($query);
         $params = array();
         $stmt->execute($params);
