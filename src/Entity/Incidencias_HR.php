@@ -24,28 +24,27 @@ class Incidencias_HR
 
     /**
      * @orm\Manytoone(targetEntity="App\Entity\Incidencia", inversedBy="incidencia_hr")
-     * @orm\Joincolumn(name="idIncidencia", referencedColumnName="idincidencia")
+     * @orm\Joincolumn(name="idIncidencia", referencedColumnName="idincidencia", onDelete="CASCADE")
      */
     protected $incidencias;
 
     /**
      * @orm\Manytoone(targetEntity="App\Entity\HojaRuta", inversedBy="incidencia_hr")
-     * @orm\Joincolumn(name="idHojaRuta", referencedColumnName="id")
+     * @orm\Joincolumn(name="idHojaRuta", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $hojaRuta;
 
 
-//    public function __toString()
-//    {
-//        return $this->getDetalles();
-//    }
+    //    public function __toString()
+    //    {
+    //        return $this->getDetalles();
+    //    }
 
     /**
      * constructor
      */
     public function __construct()
     {
-
     }
 
     /**
@@ -95,7 +94,4 @@ class Incidencias_HR
     {
         $this->incidencias = $incidencias;
     }
-
-
-
 }
