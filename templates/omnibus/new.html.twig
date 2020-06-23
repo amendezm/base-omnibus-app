@@ -30,7 +30,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label class="col-sm-4 control-label">Tipo</label>
+              <label class="col-sm-4 control-label">Marca</label>
               {{ form_widget(form.typeOmnibus, 
               {'attr' : {'class' : 'form-control'}}
               )}}
@@ -38,16 +38,10 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <label class="col-sm-4 control-label">Marca</label>
-              {{ form_widget(form.marca, 
-                {'attr' : {'class' : 'form-control'}}
-              )}}
+              <label class="col-sm-4 control-label">Base</label>
+              {{ form_widget(form.base, {'attr' : {'class' : 'form-control'}})}}
             </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-4 control-label">Base</label>
-          {{ form_widget(form.base, {'attr' : {'class' : 'form-control' }})}}
         </div>
         <div class="row">
           <div class="col-md-6">
@@ -111,7 +105,7 @@
         </div>
         <div class="row">
           <div class="col-md-3">
-            <div class="form-group" style="margin-left: 1.5rem">
+            <div class="form-group" style="margin-left: 1.5rem;">
               <div class="cutom-control custom-checkbox">
                 {{ form_widget(form.en_revision) }}
                 <label class="custom-control-label" for="omnibus_en_revision">
