@@ -51,7 +51,7 @@ class Ruta
 
     /**
      * @orm\Manytoone(targetEntity="App\Entity\Pto_expedicion", inversedBy="ruta")
-     * @orm\Joincolumn(name="id_expedicion", referencedColumnName="id")
+     * @orm\Joincolumn(name="id_expedicion", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $expedicion;
 
