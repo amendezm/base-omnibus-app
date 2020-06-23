@@ -102,26 +102,22 @@
         <div class="form-group">
           <label class="col-sm-4 control-label">Tarjeta de Combustible</label>
           {{ form_widget(edit_form.tarjetaCombustible, 
-          {'attr' : {'class' : 'form-control'}}
+            {'attr' : {'class' : 'form-control'}}
           )}}
         </div>
         <div class="row">
           <div class="col-md-3">
             <div class="form-group" style="margin-left: 1.5rem;">
-              <div class="cutom-control custom-checkbox">
-                {{ form_widget(edit_form.en_revision) }}
-                <label class="custom-control-label" for="omnibus_en_revision">
-                  Revisión
-                </label>
+              <div>
+                {{ form_widget(edit_form.en_revision, {'attr' : {'class' : '' }})}}
               </div>
             </div>
           </div>
           <div class="col-md-3">
-            <div class="cutom-control custom-checkbox">
-              {{ form_widget(edit_form.is_roto) }}
-              <label class="custom-control-label" for="omnibus_is_roto">
-                Roto
-              </label>
+            <div class="form-group" style="margin-left: 1.5rem;">
+              <div>
+                {{ form_widget(edit_form.is_roto, {'attr' : {'class' : '' }})}}
+              </div>
             </div>
           </div>
         </div>

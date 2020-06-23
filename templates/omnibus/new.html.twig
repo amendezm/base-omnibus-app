@@ -15,6 +15,7 @@
               <label class="control-label">NoControl</label>
               {{ form_widget(form.noOmnibus, 
                 {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
+
               )}}
             </div>
           </div>
@@ -106,21 +107,15 @@
         <div class="row">
           <div class="col-md-3">
             <div class="form-group" style="margin-left: 1.5rem;">
-              <div class="cutom-control custom-checkbox">
-                {{ form_widget(form.en_revision) }}
-                <label class="custom-control-label" for="omnibus_en_revision">
-                  Revisión
-                </label>
+              <div>
+                {{ form_widget(form.en_revision, {'attr' : {'class' : '' }})}}
               </div>
             </div>
           </div>
           <div class="col-md-3">
-            <div class="form-group">
-              <div class="cutom-control custom-checkbox">
-                {{ form_widget(form.is_roto) }}
-                <label class="custom-control-label" for="omnibus_is_roto">
-                  Roto
-                </label>
+            <div class="form-group" style="margin-left: 1.5rem;">
+              <div>
+                {{ form_widget(form.is_roto, {'attr' : {'class' : '' }})}}
               </div>
             </div>
           </div>
