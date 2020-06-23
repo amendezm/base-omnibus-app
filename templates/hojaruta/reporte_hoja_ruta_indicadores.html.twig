@@ -1,48 +1,58 @@
 {% extends 'index.html.twig' %} {% block contenido %}
-<div class="box box-danger">
-  <div class="box-header with-border">
-    <div class="user-block">
-      <h3 class="text-center">Reporte Indicadores de Hoja de Ruta</h3>
+<br />
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <div class="row">
+      <div class="col-md-6">
+        <h3 class="m-0 text-primary">
+          Reporte Indicadores de Hoja de Ruta
+        </h3>
+      </div>
     </div>
   </div>
-  <div class="panel-body">
-    <table
-      id="sample-table-2"
-      class="table table-striped table-bordered table-hover"
-    >
-      <thead>
-        <tr>
-          <th class="bg-primary">No Ruta</th>
-          <th class="bg-primary">Destino</th>
-          <th class="bg-primary">No Ómnibus</th>
-          <th class="bg-primary">Marca</th>
-          <th class="bg-primary">Capacidad</th>
-          <th class="bg-primary">Precio del pasaje</th>
-          <th class="bg-primary">Cantidad de Viajes</th>
-          <th class="bg-primary">Kms Recorridos</th>
-          <th class="bg-primary">Combustible</th>
-          <th class="bg-primary">Fecha</th>
-          <th class="bg-primary">Recaudación</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for reporte in reportes %}
-        <tr>
-          <td>{{ reporte.noruta }}</td>
-          <td>{{ reporte.destino }}</td>
-          <td>{{ reporte.noomnibus }}</td>
-          <td>{{ reporte.tipo }}</td>
-          <td>{{ reporte.capacidad_total }}</td>
-          <td>{{ reporte.preciopasaje }}</td>
-          <td>{{ reporte.cantidadviajes }}</td>
-          <td>{{ reporte.kms_recorridos }}</td>
-          <td>{{ reporte.combustible }}</td>
-          <td>{{ reporte.fecha }}</td>
-          <td>{{ reporte.recaudacion }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+  <div class="card-body">
+    <div class="table-reponsive">
+      <table
+        class="table text-center"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+        style="font-size: 0.85rem;"
+      >
+        <thead>
+          <tr>
+            <th>No Ruta</th>
+            <th>Destino</th>
+            <th>No Ómnibus</th>
+            <th>Marca</th>
+            <th>Capacidad</th>
+            <th>Precio del pasaje</th>
+            <th>Cantidad de Viajes</th>
+            <th>Kms Recorridos</th>
+            <th>Combustible</th>
+            <th>Fecha</th>
+            <th>Recaudación</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for reporte in reportes %}
+          <tr>
+            <td>{{ reporte.noruta }}</td>
+            <td>{{ reporte.destino }}</td>
+            <td>{{ reporte.noomnibus }}</td>
+            <td>{{ reporte.tipo }}</td>
+            <td>{{ reporte.capacidad_total }}</td>
+            <td>{{ reporte.preciopasaje }}</td>
+            <td>{{ reporte.cantidadviajes }}</td>
+            <td>{{ reporte.kms_recorridos }}</td>
+            <td>{{ reporte.combustible }}</td>
+            <td>{{ reporte.fecha }}</td>
+            <td>{{ reporte.recaudacion }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 {% endblock %}
