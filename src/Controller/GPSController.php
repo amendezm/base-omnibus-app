@@ -11,10 +11,10 @@ use App\Entity\GPS;
 use App\Entity\Omnibus;
 use App\Form\GPSType;
 
+// * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ESPECIALISTA_GPS')")
 /**
  *
  * Función para llamar a la plantilla de administración
- * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ESPECIALISTA_GPS')")
  *
  */
 class GPSController extends AbstractController
