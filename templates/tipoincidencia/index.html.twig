@@ -9,9 +9,10 @@
         </h3>
       </div>
       <div class="col-md-6 text-right">
-        {% if not is_granted('ROLE_USUARIO' ) %}
+        {% if is_granted('ROLE_ADMIN' ) or
+        is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
         <a
-          class="btn btn-sm btn-default  pull-left"
+          class="btn btn-sm btn-default pull-left"
           href="{{ path('tipoincidencia_new') }}"
         >
           <img
@@ -31,12 +32,13 @@
         id="dataTable"
         width="100%"
         cellspacing="0"
-        style="font-size:0.85rem"
+        style="font-size: 0.85rem;"
       >
         <thead>
           <th>Tipo</th>
           <th>Descripción</th>
-          {% if not is_granted('ROLE_USUARIO' ) %}
+          {% if is_granted('ROLE_ADMIN' ) or
+          is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
           <th>
             Acciones
           </th>
@@ -47,9 +49,11 @@
           <tr>
             <td>{{ tipoIncidencia.tipoIncidencias }}</td>
             <td>{{ tipoIncidencia.descripcion }}</td>
+            {% if is_granted('ROLE_ADMIN' ) or
+            is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
             <td>
               <div class="row">
-                <div class="col-md-2 offset-md-4">
+                <div class="col">
                   <a
                     class="text-secondary"
                     href="#"
@@ -65,7 +69,7 @@
                   {'instanceToDelete': tipoIncidencia,
                   'path':'tipoincidencia_delete'} %}
                 </div>
-                <div class="col-md-2">
+                <div class="col">
                   <a
                     href="{{
                       path('tipoincidencia_edit', { id: tipoIncidencia.id })
@@ -78,6 +82,7 @@
                 </div>
               </div>
             </td>
+            {%endif%}
           </tr>
           {% endfor %}
         </tbody>
@@ -85,7 +90,7 @@
     </div>
   </div>
 </div>
-<div id="mymodal" class="modal  inmodal fade">
+<div id="mymodal" class="modal inmodal fade">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header text-center">
