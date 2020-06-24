@@ -9,9 +9,10 @@
         </h3>
       </div>
       <div class="col-md-6 text-right">
-        {% if not is_granted('ROLE_USUARIO' ) %}
+        {% if is_granted('ROLE_ADMIN' ) or
+        is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
         <a
-          class="btn btn-sm btn-default  pull-left"
+          class="btn btn-sm btn-default pull-left"
           href="{{ path('escogidaturno_new') }}"
         >
           <img
@@ -42,9 +43,12 @@
           <th>Cant de viajes</th>
           <th>Chofer</th>
           <th>Período de escogida</th>
+          {% if is_granted('ROLE_ADMIN' ) or
+          is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
           <th>
             Acciones
           </th>
+          {%endif%}
         </thead>
         <tbody>
           {% for escogidaTurno in escogidaTurnos %}
@@ -70,6 +74,8 @@
             <td>{{ escogidaTurno.cantidadViajes }}</td>
             <td>{{ escogidaTurno.chofer }}</td>
             <td>{{ escogidaTurno.periodoEscogida }}</td>
+            {% if is_granted('ROLE_ADMIN' ) or
+            is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
             <td>
               <div class="row">
                 <div class="col-md-3 offset-md-1">
@@ -102,6 +108,7 @@
                 </div>
               </div>
             </td>
+            {%endif%}
           </tr>
           {% endfor %}
         </tbody>
@@ -109,7 +116,7 @@
     </div>
   </div>
 </div>
-<div id="mymodal" class="modal  inmodal fade">
+<div id="mymodal" class="modal inmodal fade">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header text-center">
