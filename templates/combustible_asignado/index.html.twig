@@ -9,7 +9,8 @@
         </h3>
       </div>
       <div class="col-md-6 text-right">
-        {% if not is_granted('ROLE_USUARIO' ) %}
+        {% if is_granted('ROLE_ADMIN' ) or
+        is_granted('ROLE_ESPECIALISTA_ENERGIA' ) %}
         <a
           class="btn btn-sm btn-default pull-left"
           href="{{ path('combustible_asignado_new') }}"
@@ -37,7 +38,8 @@
           <th>Tarjeta</th>
           <th>Cantidad asignada</th>
           <th>Fecha</th>
-          {% if not is_granted('ROLE_USUARIO' ) %}
+          {% if is_granted('ROLE_ADMIN' ) or
+          is_granted('ROLE_ESPECIALISTA_ENERGIA' ) %}
           <th>
             Acciones
           </th>
@@ -51,6 +53,8 @@
             <td>
               {{ asignacion.fecha|date('Y-m-d', false) }}
             </td>
+            {% if is_granted('ROLE_ADMIN' ) or
+            is_granted('ROLE_ESPECIALISTA_ENERGIA' ) %}
             <td>
               <div class="row">
                 <div class="col-md-3 offset-md-3">
@@ -84,6 +88,7 @@
                 </div>
               </div>
             </td>
+            {%endif%}
           </tr>
           {% endfor %}
         </tbody>

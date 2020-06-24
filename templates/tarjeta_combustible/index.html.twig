@@ -48,11 +48,12 @@
 <br />
 <br />
 <div class="row card-container">
+  {% if is_granted('ROLE_ADMIN' ) or is_granted('ROLE_ESPECIALISTA_ENERGIA' ) %}
   <div class="col-md-2">
     <a
       href="{{ path('tarjeta_combustible_new') }}"
       class="card shadow mb-3 fuel-card new-card"
-      style="height: 90%"
+      style="height: 90%;"
     >
       <div
         class="card-body text-dark"
@@ -74,7 +75,7 @@
       </div>
     </a>
   </div>
-  {% for tarjeta_combustible in tarjeta_combustibles %}
+  {%endif%} {% for tarjeta_combustible in tarjeta_combustibles %}
   <div
     class="col-md-2 card-item"
     data-number="{{ tarjeta_combustible.noTarjeta }}"
@@ -117,6 +118,8 @@
           </div>
         </div>
       </div>
+      {% if is_granted('ROLE_ADMIN' ) or is_granted('ROLE_ESPECIALISTA_ENERGIA'
+      ) %}
       <div class="fuel-card__actions">
         <div class="actions-buttons text-center" style="width: 100%;">
           <a
@@ -147,6 +150,7 @@
         {'instanceToDelete': tarjeta_combustible,
         'path':'tarjeta_combustible_delete'} %}
       </div>
+      {%endif%}
     </div>
   </div>
   {%endfor%}
