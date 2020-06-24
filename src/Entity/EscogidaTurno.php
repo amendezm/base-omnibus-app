@@ -57,7 +57,7 @@ class EscogidaTurno
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Chofer", inversedBy="escogida")
-     * @ORM\JoinColumn(name="chofer_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="chofer_id", referencedColumnName="id", onDelete="CASCADE")
      */
 
     protected $chofer;

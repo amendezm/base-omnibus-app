@@ -19,7 +19,7 @@ class GPS
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      *
-   */
+     */
     private $id;
     /**
      * @var int
@@ -29,7 +29,7 @@ class GPS
     private $combustible;
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Omnibus", inversedBy="gps")
-     * @ORM\JoinColumn(name="id_omnibus", referencedColumnName="id")
+     * @ORM\JoinColumn(name="id_omnibus", referencedColumnName="id",  onDelete="CASCADE")
      */
     protected $omnibus;
 
@@ -127,6 +127,4 @@ class GPS
     {
         return $this->omnibus;
     }
-
-
 }

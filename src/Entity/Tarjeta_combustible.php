@@ -31,10 +31,6 @@ class Tarjeta_combustible
      */
     protected $combustibleTipo;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Omnibus", mappedBy="tarjetaCombustible")
-     */
-    protected $omnibus;
 
     /**
      * @var \DateTime
@@ -57,10 +53,6 @@ class Tarjeta_combustible
      */
     private $noTarjeta;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\CombustibleAsignado", mappedBy="tarjeta", orphanRemoval=true)
-     */
-    private $combustiblesAsignados;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\CombustibleHabilitado", mappedBy="tarjeta", orphanRemoval=true)
@@ -195,21 +187,6 @@ class Tarjeta_combustible
         return $this->noTarjeta;
     }
 
-    /**
-     * @param mixed $omnibus
-     */
-    public function setOmnibus($omnibus)
-    {
-        $this->omnibus = $omnibus;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getOmnibus()
-    {
-        return $this->omnibus;
-    }
 
     /**
      * @param string $saldoActual
@@ -225,37 +202,6 @@ class Tarjeta_combustible
     public function getSaldoActual()
     {
         return $this->saldoActual;
-    }
-
-    /**
-     * @return Collection|CombustibleAsignado[]
-     */
-    public function getCombustiblesAsignados(): Collection
-    {
-        return $this->combustiblesAsignados;
-    }
-
-    public function addCombustiblesAsignado(CombustibleAsignado $combustiblesAsignado): self
-    {
-        if (!$this->combustiblesAsignados->contains($combustiblesAsignado)) {
-            $this->combustiblesAsignados[] = $combustiblesAsignado;
-            $combustiblesAsignado->setTarjeta($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCombustiblesAsignado(CombustibleAsignado $combustiblesAsignado): self
-    {
-        if ($this->combustiblesAsignados->contains($combustiblesAsignado)) {
-            $this->combustiblesAsignados->removeElement($combustiblesAsignado);
-            // set the owning side to null (unless already changed)
-            if ($combustiblesAsignado->getTarjeta() === $this) {
-                $combustiblesAsignado->setTarjeta(null);
-            }
-        }
-
-        return $this;
     }
 
     /**

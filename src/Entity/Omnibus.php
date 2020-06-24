@@ -52,7 +52,7 @@ class Omnibus
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Tarjeta_combustible", inversedBy="omnibus")
-     * @ORM\JoinColumn(name="id_tarjetaCombustible", referencedColumnName="id")
+     * @ORM\JoinColumn(nullable=true, name="id_tarjetaCombustible", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $tarjetaCombustible;
 

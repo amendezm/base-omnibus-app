@@ -95,7 +95,7 @@ class Chofer
     private $examenPsicofisiologicoVencimiento;
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Omnibus", inversedBy="chofer")
-     * @ORM\JoinColumn(name="omnibus_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="omnibus_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $omnibus;
 

@@ -109,6 +109,22 @@ class Tarjeta_combustibleController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $em->remove($tarjeta_combustible);
+
+        $query = 'SELECT
+            tarjeta_combustible.notarjeta,
+            tipo_combustible.tipo,
+            omnibus.noomnibus,
+            tarjeta_combustible.saldoactual
+         FROM
+            public.tarjeta_combustible,
+            public.tipo_combustible,
+            public.omnibus
+         WHERE
+            tarjeta_combustible.id = omnibus.id_tarjetacombustible AND
+            tipo_combustible.id = tarjeta_combustible.id_combustibletipo;';
+
+
+
         $em->flush();
         $this->addFlash('notice', 'Se ha borrado correctamente!');
 
