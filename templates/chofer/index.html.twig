@@ -37,9 +37,75 @@
             <td>{{ reporte.ci }}</td>
             <td>{{ reporte.codigo }}</td>
             <td>{{ reporte.nolicenciaoperativa }}</td>
-            <td>{{ reporte.licenciavencimiento }}</td>
-            <td>{{ reporte.examenmedicovencimiento }}</td>
-            <td>{{ reporte.examenpsicofisiologicovencimiento }}</td>
+            <td>
+              {% if reporte.licenciavencimiento %}
+              {{ reporte.licenciavencimiento }}
+              &nbsp; {% if date(reporte.licenciavencimiento) > date() and
+              date(reporte.licenciavencimiento) < date('+7days') %}
+              <span
+                class="badge badge-pill badge-warning"
+                data-tooltip="A punto de vencerse"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% if date(reporte.licenciavencimiento) < date() %}
+              <span
+                class="badge badge-pill badge-danger"
+                data-tooltip="Documento vencido"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% endif %}
+            </td>
+            <td>
+              {% if reporte.examenmedicovencimiento %}
+              {{ reporte.examenmedicovencimiento }}
+              &nbsp; {% if date(reporte.examenmedicovencimiento) > date() and
+              date(reporte.examenmedicovencimiento) < date('+7days') %}
+              <span
+                class="badge badge-pill badge-warning"
+                data-tooltip="A punto de vencerse"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% if date(reporte.examenmedicovencimiento) < date()
+              %}
+              <span
+                class="badge badge-pill badge-danger"
+                data-tooltip="Documento vencido"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% endif %}
+            </td>
+            <td>
+              {% if reporte.examenpsicofisiologicovencimiento %}
+              {{ reporte.examenpsicofisiologicovencimiento }}
+              &nbsp; {% if date(reporte.examenpsicofisiologicovencimiento) >
+              date() and date(reporte.examenpsicofisiologicovencimiento) <
+              date('+7days') %}
+              <span
+                class="badge badge-pill badge-warning"
+                data-tooltip="A punto de vencerse"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% if date(reporte.examenpsicofisiologicovencimiento)
+              < date() %}
+              <span
+                class="badge badge-pill badge-danger"
+                data-tooltip="Documento vencido"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% endif %}
+            </td>
             <td>
               <div class="row">
                 <div class="col-md-3 offset-md-2 text-center">
