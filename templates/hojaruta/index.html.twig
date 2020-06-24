@@ -9,9 +9,10 @@
         </h3>
       </div>
       <div class="col-md-6 text-right">
-        {% if not is_granted('ROLE_USUARIO' ) %}
+        {% if is_granted('ROLE_ADMIN' ) or
+        is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
         <a
-          class="btn btn-sm btn-default  pull-left"
+          class="btn btn-sm btn-default pull-left"
           href="{{ path('hojaruta_new') }}"
         >
           <img
@@ -32,7 +33,7 @@
         id="dataTable"
         width="100%"
         cellspacing="0"
-        style="font-size:0.75rem;"
+        style="font-size: 0.75rem;"
       >
         <thead>
           <th>No.</th>
@@ -44,11 +45,9 @@
           <th>Total de Horas</th>
           <th>Incidencias</th>
           <th>Observaciones</th>
-          {% if not is_granted('ROLE_USUARIO' ) %}
           <th>
             Acciones
           </th>
-          {% endif %}
         </thead>
         <tbody>
           {% for hojaRuta in hojaRutas %}
@@ -74,7 +73,9 @@
             <td>{{ hojaRuta.observaciones }}</td>
             <td>
               <div class="row">
-                <div class="col-md-4">
+                {% if is_granted('ROLE_ADMIN' ) or
+                is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
+                <div class="col">
                   <a
                     class="text-secondary"
                     href="#"
@@ -89,7 +90,8 @@
                   {% include "commons/confirmDeleteModal.html.twig" with
                   {'instanceToDelete': hojaRuta, 'path':'hojaruta_delete'} %}
                 </div>
-                <div class="col-md-4">
+                {%endif%}
+                <div class="col">
                   <a
                     href="{{ path('hojaruta_show', { id: hojaRuta.id }) }}"
                     class="text-secondary"
@@ -98,7 +100,9 @@
                     ><i class="fas fa-eye"></i>
                   </a>
                 </div>
-                <div class="col-md-4">
+                {% if is_granted('ROLE_ADMIN' ) or
+                is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
+                <div class="col">
                   <a
                     href="{{ path('hojaruta_edit', { id: hojaRuta.id }) }}"
                     class="text-primary"
@@ -107,6 +111,7 @@
                     ><i class="fas fa-edit"></i>
                   </a>
                 </div>
+                {%endif%}
               </div>
             </td>
           </tr>
@@ -116,7 +121,7 @@
     </div>
   </div>
 </div>
-<div id="mymodal" class="modal  inmodal fade">
+<div id="mymodal" class="modal inmodal fade">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header text-center">
