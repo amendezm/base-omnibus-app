@@ -9,7 +9,7 @@
       <div class="col-md-6 text-right">
         {% if not is_granted('ROLE_USUARIO' ) %}
         <a
-          class="btn btn-sm btn-default  pull-left"
+          class="btn btn-sm btn-default pull-left"
           href="{{ path('omnibus_new') }}"
         >
           <img
@@ -60,17 +60,71 @@
             <td>
               {% if omnibus.FICAVVencimiento %}
               {{ omnibus.FICAVVencimiento|date('Y-m-d')}}
-              {% endif %}
+              &nbsp; {% if date(omnibus.FICAVVencimiento) > date() and
+              date(omnibus.FICAVVencimiento) < date('+7days') %}
+              <span
+                class="badge badge-pill badge-warning"
+                data-tooltip="A punto de vencerse"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% if date(omnibus.FICAVVencimiento) < date() %}
+              <span
+                class="badge badge-pill badge-danger"
+                data-tooltip="Documento vencido"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% endif %}
             </td>
             <td>
               {% if omnibus.licenciaOperativaVencimiento %}
               {{ omnibus.licenciaOperativaVencimiento|date('Y-m-d')}}
-              {% endif %}
+              &nbsp; {% if date(omnibus.licenciaOperativaVencimiento) > date()
+              and date(omnibus.licenciaOperativaVencimiento) < date('+7days') %}
+              <span
+                class="badge badge-pill badge-warning"
+                data-tooltip="A punto de vencerse"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% if date(omnibus.licenciaOperativaVencimiento) <
+              date() %}
+              <span
+                class="badge badge-pill badge-danger"
+                data-tooltip="Documento vencido"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% endif %}
             </td>
             <td>
               {% if omnibus.licenciaCirculacionVencimiento %}
               {{ omnibus.licenciaCirculacionVencimiento|date('Y-m-d')}}
-              {% endif %}
+              &nbsp; {% if date(omnibus.licenciaCirculacionVencimiento) > date()
+              and date(omnibus.licenciaCirculacionVencimiento) < date('+7days')
+              %}
+              <span
+                class="badge badge-pill badge-warning"
+                data-tooltip="A punto de vencerse"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% if date(omnibus.licenciaCirculacionVencimiento) <
+              date() %}
+              <span
+                class="badge badge-pill badge-danger"
+                data-tooltip="Documento vencido"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% endif %}
             </td>
             <td>
               <div class="row">
@@ -116,7 +170,7 @@
     </div>
   </div>
 </div>
-<div id="mymodal" class="modal  inmodal fade">
+<div id="mymodal" class="modal inmodal fade">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header text-center">
