@@ -12,9 +12,9 @@
         <h3 class="m-0 text-primary">Bases</h3>
       </div>
       <div class="col-sm-12 col-md-6 text-right">
-        {% if not is_granted('ROLE_USUARIO' ) %}
+        {% if is_granted('ROLE_ADMIN' ) %}
         <a
-          class="btn btn-sm btn-default  pull-left"
+          class="btn btn-sm btn-default pull-left"
           href="{{ path('base_new') }}"
         >
           <img
@@ -35,13 +35,13 @@
         id="dataTable"
         width="100%"
         cellspacing="0"
-        style="font-size:0.85rem"
+        style="font-size: 0.85rem;"
       >
         <thead>
           <th>Nombre</th>
           <th>Descripción</th>
           <th>Dirección</th>
-          {% if not is_granted('ROLE_USUARIO' ) %}
+          {% if is_granted('ROLE_ADMIN' ) %}
           <th>
             Acciones
           </th>
@@ -53,9 +53,10 @@
             <td>{{ base.nombre }}</td>
             <td>{{ base.descripcion }}</td>
             <td>{{ base.direccion }}</td>
+            {% if is_granted('ROLE_ADMIN' ) %}
             <td>
               <div class="row">
-                <div class="col-md-3 offset-md-1 text-center">
+                <div class="col-md-6 text-center">
                   <a
                     class="text-secondary"
                     href="#"
@@ -70,7 +71,7 @@
                   {% include "commons/confirmDeleteModal.html.twig" with
                   {'instanceToDelete': base, 'path':'base_delete'} %}
                 </div>
-                <div class="col-md-3 text-center">
+                <div class="col-md-6 text-center">
                   <a
                     href="{{ path('base_edit', { id: base.id }) }}"
                     data-tooltip="Editar"
@@ -80,6 +81,7 @@
                 </div>
               </div>
             </td>
+            {% endif %}
           </tr>
           {% endfor %}
         </tbody>
