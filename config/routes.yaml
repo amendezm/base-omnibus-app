@@ -337,6 +337,10 @@ reporte_hoja_ruta_indicadores:
   path: /hojaruta/reporte_indicadores
   controller: App\Controller\HojaRutaController:reporte_indicadoresAction
   methods: GET
+reporte_hoja_ruta_acumulado:
+  path: /hojaruta/reporte_indicadores_acumulado
+  controller: App\Controller\HojaRutaController:reporte_indicadores_acumuladoAction
+  methods: [GET, POST]
 hojaruta_show:
   path: /hojaruta/{id}/show
   controller: App\Controller\HojaRutaController:showAction

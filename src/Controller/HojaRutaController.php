@@ -9,6 +9,8 @@ use App\Entity\HojaRuta;
 use App\Form\HojaRutaType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Doctrine\DBAL\Driver\Connection;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 
 // * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ESPECIALISTA_OPERACIONES')")
 /**
@@ -251,6 +253,115 @@ class HojaRutaController extends AbstractController
         $reportes = $stmt->fetchAll();
         return $this->render('hojaruta/reporte_hoja_ruta_indicadores.html.twig', array(
             'reportes' => $reportes
+        ));
+    }
+
+    public function reporte_indicadores_acumuladoAction(Request $request, Connection $connection)
+    {
+        $years = [];
+        $currentYear = date("Y");
+
+        for ($i = $currentYear; $i >= $currentYear - 10; $i--) {
+            $years[$i] = $i;
+        }
+
+        $currentMonth = (int) date("m");
+
+        $form = $this->createFormBuilder()
+            ->add('year', ChoiceType::class, ['choices' => $years])
+            ->add('month', ChoiceType::class, [
+                'required' => true,
+                'multiple' => false,
+                'expanded' => false,
+                'choices'  => [
+                    'Enero' => '1',
+                    'Febrero' => '2',
+                    'Marzo' => '3',
+                    'Abril' => '4',
+                    'Mayo' => '5',
+                    'Junio' => '6',
+                    'Julio' => '7',
+                    'Agosto' => '8',
+                    'Septiembre' => '9',
+                    'Octubre' => '10',
+                    'Noviembre' => '11',
+                    'Diciembre' => '12',
+                ],
+                'data' => $currentMonth
+            ])
+            ->getForm();
+
+        $month = null;
+        $year = null;
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+            $month = $data['month'];
+            $year = $data['year'];
+        }
+
+        $monthValue = $month == null ? $currentMonth : $month;
+        $yearValue = $year == null ? $currentYear : $year;
+
+        $db = $connection;
+
+        $query = 'SELECT  derivedtable.nohojaruta,derivedtable.noruta,derivedtable.destino,derivedtable.noomnibus,derivedTable.tipo, derivedTable.capacidad_total,derivedTable.preciopasaje,
+        derivedtable.cantidadviajes,
+        derivedtable.kmrecorridos,
+        derivedtable.combustible, SUM(derivedtable.recaudacion) as recaudacion FROM
+        (
+            SELECT 
+                    ruta.noruta, 
+                    ruta.destino, 
+                    omnibus.noomnibus, 
+                    tipo_omnibus.tipo, 
+                    tipo_omnibus.capacidad_total, 
+                    ruta.preciopasaje, 
+                    hoja_ruta.nohojaruta, 
+                    hoja_ruta.cantidadviajes, 
+                    SUM(g_p_s.kmrecorridos) as kmrecorridos, 
+                    SUM(g_p_s.combustible)as combustible, 
+                    recaudacion.recaudacion
+                FROM 
+                    public.ruta, 
+                    public.omnibus, 
+                    public.tipo_omnibus, 
+                    public.hoja_ruta, 
+                    public.g_p_s, 
+                    public.recaudacion 
+                WHERE 
+                    hoja_ruta.id_ruta = ruta.id AND 
+                    hoja_ruta.id_omnibus = omnibus.id AND 
+                    omnibus.id_tipoomnibus = tipo_omnibus.id AND 
+                    omnibus.id = g_p_s.id_omnibus AND
+                    recaudacion.id_hojaruta = hoja_ruta.id AND
+                    date_part(\'month\', hoja_ruta.fecha) = $month AND date_part(\'year\', hoja_ruta.fecha) = $year
+                GROUP BY ruta.noruta, ruta.destino, omnibus.noomnibus,tipo_omnibus.tipo, tipo_omnibus.capacidad_total,ruta.preciopasaje,hoja_ruta.nohojaruta, hoja_ruta.cantidadviajes,recaudacion.recaudacion
+                ORDER BY ruta.noruta DESC)
+            as derivedTable
+        GROUP BY derivedtable.nohojaruta,derivedtable.noruta,derivedtable.destino,derivedtable.noomnibus,derivedTable.tipo, derivedTable.capacidad_total,derivedTable.preciopasaje,
+        derivedtable.cantidadviajes,
+        derivedtable.kmrecorridos,
+        derivedtable.combustible	
+       ';
+
+        $vars = array(
+            '$year' => $yearValue,
+            '$month' =>  $monthValue,
+        );
+
+        $queryValue = strtr($query, $vars);
+
+        $stmt = $db->prepare($queryValue);
+        $params = array();
+        $stmt->execute($params);
+        $reportes = $stmt->fetchAll();
+
+        return $this->render('hojaruta/reporte_hoja_ruta_indicadores_acumulado.html.twig', array(
+            'reportes' => $reportes,
+            'form' => $form->createView(),
         ));
     }
 }
