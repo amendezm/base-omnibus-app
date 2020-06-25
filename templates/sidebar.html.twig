@@ -120,7 +120,8 @@
                 <a class="collapse-item {% if 'ruta' in app.request.attributes.get('_route') and
                 not ('hojaruta' in app.request.attributes.get('_route')) and
                 not ('ruta_reporte' in app.request.attributes.get('_route')) and
-                not ('reporte_hoja_ruta_indicadores' in app.request.attributes.get('_route')) 
+                not ('reporte_hoja_ruta_indicadores' in app.request.attributes.get('_route')) and
+                not ('reporte_hoja_ruta_acumulado' in app.request.attributes.get('_route')) 
                 %}active{% endif %}" href="{{ path('ruta_index') }}">
                     <i class="fas fa-route"></i> 
                     <span>Rutas</span> 
@@ -404,7 +405,8 @@
             </span> 
           </a>
         </li>
-        <li class="nav-item {% if 'reporte_hoja_ruta_indicadores' in app.request.attributes.get('_route') %}active{% endif %}">
+        <li class="nav-item {% if 'reporte_hoja_ruta_indicadores' in app.request.attributes.get('_route') or 
+        'reporte_hoja_ruta_acumulado' in app.request.attributes.get('_route') %}active{% endif %}">
           <a class="nav-link sidebar-item" href="{{ path('reporte_hoja_ruta_indicadores') }}">
             <i class="fas fa-clipboard"></i>
             <span>
