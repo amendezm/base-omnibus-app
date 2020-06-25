@@ -6,20 +6,6 @@
       <div class="col-md-6">
         <h3 class="m-0 text-primary">Choferes</h3>
       </div>
-      <div class="col-md-6 text-right">
-        {% if not is_granted('ROLE_USUARIO' ) %}
-        <a
-          class="btn btn-sm btn-default  pull-left"
-          href="{{ path('chofer_new') }}"
-        >
-          <img
-            src="{{ asset('assets/dist/img/add_database_26px.png') }}"
-            alt="User Image"
-          />
-          Nuevo
-        </a>
-        {% endif %}
-      </div>
     </div>
   </div>
   <div class="card-body" style="font-size: 0.65rem;">
@@ -38,11 +24,9 @@
           <th class="text-center">Licencia Conducción Vence</th>
           <th class="text-center">Examen Médico Vence</th>
           <th class="text-center">Examen Psicofisiológico Vence</th>
-          {% if not is_granted('ROLE_USUARIO' ) %}
           <th class="text-center">
             Acciones
           </th>
-          {% endif %}
         </thead>
         <tbody class="text-center">
           {% for reporte in reportes %}
@@ -51,12 +35,78 @@
             <td>{{ reporte.ci }}</td>
             <td>{{ reporte.codigo }}</td>
             <td>{{ reporte.nolicenciaoperativa }}</td>
-            <td>{{ reporte.licenciavencimiento }}</td>
-            <td>{{ reporte.examenmedicovencimiento }}</td>
-            <td>{{ reporte.examenpsicofisiologicovencimiento }}</td>
+            <td>
+              {% if reporte.licenciavencimiento %}
+              {{ reporte.licenciavencimiento }}
+              &nbsp; {% if date(reporte.licenciavencimiento) > date() and
+              date(reporte.licenciavencimiento) < date('+7days') %}
+              <span
+                class="badge badge-pill badge-warning"
+                data-tooltip="A punto de vencerse"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% if date(reporte.licenciavencimiento) < date() %}
+              <span
+                class="badge badge-pill badge-danger"
+                data-tooltip="Documento vencido"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% endif %}
+            </td>
+            <td>
+              {% if reporte.examenmedicovencimiento %}
+              {{ reporte.examenmedicovencimiento }}
+              &nbsp; {% if date(reporte.examenmedicovencimiento) > date() and
+              date(reporte.examenmedicovencimiento) < date('+7days') %}
+              <span
+                class="badge badge-pill badge-warning"
+                data-tooltip="A punto de vencerse"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% if date(reporte.examenmedicovencimiento) < date()
+              %}
+              <span
+                class="badge badge-pill badge-danger"
+                data-tooltip="Documento vencido"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% endif %}
+            </td>
+            <td>
+              {% if reporte.examenpsicofisiologicovencimiento %}
+              {{ reporte.examenpsicofisiologicovencimiento }}
+              &nbsp; {% if date(reporte.examenpsicofisiologicovencimiento) >
+              date() and date(reporte.examenpsicofisiologicovencimiento) <
+              date('+7days') %}
+              <span
+                class="badge badge-pill badge-warning"
+                data-tooltip="A punto de vencerse"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% if date(reporte.examenpsicofisiologicovencimiento)
+              < date() %}
+              <span
+                class="badge badge-pill badge-danger"
+                data-tooltip="Documento vencido"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% endif %}
+            </td>
             <td>
               <div class="row">
-                <div class="col-md-3 offset-md-2 text-center">
+                <div class="col text-center">
                   <a
                     href="{{
                       path('chofer_show', { id: reporte.trabajador_id })
@@ -67,7 +117,9 @@
                     ><i class="fas fa-eye"></i>
                   </a>
                 </div>
-                <div class="col-md-3 text-center">
+                {% if is_granted('ROLE_ADMIN' ) or
+                is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
+                <div class="col text-center">
                   <a
                     href="{{
                       path('chofer_edit', { id: reporte.trabajador_id })
@@ -77,6 +129,7 @@
                     ><i class="fas fa-edit"></i>
                   </a>
                 </div>
+                {% endif %}
               </div>
             </td>
           </tr>

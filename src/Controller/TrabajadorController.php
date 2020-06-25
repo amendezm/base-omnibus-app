@@ -10,10 +10,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use App\Entity\Trabajador;
 use App\Form\TrabajadorType;
 
+// * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ESPECIALISTA_RRHH')")
 /**
  *
  * Función para llamar a la plantilla de administración
- * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ESPECIALISTA_RRHH')")
  *
  */
 class TrabajadorController extends AbstractController

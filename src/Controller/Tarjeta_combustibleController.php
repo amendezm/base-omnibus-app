@@ -11,10 +11,10 @@ use App\Form\Tarjeta_combustibleType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
+// * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ESPECIALISTA_ENERGIA')")
 /**
  *
  * Función para llamar a la plantilla de administración
- * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ESPECIALISTA_ENERGIA')")
  * 
  *
  */
@@ -109,6 +109,22 @@ class Tarjeta_combustibleController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $em->remove($tarjeta_combustible);
+
+        $query = 'SELECT
+            tarjeta_combustible.notarjeta,
+            tipo_combustible.tipo,
+            omnibus.noomnibus,
+            tarjeta_combustible.saldoactual
+         FROM
+            public.tarjeta_combustible,
+            public.tipo_combustible,
+            public.omnibus
+         WHERE
+            tarjeta_combustible.id = omnibus.id_tarjetacombustible AND
+            tipo_combustible.id = tarjeta_combustible.id_combustibletipo;';
+
+
+
         $em->flush();
         $this->addFlash('notice', 'Se ha borrado correctamente!');
 

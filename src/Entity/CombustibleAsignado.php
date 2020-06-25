@@ -28,7 +28,7 @@ class CombustibleAsignado
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Tarjeta_combustible", inversedBy="combustiblesAsignados")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $tarjeta;
 

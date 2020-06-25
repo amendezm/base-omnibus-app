@@ -29,6 +29,7 @@
         <div class="sidebar-heading admin2">
           Admin
         </div>
+        {% if is_granted('ROLE_ADMIN' ) %}
         <li class="nav-item {% if 'usuario' in app.request.attributes.get('_route') %}active{% endif %}" >
           <a class="nav-link sidebar-item" href="{{ path('usuario_index') }}">
             <i class="fas fa-users"></i>
@@ -37,6 +38,7 @@
             </span> 
           </a>
         </li>
+        {% endif %}
         <li class="nav-item {% if 'base' in app.request.attributes.get('_route') %}active{% endif %}">
           <a class="nav-link sidebar-item" href="{{ path('base_index')}}">
             <i class="fas fa-warehouse"></i>

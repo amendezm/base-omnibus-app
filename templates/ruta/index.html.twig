@@ -7,7 +7,8 @@
         <h3 class="m-0 text-primary">Rutas</h3>
       </div>
       <div class="col-md-6 text-right">
-        {% if not is_granted('ROLE_USUARIO' ) %}
+        {% if is_granted('ROLE_ADMIN' ) or
+        is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
         <a
           class="btn btn-sm btn-default pull-left"
           href="{{ path('ruta_new') }}"
@@ -41,7 +42,8 @@
           <th>Destino</th>
           <th>Frecuencia</th>
           <th>Cantidad de Ómnibus</th>
-          {% if not is_granted('ROLE_USUARIO' ) %}
+          {% if is_granted('ROLE_ADMIN' ) or
+          is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
           <th>
             Acciones
           </th>
@@ -60,6 +62,8 @@
             <td>{{ ruta.destino }}</td>
             <td>{{ ruta.frecuencia }}</td>
             <td>{{ ruta.cantidadMedios }}</td>
+            {% if is_granted('ROLE_ADMIN' ) or
+            is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
             <td>
               <div class="row">
                 <div class="col-md-3 offset-md-1">
@@ -89,6 +93,7 @@
                 </div>
               </div>
             </td>
+            {% endif %}
           </tr>
           {% endfor %}
         </tbody>

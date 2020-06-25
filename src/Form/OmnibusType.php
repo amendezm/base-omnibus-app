@@ -28,6 +28,7 @@ class OmnibusType extends AbstractType
             ])
             ->add('is_roto', CheckboxType::class, [
                 'required' => false,
+                'label'    => 'Roto',
                 'attr' => ['class' => 'custom-control-input'],
             ])
             ->add('FICAV_emision', DateType::class, [

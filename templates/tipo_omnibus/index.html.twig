@@ -7,7 +7,8 @@
         <h3 class="m-0 text-primary">Marcas de ómnibus</h3>
       </div>
       <div class="col-md-6 text-right">
-        {% if not is_granted('ROLE_USUARIO' ) %}
+        {% if is_granted('ROLE_ADMIN' ) or
+        is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
         <a
           class="btn btn-sm btn-default pull-left"
           href="{{ path('tipo_omnibus_new') }}"
@@ -39,7 +40,8 @@
           <th>Índice Consumo Normado por Kms</th>
           <th>% de Desviación</th>
           <th>Cant de Kmts X Litro Combust. - norma</th>
-          {% if not is_granted('ROLE_USUARIO' ) %}
+          {% if is_granted('ROLE_ADMIN' ) or
+          is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
           <th>
             Acciones
           </th>
@@ -55,6 +57,8 @@
             <td>{{ tipo_omnibus.indiceConsumoNormado }}</td>
             <td>{{ tipo_omnibus.desviacion }}</td>
             <td>{{ tipo_omnibus.cantidadKmtsXlitro }}</td>
+            {% if is_granted('ROLE_ADMIN' ) or
+            is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
             <td>
               <div class="row">
                 <div class="col-md-3 offset-md-1">
@@ -86,6 +90,7 @@
                 </div>
               </div>
             </td>
+            {% endif %}
           </tr>
           {% endfor %}
         </tbody>

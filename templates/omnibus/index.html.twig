@@ -7,9 +7,10 @@
         <h3 class="m-0 text-primary">Ómnibus</h3>
       </div>
       <div class="col-md-6 text-right">
-        {% if not is_granted('ROLE_USUARIO' ) %}
+        {% if is_granted('ROLE_ADMIN' ) or
+        is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
         <a
-          class="btn btn-sm btn-default  pull-left"
+          class="btn btn-sm btn-default pull-left"
           href="{{ path('omnibus_new') }}"
         >
           <img
@@ -60,21 +61,77 @@
             <td>
               {% if omnibus.FICAVVencimiento %}
               {{ omnibus.FICAVVencimiento|date('Y-m-d')}}
-              {% endif %}
+              &nbsp; {% if date(omnibus.FICAVVencimiento) > date() and
+              date(omnibus.FICAVVencimiento) < date('+7days') %}
+              <span
+                class="badge badge-pill badge-warning"
+                data-tooltip="A punto de vencerse"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% if date(omnibus.FICAVVencimiento) < date() %}
+              <span
+                class="badge badge-pill badge-danger"
+                data-tooltip="Documento vencido"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% endif %}
             </td>
             <td>
               {% if omnibus.licenciaOperativaVencimiento %}
               {{ omnibus.licenciaOperativaVencimiento|date('Y-m-d')}}
-              {% endif %}
+              &nbsp; {% if date(omnibus.licenciaOperativaVencimiento) > date()
+              and date(omnibus.licenciaOperativaVencimiento) < date('+7days') %}
+              <span
+                class="badge badge-pill badge-warning"
+                data-tooltip="A punto de vencerse"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% if date(omnibus.licenciaOperativaVencimiento) <
+              date() %}
+              <span
+                class="badge badge-pill badge-danger"
+                data-tooltip="Documento vencido"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% endif %}
             </td>
             <td>
               {% if omnibus.licenciaCirculacionVencimiento %}
               {{ omnibus.licenciaCirculacionVencimiento|date('Y-m-d')}}
-              {% endif %}
+              &nbsp; {% if date(omnibus.licenciaCirculacionVencimiento) > date()
+              and date(omnibus.licenciaCirculacionVencimiento) < date('+7days')
+              %}
+              <span
+                class="badge badge-pill badge-warning"
+                data-tooltip="A punto de vencerse"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% if date(omnibus.licenciaCirculacionVencimiento) <
+              date() %}
+              <span
+                class="badge badge-pill badge-danger"
+                data-tooltip="Documento vencido"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% endif %}
             </td>
             <td>
               <div class="row">
-                <div class="col-md-3">
+                {% if is_granted('ROLE_ADMIN' ) or
+                is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
+                <div class="col">
                   <a
                     class="text-secondary"
                     href="#"
@@ -89,7 +146,8 @@
                   {% include "commons/confirmDeleteModal.html.twig" with
                   {'instanceToDelete': omnibus, 'path':'omnibus_delete'} %}
                 </div>
-                <div class="col-md-3">
+                {% endif %}
+                <div class="col">
                   <a
                     href="{{ path('omnibus_show', { id: omnibus.id }) }}"
                     class="text-secondary"
@@ -98,7 +156,9 @@
                     ><i class="fas fa-eye"></i>
                   </a>
                 </div>
-                <div class="col-md-3">
+                {% if is_granted('ROLE_ADMIN' ) or
+                is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
+                <div class="col">
                   <a
                     href="{{ path('omnibus_edit', { id: omnibus.id }) }}"
                     class="text-primary"
@@ -107,6 +167,7 @@
                     ><i class="fas fa-edit"></i>
                   </a>
                 </div>
+                {% endif %}
               </div>
             </td>
           </tr>
@@ -116,7 +177,7 @@
     </div>
   </div>
 </div>
-<div id="mymodal" class="modal  inmodal fade">
+<div id="mymodal" class="modal inmodal fade">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header text-center">

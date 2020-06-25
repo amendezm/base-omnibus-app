@@ -45,13 +45,14 @@ class Omnibus
     protected $gps;
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\base", inversedBy="omnibus")
-     * @ORM\JoinColumn(name="id_base", referencedColumnName="id")
+     * @ORM\JoinColumn(name="id_base", referencedColumnName="id", onDelete="CASCADE")
+     * 
      */
     protected $base;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Tarjeta_combustible", inversedBy="omnibus")
-     * @ORM\JoinColumn(name="id_tarjetaCombustible", referencedColumnName="id")
+     * @ORM\JoinColumn(nullable=true, name="id_tarjetaCombustible", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $tarjetaCombustible;
 
