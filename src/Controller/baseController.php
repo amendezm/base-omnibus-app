@@ -15,7 +15,6 @@ class baseController extends AbstractController
     /**
      *
      * Función para llamar a la plantilla de administración
-     * @IsGranted("ROLE_ADMIN")
      *
      */
     public function indexAction()

@@ -10,10 +10,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use App\Entity\Incidencia;
 use Doctrine\DBAL\Driver\Connection;
 
+// * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ESPECIALISTA_OPERACIONES')")
 /**
  *
  * Función para llamar a la plantilla de administración
- * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ESPECIALISTA_OPERACIONES')")
  * 
  */
 class IncidenciaController extends AbstractController

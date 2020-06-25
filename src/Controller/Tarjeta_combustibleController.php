@@ -11,10 +11,10 @@ use App\Form\Tarjeta_combustibleType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
+// * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ESPECIALISTA_ENERGIA')")
 /**
  *
  * Función para llamar a la plantilla de administración
- * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ESPECIALISTA_ENERGIA')")
  * 
  *
  */

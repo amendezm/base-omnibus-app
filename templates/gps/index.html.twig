@@ -9,9 +9,10 @@
         </h3>
       </div>
       <div class="col-md-6 text-right">
-        {% if not is_granted('ROLE_USUARIO' ) %}
+        {% if is_granted('ROLE_ADMIN' ) or is_granted('ROLE_ESPECIALISTA_GPS'
+        )%}
         <a
-          class="btn btn-sm btn-default  pull-left"
+          class="btn btn-sm btn-default pull-left"
           href="{{ path('gps_new') }}"
         >
           <img
@@ -31,14 +32,15 @@
         id="dataTable"
         width="100%"
         cellspacing="0"
-        style="font-size:0.85rem;"
+        style="font-size: 0.85rem;"
       >
         <thead>
           <th>Ómnibus</th>
           <th>Combustible (litros)</th>
           <th>Kms Recorridos</th>
           <th>Fecha</th>
-          {% if not is_granted('ROLE_USUARIO' ) %}
+          {% if is_granted('ROLE_ADMIN' ) or is_granted('ROLE_ESPECIALISTA_GPS'
+          )%}
           <th>
             Acciones
           </th>
@@ -51,9 +53,11 @@
             <td>{{ gps.combustible }}</td>
             <td>{{ gps.kmRecorridos }}</td>
             <td>{% if gps.fecha %}{{ gps.fecha|date('Y-m-d') }}{% endif %}</td>
+            {% if is_granted('ROLE_ADMIN' ) or
+            is_granted('ROLE_ESPECIALISTA_GPS' )%}
             <td>
               <div class="row">
-                <div class="col-md-2 offset-md-3">
+                <div class="col">
                   <a
                     class="text-secondary"
                     href="#"
@@ -68,7 +72,7 @@
                   {% include "commons/confirmDeleteModal.html.twig" with
                   {'instanceToDelete': gps, 'path':'gps_delete'} %}
                 </div>
-                <div class="col-md-2">
+                <div class="col">
                   <a
                     href="{{ path('gps_edit', { id: gps.id }) }}"
                     class="text-primary"
@@ -80,13 +84,14 @@
                 </div>
               </div>
             </td>
+            {%endif%}
           </tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
   </div>
-  <div id="mymodal" class="modal  inmodal fade">
+  <div id="mymodal" class="modal inmodal fade">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header text-center">

@@ -9,10 +9,11 @@ use App\Entity\Omnibus;
 use Doctrine\ORM\Query;
 use Doctrine\DBAL\Driver\Connection;
 
+// use this in case of security from controller * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ESPECIALISTA_OPERACIONES')")
+
 /**
  *
  * Función para llamar a la plantilla de administración
- * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ESPECIALISTA_OPERACIONES')")
  *
  */
 class OmnibusController extends AbstractController

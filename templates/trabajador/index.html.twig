@@ -9,9 +9,10 @@
         </h3>
       </div>
       <div class="col-md-6 text-right">
-        {% if not is_granted('ROLE_USUARIO' ) %}
+        {% if is_granted('ROLE_ADMIN' ) or is_granted('ROLE_ESPECIALISTA_RRHH'
+        )%}
         <a
-          class="btn btn-sm btn-default  pull-left"
+          class="btn btn-sm btn-default pull-left"
           href="{{ path('trabajador_new') }}"
         >
           <img
@@ -31,7 +32,7 @@
         id="dataTable"
         width="100%"
         cellspacing="0"
-        style="font-size:0.75rem;"
+        style="font-size: 0.75rem;"
       >
         <thead>
           <th>ID/Código</th>
@@ -39,7 +40,8 @@
           <th>CI</th>
           <th>Dirección</th>
           <th>Cargo</th>
-          {% if not is_granted('ROLE_USUARIO' ) %}
+          {% if is_granted('ROLE_ADMIN' ) or is_granted('ROLE_ESPECIALISTA_RRHH'
+          )%}
           <th>
             Acciones
           </th>
@@ -53,6 +55,8 @@
             <td>{{ trabajador.ci }}</td>
             <td>{{ trabajador.direccion }}</td>
             <td>{{ trabajador.cargo }}</td>
+            {% if is_granted('ROLE_ADMIN' ) or
+            is_granted('ROLE_ESPECIALISTA_RRHH' )%}
             <td>
               <div class="row">
                 <div class="col-md-3 offset-md-2">
@@ -83,6 +87,7 @@
                 </div>
               </div>
             </td>
+            {%endif%}
           </tr>
           {% endfor %}
         </tbody>

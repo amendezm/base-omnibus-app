@@ -24,11 +24,9 @@
           <th class="text-center">Licencia Conducción Vence</th>
           <th class="text-center">Examen Médico Vence</th>
           <th class="text-center">Examen Psicofisiológico Vence</th>
-          {% if not is_granted('ROLE_USUARIO' ) %}
           <th class="text-center">
             Acciones
           </th>
-          {% endif %}
         </thead>
         <tbody class="text-center">
           {% for reporte in reportes %}
@@ -108,7 +106,7 @@
             </td>
             <td>
               <div class="row">
-                <div class="col-md-3 offset-md-2 text-center">
+                <div class="col text-center">
                   <a
                     href="{{
                       path('chofer_show', { id: reporte.trabajador_id })
@@ -119,7 +117,9 @@
                     ><i class="fas fa-eye"></i>
                   </a>
                 </div>
-                <div class="col-md-3 text-center">
+                {% if is_granted('ROLE_ADMIN' ) or
+                is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
+                <div class="col text-center">
                   <a
                     href="{{
                       path('chofer_edit', { id: reporte.trabajador_id })
@@ -129,6 +129,7 @@
                     ><i class="fas fa-edit"></i>
                   </a>
                 </div>
+                {% endif %}
               </div>
             </td>
           </tr>

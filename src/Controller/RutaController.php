@@ -12,11 +12,11 @@ use App\Form\RutaType;
 use Doctrine\DBAL\Driver\Connection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+// * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ESPECIALISTA_OPERACIONES')")  
 
 /**
  *
  * Función para llamar a la plantilla de administración
- * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ESPECIALISTA_OPERACIONES')")
  *
  */
 class RutaController extends AbstractController
