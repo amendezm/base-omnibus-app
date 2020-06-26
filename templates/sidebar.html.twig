@@ -373,7 +373,8 @@
             </div>
           </div>
         </li>
-        <li class="nav-item {% if 'ruta_reporte' in app.request.attributes.get('_route') %}active{% endif %}">
+        <li class="nav-item {% if 'ruta_reporte' in app.request.attributes.get('_route') and 
+        not 'ruta_reportes_salidas' in app.request.attributes.get('_route')  %}active{% endif %}">
           <a class="nav-link sidebar-item" href="{{ path('ruta_reporte') }}">
             <i class="fas fa-clipboard-list"></i>
             <span>
@@ -411,6 +412,15 @@
             <i class="fas fa-clipboard"></i>
             <span>
               Indicadores HR
+            </span> 
+          </a>
+        </li>
+        <li class="nav-item {% if 'ruta_reporte_salidas' in app.request.attributes.get('_route') or
+        'ruta_reporte_acumulado' in app.request.attributes.get('_route')%}active{% endif %}">
+          <a class="nav-link sidebar-item" href="{{ path('ruta_reporte_salidas') }}">
+            <i class="fas fa-clipboard"></i>
+            <span>
+              Indicadores Salidas
             </span> 
           </a>
         </li>
