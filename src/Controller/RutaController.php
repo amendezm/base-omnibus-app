@@ -36,6 +36,7 @@ class RutaController extends AbstractController
             'rutas' => $rutas,
         ));
     }
+
     public function reporteAction(Connection $connection)
     {
         $em = $this->getDoctrine()->getManager();
@@ -205,6 +206,62 @@ class RutaController extends AbstractController
             ->setAction($this->generateUrl('ruta_delete', array('id' => $ruta->getId())))
             ->setMethod('DELETE')
             ->getForm();
+    }
+
+
+    public function reporteSalidasAction(Connection $connection)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $db = $connection;
+
+        $query = 'SELECT ruta.noruta, ruta.destino, ruta.salida, ruta.frecuencia, hoja_ruta.fecha, 
+        recaudacion.recaudacion/g_p_s.combustible AS recaudacion_Lt, 
+        recaudacion.recaudacion/hoja_ruta.cantidadviajes AS recaudacion_viajes, 
+        (recaudacion.recaudacion/hoja_ruta.cantidadviajes)/ruta.preciopasaje AS pasajeros_viajes, 
+        g_p_s.kmrecorridos/g_p_s.combustible AS kilometros_Lt, 
+        ((recaudacion.recaudacion/hoja_ruta.cantidadviajes)/ruta.preciopasaje)/ 
+        tipo_omnibus.capacidad_total*100 AS Aprov_Cap 
+        FROM public.ruta, public.recaudacion, public.hoja_ruta, public.g_p_s, public.tipo_omnibus, public.omnibus 
+        WHERE recaudacion.id_hojaruta = hoja_ruta.id AND hoja_ruta.id_ruta = ruta.id 
+        AND g_p_s.id_omnibus = hoja_ruta.id_omnibus AND tipo_omnibus.id = omnibus.id_tipoomnibus  
+        AND omnibus.id=hoja_ruta.id_omnibus AND hoja_ruta.fecha = g_p_s.fecha';
+
+        $stmt = $db->prepare($query);
+        $params = array();
+        $stmt->execute($params);
+        $reportes = $stmt->fetchAll();
+        return $this->render('ruta/reporte_salidas.html.twig', array(
+            'reportes' => $reportes
+        ));
+    }
+
+    public function reporteSalidasAcumuladoAction(Connection $connection)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $db = $connection;
+
+        $query = 'SELECT DISTINCT ruta.noruta, ruta.destino, ruta.salida, ruta.frecuencia, 
+        SUM(recaudacion.recaudacion)/SUM(g_p_s.combustible) AS recaudacion_Lt, 
+        SUM(recaudacion.recaudacion)/SUM(hoja_ruta.cantidadviajes) AS recaudacion_viajes, 
+        (SUM(recaudacion.recaudacion)/SUM(hoja_ruta.cantidadviajes))/ruta.preciopasaje AS pasajeros_viajes, 
+        SUM(g_p_s.kmrecorridos)/SUM(g_p_s.combustible) AS kilometros_Lt, 
+        ((SUM(recaudacion.recaudacion)/SUM(hoja_ruta.cantidadviajes))/ruta.preciopasaje)/ 
+        tipo_omnibus.capacidad_total*100 AS Aprov_Cap 
+        FROM public.ruta, public.recaudacion, public.hoja_ruta, public.g_p_s, public.tipo_omnibus, public.omnibus 
+        WHERE recaudacion.id_hojaruta = hoja_ruta.id AND hoja_ruta.id_ruta = ruta.id 
+        AND g_p_s.id_omnibus = hoja_ruta.id_omnibus AND tipo_omnibus.id = omnibus.id_tipoomnibus  
+        AND omnibus.id=hoja_ruta.id_omnibus 
+        GROUP BY ruta.noruta, ruta.destino, ruta.salida, ruta.frecuencia,ruta.preciopasaje,tipo_omnibus.capacidad_total';
+
+        $stmt = $db->prepare($query);
+        $params = array();
+        $stmt->execute($params);
+        $reportes = $stmt->fetchAll();
+        return $this->render('ruta/reporte_salidas_acumulado.html.twig', array(
+            'reportes' => $reportes
+        ));
     }
 
     private function orderDays(Ruta $ruta)
