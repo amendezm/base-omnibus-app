@@ -1,9 +1,23 @@
 {% extends 'index.html.twig' %} {% block contenido %}
-<div class="row">
-  <div class="col-sm-12 col-md-6">
-    <h3 class="m-0 text-primary">Parte mensual de tarjeta de combustible</h3>
-  </div>
-</div>
+<br />
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a
+      class="nav-link {% if 'reporte_hoja_ruta_indicadores' in app.request.attributes.get('_route')%}active{% endif %}"
+      href="{{ path('reporte_hoja_ruta_indicadores') }}"
+    >
+      Diario
+    </a>
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link {% if 'reporte_hoja_ruta_acumulado' in app.request.attributes.get('_route') %}active{% endif %}"
+      href="{{ path('reporte_hoja_ruta_acumulado') }}"
+    >
+      Acumulado
+    </a>
+  </li>
+</ul>
 <br />
 {{ form_start(form, { method: "POST" }) }}
 <div class="form-inline text-right" style="justify-content: flex-end;">
@@ -29,8 +43,17 @@
 {{ form_end(form) }}
 <br />
 <div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <div class="row">
+      <div class="col-md-6">
+        <h3 class="m-0 text-primary">
+          Reporte Acumulado
+        </h3>
+      </div>
+    </div>
+  </div>
   <div class="card-body">
-    <div class="table-responsive">
+    <div class="table-reponsive">
       <table
         class="table text-center"
         id="dataTable"
@@ -40,23 +63,23 @@
       >
         <thead>
           <tr>
-            <th>Tarjeta</th>
+            <th>No Ruta</th>
+            <th>Destino</th>
+            <th>Precio del pasaje</th>
+            <th>Kms Recorridos</th>
             <th>Combustible</th>
-            <th>Saldo inicial</th>
-            <th>Combustible asignado</th>
-            <th>Combustible habilitado</th>
-            <th>Saldo actual</th>
+            <th>Recaudación</th>
           </tr>
         </thead>
         <tbody>
           {% for reporte in reportes %}
           <tr>
-            <td>{{ reporte.notarjeta }}</td>
-            <td>{{ reporte.tipo }}</td>
-            <td>{{ reporte.saldoinicial }}</td>
-            <td>{{ reporte.combustible_asignado }}</td>
-            <td>{{ reporte.combustible_habilitado }}</td>
-            <td>{{ reporte.saldoactual }}</td>
+            <td>{{ reporte.noruta }}</td>
+            <td>{{ reporte.destino }}</td>
+            <td>{{ reporte.preciopasaje }}</td>
+            <td>{{ reporte.kmrecorridos }}</td>
+            <td>{{ reporte.combustible }}</td>
+            <td>{{ reporte.recaudacion }}</td>
           </tr>
           {% endfor %}
         </tbody>
