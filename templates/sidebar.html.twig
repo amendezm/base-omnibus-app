@@ -282,6 +282,7 @@
                 <a class="collapse-item {% if 'recaudacion' in app.request.attributes.get('_route') and
                 not ('recaudacionXfecha' in app.request.attributes.get('_route')) and
                 not ('plan_recaudacion' in app.request.attributes.get('_route')) and
+                not ('recaudacion_estimada' in app.request.attributes.get('_route')) and
                 not ('pronostico_recaudacion' in app.request.attributes.get('_route'))
                 %}active{% endif %}" href="{{ path('recaudacion_index') }}">
                   <i class="fas fa-money-check"></i>
