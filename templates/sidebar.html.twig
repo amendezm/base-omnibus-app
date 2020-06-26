@@ -255,6 +255,7 @@
 
         <li class="nav-item {% if 'recaudacion' in app.request.attributes.get('_route') and
         not ('plan_recaudacion' in app.request.attributes.get('_route')) and
+        not ('recaudacion_estimada' in app.request.attributes.get('_route')) and
         not ('pronostico_recaudacion' in app.request.attributes.get('_route')) 
         %}active{% endif %}">
             <a 
@@ -411,6 +412,14 @@
             <i class="fas fa-clipboard"></i>
             <span>
               Indicadores HR
+            </span> 
+          </a>
+        </li>
+        <li class="nav-item {% if 'recaudacion_estimada' in app.request.attributes.get('_route')%}active{% endif %}">
+          <a class="nav-link sidebar-item" href="{{ path('recaudacion_estimada') }}">
+            <i class="fas fa-money-check-alt"></i>
+            <span>
+              Recaudación Estimada
             </span> 
           </a>
         </li>
