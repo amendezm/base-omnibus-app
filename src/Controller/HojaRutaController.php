@@ -307,45 +307,62 @@ class HojaRutaController extends AbstractController
 
         $db = $connection;
 
-        $query = 'SELECT  derivedtable.nohojaruta,derivedtable.noruta,derivedtable.destino,derivedtable.noomnibus,derivedTable.tipo, derivedTable.capacidad_total,derivedTable.preciopasaje,
-        derivedtable.cantidadviajes,
-        derivedtable.kmrecorridos,
-        derivedtable.combustible, SUM(derivedtable.recaudacion) as recaudacion FROM
-        (
-            SELECT 
-                    ruta.noruta, 
-                    ruta.destino, 
-                    omnibus.noomnibus, 
-                    tipo_omnibus.tipo, 
-                    tipo_omnibus.capacidad_total, 
-                    ruta.preciopasaje, 
-                    hoja_ruta.nohojaruta, 
-                    hoja_ruta.cantidadviajes, 
-                    SUM(g_p_s.kmrecorridos) as kmrecorridos, 
-                    SUM(g_p_s.combustible)as combustible, 
-                    recaudacion.recaudacion
-                FROM 
-                    public.ruta, 
-                    public.omnibus, 
-                    public.tipo_omnibus, 
-                    public.hoja_ruta, 
-                    public.g_p_s, 
-                    public.recaudacion 
-                WHERE 
-                    hoja_ruta.id_ruta = ruta.id AND 
-                    hoja_ruta.id_omnibus = omnibus.id AND 
-                    omnibus.id_tipoomnibus = tipo_omnibus.id AND 
-                    omnibus.id = g_p_s.id_omnibus AND
-                    recaudacion.id_hojaruta = hoja_ruta.id AND
-                    date_part(\'month\', hoja_ruta.fecha) = $month AND date_part(\'year\', hoja_ruta.fecha) = $year
-                GROUP BY ruta.noruta, ruta.destino, omnibus.noomnibus,tipo_omnibus.tipo, tipo_omnibus.capacidad_total,ruta.preciopasaje,hoja_ruta.nohojaruta, hoja_ruta.cantidadviajes,recaudacion.recaudacion
-                ORDER BY ruta.noruta DESC)
-            as derivedTable
-        GROUP BY derivedtable.nohojaruta,derivedtable.noruta,derivedtable.destino,derivedtable.noomnibus,derivedTable.tipo, derivedTable.capacidad_total,derivedTable.preciopasaje,
-        derivedtable.cantidadviajes,
-        derivedtable.kmrecorridos,
-        derivedtable.combustible	
-       ';
+        $query = '	SELECT secondDerivedTable.noruta,
+                        secondDerivedTable.destino,
+                        secondDerivedTable.preciopasaje,
+                        SUM(secondDerivedTable.kmrecorridos) as kmrecorridos,
+                        SUM(secondDerivedTable.combustible) as combustible,
+                        SUM(secondDerivedtable.recaudacion) as recaudacion
+                    FROM
+                        (SELECT  
+                            derivedtable.noruta,
+                            derivedtable.destino,
+                            derivedTable.preciopasaje,
+                            derivedtable.kmrecorridos,
+                            derivedtable.combustible, 
+                            SUM(derivedtable.recaudacion) as recaudacion 
+                        FROM
+                            (SELECT 
+                                ruta.noruta, 
+                                ruta.destino, 
+                                omnibus.noomnibus, 
+                                tipo_omnibus.tipo, 
+                                tipo_omnibus.capacidad_total, 
+                                ruta.preciopasaje, 
+                                hoja_ruta.nohojaruta, 
+                                hoja_ruta.cantidadviajes, 
+                                SUM(g_p_s.kmrecorridos) as kmrecorridos, 
+                                SUM(g_p_s.combustible)as combustible, 
+                                recaudacion.recaudacion
+                            FROM 
+                                public.ruta, 
+                                public.omnibus, 
+                                public.tipo_omnibus, 
+                                public.hoja_ruta, 
+                                public.g_p_s, 
+                                public.recaudacion 
+                            WHERE 
+                                hoja_ruta.id_ruta = ruta.id AND 
+                                hoja_ruta.id_omnibus = omnibus.id AND 
+                                omnibus.id_tipoomnibus = tipo_omnibus.id AND 
+                                omnibus.id = g_p_s.id_omnibus AND
+                                recaudacion.id_hojaruta = hoja_ruta.id AND
+                                date_part(\'month\', hoja_ruta.fecha) = $month AND date_part(\'year\', hoja_ruta.fecha) = $year
+                            GROUP BY ruta.noruta, ruta.destino, omnibus.noomnibus,tipo_omnibus.tipo, tipo_omnibus.capacidad_total,ruta.preciopasaje,hoja_ruta.nohojaruta, hoja_ruta.cantidadviajes,recaudacion.recaudacion
+                            ORDER BY ruta.noruta DESC)
+                            as derivedTable
+                        GROUP BY 
+                        derivedtable.noruta,
+                        derivedtable.destino,
+                        derivedTable.preciopasaje,
+                        derivedtable.kmrecorridos,
+                        derivedtable.combustible)
+                    as secondDerivedTable
+                    GROUP BY 
+                        secondDerivedTable.noruta,
+                        secondDerivedTable.destino,
+                        secondDerivedTable.preciopasaje
+                    ';
 
         $vars = array(
             '$year' => $yearValue,

@@ -63,14 +63,9 @@
       >
         <thead>
           <tr>
-            <th>No Hoja Ruta</th>
             <th>No Ruta</th>
             <th>Destino</th>
-            <th>No Ómnibus</th>
-            <th>Marca</th>
-            <th>Capacidad</th>
             <th>Precio del pasaje</th>
-            <th>Cantidad de Viajes</th>
             <th>Kms Recorridos</th>
             <th>Combustible</th>
             <th>Recaudación</th>
@@ -79,14 +74,9 @@
         <tbody>
           {% for reporte in reportes %}
           <tr>
-            <td>{{ reporte.nohojaruta }}</td>
             <td>{{ reporte.noruta }}</td>
             <td>{{ reporte.destino }}</td>
-            <td>{{ reporte.noomnibus }}</td>
-            <td>{{ reporte.tipo }}</td>
-            <td>{{ reporte.capacidad_total }}</td>
             <td>{{ reporte.preciopasaje }}</td>
-            <td>{{ reporte.cantidadviajes }}</td>
             <td>{{ reporte.kmrecorridos }}</td>
             <td>{{ reporte.combustible }}</td>
             <td>{{ reporte.recaudacion }}</td>
