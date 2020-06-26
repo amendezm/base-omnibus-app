@@ -54,6 +54,38 @@ class RecaudacionController extends AbstractController
             'reportes' => $reportes
         ));
     }
+
+    public function recaudacion_estimadaAction(Connection $connection)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $db = $connection;
+        $query = 'SELECT 
+                ruta.noruta, 
+                ruta.destino,
+                ruta.cantdiassemana_trabajo*AVG(hoja_ruta.cantidadviajes)*ruta.cantpasajerospromedio*ruta.preciopasaje-(ruta.preciopasaje*10/100) AS recaudacion_total,
+                SUM(recaudacion.recaudacion) as recaudacion_real,
+                ruta.cantdiassemana_trabajo*AVG(hoja_ruta.cantidadviajes)*ruta.cantpasajerospromedio*ruta.preciopasaje-(ruta.preciopasaje*10/100) - SUM(recaudacion.recaudacion) as dinero_perdido
+            FROM
+                public.ruta, 
+                public.hoja_ruta, 
+                public.recaudacion
+            WHERE hoja_ruta.id_ruta=ruta.id and 
+                  hoja_ruta.id = recaudacion.id_hojaruta
+            GROUP BY ruta.noruta, 
+                     ruta.destino,
+                     ruta.cantdiassemana_trabajo,
+                     ruta.cantpasajerospromedio,
+                     ruta.preciopasaje';
+
+        $stmt = $db->prepare($query);
+        $params = array();
+        $stmt->execute($params);
+        $reportes = $stmt->fetchAll();
+        return $this->render('recaudacion/recaudacion_estimada.html.twig', array(
+            'reportes' => $reportes
+        ));
+    }
     /**
      * Lists all Recaudacion entities.
      *
