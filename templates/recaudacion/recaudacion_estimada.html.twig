@@ -1,0 +1,59 @@
+{% extends 'index.html.twig' %} {% block contenido %}
+<br />
+<div class="card shadow">
+  <div class="card-header py-3">
+    <h3 class="m-0 text-primary">Recaudación estimada</h3>
+  </div>
+  <div class="card-body">
+    <div class="table-reponsive">
+      <table
+        class="table text-center"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+        style="font-size: 0.75rem;"
+      >
+        <thead>
+          <tr>
+            <th>Ruta</th>
+            <th>Destino</th>
+            <th>Recaudación estimada</th>
+            <th>Recaudación real</th>
+            <th>Dinero perdido</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for reporte in reportes %}
+          <tr>
+            <td>{{ reporte.noruta }}</td>
+            <td>{{ reporte.destino }}</td>
+            <td>{{ reporte.recaudacion_total }}</td>
+            <td>{{ reporte.recaudacion_real }}</td>
+            <td>
+              {{ reporte.dinero_perdido }}
+              {% if reporte.dinero_perdido > 0 %} &nbsp;
+              <span
+                class="badge badge-pill badge-danger"
+                data-tooltip="Pérdida"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% if reporte.dinero_perdido < 0 %} &nbsp;
+              <span
+                class="badge badge-pill badge-success"
+                data-tooltip="Ganancia"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
