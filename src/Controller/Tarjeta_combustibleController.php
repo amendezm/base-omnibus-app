@@ -47,6 +47,9 @@ class Tarjeta_combustibleController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            $tarjeta_combustible->setSaldoActual(0);
+
             $em->persist($tarjeta_combustible);
             $em->flush();
 
@@ -85,6 +88,11 @@ class Tarjeta_combustibleController extends AbstractController
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            if ($tarjeta_combustible->getSaldoActual() == null) {
+                $tarjeta_combustible->setSaldoActual(0);
+            }
+
             $em->persist($tarjeta_combustible);
             $em->flush();
 

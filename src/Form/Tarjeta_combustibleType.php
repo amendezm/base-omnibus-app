@@ -5,6 +5,7 @@ namespace App\Form;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -24,7 +25,7 @@ class Tarjeta_combustibleType extends AbstractType
             ])
             ->add('noTarjeta')
             ->add('combustibleTipo', EntityType::class, array('class' => 'App\Entity\TipoCombustible', 'multiple' => false, 'expanded' => false))
-            ->add('saldoActual');
+            ->add('saldoActual', NumberType::class, array('required' => false));
     }
 
     /**
