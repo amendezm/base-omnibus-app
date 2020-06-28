@@ -216,12 +216,11 @@ class RutaController extends AbstractController
         $db = $connection;
 
         $query = 'SELECT ruta.noruta, ruta.destino, ruta.salida, ruta.frecuencia, hoja_ruta.fecha, 
-        recaudacion.recaudacion/g_p_s.combustible AS recaudacion_Lt, 
-        recaudacion.recaudacion/hoja_ruta.cantidadviajes AS recaudacion_viajes, 
-        (recaudacion.recaudacion/hoja_ruta.cantidadviajes)/ruta.preciopasaje AS pasajeros_viajes, 
-        g_p_s.kmrecorridos/g_p_s.combustible AS kilometros_Lt, 
-        ((recaudacion.recaudacion/hoja_ruta.cantidadviajes)/ruta.preciopasaje)/ 
-        tipo_omnibus.capacidad_total*100 AS Aprov_Cap 
+        round( cast(recaudacion.recaudacion/g_p_s.combustible as decimal(9,2)), 2) AS recaudacion_Lt, 
+        round( cast(recaudacion.recaudacion/hoja_ruta.cantidadviajes as decimal(9,2)), 2) AS recaudacion_viajes, 
+        round( cast((recaudacion.recaudacion/hoja_ruta.cantidadviajes)/ruta.preciopasaje as decimal(9,2)), 2) AS pasajeros_viajes, 
+        round( cast(g_p_s.kmrecorridos/g_p_s.combustible as decimal(9,2)), 2) AS kilometros_Lt, 
+        round( cast(((recaudacion.recaudacion/hoja_ruta.cantidadviajes)/ruta.preciopasaje)/tipo_omnibus.capacidad_total*100 as decimal(9,2)), 2) AS Aprov_Cap
         FROM public.ruta, public.recaudacion, public.hoja_ruta, public.g_p_s, public.tipo_omnibus, public.omnibus 
         WHERE recaudacion.id_hojaruta = hoja_ruta.id AND hoja_ruta.id_ruta = ruta.id 
         AND g_p_s.id_omnibus = hoja_ruta.id_omnibus AND tipo_omnibus.id = omnibus.id_tipoomnibus  
@@ -243,12 +242,11 @@ class RutaController extends AbstractController
         $db = $connection;
 
         $query = 'SELECT DISTINCT ruta.noruta, ruta.destino, ruta.salida, ruta.frecuencia, 
-        SUM(recaudacion.recaudacion)/SUM(g_p_s.combustible) AS recaudacion_Lt, 
-        SUM(recaudacion.recaudacion)/SUM(hoja_ruta.cantidadviajes) AS recaudacion_viajes, 
-        (SUM(recaudacion.recaudacion)/SUM(hoja_ruta.cantidadviajes))/ruta.preciopasaje AS pasajeros_viajes, 
-        SUM(g_p_s.kmrecorridos)/SUM(g_p_s.combustible) AS kilometros_Lt, 
-        ((SUM(recaudacion.recaudacion)/SUM(hoja_ruta.cantidadviajes))/ruta.preciopasaje)/ 
-        tipo_omnibus.capacidad_total*100 AS Aprov_Cap 
+        round(cast(SUM(recaudacion.recaudacion)/SUM(g_p_s.combustible) as decimal(9,2)), 2) AS recaudacion_Lt, 
+        round(cast(SUM(recaudacion.recaudacion)/SUM(hoja_ruta.cantidadviajes) as decimal(9,2)), 2) AS recaudacion_viajes, 
+        round(cast((SUM(recaudacion.recaudacion)/SUM(hoja_ruta.cantidadviajes))/ruta.preciopasaje as decimal(9,2)), 2) AS pasajeros_viajes, 
+        round(cast(SUM(g_p_s.kmrecorridos)/SUM(g_p_s.combustible) as decimal(9,2)), 2) AS kilometros_Lt, 
+        round(cast(((SUM(recaudacion.recaudacion)/SUM(hoja_ruta.cantidadviajes))/ruta.preciopasaje)/tipo_omnibus.capacidad_total*100 as decimal(9,2)), 2) AS Aprov_Cap 
         FROM public.ruta, public.recaudacion, public.hoja_ruta, public.g_p_s, public.tipo_omnibus, public.omnibus 
         WHERE recaudacion.id_hojaruta = hoja_ruta.id AND hoja_ruta.id_ruta = ruta.id 
         AND g_p_s.id_omnibus = hoja_ruta.id_omnibus AND tipo_omnibus.id = omnibus.id_tipoomnibus  
