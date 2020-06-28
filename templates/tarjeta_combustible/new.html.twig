@@ -16,23 +16,17 @@
              {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
           )}}
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label class="control-label">Fecha de Vencimiento</label>
-              {{ form_widget(form.fechaVencimiento,
+        <div class="form-group">
+          <label class="control-label">Fecha de Vencimiento</label>
+          {{ form_widget(form.fechaVencimiento,
              {'attr' : {'class' : 'form-control datepicker-here' }}
-              )}}
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label class="control-label">Saldo Actual</label>
-              {{ form_widget(form.saldoActual,
-                     {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
-              )}}
-            </div>
-          </div>
+          )}}
+        </div>
+        <div class="form-group" style="display: none;">
+          <label class="control-label">Saldo Actual</label>
+          {{ form_widget(form.saldoActual,
+                 {'attr' : {'class' : 'form-control'}}
+          )}}
         </div>
         <div class="form-group">
           <label class="control-label">Tipo de Combustible</label>
