@@ -36,6 +36,7 @@
           <tr>
             <th class="text-center">Usuario</th>
             <th class="text-center">Fecha-registro</th>
+            <th class="text-center">Rol</th>
             <th class="text-center">Estado</th>
             <th class="text-center">Acciones</th>
           </tr>
@@ -49,6 +50,7 @@
               {{ usuario.fechaRegistro|date('Y-m-d H:i:s')}}
               {% endif %}
             </td>
+            <td class="text-center">{{ usuario.roles[0] }}</td>
             <td class="text-center">
               {% if usuario.isActive %} activo {% else %}
               <span style="font-weight: bold;">
