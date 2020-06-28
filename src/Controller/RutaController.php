@@ -94,6 +94,7 @@ class RutaController extends AbstractController
 
             $ruta->setFrecuencia($strDias);
             $ruta->setCantDiasSemanaTrabajo($cantDias);
+            $ruta->setRecaudacion(0);
             $em->persist($ruta);
             $em->flush();
 
