@@ -38,6 +38,14 @@ ruta_reporte:
   path: /ruta/reporte
   controller: App\Controller\RutaController:reporteAction
   methods: GET
+ruta_reporte_salidas:
+  path: /ruta/reporte_salidas
+  controller: App\Controller\RutaController:reporteSalidasAction
+  methods: [GET, POST]
+ruta_reporte_acumulado:
+  path: /ruta/reporte_acumulado
+  controller: App\Controller\RutaController:reporteSalidasAcumuladoAction
+  methods: GET
 ruta_reporte_show:
   path: /ruta/reporte/visualizar
   controller: App\Controller\RutaController:showIncidencias_xRuta_reporteAction
