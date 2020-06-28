@@ -41,7 +41,7 @@ ruta_reporte:
 ruta_reporte_salidas:
   path: /ruta/reporte_salidas
   controller: App\Controller\RutaController:reporteSalidasAction
-  methods: GET
+  methods: [GET, POST]
 ruta_reporte_acumulado:
   path: /ruta/reporte_acumulado
   controller: App\Controller\RutaController:reporteSalidasAcumuladoAction

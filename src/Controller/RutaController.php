@@ -11,6 +11,8 @@ use App\Entity\Ruta;
 use App\Form\RutaType;
 use Doctrine\DBAL\Driver\Connection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use \Datetime;
 
 // * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ESPECIALISTA_OPERACIONES')")  
 
@@ -209,8 +211,28 @@ class RutaController extends AbstractController
     }
 
 
-    public function reporteSalidasAction(Connection $connection)
+    public function reporteSalidasAction(Connection $connection, Request $request)
     {
+
+        $currentDate = date('yy-m-d');
+
+        $form = $this->createFormBuilder()
+            ->add('date', DateType::class,  [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
+                'data' => new DateTime($currentDate)
+            ])
+            ->getForm();
+
+        $formDate = null;
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $formDate = $data['date'];
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $db = $connection;
@@ -224,14 +246,21 @@ class RutaController extends AbstractController
         FROM public.ruta, public.recaudacion, public.hoja_ruta, public.g_p_s, public.tipo_omnibus, public.omnibus 
         WHERE recaudacion.id_hojaruta = hoja_ruta.id AND hoja_ruta.id_ruta = ruta.id 
         AND g_p_s.id_omnibus = hoja_ruta.id_omnibus AND tipo_omnibus.id = omnibus.id_tipoomnibus  
-        AND omnibus.id=hoja_ruta.id_omnibus AND hoja_ruta.fecha = g_p_s.fecha';
+        AND omnibus.id=hoja_ruta.id_omnibus AND hoja_ruta.fecha = g_p_s.fecha AND  hoja_ruta.fecha = cast(\'$date\' as date)';
 
-        $stmt = $db->prepare($query);
+        $vars = array(
+            '$date' => $formDate == null ? $currentDate : $formDate->format('yy-m-d'),
+        );
+
+        $queryValue = strtr($query, $vars);
+
+        $stmt = $db->prepare($queryValue);
         $params = array();
         $stmt->execute($params);
         $reportes = $stmt->fetchAll();
         return $this->render('ruta/reporte_salidas.html.twig', array(
-            'reportes' => $reportes
+            'reportes' => $reportes,
+            'form' => $form->createView()
         ));
     }
 
