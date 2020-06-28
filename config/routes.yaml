@@ -403,6 +403,10 @@ recaudacion_recaudacionXfecha:
   path: /recaudacion/recaudacionXfecha
   controller: App\Controller\RecaudacionController:recaudacionAction
   methods: GET
+recaudacion_estimada:
+  path: /recaudacion/recaudacion_estimada
+  controller: App\Controller\RecaudacionController:recaudacion_estimadaAction
+  methods: GET
 recaudacion_show:
   path: /recaudacion/{id}/show
   controller: App\Controller\RecaudacionController:showAction

@@ -68,21 +68,22 @@
             'tipoincidencia' in app.request.attributes.get('_route')) and
             not ('ruta_reporte' in app.request.attributes.get('_route')) and
             not ('chofer_reporte' in app.request.attributes.get('_route')) and
+            not ('reporte_hoja_ruta_indicadores' in app.request.attributes.get('_route')) and
             not ('omnibus_reporteKms' in app.request.attributes.get('_route'))
             %}active{% endif %}">
             <a
-              class="nav-link collapsed sidebar-item"
-              href="#"
-              data-toggle="collapse"
-              data-target="#collapseOperaciones"
-              aria-expanded="true"
-              aria-controls="collapseOperaciones"
+            class="nav-link collapsed sidebar-item"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapseOperaciones"
+            aria-expanded="true"
+            aria-controls="collapseOperaciones"
             >
-                <i class="fas fa-briefcase"></i>
-                <span>Operaciones</span>
-            </a>
-            <div
-              id="collapseOperaciones"
+            <i class="fas fa-briefcase"></i>
+            <span>Operaciones</span>
+          </a>
+          <div
+          id="collapseOperaciones"
               class="collapse {% if ('chofer' in app.request.attributes.get('_route') or
               'omnibus' in app.request.attributes.get('_route') or
               'tipo_omnibus' in app.request.attributes.get('_route') or
@@ -94,6 +95,7 @@
               'tipoincidencia' in app.request.attributes.get('_route')) and
               not ('ruta_reporte' in app.request.attributes.get('_route')) and
               not ('chofer_reporte' in app.request.attributes.get('_route')) and
+              not ('reporte_hoja_ruta_indicadores' in app.request.attributes.get('_route')) and
               not ('omnibus_reporteKms' in app.request.attributes.get('_route'))
               %}show{% endif %}"
               aria-labelledby="headingOperaciones"
@@ -255,22 +257,24 @@
 
         <li class="nav-item {% if 'recaudacion' in app.request.attributes.get('_route') and
         not ('plan_recaudacion' in app.request.attributes.get('_route')) and
+        not ('recaudacion_estimada' in app.request.attributes.get('_route')) and
         not ('pronostico_recaudacion' in app.request.attributes.get('_route')) 
         %}active{% endif %}">
-            <a 
-              class="nav-link collapsed sidebar-item"
-              href="#"
-              data-toggle="collapse"
-              data-target="#collapseRecacudacion"
-              aria-expanded="true"
-              aria-controls="collapseRecacudacion"
-            >
-              <i class="fas fa-money-check-alt"></i>
-              <span>Recaudación</span>
-            </a>
-            <div
-              id="collapseRecacudacion"
-              class="collapse {% if 'recaudacion' in app.request.attributes.get('_route') and
+        <a 
+        class="nav-link collapsed sidebar-item"
+        href="#"
+        data-toggle="collapse"
+        data-target="#collapseRecacudacion"
+        aria-expanded="true"
+        aria-controls="collapseRecacudacion"
+        >
+        <i class="fas fa-money-check-alt"></i>
+        <span>Recaudación</span>
+      </a>
+      <div
+      id="collapseRecacudacion"
+      class="collapse {% if 'recaudacion' in app.request.attributes.get('_route') and
+              not ('recaudacion_estimada' in app.request.attributes.get('_route')) and
               not ('plan_recaudacion' in app.request.attributes.get('_route')) and
               not ('pronostico_recaudacion' in app.request.attributes.get('_route')) 
               %}show{% endif %}"
@@ -281,6 +285,7 @@
                 <a class="collapse-item {% if 'recaudacion' in app.request.attributes.get('_route') and
                 not ('recaudacionXfecha' in app.request.attributes.get('_route')) and
                 not ('plan_recaudacion' in app.request.attributes.get('_route')) and
+                not ('recaudacion_estimada' in app.request.attributes.get('_route')) and
                 not ('pronostico_recaudacion' in app.request.attributes.get('_route'))
                 %}active{% endif %}" href="{{ path('recaudacion_index') }}">
                   <i class="fas fa-money-check"></i>
@@ -421,7 +426,15 @@
             <i class="fas fa-clipboard"></i>
             <span>
               Indicadores Salidas
-            </span> 
+            </span>   
+          </a>
+        </li>
+        <li class="nav-item {% if 'recaudacion_estimada' in app.request.attributes.get('_route')%}active{% endif %}">
+          <a class="nav-link sidebar-item" href="{{ path('recaudacion_estimada') }}">
+            <i class="fas fa-money-check-alt"></i>
+            <span>
+              Recaudación Estimada
+            </span>   
           </a>
         </li>
         <li class="nav-item {% if 'reporteporOmnibus' in app.request.attributes.get('_route') %}active{% endif %}">

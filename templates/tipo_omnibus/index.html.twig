@@ -55,7 +55,26 @@
             <td>{{ tipo_omnibus.capacidadParados }}</td>
             <td>{{ tipo_omnibus.capacidadTotal }}</td>
             <td>{{ tipo_omnibus.indiceConsumoNormado }}</td>
-            <td>{{ tipo_omnibus.desviacion }}</td>
+            <td>
+              {{ tipo_omnibus.desviacion }}
+              {% if tipo_omnibus.desviacion <= 5 %} &nbsp;
+              <span
+                class="badge badge-pill badge-danger"
+                data-tooltip="Sobreconsumo de combustible"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %} {% if tipo_omnibus.desviacion > 5 %} &nbsp;
+              <span
+                class="badge badge-pill badge-success"
+                data-tooltip="Ahorro de combustible"
+                data-tooltip-location="top"
+              >
+                <i class="fas fa-info"></i>
+              </span>
+              {% endif %}
+            </td>
             <td>{{ tipo_omnibus.cantidadKmtsXlitro }}</td>
             {% if is_granted('ROLE_ADMIN' ) or
             is_granted('ROLE_ESPECIALISTA_OPERACIONES' ) %}
