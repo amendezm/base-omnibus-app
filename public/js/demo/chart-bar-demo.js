@@ -12,7 +12,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     sep = typeof thousands_sep === "undefined" ? "," : thousands_sep,
     dec = typeof dec_point === "undefined" ? "." : dec_point,
     s = "",
-    toFixedFix = function(n, prec) {
+    toFixedFix = function (n, prec) {
       var k = Math.pow(10, prec);
       return "" + Math.round(n * k) / k;
     };
@@ -31,10 +31,11 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 // Bar Chart Example
 var kilometers = JSON.parse(
   document.getElementById("kilometersData").value
-).map(value => (value === 0 ? 10 : value));
+).map((value) => (value === 0 ? 10 : value));
+console.info(kilometers);
 var labels = JSON.parse(document.getElementById("omnibusNumbers").value);
 var colors = [];
-kilometers.forEach(kmValue => {
+kilometers.forEach((kmValue) => {
   if (kmValue < 200) {
     colors = [...colors, "#00fff4"];
   } else if (kmValue < 300) {
@@ -79,9 +80,9 @@ var myBarChart = new Chart(ctx, {
         backgroundColor: "#157dd8",
         hoverBackgroundColor: "#2e59d9",
         borderColor: "#1d1d1d",
-        data: kilometers
-      }
-    ]
+        data: kilometers,
+      },
+    ],
   },
   options: {
     maintainAspectRatio: false,
@@ -90,24 +91,24 @@ var myBarChart = new Chart(ctx, {
         left: 10,
         right: 25,
         top: 25,
-        bottom: 0
-      }
+        bottom: 0,
+      },
     },
     scales: {
       xAxes: [
         {
           time: {
-            unit: "Omnibus"
+            unit: "Omnibus",
           },
           gridLines: {
             display: false,
-            drawBorder: false
+            drawBorder: false,
           },
           ticks: {
-            maxTicksLimit: 6
+            maxTicksLimit: 6,
           },
-          maxBarThickness: 25
-        }
+          maxBarThickness: 25,
+        },
       ],
       yAxes: [
         {
@@ -116,22 +117,22 @@ var myBarChart = new Chart(ctx, {
             maxTicksLimit: 5,
             padding: 10,
             // Include a dollar sign in the ticks
-            callback: function(value, index, values) {
+            callback: function (value, index, values) {
               return number_format(value) + " km";
-            }
+            },
           },
           gridLines: {
             color: "rgb(234, 236, 244)",
             zeroLineColor: "rgb(234, 236, 244)",
             drawBorder: false,
             borderDash: [2],
-            zeroLineBorderDash: [2]
-          }
-        }
-      ]
+            zeroLineBorderDash: [2],
+          },
+        },
+      ],
     },
     legend: {
-      display: false
+      display: false,
     },
     tooltips: {
       titleMarginBottom: 10,
@@ -146,15 +147,15 @@ var myBarChart = new Chart(ctx, {
       displayColors: false,
       caretPadding: 10,
       callbacks: {
-        title: function(tooltipItem, data) {
+        title: function (tooltipItem, data) {
           return "Ómnibus " + data.labels[tooltipItem[0].index];
         },
-        label: function(tooltipItem, chart) {
+        label: function (tooltipItem, chart) {
           var datasetLabel =
             chart.datasets[tooltipItem.datasetIndex].label || "";
           return datasetLabel + ": " + number_format(tooltipItem.yLabel);
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 });
