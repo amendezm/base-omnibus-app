@@ -168,7 +168,7 @@ tarjeta_combustible_parte:
   path: /tarjeta_combustible/parte
   defaults:
   controller: App\Controller\Tarjeta_combustibleController:parteTarjetaCombustibleAction
-  methods: GET
+  methods: [GET, POST]
 tarjeta_combustible_mensual_parte:
   path: /tarjeta_combustible/parte_mensual
   defaults:
