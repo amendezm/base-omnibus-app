@@ -41,8 +41,8 @@
           <th>Fecha y Hora</th>
           <th>Habilitador</th>
           <th>Ómnibus (chapa)</th>
-          <th>Importe</th>
           <th>Cantidad (litros)</th>
+          <th>Importe</th>
           <th>No. Control</th>
           {% if is_granted('ROLE_ADMIN' ) or
           is_granted('ROLE_ESPECIALISTA_ENERGIA' ) %}
@@ -66,10 +66,10 @@
               {{ habilitacion.habilitador }}
             </td>
             <td>{{ habilitacion.omnibus }}</td>
-            <td>{{ habilitacion.importe }}</td>
             <td>
               {{ habilitacion.cantLitros }}
             </td>
+            <td>{{ habilitacion.importe }}</td>
             <td>
               {{ habilitacion.noControl }}
             </td>
