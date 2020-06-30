@@ -10,6 +10,9 @@ use Doctrine\DBAL\Driver\Connection;
 use App\Form\Tarjeta_combustibleType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use \Datetime;
+
 
 // * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ESPECIALISTA_ENERGIA')")
 /**
@@ -181,8 +184,28 @@ class Tarjeta_combustibleController extends AbstractController
         ));
     }
 
-    public function parteTarjetaCombustibleAction(Connection $connection)
+    public function parteTarjetaCombustibleAction(Connection $connection, Request $request)
     {
+
+        $currentDate = date('yy-m-d');
+
+        $form = $this->createFormBuilder()
+            ->add('date', DateType::class,  [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['data-language' => 'es', 'class' => 'datepicker-here', 'data-date-format' => 'yyyy-mm-dd'],
+                'data' => new DateTime($currentDate)
+            ])
+            ->getForm();
+
+        $formDate = null;
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $formDate = $data['date'];
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $db = $connection;
@@ -215,10 +238,18 @@ class Tarjeta_combustibleController extends AbstractController
                             JOIN public.tarjeta_combustible ON tarjeta_combustible.id = combustible_habilitado.tarjeta_id
                             JOIN public.tipo_combustible ON tarjeta_combustible.id_combustibletipo = tipo_combustible.id) 
                         as derivedTable
+                    WHERE fecha = cast(\'$date\' as date)    
                     GROUP BY fecha, notarjeta,saldoactual,tipo
                     ORDER BY fecha DESC
        ';
-        $stmt = $db->prepare($query);
+
+        $vars = array(
+            '$date' => $formDate == null ? $currentDate : $formDate->format('yy-m-d'),
+        );
+
+        $queryValue = strtr($query, $vars);
+
+        $stmt = $db->prepare($queryValue);
         $params = array();
         $stmt->execute($params);
         $reportes = $stmt->fetchAll();
@@ -272,7 +303,8 @@ class Tarjeta_combustibleController extends AbstractController
         }
 
         return $this->render('tarjeta_combustible/reporte_tarjeta.html.twig', array(
-            'reportes' => $reportes
+            'reportes' => $reportes,
+            'form' => $form->createView()
         ));
     }
 

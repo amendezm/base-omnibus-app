@@ -1,5 +1,21 @@
 {% extends 'index.html.twig' %} {% block contenido %}
 <br />
+{{ form_start(form, { method: "POST" }) }}
+<div class="form-inline text-right" style="justify-content: flex-end;">
+  <div class="form-group mr-4">
+    <label class="control-label mr-2 text-primary">Día</label>
+    {{ form_widget(form.date,
+         {'attr' : {'class' : 'form-control datepicker-here'}}
+    )}}
+  </div>
+  &nbsp;
+  <div class="text-right">
+    <input type="submit" class="btn btn-primary" value="Filtrar" />
+  </div>
+  <br />
+</div>
+{{ form_end(form) }}
+<br />
 <div class="card shadow mb-4">
   <div class="card-header py-3">
     <div class="row">
@@ -24,7 +40,6 @@
             <th>Saldo inicial</th>
             <th>Combustible asignado</th>
             <th>Combustible habilitado</th>
-            <th>Fecha</th>
             <th>Saldo final</th>
           </tr>
         </thead>
@@ -36,7 +51,6 @@
             <td>{{ reporte.saldoinicial }}</td>
             <td>{{ reporte.cant_asignada }}</td>
             <td>{{ reporte.cantlitros }}</td>
-            <td>{{ reporte.fecha }}</td>
             <td>{{ reporte.saldoactual }}</td>
           </tr>
           {% endfor %}
