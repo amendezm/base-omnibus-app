@@ -27,7 +27,6 @@ class RutaType extends AbstractType
             ->add('kmSalida', NumberType::class, array('required' => true))
             ->add('destino')
             ->add('dias', EntityType::class, array('class' => 'App\Entity\DiasSemana', 'multiple' => true, 'expanded' => true, 'required' => true))
-            ->add('recaudacion')
             ->add('servicio', EntityType::class, array('class' => 'App\Entity\Servicio', 'multiple' => false, 'expanded' => false))
             ->add('cantidadMedios', IntegerType::class, array('required' => true))
             ->add('precioPasaje', NumberType::class, array('required' => true))
