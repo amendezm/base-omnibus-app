@@ -309,6 +309,7 @@ class HojaRutaController extends AbstractController
 
         $query = '	SELECT secondDerivedTable.noruta,
                         secondDerivedTable.destino,
+                        SUM(secondDerivedTable.cantidadviajes) as cantidadviajes,
                         secondDerivedTable.preciopasaje,
                         SUM(secondDerivedTable.kmrecorridos) as kmrecorridos,
                         SUM(secondDerivedTable.combustible) as combustible,
@@ -317,6 +318,7 @@ class HojaRutaController extends AbstractController
                         (SELECT  
                             derivedtable.noruta,
                             derivedtable.destino,
+                            derivedtable.cantidadviajes,
                             derivedTable.preciopasaje,
                             derivedtable.kmrecorridos,
                             derivedtable.combustible, 
@@ -356,6 +358,7 @@ class HojaRutaController extends AbstractController
                         derivedtable.destino,
                         derivedTable.preciopasaje,
                         derivedtable.kmrecorridos,
+                        derivedtable.cantidadviajes,
                         derivedtable.combustible)
                     as secondDerivedTable
                     GROUP BY 

@@ -69,6 +69,7 @@
             not ('ruta_reporte' in app.request.attributes.get('_route')) and
             not ('chofer_reporte' in app.request.attributes.get('_route')) and
             not ('reporte_hoja_ruta_indicadores' in app.request.attributes.get('_route')) and
+            not ('reporte_hoja_ruta_acumulado' in app.request.attributes.get('_route')) and
             not ('omnibus_reporteKms' in app.request.attributes.get('_route'))
             %}active{% endif %}">
             <a
@@ -96,6 +97,7 @@
               not ('ruta_reporte' in app.request.attributes.get('_route')) and
               not ('chofer_reporte' in app.request.attributes.get('_route')) and
               not ('reporte_hoja_ruta_indicadores' in app.request.attributes.get('_route')) and
+              not ('reporte_hoja_ruta_acumulado' in app.request.attributes.get('_route')) and
               not ('omnibus_reporteKms' in app.request.attributes.get('_route'))
               %}show{% endif %}"
               aria-labelledby="headingOperaciones"
