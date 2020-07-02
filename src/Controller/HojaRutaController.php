@@ -64,7 +64,7 @@ class HojaRutaController extends AbstractController
 
             return $this->redirectToRoute('hojaruta_index', array('id' => $hojaRuta->getId()));
         } else if ($form->isSubmitted() && !$form->isValid()) {
-            $this->addFlash('error', 'Ha ocurrido algún error al insertar');
+            $this->addFlash('error', 'La fecha no debe ser posterior al día de hoy');
         }
 
         return $this->render('hojaruta/new.html.twig', array(
@@ -121,7 +121,7 @@ class HojaRutaController extends AbstractController
 
             return $this->redirectToRoute('hojaruta_index', array('id' => $hojaRuta->getId()));
         } else if ($editForm->isSubmitted() && !$editForm->isValid()) {
-            $this->addFlash('error', 'Ha ocurrido algún error al editar');
+            $this->addFlash('error', 'La fecha no debe ser posterior al día de hoy');
         }
 
         return $this->render('hojaruta/edit.html.twig', array(

@@ -92,10 +92,11 @@ class HojaRuta
 
     /**
      * @var \DateTime
-     *
+     * @Assert\LessThanOrEqual("today")
      * @ORM\Column(name="fecha", type="date")
      */
     private $fecha;
+
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Turno", inversedBy="hojaRute")
      * @ORM\JoinColumn(name="id_turno", referencedColumnName="id", onDelete="CASCADE")
