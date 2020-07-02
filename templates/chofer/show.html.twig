@@ -12,8 +12,9 @@
     <div class="card-body">
       <div class="row">
         <div class="col-md-12">
-          Chofer del ómnibus {{ chofer.omnibus }} con licencia de conducción
-          {{ chofer.noLicenciaOperativa }}
+          Chofer del ómnibus {{ chofer.omnibus ? chofer.omnibus : "n/a" }} con
+          licencia de conducción
+          {{ chofer.noLicenciaOperativa ? chofer.noLicenciaOperativa : "n/a" }}
         </div>
       </div>
       <br />
