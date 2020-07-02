@@ -57,8 +57,7 @@
         <div class="sidebar-heading dpto2">
           Dptos
         </div>
-        <li class="nav-item  {% if ('chofer' in app.request.attributes.get('_route') or
-            'omnibus' in app.request.attributes.get('_route') or
+        <li class="nav-item  {% if ('omnibus' in app.request.attributes.get('_route') or
             'tipo_omnibus' in app.request.attributes.get('_route') or
             'ruta' in app.request.attributes.get('_route') or
             'pto_expedicion' in app.request.attributes.get('_route') or
@@ -85,8 +84,7 @@
           </a>
           <div
           id="collapseOperaciones"
-              class="collapse {% if ('chofer' in app.request.attributes.get('_route') or
-              'omnibus' in app.request.attributes.get('_route') or
+              class="collapse {% if ('omnibus' in app.request.attributes.get('_route') or
               'tipo_omnibus' in app.request.attributes.get('_route') or
               'ruta' in app.request.attributes.get('_route') or
               'pto_expedicion' in app.request.attributes.get('_route') or
@@ -104,12 +102,6 @@
               data-parent="#accordionSidebar"
               >
                 <div class="bg-white py-2 collapse-inner rounded">
-                  <a class="collapse-item {% if 'chofer' in app.request.attributes.get('_route') and
-                  not ('chofer_reporte' in app.request.attributes.get('_route')) 
-                  %}active{% endif %}" href="{{ path('chofer_index') }}">
-                    <i class="fas fa-user"></i> 
-                    <span>Choferes</span> 
-                </a>
                 <a class="collapse-item {% if 'omnibus' in app.request.attributes.get('_route') and
                 not ('tipo_omnibus' in app.request.attributes.get('_route')) and
                 not ('omnibus_reporteKms' in app.request.attributes.get('_route'))
@@ -203,7 +195,8 @@
                 </div>
             </div>
         </li>
-        <li class="nav-item {% if 'trabajador' in app.request.attributes.get('_route') %}active{% endif %}">
+        <li class="nav-item {% if 'trabajador' in app.request.attributes.get('_route') 
+        or 'chofer' in app.request.attributes.get('_route')%}active{% endif %}">
           <a 
               class="nav-link collapsed sidebar-item"
               href="#"
@@ -217,13 +210,20 @@
             </a>
             <div
               id="collapseRRHH"
-              class="collapse {% if 'trabajador' in app.request.attributes.get('_route') %}show{% endif %}"
+              class="collapse {% if 'trabajador' in app.request.attributes.get('_route') or
+              'chofer' in app.request.attributes.get('_route') %}show{% endif %}"
               aria-labelledby="headingRRHH"
               data-parent="#accordionSidebar"
             >
               <div class="bg-white py-2 collapse-inner rounded">
                 <a  class="collapse-item {% if 'trabajador' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('trabajador_index') }}">
                   <i class="fas fa-user"></i> <span>Trabajador</span></i>
+                </a>
+                <a class="collapse-item {% if 'chofer' in app.request.attributes.get('_route') and
+                not ('chofer_reporte' in app.request.attributes.get('_route')) 
+                %}active{% endif %}" href="{{ path('chofer_index') }}">
+                  <i class="fas fa-user"></i> 
+                  <span>Choferes</span> 
                 </a>
               </div>
             </div>
