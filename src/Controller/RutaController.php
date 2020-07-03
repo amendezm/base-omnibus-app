@@ -44,10 +44,24 @@ class RutaController extends AbstractController
         $em = $this->getDoctrine()->getManager();
 
         $db = $connection;
-        $query = 'SELECT o.noomnibus,c.nombre,r.noruta,s.tipo, COUNT(t.tipoincidencias)
+        $query = 'SELECT omnibus.noomnibus, chofer.nombre, ruta.noruta, servicio.tipo, COUNT(incidencia.idincidencia)
         FROM
-           omnibus o,ruta r,tipo_incidencia t,chofer c,servicio s,hoja_ruta h
-        WHERE h.id_ruta=r.id AND h.id_omnibus=o.id AND s.id=r.servicio_id AND o.id=c.omnibus_id GROUP BY o.noomnibus,c.nombre,r.noruta,s.tipo';
+           public.omnibus, 
+           public.ruta, 
+           public.chofer, 
+           public.hoja_ruta, 
+           public.incidencia_hr, 
+           public.incidencia, 
+           public.servicio
+        WHERE 
+            hoja_ruta.id_ruta=ruta.id AND 
+            hoja_ruta.id_omnibus=omnibus.id AND 
+            omnibus.id=chofer.omnibus_id AND
+            hoja_ruta.id=incidencia_hr.idhojaruta AND
+            incidencia_hr.idincidencia = incidencia.idincidencia AND
+            ruta.servicio_id=servicio.id 
+        GROUP BY omnibus.noomnibus, chofer.nombre, ruta.noruta, servicio.tipo';
+
         $stmt = $db->prepare($query);
         $params = array();
         $stmt->execute($params);
