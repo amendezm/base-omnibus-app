@@ -203,7 +203,8 @@
                 </div>
             </div>
         </li>
-        <li class="nav-item {% if 'trabajador' in app.request.attributes.get('_route') %}active{% endif %}">
+        <li class="nav-item {% if 'trabajador' in app.request.attributes.get('_route') or 
+        'chofer_reporte' in app.request.attributes.get('_route') %}active{% endif %}">
           <a 
               class="nav-link collapsed sidebar-item"
               href="#"
@@ -217,7 +218,8 @@
             </a>
             <div
               id="collapseRRHH"
-              class="collapse {% if 'trabajador' in app.request.attributes.get('_route') %}show{% endif %}"
+              class="collapse {% if 'trabajador' in app.request.attributes.get('_route') or
+              'chofer_reporte' in app.request.attributes.get('_route')%}show{% endif %}"
               aria-labelledby="headingRRHH"
               data-parent="#accordionSidebar"
             >
@@ -225,6 +227,12 @@
                 <a  class="collapse-item {% if 'trabajador' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('trabajador_index') }}">
                   <i class="fas fa-user"></i> <span>Trabajador</span></i>
                 </a>
+                  <a class="collapse-item {% if 'chofer_reporte' in app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('chofer_reporte') }}">
+                    <i class="fas fa-clock"></i>
+                    <span>
+                      Horas Trabajadas
+                    </span> 
+                  </a>
               </div>
             </div>
             <ul class="treeview-menu">
@@ -386,14 +394,6 @@
             <i class="fas fa-clipboard-list"></i>
             <span>
               Incidencias
-            </span> 
-          </a>
-        </li>
-        <li class="nav-item {% if 'chofer_reporte' in app.request.attributes.get('_route') %}active{% endif %}">
-          <a class="nav-link sidebar-item" href="{{ path('chofer_reporte') }}">
-            <i class="fas fa-clock"></i>
-            <span>
-              Horas Trabajadas
             </span> 
           </a>
         </li>
