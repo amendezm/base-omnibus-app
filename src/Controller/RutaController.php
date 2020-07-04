@@ -44,7 +44,7 @@ class RutaController extends AbstractController
         $em = $this->getDoctrine()->getManager();
 
         $db = $connection;
-        $query = 'SELECT omnibus.noomnibus, chofer.nombre, ruta.noruta, servicio.tipo, COUNT(incidencia.idincidencia)
+        $query = 'SELECT omnibus.noomnibus, chofer.nombre, ruta.noruta, hoja_ruta.id as idHR ,servicio.tipo, COUNT(incidencia.idincidencia)
         FROM
            public.omnibus, 
            public.ruta, 
@@ -60,7 +60,7 @@ class RutaController extends AbstractController
             hoja_ruta.id=incidencia_hr.idhojaruta AND
             incidencia_hr.idincidencia = incidencia.idincidencia AND
             ruta.servicio_id=servicio.id 
-        GROUP BY omnibus.noomnibus, chofer.nombre, ruta.noruta, servicio.tipo';
+        GROUP BY omnibus.noomnibus, chofer.nombre, ruta.noruta, servicio.tipo, hoja_ruta.id';
 
         $stmt = $db->prepare($query);
         $params = array();
@@ -71,14 +71,82 @@ class RutaController extends AbstractController
         ));
     }
 
-
-    public function showIncidencias_xRuta_reporteAction(Ruta $reporte)
+    public function showIncidencias_xRuta_reporteAction(Connection $connection, Request $request)
     {
-        //        $deleteForm = $this->createDeleteForm($ruta);
+        $db = $connection;
+
+        $query = 'SELECT * FROM
+        (SELECT omnibus.noomnibus, 
+            chofer.nombre, 
+            ruta.noruta,
+            ruta.salida,
+            ruta.destino,
+            ruta.distanciakm,
+            servicio.tipo, 
+            hoja_ruta.id as hojaRutaId, 
+            COUNT(incidencia.idincidencia)
+            FROM
+               public.omnibus, 
+               public.ruta, 
+               public.chofer, 
+               public.hoja_ruta, 
+               public.incidencia_hr, 
+               public.incidencia, 
+               public.servicio
+            WHERE 
+                hoja_ruta.id_ruta=ruta.id AND 
+                hoja_ruta.id_omnibus=omnibus.id AND 
+                omnibus.id=chofer.omnibus_id AND
+                hoja_ruta.id=incidencia_hr.idhojaruta AND
+                incidencia_hr.idincidencia = incidencia.idincidencia AND
+                ruta.servicio_id=servicio.id 
+            GROUP BY 
+                omnibus.noomnibus, 
+                chofer.nombre, 
+                ruta.noruta, 
+                ruta.salida,
+                ruta.destino,
+                ruta.distanciakm,
+                hoja_ruta.id, 
+                servicio.tipo)
+            AS derivedTable
+            WHERE derivedTable.hojaRutaId = $idHR';
+
+        $vars = array(
+            '$idHR' => $request->query->get('id'),
+        );
+
+        $queryValue = strtr($query, $vars);
+
+        $stmt = $db->prepare($queryValue);
+        $params = array();
+        $stmt->execute($params);
+        $reportes = $stmt->fetchAll();
+
+
+        $query = 'SELECT
+        incidencia.detalles
+     FROM
+        public.incidencia_hr,
+        public.incidencia
+     WHERE
+        incidencia_hr.idhojaruta = $idHR AND
+        incidencia.idincidencia = incidencia_hr.idincidencia';
+
+        $vars = array(
+            '$idHR' => $request->query->get('id'),
+        );
+
+        $queryValue = strtr($query, $vars);
+
+        $stmt = $db->prepare($queryValue);
+        $params = array();
+        $stmt->execute($params);
+        $detallesIncidencias = $stmt->fetchAll();
 
         return $this->render('ruta/showIncidencias_xRuta_reporte.html.twig', array(
-            'reporte' => $reporte,
-            //            'delete_form' => $deleteForm->createView(),
+            'reporte' => $reportes[0],
+            'incidencias' => $detallesIncidencias,
         ));
     }
 
@@ -131,11 +199,8 @@ class RutaController extends AbstractController
      */
     public function showAction(Ruta $ruta)
     {
-        //        $deleteForm = $this->createDeleteForm($ruta);
-
         return $this->render('ruta/show.html.twig', array(
             'ruta' => $ruta,
-            //            'delete_form' => $deleteForm->createView(),
         ));
     }
 
