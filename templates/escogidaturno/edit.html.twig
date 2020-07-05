@@ -1,138 +1,140 @@
 {% extends 'index.html.twig' %} {% block contenido %}
 <br />
 {{ form_start(edit_form, { method: "POST" }) }}
-<div class="card shadow">
-  <div class="card-header">
-    <div class="col-md-8 offset-md-2">
-      <h3>Editar Escogida de Turno</h3>
-    </div>
-  </div>
-  <div class="card-body">
-    <div class="col-md-8 offset-md-2">
-      <div class="form-group">
-        <label class="control-label">Ruta</label>
-        {{ form_widget(edit_form.ruta,
-             {'attr' : {'class' : 'form-control' }}
-        )}}
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Ómnibus</label>
-            {{ form_widget(edit_form.omnibus, 
-            {'attr' : {'class' : 'form-control' }}
-            )}}
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Turno</label>
-            {{ form_widget(edit_form.turno,
-                 {'attr' : {'class' : 'form-control','pattern':'([0-9:]+)$'}}
-            )}}
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label">Empieza</label>
-        {{ form_widget(edit_form.empieza,
-                {'attr' : {'class' : 'form-control datepicker-here -only-timepicker-','data-timepicker':"true","data-only-timepicker":"true"}}
-        )}}
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Sale</label>
-            {{ form_widget(edit_form.sale,
-                {'attr' : {'class' : 'form-control datepicker-here -only-timepicker-','data-timepicker':"true","data-only-timepicker":"true"}}
-            )}}
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Termina</label>
-            {{ form_widget(edit_form.termina,
-                {'attr' : {'class' : 'form-control datepicker-here -only-timepicker-','data-timepicker':"true","data-only-timepicker":"true"}}
-            )}}
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Cantidad de Viajes</label>
-            {{ form_widget(edit_form.cantidadViajes,
-                {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
-            )}}
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Chofer</label>
-            {{ form_widget(edit_form.chofer,
-                {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
-            )}}
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Horas de trabajo</label>
-            {{ form_widget(edit_form.trabajaHoras,
-                {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
-            )}}
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Cantidad de días de descanso</label>
-            {{ form_widget(edit_form.descansoDias,
-                {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
-            )}}
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Comienzo del descanzo</label>
-            {{ form_widget(edit_form.descansoComienza,
-                {'attr' : {'class' : 'form-control datepicker-here'}}
-            )}}
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Término del descanso</label>
-            {{ form_widget(edit_form.descansoTermina,
-                {'attr' : {'class' : 'form-control datepicker-here'}}
-            )}}
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label">Período de la escogida</label>
-        {{ form_widget(edit_form.periodoEscogida,
-                {'attr' :  {'class' : 'form-control datepicker-here','data-position':'top left','data-view':"months" }}
-        )}}
-      </div>
+<div class="col-md-10 offset-md-1" style="font-size: 0.85rem;">
+  <div class="card shadow">
+    <div class="card-body">
       <br />
-      <div class="text-right">
-        <a
-          class="btn btn-outline-secondary"
-          href="{{ path('escogidaturno_index') }}"
-        >
-          Cancelar
-        </a>
-        <button type="submit" class="btn btn-primary" value="Editar">
-          Guardar
-        </button>
+      <div class="col-md-8 offset-md-2">
+        <h4 class="text-primary">
+          Editar Escogida de Turno
+        </h4>
+        <br />
+        <div class="form-group">
+          <label class="control-label">Ruta</label>
+          {{ form_widget(edit_form.ruta,
+             {'attr' : {'class' : 'form-control' }}
+          )}}
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Ómnibus</label>
+              {{ form_widget(edit_form.omnibus, 
+            {'attr' : {'class' : 'form-control' }}
+              )}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Turno</label>
+              {{ form_widget(edit_form.turno,
+                 {'attr' : {'class' : 'form-control','pattern':'([0-9:]+)$'}}
+              )}}
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Empieza</label>
+          {{ form_widget(edit_form.empieza,
+                {'attr' : {'class' : 'form-control datepicker-here -only-timepicker-','data-timepicker':"true","data-only-timepicker":"true"}}
+          )}}
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Sale</label>
+              {{ form_widget(edit_form.sale,
+                {'attr' : {'class' : 'form-control datepicker-here -only-timepicker-','data-timepicker':"true","data-only-timepicker":"true"}}
+              )}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Termina</label>
+              {{ form_widget(edit_form.termina,
+                {'attr' : {'class' : 'form-control datepicker-here -only-timepicker-','data-timepicker':"true","data-only-timepicker":"true"}}
+              )}}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Cantidad de Viajes</label>
+              {{ form_widget(edit_form.cantidadViajes,
+                {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
+              )}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Chofer</label>
+              {{ form_widget(edit_form.chofer,
+                {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
+              )}}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Horas de trabajo</label>
+              {{ form_widget(edit_form.trabajaHoras,
+                {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
+              )}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Cantidad de días de descanso</label>
+              {{ form_widget(edit_form.descansoDias,
+                {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
+              )}}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Comienzo del descanzo</label>
+              {{ form_widget(edit_form.descansoComienza,
+                {'attr' : {'class' : 'form-control datepicker-here'}}
+              )}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Término del descanso</label>
+              {{ form_widget(edit_form.descansoTermina,
+                {'attr' : {'class' : 'form-control datepicker-here'}}
+              )}}
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Período de la escogida</label>
+          {{ form_widget(edit_form.periodoEscogida,
+                {'attr' :  {'class' : 'form-control datepicker-here','data-position':'top left','data-view':"months" }}
+          )}}
+        </div>
+        <br />
+        <div class="text-right">
+          <a
+            class="btn btn-outline-secondary"
+            href="{{ path('escogidaturno_index') }}"
+          >
+            Cancelar
+          </a>
+          <button type="submit" class="btn btn-primary" value="Editar">
+            Guardar
+          </button>
+        </div>
       </div>
     </div>
-    <br />
     {{ form_end(edit_form) }}
+    <br />
   </div>
 </div>
 {% endblock %}

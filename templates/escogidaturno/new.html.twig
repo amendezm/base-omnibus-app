@@ -1,142 +1,142 @@
 {% extends 'index.html.twig' %} {% block contenido %}
-{{ form_start(form, { method: "POST" }) }}
 <br />
-<div class="card shadow">
-  <div class="card-header">
-    <div class="user-block">
+{{ form_start(form, { method: "POST" }) }}
+<div class="col-md-10 offset-md-1" style="font-size: 0.85rem;">
+  <div class="card shadow">
+    <div class="card-body">
+      <br />
       <div class="col-md-8 offset-md-2">
-        <h3>Nueva Escogida de Turno</h3>
-      </div>
-    </div>
-  </div>
-  <div class="card-body">
-    <div class="col-md-8 offset-md-2">
-      <div class="form-group">
-        <label class="control-label">Ruta</label>
-        {{ form_widget(form.ruta, 
+        <h4 class="text-primary">
+          Nueva Escogida de Turno
+        </h4>
+        <br />
+        <div class="form-group">
+          <label class="control-label">Ruta</label>
+          {{ form_widget(form.ruta, 
             {'attr' : {'class' : 'form-control' }}
-        )}}
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Ómnibus</label>
-            {{ form_widget(form.omnibus, 
+          )}}
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Ómnibus</label>
+              {{ form_widget(form.omnibus, 
                 {'attr' : {'class' : 'form-control' }}
-            )}}
+              )}}
+            </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Turno</label>
-            {{ form_widget(form.turno,
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Turno</label>
+              {{ form_widget(form.turno,
                 {'attr' : {'class' : 'form-control','pattern':'([0-9:]+)$'}}
-            )}}
+              )}}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label">Empieza</label>
-        {{ form_widget(form.empieza,
+        <div class="form-group">
+          <label class="control-label">Empieza</label>
+          {{ form_widget(form.empieza,
             {'attr' : {'class' : 'form-control datepicker-here -only-timepicker-','data-timepicker':"true","data-only-timepicker":"true"}}
-        )}}
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Sale</label>
-            {{ form_widget(form.sale,
+          )}}
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Sale</label>
+              {{ form_widget(form.sale,
                 {'attr' : {'class' : 'form-control datepicker-here -only-timepicker-','data-timepicker':"true","data-only-timepicker":"true"}}
-            )}}
+              )}}
+            </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Termina</label>
-            {{ form_widget(form.termina,
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Termina</label>
+              {{ form_widget(form.termina,
             {'attr' : {'class' : 'form-control datepicker-here -only-timepicker-','data-timepicker':"true","data-only-timepicker":"true"}}
-            )}}
+              )}}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Cantidad de Viajes</label>
-            {{ form_widget(form.cantidadViajes,
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Cantidad de Viajes</label>
+              {{ form_widget(form.cantidadViajes,
                 {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }}
-            )}}
+              )}}
+            </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Chofer</label>
-            {{ form_widget(form.chofer,
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Chofer</label>
+              {{ form_widget(form.chofer,
                     {'attr' : {'class' : 'form-control','pattern':'[0-9]+$' }}
-            )}}
+              )}}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Horas de trabajo</label>
-            {{ form_widget(form.trabajaHoras,
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Horas de trabajo</label>
+              {{ form_widget(form.trabajaHoras,
              {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
-            )}}
+              )}}
+            </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Cantidad de días de descanso</label>
-            {{ form_widget(form.descansoDias, 
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Cantidad de días de descanso</label>
+              {{ form_widget(form.descansoDias, 
                     {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
-            )}}
+              )}}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Comienzo del descanzo</label>
-            {{ form_widget(form.descansoComienza,
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Comienzo del descanzo</label>
+              {{ form_widget(form.descansoComienza,
                 {'attr' : {'class' : 'form-control datepicker-here','data-position':'top left'}}
-            )}}
+              )}}
+            </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Término del descanso</label>
-            {{ form_widget(form.descansoTermina,
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Término del descanso</label>
+              {{ form_widget(form.descansoTermina,
              {'attr' : {'class' : 'form-control datepicker-here','data-position':'top left'}}
-            )}}
+              )}}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label">Período de la escogida</label>
-        {{ form_widget(form.periodoEscogida,
+        <div class="form-group">
+          <label class="control-label">Período de la escogida</label>
+          {{ form_widget(form.periodoEscogida,
             {'attr' : {'class' : 'form-control datepicker-here','data-position':'top left','data-view':"months" }}
-        )}}
+          )}}
+        </div>
+        <br />
+        <div class="text-right">
+          <a
+            class="btn btn-outline-secondary"
+            href="{{ path('escogidaturno_index') }}"
+          >
+            Cancelar
+          </a>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            style="background-color: #6290ff; margin-right: 5%;"
+            value="Crear"
+          >
+            Guardar
+          </button>
+        </div>
+        <br />
       </div>
-      <br />
-      <div class="text-right">
-        <a
-          class="btn btn-outline-secondary"
-          href="{{ path('escogidaturno_index') }}"
-        >
-          Cancelar
-        </a>
-        <button
-          type="submit"
-          class="btn btn-primary"
-          style="background-color: #6290ff; margin-right: 5%;"
-          value="Crear"
-        >
-          Guardar
-        </button>
-      </div>
-      <br />
     </div>
   </div>
   {{ form_end(form) }}
