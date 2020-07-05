@@ -34,7 +34,7 @@ ruta_index:
   path: /ruta
   controller: App\Controller\RutaController:indexAction
   methods: GET
-ruta_reporte:
+ruta_reporte_incidencias:
   path: /ruta/reporte
   controller: App\Controller\RutaController:reporteAction
   methods: GET

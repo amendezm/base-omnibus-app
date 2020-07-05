@@ -380,9 +380,9 @@
             </div>
           </div>
         </li>
-        <li class="nav-item {% if 'ruta_reporte' in app.request.attributes.get('_route') and 
-        not 'ruta_reportes_salidas' in app.request.attributes.get('_route')  %}active{% endif %}">
-          <a class="nav-link sidebar-item" href="{{ path('ruta_reporte') }}">
+        <li class="nav-item {% if 'ruta_reporte_incidencias' in app.request.attributes.get('_route')
+            %}active{% endif %}">
+          <a class="nav-link sidebar-item" href="{{ path('ruta_reporte_incidencias') }}">
             <i class="fas fa-clipboard-list"></i>
             <span>
               Incidencias
