@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entity;
+
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -71,7 +72,7 @@ class HojaRuta
     /**
      * @var string
      *
-     * @ORM\Column(name="observaciones", type="string", length=255)
+     * @ORM\Column(name="observaciones", type="string", length=255, nullable=true)
      */
     private $observaciones;
 
@@ -117,11 +118,11 @@ class HojaRuta
      */
     protected $ruta;
 
-//    /**
-//     * @orm\Manytoone(targetEntity="App\Entity\Incidencia", inversedBy="hojaRuta")
-//     * @orm\Joincolumn(name="id_incidencia", referencedColumnName="idincidencia")
-//     */
-//    protected $incidenciahr;
+    //    /**
+    //     * @orm\Manytoone(targetEntity="App\Entity\Incidencia", inversedBy="hojaRuta")
+    //     * @orm\Joincolumn(name="id_incidencia", referencedColumnName="idincidencia")
+    //     */
+    //    protected $incidenciahr;
 
     /**
      * @orm\OneToMany(targetEntity="App\Entity\Incidencias_HR", mappedBy="hojaRuta")
@@ -134,7 +135,7 @@ class HojaRuta
     public function __construct()
     {
         $this->recaudaciones = new \Doctrine\Common\Collections\ArrayCollection();
-//        $this->incidencia_hr = new \Doctrine\Common\Collections\ArrayCollection();
+        //        $this->incidencia_hr = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -161,7 +162,8 @@ class HojaRuta
         $this->recaudaciones->removeElement($recaudacione);
     }
 
-    public function __toString(){
+    public function __toString()
+    {
         return $this->getNoHojaRuta();
     }
 
