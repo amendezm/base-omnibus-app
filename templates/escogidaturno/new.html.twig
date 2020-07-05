@@ -100,7 +100,7 @@
           <div class="form-group">
             <label class="control-label">Comienzo del descanzo</label>
             {{ form_widget(form.descansoComienza,
-                {'attr' : {'class' : 'form-control datepicker-here'}}
+                {'attr' : {'class' : 'form-control datepicker-here','data-position':'top left'}}
             )}}
           </div>
         </div>
@@ -108,7 +108,7 @@
           <div class="form-group">
             <label class="control-label">Término del descanso</label>
             {{ form_widget(form.descansoTermina,
-             {'attr' : {'class' : 'form-control datepicker-here'}}
+             {'attr' : {'class' : 'form-control datepicker-here','data-position':'top left'}}
             )}}
           </div>
         </div>
@@ -116,7 +116,7 @@
       <div class="form-group">
         <label class="control-label">Período de la escogida</label>
         {{ form_widget(form.periodoEscogida,
-            {'attr' : {'class' : 'form-control' }}
+            {'attr' : {'class' : 'form-control datepicker-here','data-position':'top left','data-view':"months" }}
         )}}
       </div>
       <br />
@@ -130,7 +130,7 @@
         <button
           type="submit"
           class="btn btn-primary"
-          style="background-color: #6290ff;margin-right: 5%"
+          style="background-color: #6290ff; margin-right: 5%;"
           value="Crear"
         >
           Guardar
