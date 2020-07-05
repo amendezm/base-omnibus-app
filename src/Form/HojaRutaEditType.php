@@ -36,6 +36,7 @@ class HojaRutaEditType extends AbstractType
             //            ->add('incidenciahr', EntityType::class, array('class' => 'App\Entity\Incidencia', 'multiple' => false, 'expanded' => false))
             ->add('observaciones', TextareaType::class, [
                 'attr' => ['rows' => 4],
+                'required' => false
             ])
             ->add('cantidadViajes')
             ->add('cantidadSalidas')

@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -33,7 +34,7 @@ class HojaRutaType extends AbstractType
             //            ->add('tipo_horas', EntityType::class, array('class' => 'App\Entity\Tipo_horas_trabajo', 'multiple' => true, 'expanded' => true))
             ->add('totalHoras')
             //            ->add('incidenciahr')
-            ->add('observaciones')
+            ->add('observaciones', TextType::class, ['required' => false])
             ->add('cantidadViajes')
             ->add('cantidadSalidas')
             ->add('omnibus', EntityType::class, array('class' => 'App\Entity\Omnibus', 'multiple' => false, 'expanded' => false))
