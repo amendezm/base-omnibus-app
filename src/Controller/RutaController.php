@@ -13,6 +13,9 @@ use Doctrine\DBAL\Driver\Connection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use \Datetime;
+use Doctrine\DBAL\Types\FloatType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 // * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ESPECIALISTA_OPERACIONES')")  
 
@@ -368,6 +371,69 @@ class RutaController extends AbstractController
         $reportes = $stmt->fetchAll();
         return $this->render('ruta/reporte_salidas_acumulado.html.twig', array(
             'reportes' => $reportes
+        ));
+    }
+
+    public function planificacion_diaria_combustibleAction(Request $request, Connection $connection)
+    {
+        $form = $this->createFormBuilder()
+            ->add('days', IntegerType::class, ['required' => true])
+            ->add('fuel', NumberType::class, ['required' => true])
+            ->getForm();
+
+        $days = null;
+        $fuel = null;
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+            $days = $data['days'];
+            $fuel = $data['fuel'];
+        }
+
+        $daysValue = $days == null ? 1 : $days;
+        $fuelValue = $fuel == null ? 0 : $fuel;
+
+        $db = $connection;
+
+        $query = 'SELECT 
+                    noruta,
+                    noomnibus,
+                    cantidadmedios, 
+                    kmsalida * cantidadsalidas * cantidadmedios as kms_diarios,
+                    cantidadsalidas,
+                    (kmsalida * cantidadsalidas * cantidadmedios)/indiceconsumonormado as consumo_diario,
+                    ((kmsalida * cantidadsalidas * cantidadmedios)/indiceconsumonormado) * $days as consumo_total,
+                    ((kmsalida * cantidadsalidas * cantidadmedios)/indiceconsumonormado) * $days * $fuel_price as gasto_total,
+                    fecha
+                FROM 
+                    public.ruta, 
+                    public.hoja_ruta,
+                    public.omnibus,
+                    public.tipo_omnibus
+                WHERE 
+                    ruta.id=hoja_ruta.id_ruta AND
+                    omnibus.id = hoja_ruta.id_omnibus AND
+                    omnibus.id_tipoomnibus = tipo_omnibus.id
+                    ';
+
+        $vars = array(
+            '$days' => $daysValue,
+            '$fuel_price' =>  $fuelValue,
+        );
+
+        $queryValue = strtr($query, $vars);
+
+        $stmt = $db->prepare($queryValue);
+        $params = array();
+        $stmt->execute($params);
+        $reportes = $stmt->fetchAll();
+
+        return $this->render('ruta/planificacion_diaria_combustible.html.twig', array(
+            'reportes' => $reportes,
+            'form' => $form->createView(),
         ));
     }
 
