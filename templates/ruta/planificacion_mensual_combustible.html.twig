@@ -1,16 +1,30 @@
 {% extends 'index.html.twig' %} {% block contenido %}
 <div class="row">
   <div class="col-sm-12 col-md-6">
-    <h3 class="m-0 text-primary">Planificación Diaria de Combustible</h3>
+    <h3 class="m-0 text-primary">Planificación Mensual de Combustible</h3>
   </div>
 </div>
 <br />
 {{ form_start(form, { method: "POST" }) }}
 <div class="form-inline text-right" style="justify-content: flex-end;">
   <div class="form-group mr-4">
+    <label class="control-label mr-2 text-primary">Año</label>
+    {{ form_widget(form.year,
+        {'attr' : {'class' : 'form-control'}}
+    )}}
+  </div>
+  &nbsp;
+  <div class="form-group mr-4">
+    <label class="control-label mr-2 text-primary">Mes</label>
+    {{ form_widget(form.month,
+        {'attr' : {'class' : 'form-control'}}
+    )}}
+  </div>
+  &nbsp;
+  <div class="form-group mr-4">
     <label class="control-label mr-2 text-primary">Días a planificar</label>
     {{ form_widget(form.days,
-             {'attr' : {'class' : 'form-control'}}
+        {'attr' : {'class' : 'form-control'}}
     )}}
   </div>
   &nbsp;
@@ -41,12 +55,6 @@
         <thead>
           <tr>
             <th>No Ruta</th>
-            <th>No omnibus</th>
-            <th>Cant medios</th>
-            <th>Kms diarios</th>
-            <th>Cant salidas</th>
-            <th>Fecha</th>
-            <th>Consumo diario</th>
             <th>Consumo total</th>
             <th>Gasto total</th>
           </tr>
@@ -55,17 +63,18 @@
           {% for reporte in reportes %}
           <tr>
             <td>{{ reporte.noruta }}</td>
-            <td>{{ reporte.noomnibus }}</td>
-            <td>{{ reporte.cantidadmedios }}</td>
-            <td>{{ reporte.kms_diarios }}</td>
-            <td>{{ reporte.cantidadsalidas }}</td>
-            <td>{{ reporte.fecha }}</td>
-            <td>{{ reporte.consumo_diario }}</td>
             <td>{{ reporte.consumo_total }}</td>
             <td>{{ reporte.gasto_total }}</td>
           </tr>
           {% endfor %}
         </tbody>
+        <tfoot>
+          <tr>
+            <td>---</td>
+            <td class="font-weight-bolder">{{ consumo_total }}</td>
+            <td class="font-weight-bolder">{{ gasto_total }}</td>
+          </tr>
+        </tfoot>
       </table>
     </div>
   </div>
