@@ -42,6 +42,14 @@ ruta_reporte_salidas:
   path: /ruta/reporte_salidas
   controller: App\Controller\RutaController:reporteSalidasAction
   methods: [GET, POST]
+ruta_planificacion_combustible_diario:
+  path: /ruta/planificacion_diaria_combustible
+  controller: App\Controller\RutaController:planificacion_diaria_combustibleAction
+  methods: [GET, POST]
+ruta_planificacion_combustible_mensual:
+  path: /ruta/planificacion_mensual_combustible
+  controller: App\Controller\RutaController:planificacion_mensual_combustibleAction
+  methods: [GET, POST]
 ruta_reporte_acumulado:
   path: /ruta/reporte_acumulado
   controller: App\Controller\RutaController:reporteSalidasAcumuladoAction

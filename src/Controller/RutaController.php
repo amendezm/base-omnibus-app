@@ -13,6 +13,10 @@ use Doctrine\DBAL\Driver\Connection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use \Datetime;
+use Doctrine\DBAL\Types\FloatType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 // * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ESPECIALISTA_OPERACIONES')")  
 
@@ -368,6 +372,190 @@ class RutaController extends AbstractController
         $reportes = $stmt->fetchAll();
         return $this->render('ruta/reporte_salidas_acumulado.html.twig', array(
             'reportes' => $reportes
+        ));
+    }
+
+    public function planificacion_diaria_combustibleAction(Request $request, Connection $connection)
+    {
+        $form = $this->createFormBuilder()
+            ->add('days', IntegerType::class, ['required' => true, 'data' => 1])
+            ->add('fuel', NumberType::class, ['required' => true, 'data' => 0])
+            ->getForm();
+
+        $days = null;
+        $fuel = null;
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+            $days = $data['days'];
+            $fuel = $data['fuel'];
+        }
+
+        $daysValue = $days == null ? 1 : $days;
+        $fuelValue = $fuel == null ? 0 : $fuel;
+
+        $db = $connection;
+
+        $query = 'SELECT 
+                    noruta,
+                    noomnibus,
+                    cantidadmedios, 
+                    kmsalida * cantidadsalidas * cantidadmedios as kms_diarios,
+                    cantidadsalidas,
+                    (kmsalida * cantidadsalidas * cantidadmedios)/indiceconsumonormado as consumo_diario,
+                    ((kmsalida * cantidadsalidas * cantidadmedios)/indiceconsumonormado) * $days as consumo_total,
+                    ((kmsalida * cantidadsalidas * cantidadmedios)/indiceconsumonormado) * $days * $fuel_price as gasto_total,
+                    fecha
+                FROM 
+                    public.ruta, 
+                    public.hoja_ruta,
+                    public.omnibus,
+                    public.tipo_omnibus
+                WHERE 
+                    ruta.id=hoja_ruta.id_ruta AND
+                    omnibus.id = hoja_ruta.id_omnibus AND
+                    omnibus.id_tipoomnibus = tipo_omnibus.id
+                    ';
+
+        $vars = array(
+            '$days' => $daysValue,
+            '$fuel_price' =>  $fuelValue,
+        );
+
+        $queryValue = strtr($query, $vars);
+
+        $stmt = $db->prepare($queryValue);
+        $params = array();
+        $stmt->execute($params);
+        $reportes = $stmt->fetchAll();
+
+        return $this->render('ruta/planificacion_diaria_combustible.html.twig', array(
+            'reportes' => $reportes,
+            'form' => $form->createView(),
+        ));
+    }
+
+    public function planificacion_mensual_combustibleAction(Request $request, Connection $connection)
+    {
+        $years = [];
+        $currentYear = date("Y");
+
+        for ($i = $currentYear; $i >= $currentYear - 10; $i--) {
+            $years[$i] = $i;
+        }
+
+        $currentMonth = (int) date("m");
+
+        $form = $this->createFormBuilder()
+            ->add('days', IntegerType::class, ['required' => true, 'data' => 1])
+            ->add('fuel', NumberType::class, ['required' => true, 'data' => 0])
+            ->add('year', ChoiceType::class, ['choices' => $years])
+            ->add('month', ChoiceType::class, [
+                'required' => true,
+                'multiple' => false,
+                'expanded' => false,
+                'choices'  => [
+                    'Enero' => '1',
+                    'Febrero' => '2',
+                    'Marzo' => '3',
+                    'Abril' => '4',
+                    'Mayo' => '5',
+                    'Junio' => '6',
+                    'Julio' => '7',
+                    'Agosto' => '8',
+                    'Septiembre' => '9',
+                    'Octubre' => '10',
+                    'Noviembre' => '11',
+                    'Diciembre' => '12',
+                ],
+                'data' => $currentMonth
+            ])
+            ->getForm();
+
+        $days = null;
+        $fuel = null;
+        $month = null;
+        $year = null;
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+            $days = $data['days'];
+            $fuel = $data['fuel'];
+            $month = $data['month'];
+            $year = $data['year'];
+        }
+
+        $daysValue = $days == null ? 1 : $days;
+        $fuelValue = $fuel == null ? 0 : $fuel;
+        $monthValue = $month == null ? $currentMonth : $month;
+        $yearValue = $year == null ? $currentYear : $year;
+
+        $db = $connection;
+
+        $query = 'SELECT noruta, SUM(consumo_total) as consumo_total, SUM(gasto_total) as gasto_total 
+                FROM
+                (SELECT 
+                    noruta,
+                    noomnibus,
+                    cantidadmedios, 
+                    kmsalida * cantidadsalidas * cantidadmedios as kms_diarios,
+                    cantidadsalidas,
+                    (kmsalida * cantidadsalidas * cantidadmedios)/indiceconsumonormado as consumo_diario,
+                    ((kmsalida * cantidadsalidas * cantidadmedios)/indiceconsumonormado) * $days as consumo_total,
+                    ((kmsalida * cantidadsalidas * cantidadmedios)/indiceconsumonormado) * $days * $fuel_price as gasto_total
+                FROM 
+                    public.ruta, 
+                    public.hoja_ruta,
+                    public.omnibus,
+                    public.tipo_omnibus
+                WHERE 
+                    ruta.id=hoja_ruta.id_ruta AND
+                    omnibus.id = hoja_ruta.id_omnibus AND
+                    omnibus.id_tipoomnibus = tipo_omnibus.id AND
+                    date_part(\'month\', hoja_ruta.fecha) = $month AND date_part(\'year\', hoja_ruta.fecha) = $year
+                GROUP BY ruta.noruta,omnibus.noomnibus,ruta.cantidadmedios,ruta.kmsalida,hoja_ruta.cantidadsalidas,tipo_omnibus.indiceconsumonormado )    
+                AS derivedTable
+                GROUP BY derivedtable.noruta';
+
+        $vars = array(
+            '$days' => $daysValue,
+            '$fuel_price' => $fuelValue,
+            '$year' => $yearValue,
+            '$month' =>  $monthValue,
+        );
+
+        $queryValue = strtr($query, $vars);
+
+        $stmt = $db->prepare($queryValue);
+        $params = array();
+        $stmt->execute($params);
+        $reportes = $stmt->fetchAll();
+
+        $consumo_total = 0;
+        $gasto_total = 0;
+
+        $getConsumo = function ($reporte) {
+            return $reporte['consumo_total'];
+        };
+
+        $getGasto = function ($reporte) {
+            return $reporte['gasto_total'];
+        };
+
+        $consumo_total = array_sum(array_map($getConsumo, $reportes));
+        $gasto_total = array_sum(array_map($getGasto, $reportes));
+
+        return $this->render('ruta/planificacion_mensual_combustible.html.twig', array(
+            'reportes' => $reportes,
+            'consumo_total' => $consumo_total,
+            'gasto_total' => $gasto_total,
+            'form' => $form->createView(),
         ));
     }
 
