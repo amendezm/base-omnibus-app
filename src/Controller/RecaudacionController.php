@@ -285,9 +285,10 @@ class RecaudacionController extends AbstractController
 
         $db = $connection;
         $query = 'SELECT 
+            o.noomnibus,
+            h.nohojaruta,
             SUM(r.recaudacion) as recaudacion,
-            r.recaudador,
-            u.noruta
+            r.recaudador
         FROM
            recaudacion r,
            omnibus o,
@@ -298,7 +299,7 @@ class RecaudacionController extends AbstractController
            h.id_ruta=u.id and 
            h.id_omnibus=o.id and
            date_part(\'month\', h.fecha) = $month AND date_part(\'year\', h.fecha) = $year
-        GROUP BY u.noruta, r.recaudador';
+        GROUP BY h.nohojaruta, o.noomnibus, r.recaudador';
 
         $vars = array(
             '$year' => $yearValue,

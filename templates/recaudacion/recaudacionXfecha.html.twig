@@ -40,7 +40,8 @@
       >
         <thead>
           <tr>
-            <th>Ruta</th>
+            <th>Hoja de Ruta</th>
+            <th>Ómnibus</th>
             <th>Recaudación</th>
             <th>Recaudador</th>
           </tr>
@@ -48,7 +49,8 @@
         <tbody>
           {% for reporte in reportes %}
           <tr>
-            <td>{{ reporte.noruta }}</td>
+            <td>{{ reporte.nohojaruta }}</td>
+            <td>{{ reporte.noomnibus }}</td>
             <td>{{ reporte.recaudacion }}</td>
             <td>{{ reporte.recaudador }}</td>
           </tr>
