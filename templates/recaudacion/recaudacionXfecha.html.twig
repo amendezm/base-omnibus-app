@@ -1,5 +1,28 @@
 {% extends 'index.html.twig' %} {% block contenido %}
 <br />
+{{ form_start(form, { method: "POST" }) }}
+<div class="form-inline text-right" style="justify-content: flex-end;">
+  <div class="form-group mr-4">
+    <label class="control-label mr-2 text-primary">Año</label>
+    {{ form_widget(form.year,
+             {'attr' : {'class' : 'form-control'}}
+    )}}
+  </div>
+  &nbsp;
+  <div class="form-group mr-4">
+    <label class="control-label mr-2 text-primary">Mes</label>
+    {{ form_widget(form.month,
+        {'attr' : {'class' : 'form-control' }}
+    )}}
+  </div>
+  &nbsp;
+  <div class="text-right">
+    <input type="submit" class="btn btn-primary" value="Filtrar" />
+  </div>
+  <br />
+</div>
+{{ form_end(form) }}
+<br />
 <div class="card shadow">
   <div class="card-header py-3">
     <h3 class="m-0 text-primary">
@@ -13,16 +36,12 @@
         id="dataTable"
         width="100%"
         cellspacing="0"
-        style="font-size:0.85rem;"
+        style="font-size: 0.85rem;"
       >
         <thead>
           <tr>
-            <th>Ruta</th>
-            <th>Ómnibus</th>
             <th>Hoja de Ruta</th>
-            <th>Chofer</th>
-            <th>No.sello</th>
-            <th>No.vale</th>
+            <th>Ómnibus</th>
             <th>Recaudación</th>
             <th>Recaudador</th>
           </tr>
@@ -30,12 +49,8 @@
         <tbody>
           {% for reporte in reportes %}
           <tr>
-            <td>{{ reporte.noruta }}</td>
-            <td>{{ reporte.noomnibus }}</td>
             <td>{{ reporte.nohojaruta }}</td>
-            <td>{{ reporte.nombre }}</td>
-            <td>{{ reporte.nosello }}</td>
-            <td>{{ reporte.novale }}</td>
+            <td>{{ reporte.noomnibus }}</td>
             <td>{{ reporte.recaudacion }}</td>
             <td>{{ reporte.recaudador }}</td>
           </tr>

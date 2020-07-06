@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use App\Entity\Recaudacion;
 use Doctrine\DBAL\Driver\Connection;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 // * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_ESPECIALISTA_RECAUDACION')")
 /**
@@ -230,23 +231,90 @@ class RecaudacionController extends AbstractController
     //            'reportes' => $reportes
     //        ));
     //    }
-    public function recaudacionAction(Connection $connection)
+    public function recaudacionAction(Connection $connection, Request $request)
     {
+        $years = [];
+        $currentYear = date("Y");
+
+        for ($i = $currentYear; $i >= $currentYear - 10; $i--) {
+            $years[$i] = $i;
+        }
+
+        $currentMonth = (int) date("m");
+
+        $form = $this->createFormBuilder()
+            ->add('year', ChoiceType::class, ['choices' => $years])
+            ->add('month', ChoiceType::class, [
+                'required' => true,
+                'multiple' => false,
+                'expanded' => false,
+                'choices'  => [
+                    'Enero' => '1',
+                    'Febrero' => '2',
+                    'Marzo' => '3',
+                    'Abril' => '4',
+                    'Mayo' => '5',
+                    'Junio' => '6',
+                    'Julio' => '7',
+                    'Agosto' => '8',
+                    'Septiembre' => '9',
+                    'Octubre' => '10',
+                    'Noviembre' => '11',
+                    'Diciembre' => '12',
+                ],
+                'data' => $currentMonth
+            ])
+            ->getForm();
+
+        $month = null;
+        $year = null;
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+            $month = $data['month'];
+            $year = $data['year'];
+        }
+
+        $monthValue = $month == null ? $currentMonth : $month;
+        $yearValue = $year == null ? $currentYear : $year;
+
+
         $em = $this->getDoctrine()->getManager();
 
         $db = $connection;
-        $query = 'SELECT o.noomnibus,h.nohojaruta,c.nombre,r.nosello,
-           r.novale,r.recaudacion,r.recaudador,u.noruta
+        $query = 'SELECT 
+            o.noomnibus,
+            h.nohojaruta,
+            SUM(r.recaudacion) as recaudacion,
+            r.recaudador
         FROM
-           recaudacion r,omnibus o,ruta u,hoja_ruta h,chofer c
+           recaudacion r,
+           omnibus o,
+           ruta u,
+           hoja_ruta h
         WHERE
-           r.id_hojaruta=h.id and h.id_ruta=u.id and h.id_omnibus=o.id AND o.id=c.omnibus_id ORDER BY r.fecha';
-        $stmt = $db->prepare($query);
+           r.id_hojaruta=h.id and
+           h.id_ruta=u.id and 
+           h.id_omnibus=o.id and
+           date_part(\'month\', h.fecha) = $month AND date_part(\'year\', h.fecha) = $year
+        GROUP BY h.nohojaruta, o.noomnibus, r.recaudador';
+
+        $vars = array(
+            '$year' => $yearValue,
+            '$month' =>  $monthValue,
+        );
+
+        $queryValue = strtr($query, $vars);
+
+        $stmt = $db->prepare($queryValue);
         $params = array();
         $stmt->execute($params);
         $reportes = $stmt->fetchAll();
         return $this->render('recaudacion/recaudacionXfecha.html.twig', array(
-            'reportes' => $reportes
+            'reportes' => $reportes,
+            'form' => $form->createView()
         ));
     }
     //    public function recaudacionMensualAction()
