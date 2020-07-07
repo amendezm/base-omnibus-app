@@ -24,7 +24,7 @@ class Ruta
     /**
      * @var string
      *
-     * @orm\Column(name="noruta", type="string", length=3)
+     * @orm\Column(name="noruta", type="string")
      */
     private $noruta;
 
