@@ -1,81 +1,83 @@
 {% extends 'index.html.twig' %} {% block contenido%}
 <br />
 {{ form_start(form, { method: "POST" }) }}
-<div class="card shadow">
-  <div class="card-header">
-    <div class="col-md-8 offset-md-2">
-      <h3>Nueva Recaudación</h3>
-    </div>
-  </div>
-  <div class="card-body">
-    <div class="col-md-8 offset-md-2">
-      <div class="form-group">
-        <label class="control-label">No.HojaRuta</label>
-        {{ form_widget(form.hojaRuta, 
+<div class="col-md-10 offset-md-1" style="font-size: 0.85rem;">
+  <div class="card shadow">
+    <div class="card-body">
+      <br />
+      <div class="col-md-8 offset-md-2">
+        <h4 class="text-primary">
+          Nueva Recaudación
+        </h4>
+        <br />
+        <div class="form-group">
+          <label class="control-label">No.HojaRuta</label>
+          {{ form_widget(form.hojaRuta, 
             {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
-        )}}
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">No.sello</label>
-            {{ form_widget(form.noSello, 
-            {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
-            )}}
-          </div>
+          )}}
         </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">No.vale</label>
-            {{ form_widget(form.noVale, 
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">No.sello</label>
+              {{ form_widget(form.noSello, 
             {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
-            )}}
+              )}}
+            </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Recaudación</label>
-            {{ form_widget(form.recaudacion, 
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">No.vale</label>
+              {{ form_widget(form.noVale, 
+            {'attr' : {'class' : 'form-control','pattern':'[0-9]+$'}}
+              )}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Recaudación</label>
+              {{ form_widget(form.recaudacion, 
             {'attr' : {'class' : 'form-control','pattern':'([0-9,]+)$'}}
-            )}}
+              )}}
+            </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Recaudador</label>
-            {{ form_widget(form.recaudador, {'attr' : 
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Recaudador</label>
+              {{ form_widget(form.recaudador, {'attr' : 
           {'class' : 'form-control','pattern':'([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$'}}
-            )}}
+              )}}
+            </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Fecha</label>
-            {{ form_widget(form.fecha, 
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Fecha</label>
+              {{ form_widget(form.fecha, 
                 {'attr' : {'class' : 'datepicker-here form-control'}}
-            )}}
+              )}}
+            </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Hora</label>
-            {{ form_widget(form.hora, 
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Hora</label>
+              {{ form_widget(form.hora, 
                 {'attr' : {'class' : 'form-control datepicker-here -only-timepicker-',"data-timepicker":"true","data-only-timepicker":"true"}}
-            )}}
+              )}}
+            </div>
           </div>
         </div>
+        <br />
+        <div class="text-right">
+          <a
+            class="btn btn-outline-secondary"
+            href="{{ path('recaudacion_index') }}"
+          >
+            Cancelar
+          </a>
+          <input type="submit" class="btn btn-primary" value="Guardar" />
+        </div>
+        <br />
       </div>
-      <br />
-      <div class="text-right">
-        <a
-          class="btn btn-outline-secondary"
-          href="{{ path('recaudacion_index') }}"
-        >
-          Cancelar
-        </a>
-        <input type="submit" class="btn btn-primary" value="Guardar" />
-      </div>
-      <br />
     </div>
   </div>
   {{ form_end(form) }}

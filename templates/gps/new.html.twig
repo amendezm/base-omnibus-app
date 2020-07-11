@@ -1,46 +1,48 @@
 {% extends 'index.html.twig' %} {% block contenido %}
 <br />
 {{ form_start(form, { method: "POST" }) }}
-<div class="card shadow">
-  <div class="card-header">
-    <div class="col-md-8 offset-md-2">
-      <h3>Nuevo Reporte del GPS</h3>
-    </div>
-  </div>
-  <div class="card-body">
-    <div class="col-md-8 offset-md-2">
-      <div class="form-group">
-        <label class="control-label">Ómnibus</label>
-        {{ form_widget(form.omnibus, 
+<div class="col-md-10 offset-md-1" style="font-size: 0.85rem;">
+  <div class="card shadow">
+    <div class="card-body">
+      <br />
+      <div class="col-md-8 offset-md-2">
+        <h4 class="text-primary">
+          Nuevo Reporte del GPS
+        </h4>
+        <br />
+        <div class="form-group">
+          <label class="control-label">Ómnibus</label>
+          {{ form_widget(form.omnibus, 
                 {'attr' : {'class' : 'form-control'}}
-        )}}
-      </div>
-      <div class="form-group">
-        <label class="control-label">Combustible (litros)</label>
-        {{ form_widget(form.combustible, 
+          )}}
+        </div>
+        <div class="form-group">
+          <label class="control-label">Combustible (litros)</label>
+          {{ form_widget(form.combustible, 
                 {'attr' : {'class' : 'form-control','pattern':'([0-9,]+)$' }}
-        )}}
-      </div>
-      <div class="form-group">
-        <label class="control-label">Kms Recorridos</label>
-        {{ form_widget(form.kmRecorridos, 
+          )}}
+        </div>
+        <div class="form-group">
+          <label class="control-label">Kms Recorridos</label>
+          {{ form_widget(form.kmRecorridos, 
                 {'attr' : {'class' : 'form-control','pattern':'([0-9,]+)$'}}
-        )}}
-      </div>
-      <div class="form-group">
-        <label class="control-label">Fecha</label>
-        {{ form_widget(form.fecha, 
+          )}}
+        </div>
+        <div class="form-group">
+          <label class="control-label">Fecha</label>
+          {{ form_widget(form.fecha, 
                 {'attr' : {'class' : 'datepicker-here form-control'}}
-        )}}
+          )}}
+        </div>
+        <br />
+        <div class="text-right">
+          <a class="btn btn-outline-secondary" href="{{ path('gps_index') }}">
+            Cancelar
+          </a>
+          <input type="submit" class="btn btn-primary" value="Guardar" />
+        </div>
+        <br />
       </div>
-      <br />
-      <div class="text-right">
-        <a class="btn btn-outline-secondary" href="{{ path('gps_index') }}">
-          Cancelar
-        </a>
-        <input type="submit" class="btn btn-primary" value="Guardar" />
-      </div>
-      <br />
     </div>
   </div>
   {{ form_end(form) }}

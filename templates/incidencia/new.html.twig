@@ -1,44 +1,46 @@
 {% extends 'index.html.twig' %} {% block contenido %}
 <br />
 {{ form_start(form, { method: "POST" }) }}
-<div class="card shadow">
-  <div class="card-header">
-    <div class="col-md-8 offset-md-2">
-      <h3>Nueva Incidencia</h3>
-    </div>
-  </div>
-  <div class="card-body">
-    <form
-      action="{{ path('incidencia_new', { id_hojaruta: hojaRuta.id }) }}"
-      method="post"
-    >
-      <div class="col-md-8 offset-md-2">
-        <div class="form-group">
-          <label class="col-sm-4 control-label">Tipo</label>
-          {{ form_widget(form.Tipoincidencia,
+<div class="col-md-10 offset-md-1" style="font-size: 0.85rem;">
+  <div class="card shadow">
+    <div class="card-body">
+      <br />
+      <form
+        action="{{ path('incidencia_new', { id_hojaruta: hojaRuta.id }) }}"
+        method="post"
+      >
+        <div class="col-md-8 offset-md-2">
+          <h4 class="text-primary">
+            Nueva Incidencia
+          </h4>
+          <br />
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Tipo</label>
+            {{ form_widget(form.Tipoincidencia,
              {'attr' : {'class' : 'form-control'}}
-          )}}
-        </div>
-        <div class="form-group">
-          <label class="col-sm-4 control-label">Observaciones</label>
-          {{ form_widget(form.detalles,
+            )}}
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Observaciones</label>
+            {{ form_widget(form.detalles,
                 {'attr' : {'class' : 'form-control','pattern':'([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$'}}
-          )}}
+            )}}
+          </div>
+          <br />
+          <div class="text-right">
+            <a
+              class="btn btn-outline-secondary"
+              href="{{ path('hojaruta_index') }}"
+            >
+              Cancelar
+            </a>
+            <input type="submit" class="btn btn-primary" value="Guardar" />
+          </div>
+          <br />
         </div>
-        <br />
-        <div class="text-right">
-          <a
-            class="btn btn-outline-secondary"
-            href="{{ path('hojaruta_index') }}"
-          >
-            Cancelar
-          </a>
-          <input type="submit" class="btn btn-primary" value="Guardar" />
-        </div>
-        <br />
-      </div>
-      {{ form_end(form) }}
-    </form>
+        {{ form_end(form) }}
+      </form>
+    </div>
   </div>
 </div>
 {% endblock %}

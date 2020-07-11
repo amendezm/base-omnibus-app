@@ -1,45 +1,47 @@
 {% extends 'index.html.twig' %} {% block contenido %}
 <br />
 {{ form_start(form, { method: "POST" }) }}
-<div class="card shadow">
-  <div class="card-header">
-    <div class="col-md-8 offset-md-2">
-      <h3>Nuevo Punto de Expedición</h3>
-    </div>
-  </div>
-  <div class="card-body">
-    <div class="col-md-8 offset-md-2">
-      <div class="form-group">
-        <label class="col-sm-4 control-label">Nombre</label>
-        {{ form_widget(form.nombre, 
-            {'attr' : {'class' : 'form-control'}}
-        )}}
-      </div>
-      <div class="form-group">
-        <label class="col-sm-4 control-label">Ubicación</label>
-        {{ form_widget(form.ubicacion,
-            {'attr' : {'class' : 'form-control'}}
-        )}}
-      </div>
-      <div class="form-group">
-        <label class="col-sm-4 control-label">Descripción</label>
-        {{ form_widget(form.descripcion, 
-            {'attr' : {'class' : 'form-control'}}
-        )}}
-      </div>
+<div class="col-md-10 offset-md-1" style="font-size: 0.85rem;">
+  <div class="card shadow">
+    <div class="card-body">
       <br />
-      <div class="text-right">
-        <a
-          class="btn btn-outline-secondary"
-          href="{{ path('pto_expedicion_index') }}"
-        >
-          Cancelar
-        </a>
-        <button type="submit" class="btn btn-primary">
-          Guardar
-        </button>
+      <div class="col-md-8 offset-md-2">
+        <h4 class="text-primary">
+          Nuevo Punto de Expedición
+        </h4>
+        <br />
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Nombre</label>
+          {{ form_widget(form.nombre, 
+            {'attr' : {'class' : 'form-control'}}
+          )}}
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Ubicación</label>
+          {{ form_widget(form.ubicacion,
+            {'attr' : {'class' : 'form-control'}}
+          )}}
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Descripción</label>
+          {{ form_widget(form.descripcion, 
+            {'attr' : {'class' : 'form-control'}}
+          )}}
+        </div>
+        <br />
+        <div class="text-right">
+          <a
+            class="btn btn-outline-secondary"
+            href="{{ path('pto_expedicion_index') }}"
+          >
+            Cancelar
+          </a>
+          <button type="submit" class="btn btn-primary">
+            Guardar
+          </button>
+        </div>
+        <br />
       </div>
-      <br />
     </div>
   </div>
   {{ form_end(form) }}

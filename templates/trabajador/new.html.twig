@@ -1,61 +1,63 @@
 {% extends 'index.html.twig' %} {% block contenido%}
 <br />
 {{ form_start(form, { method: "POST" }) }}
-<div class="card shadow">
-  <div class="card-header">
-    <div class="col-md-8 offset-md-2">
-      <h3>Nuevo Trabajador</h3>
-    </div>
-  </div>
-  <div class="card-body">
-    <div class="col-md-8 offset-md-2">
-      <div class="form-group">
-        <label class="control-label">ID/Código</label>
-        {{ form_widget(form.codigo,
+<div class="col-md-10 offset-md-1" style="font-size: 0.85rem;">
+  <div class="card shadow">
+    <div class="card-body">
+      <br />
+      <div class="col-md-8 offset-md-2">
+        <h4 class="text-primary">
+          Nuevo Trabajador
+        </h4>
+        <br />
+        <div class="form-group">
+          <label class="control-label">ID/Código</label>
+          {{ form_widget(form.codigo,
              {'attr' : {'class' : 'form-control' }}
-        )}}
-      </div>
-      <div class="form-group">
-        <label class="control-label">Nombre</label>
-        {{ form_widget(form.nombre,
+          )}}
+        </div>
+        <div class="form-group">
+          <label class="control-label">Nombre</label>
+          {{ form_widget(form.nombre,
              {'attr' : {'class' : 'form-control','pattern':'([A-Za-zÑñáéíóúÁÉÍÓÚ ]+)$'}}
-        )}}
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Carnet de Identidad</label>
-            {{ form_widget(form.ci, 
+          )}}
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Carnet de Identidad</label>
+              {{ form_widget(form.ci, 
             {'attr' : {'class' : 'form-control','pattern':'[0-9]{11}'}}
-            )}}
+              )}}
+            </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Cargo</label>
-            {{ form_widget(form.cargo,
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Cargo</label>
+              {{ form_widget(form.cargo,
                {'attr' : {'class' : 'form-control','pattern':'([A-Za-z0-9ÑñáéíóúÁÉÍÓÚ ]+)$'}}
-            )}}
+              )}}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label">Dirección</label>
-        {{ form_widget(form.direccion,
+        <div class="form-group">
+          <label class="control-label">Dirección</label>
+          {{ form_widget(form.direccion,
              {'attr' : {'class' : 'form-control','pattern':'([A-Za-z0-9ÑñáéíóúÁÉÍÓÚ ]+)$'}}
-        )}}
+          )}}
+        </div>
+        <br />
+        <div class="text-right">
+          <a
+            class="btn btn-outline-secondary"
+            href="{{ path('trabajador_index') }}"
+          >
+            Cancelar
+          </a>
+          <input type="submit" class="btn btn-primary" value="Guardar" />
+        </div>
+        <br />
       </div>
-      <br />
-      <div class="text-right">
-        <a
-          class="btn btn-outline-secondary"
-          href="{{ path('trabajador_index') }}"
-        >
-          Cancelar
-        </a>
-        <input type="submit" class="btn btn-primary" value="Guardar" />
-      </div>
-      <br />
     </div>
   </div>
   {{ form_end(form) }}

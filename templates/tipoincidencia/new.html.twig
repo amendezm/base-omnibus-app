@@ -1,37 +1,39 @@
 {% extends 'index.html.twig' %} {% block contenido %}
 <br />
 {{ form_start(form, { method: "POST" }) }}
-<div class="card shadow">
-  <div class="card-header">
-    <div class="col-md-8 offset-md-2">
-      <h3>Nuevo Tipo de Incidencia</h3>
-    </div>
-  </div>
-  <div class="card-body">
-    <div class="col-md-8 offset-md-2">
-      <div class="form-group">
-        <label class="col-sm-4 control-label">Tipo</label>
-        {{ form_widget(form.tipoIncidencias,
-          {'attr' : {'class' : 'form-control'}}
-        )}}
-      </div>
-      <div class="form-group">
-        <label class="col-sm-4 control-label">Descripción</label>
-        {{ form_widget(form.descripcion,
-          {'attr' : {'class' : 'form-control'}}
-        )}}
-      </div>
+<div class="col-md-10 offset-md-1" style="font-size: 0.85rem;">
+  <div class="card shadow">
+    <div class="card-body">
       <br />
-      <div class="text-right">
-        <a
-          class="btn btn-outline-secondary"
-          href="{{ path('tipoincidencia_index') }}"
-        >
-          Cancelar
-        </a>
-        <input type="submit" class="btn btn-primary" value="Guardar" />
+      <div class="col-md-8 offset-md-2">
+        <h4 class="text-primary">
+          Nuevo Tipo de Incidencia
+        </h4>
+        <br />
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Tipo</label>
+          {{ form_widget(form.tipoIncidencias,
+          {'attr' : {'class' : 'form-control'}}
+          )}}
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Descripción</label>
+          {{ form_widget(form.descripcion,
+          {'attr' : {'class' : 'form-control'}}
+          )}}
+        </div>
+        <br />
+        <div class="text-right">
+          <a
+            class="btn btn-outline-secondary"
+            href="{{ path('tipoincidencia_index') }}"
+          >
+            Cancelar
+          </a>
+          <input type="submit" class="btn btn-primary" value="Guardar" />
+        </div>
+        <br />
       </div>
-      <br />
     </div>
   </div>
   {{ form_end(form) }}
